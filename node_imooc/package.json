@@ -1,0 +1,18 @@
+{
+  "name": "node_imooc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jingzhi",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.6.3",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "moment": "^2.10.6",
+    "mongoose": "^4.2.2"
+  }
+}
