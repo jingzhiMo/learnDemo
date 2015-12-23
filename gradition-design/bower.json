@@ -1,0 +1,23 @@
+{
+  "name": "bower install angular --save",
+  "description": "毕业设计-喵喵团",
+  "main": "index.js",
+  "authors": [
+    "mojingzhi"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jingzhiMo/learnDemo",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-ui-router": "ui-router#~0.2.15"
+  }
+}
