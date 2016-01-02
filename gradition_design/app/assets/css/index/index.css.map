@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA,QAAK;EACJ,MAAM,EAAE,CAAC;;;AAEV,QAAK;EACJ,OAAO,EAAE,CAAC;;;;AAQX,SAAU;EACT,gBAAgB,ECVT,OAAiB;EDWxB,KAAK,EAAE,IAAI",
+"sources": ["../../sass/_paritals/_global.scss","../../sass/_paritals/_var.scss"],
+"names": [],
+"file": "index.css"
+}

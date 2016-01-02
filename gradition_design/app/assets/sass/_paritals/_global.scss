@@ -1,0 +1,16 @@
+%mr0 {
+	margin: 0;
+}
+%pd0 {
+	padding: 0;
+}
+p, input {
+	@extend %mr0;
+	@extend %pd0;
+}
+
+/* 页面的 header */
+header#hd {
+	background-color: $maClr;
+	color: #fff;
+}

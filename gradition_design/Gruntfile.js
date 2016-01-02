@@ -134,7 +134,7 @@ module.exports = function(grunt) {
 			// sass 变化，预编译成 css
 			buildSass: {
 				files: [
-					'<%= path.assets.sass %>*/.scss'
+					'<%= path.assets.sass %>*/*.scss'
 				],
 				tasks: [
 					'sass'

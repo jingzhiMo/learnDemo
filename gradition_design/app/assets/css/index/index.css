@@ -1,0 +1,16 @@
+@charset "UTF-8";
+p, input {
+  margin: 0;
+}
+
+p, input {
+  padding: 0;
+}
+
+/* 页面的 header */
+header#hd {
+  background-color: #57c4cf;
+  color: #fff;
+}
+
+/*# sourceMappingURL=index.css.map */
