@@ -2,6 +2,8 @@ module.exports = function(grunt) {
 
 	// 引入加载全部插件的插件
 	require('load-grunt-tasks')(grunt);
+	// 引入显示每次构建任务所需要的时间
+	require('time-grunt')(grunt);
 
 
 	grunt.initConfig({
@@ -100,7 +102,7 @@ module.exports = function(grunt) {
 					sub: true,
 					undef: true,
 					boss: true,
-					global: {
+					globals: {
 
 					},
 					node: true // 执行环境为 node
