@@ -117,7 +117,7 @@ html {
   top: 0;
 }
 
-/* 搜索框 */
+/* 搜索框 search */
 #search {
   position: relative;
   background-color: #eeeeee;
@@ -221,5 +221,7 @@ html {
 #search .sug-box .sug-opt:hover, #search .sug-box .sug-opt:active {
   background-color: #f0f0f0;
 }
+
+/* 目录 catalog */
 
 /*# sourceMappingURL=index.css.map */
