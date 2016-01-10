@@ -14,11 +14,25 @@
 %tac {
 	text-align: center;
 }
+%show {
+	display: block;
+}
 %hide {
-	display: none !important;
+	display: none;
 }
 .hide {
 	@extend %hide;
+}
+%br-box {
+	box-sizing: border-box;
+}
+%unstyled {
+	list-style: none;
+}
+%ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 /* btn */
 .btn {
@@ -27,7 +41,7 @@
 /* /btn */
 
 // init layout
-body, p, input, h1, h2, h3, h4, h5, h6 {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
 	@extend %mr0;
 	@extend %pd0;
 }
@@ -38,9 +52,12 @@ a {
 input {
 	outline: none;
 }
+button {
+	padding: 0;
+	outline: none;
+}
 // end init
 
 html {
 	font-size: 62.5%;
-	height: 83.33%;
 }
