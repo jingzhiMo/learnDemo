@@ -7,15 +7,15 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
   padding: 0;
 }
 
-#catalog .menu, #catalog .menu .menu-item {
+#catalog .menu, #catalog .menu .menu-item, #ft .geo-city {
   float: left;
 }
 
-#goods .good-link .place, #goods .good-link .count {
+#goods .good-link .place, #goods .good-link .count, #ft .info {
   float: right;
 }
 
-#hd #title, #search .search-box, #search .sug-box .btn-box, #catalog, #catalog .menu .text, #load-more .load-more-link {
+#hd #title, #search .search-box, #search .sug-box .btn-box, #catalog, #catalog .menu .text, #load-more .load-more-link, #ft .info-link, #ft .link-block {
   text-align: center;
 }
 
@@ -27,7 +27,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
   display: block;
 }
 
-.hide, #search .close-sug, #search .sug-box, #goods .good-link .distance {
+.hide, #search .close-sug, #search .sug-box, #goods .good-link .distance, #ft .login-info {
   display: none;
 }
 
@@ -51,10 +51,6 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
 }
 
 /* /btn */
-body {
-  padding-bottom: 20px;
-}
-
 a {
   text-decoration: none;
   outline: none;
@@ -440,7 +436,7 @@ html {
 /* 加载更多团购信息 */
 #load-more {
   line-height: 24px;
-  font-size: 16px;
+  font-size: 15px;
 }
 #load-more .load-more-link {
   display: block;
@@ -449,6 +445,32 @@ html {
 }
 #load-more .load-more-link:hover, #load-more .load-more-link:active {
   background-color: #f0f0f0;
+}
+
+#ft {
+  padding: 10px 10px 20px;
+  overflow: hidden;
+  background-color: #eee;
+}
+#ft .info-block {
+  overflow: hidden;
+}
+#ft .geo-city {
+  color: #353535;
+}
+#ft .info-link {
+  display: inline-block;
+  padding: 0 9px;
+  height: 28px;
+  line-height: 28px;
+  min-width: 60px;
+  color: #333;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+#ft .link-block {
+  margin-top: 15px;
+  color: #aaa;
 }
 
 /*# sourceMappingURL=index.css.map */
