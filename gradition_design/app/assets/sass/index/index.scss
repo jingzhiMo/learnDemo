@@ -487,4 +487,13 @@
 		color: #aaa;
 		@extend %tac;
 	}
+	.top {
+		position: fixed;
+		right: 15px;
+		bottom: 30px;
+		width: 40px;
+		height: 40px;
+		background: url('../../img/top.png') center no-repeat;
+		background-size: 40px;
+	}
 }
