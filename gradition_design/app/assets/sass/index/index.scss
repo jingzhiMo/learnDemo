@@ -202,7 +202,6 @@
 	@extend %tac;
 	width: 100%;
 	overflow: hidden;
-	border-bottom: 1px solid #e0e0e0;
 	
 	// 一些 icon 的 base64
 	// 美食：url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAt1BMVEUAAAD9Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl79Xl7/////+/v/9/f9YmL9Z2f+zMz+u7v+kpL9eHj/4+P/7e3/6Oj/3Nz+v7/+trb+srL+mpr+iYn9c3P9a2v9X1//2Nj+09P/8fEgsZRxAAAAJHRSTlMAC+P18ncfFuzf251PRta9uKhZB2xI6dFccMjGmJSQKSSSFBJnGfpEAAACkUlEQVRYw6TU126rQBAG4AGDacYtbulR9K8BY5ym9PP+z3UmTkBGHsMC3wXauZif1TaqcR/OrkfDhYWe6y1H17PwntozBjdLHFneDAxqI5z0cEJvEjae3LmHSt650STOdlHLtbUjpya0mFPS0R9D27hPtVYWGrBWVO0sQEPBGVVwLtHYpVOxfD5a8E8u5K2JVsxbEt2ZaMm8I4HjozXfEfb3Ah1cHO91gE6Co/OMjlZU0rfQkVU+PGN0NqYDU8iydLeOdmmGX0qp/Tcflk2pYJiQxC9rtbd+iTUCTYNytpz3rQrfcX0g7GKCLgSfG3Vg81kf6OZTnEHyqtjjNkm2j4q91gdiRr88COIH7nlKwJInHj7E9YEe7YWQbLklesfee8TFtj4Qc/oxgeSZW9K8SLl41gicEDN6kOy45S0v3rjYaQT2DA4cQPSPWz7y4oOLSCMQAw68gmjNLXGxQ4rpBF5xoA9R1GqGPpEDtF1DiUNzoO0uS+ZkA23PocSmAKzzTSkENALTvcslkIxoCKb52kTqQATJkBY4Jf5Sha8ErPwLSBZkIVf/YmeRKkQZJBahSpYqlmZFvYn+4jYZZP+bM4MUBmEgin6wMVVDRG0sXYriCbz/2YrNIqsElLfoXwbytjP/jaqtmPN35iUDfLLAhxoWOOvNAr16FtirY4GdDAs0CiwwyLJAK7UksI1DigCmIeVIoIuDngCmQa+BAw46Ezhg0C8NBWwU86KAn7QSE8C0EsswQFOsFWkJ2zMvhVqhMQs89v0ovqSMfDXjyyNfb/kCzisCXmLwmoUXQSm1v8PztbJZ78i0VYVMy1XeMqkcd01IOlqZwlKX1s6wGGfV/T8cF2JsPH9U21bN/jx/WJXzBaE7wxSmWFkJAAAAAElFTkSuQmCC) no-repeat
@@ -238,7 +237,7 @@
 			margin-bottom: 8px;
 			height: 72px;
 			width: 25%;
-			color: #333;
+			color: $maFtClr;
 		}
 		.bgimg {
 			width: 40px;
@@ -321,6 +320,135 @@
 				border-color: $maClr;
 				background-color: $maClr;
 			}
+		}
+	}
+}
+
+/* 猜你喜欢 */
+#goods {
+	$ftClr: rgb(85, 85, 85);
+	.goods-title {
+		position: relative;
+		padding: 0 10px;
+		line-height: 40px;
+		font-size: 15px;
+		font-weight: normal;
+		color: $maFtClr;
+
+		.more-link {
+			position: absolute;
+			right: 10px;
+			font-size: 13px;
+			color: $ftClr;
+			&::after {
+				content: "";
+				display: inline-block;
+				width: 7px;
+				height: 7px;
+				border-left: 1px solid $ftClr;
+				border-bottom: 1px solid $ftClr;
+				transform: rotate(-135deg);
+			}
+		}
+	}
+
+	.goods-list {
+		padding: 0 10px;
+	}
+	.good-item {
+
+	}
+	.good-link {
+		display: -webkit-flex;
+		padding: 12px 0;
+
+		.img-box {
+			padding-right: 10px;
+			font-size: 0;
+		}
+		img {
+			width: 96px;
+			height: 72px;
+		}
+		.info-box {
+			flex-grow: 1;
+		}
+		.title-line {
+			line-height: 16px;
+		}
+		.good-name {
+			@extend %ellipsis;
+			@extend %vam;
+			display: inline-block;
+			width: 70%;
+			font-size: 1.6rem;
+			color: #222;
+		}
+		span {
+			display: inline-block;
+		}
+		.distance {
+			@extend %hide;
+			color: $ftClr;
+		}
+		.place {
+			@extend %rh;
+			@extend %vam;
+			color: $ftClr;
+		}
+		.desc {
+			margin: 3px 0;
+			width: 98%;
+			height: 32px;
+			line-height: 16px;
+			font-size: 12px;
+			color: $ftClr;
+		}
+		.price-line {
+			height: 16px;
+			line-height: 16px;
+		}
+		.now {
+			margin-right: 5px;
+			font-weight: bold;
+			font-size: 16px;
+			color: $maClr;
+		}
+		.now::before {
+			content: '￥';
+		}
+		.old {
+			margin-right: 3px;
+			font-size: 12px;
+			text-decoration: line-through;
+			color: $ftClr;
+		}
+		.discount {
+			padding: 0 2px;
+			font-size: 11px;
+			color: $maClr;
+			border: 1px solid $maClr;
+		}
+		.count {
+			@extend %rh;
+			font-size: 12px;
+			color: $ftClr;
+		}
+	}
+}
+
+/* 加载更多团购信息 */
+#load-more {
+	line-height: 24px;
+	font-size: 16px;
+
+	.load-more-link {
+		@extend %tac;
+		display: block;
+		padding: 5px 0;
+		color: $maFtClr;
+		&:hover, &:active {
+			background-color: #f0f0f0;
 		}
 	}
 }

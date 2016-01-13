@@ -14,6 +14,9 @@
 %tac {
 	text-align: center;
 }
+%vam {
+	vertical-align: middle;
+}
 %show {
 	display: block;
 }
@@ -44,6 +47,9 @@
 body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
 	@extend %mr0;
 	@extend %pd0;
+}
+body {
+	padding-bottom: 20px;
 }
 a {
 	text-decoration: none;
