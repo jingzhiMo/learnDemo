@@ -11,7 +11,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
   float: left;
 }
 
-#hd #title, #search .search-box, #search .sug-box .btn-box, #catalog .menu .text {
+#hd #title, #search .search-box, #search .sug-box .btn-box, #catalog, #catalog .menu .text {
   text-align: center;
 }
 
@@ -308,6 +308,24 @@ html {
   display: block;
   line-height: 2rem;
   font-size: 13px;
+}
+#catalog .points-box {
+  display: inline-block;
+}
+#catalog .points-box .point {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 100%;
+}
+#catalog .points-box .point:first-child {
+  margin-right: 5px;
+}
+#catalog .points-box .point.active {
+  border-color: #57c4cf;
+  background-color: #57c4cf;
 }
 
 /*# sourceMappingURL=index.css.map */

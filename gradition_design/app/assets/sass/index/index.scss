@@ -199,6 +199,7 @@
 
 /* 目录 catalog */
 #catalog {
+	@extend %tac;
 	width: 100%;
 	overflow: hidden;
 	border-bottom: 1px solid #e0e0e0;
@@ -301,6 +302,25 @@
 			display: block;
 			line-height: 2rem;
 			font-size: 13px;
+		}
+	}
+	.points-box {
+		display: inline-block;
+
+		.point {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+			border-radius: 100%;
+			&:first-child {
+				margin-right: 5px;
+			}
+			&.active {
+				border-color: $maClr;
+				background-color: $maClr;
+			}
 		}
 	}
 }
