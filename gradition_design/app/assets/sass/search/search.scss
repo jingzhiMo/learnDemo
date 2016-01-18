@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+// 导入其他模块文件
+@import "../_paritals/var";
+@import "../_paritals/global";
+
+/* 页面的header */
+#hd {
+	$h: 45px;
+
+	position: relative;
+	height: $h;
+	line-height: $h;
+	background-color: $maClr;
+
+	.back-link {
+		@extend %tac;
+		position: absolute;
+		display: inline-block;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 50px;
+
+		&::before {
+			@extend %vam;
+			display: inline-block;
+			content: "";
+			width: 10px;
+			height: 10px;
+			border-left: 2px solid #fff;
+			border-bottom: 2px solid #fff;
+			transform: rotate(45deg);
+		}
+	}
+	.search-fm {
+		padding-left: 50px;
+		height: 100%;
+		line-height: $h;
+	}
+	.search-box {
+		display: inline-block;
+		width: 100%;
+		height: $h - 10px;
+	}
+	.search-ipt {
+		@extend %br-box;
+		height: 100%;
+		padding: 3px;
+		font-size: 14px;
+	}
+	.sug-box {
+		@extend %hide;
+	}
+}

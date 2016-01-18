@@ -1,0 +1,91 @@
+@charset "UTF-8";
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
+  margin: 0;
+}
+
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol {
+  padding: 0;
+}
+
+#hd .back-link {
+  text-align: center;
+}
+
+#hd .back-link::before {
+  vertical-align: middle;
+}
+
+.hide, #hd .sug-box {
+  display: none;
+}
+
+#hd .search-ipt {
+  box-sizing: border-box;
+}
+
+/* btn */
+.btn {
+  display: inline-block;
+}
+
+/* /btn */
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+button {
+  padding: 0;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* 页面的header */
+#hd {
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  background-color: #57c4cf;
+}
+#hd .back-link {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50px;
+}
+#hd .back-link::before {
+  display: inline-block;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+}
+#hd .search-fm {
+  padding-left: 50px;
+  height: 100%;
+  line-height: 45px;
+}
+#hd .search-box {
+  display: inline-block;
+  width: 100%;
+  height: 35px;
+}
+#hd .search-ipt {
+  height: 100%;
+  padding: 3px;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=search.css.map */
