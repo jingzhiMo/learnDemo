@@ -15,15 +15,15 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   vertical-align: middle;
 }
 
-.hide, #hd .sug-box {
+.hide, #hd .sug-box, #filter-box .order-part {
   display: none;
 }
 
-#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt, #filter-box .tab {
+#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt, #filter-box .tab, #filter-box .order-part .option {
   box-sizing: border-box;
 }
 
-#hd .sug-box .his-list, #hd .sug-box .sug-list {
+#hd .sug-box .his-list, #hd .sug-box .sug-list, #filter-box .order-part .order-list {
   list-style: none;
 }
 
@@ -233,6 +233,9 @@ html {
 }
 
 /* 筛选排序 */
+#filter-box {
+  position: relative;
+}
 #filter-box .filter-hd {
   height: 40px;
   line-height: 40px;
@@ -262,6 +265,27 @@ html {
 #filter-box .tab.active::after {
   margin-bottom: -4px;
   border-color: #57c4cf #57c4cf transparent transparent;
+}
+#filter-box .filter-bd {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+}
+#filter-box .order-part .option {
+  padding-left: 15px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #dbdbdb;
+}
+#filter-box .order-part .option.active {
+  background-color: #eee;
+}
+#filter-box .order-part .option:last-child {
+  border-bottom-width: 0;
+}
+#filter-box .order-part .option:hover, #filter-box .order-part .option:active {
+  background-color: #eaeaea;
 }
 
 /*# sourceMappingURL=search.css.map */

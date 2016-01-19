@@ -220,6 +220,9 @@
 /* 筛选排序 */
 #filter-box {
 	$h: 40px;
+
+	position: relative;
+
 	.filter-hd {
 		height: $h;
 		line-height: $h;
@@ -255,8 +258,37 @@
 			}
 		}
 	}
+	
+	$atBgClr: #eee;
 
 	.filter-bd {
+		position: absolute;
+		top: $h;
+		width: 100%;
+	}
+	// 默认排序
+	.order-part {
+		@extend %hide;
+		.order-list {
+			@extend %unstyled;
+		}
+		.option {
+			@extend %br-box;
+			padding-left: 15px;
+			line-height: 40px;
+			font-size: 14px;
+			color: $maFtClr;
+			border-bottom: 1px solid $maBrClr;
 
+			&.active {
+				background-color: $atBgClr;
+			}
+			&:last-child {
+				border-bottom-width: 0;
+			}
+			&:hover, &:active {
+				background-color: darken($atBgClr, 1.5);
+			}
+		}
 	}
 }
