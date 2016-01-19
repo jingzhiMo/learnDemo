@@ -7,11 +7,11 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   padding: 0;
 }
 
-#hd .back-link, #hd .sug-box .btn-box {
+#hd .back-link, #hd .sug-box .btn-box, #filter-box .tab {
   text-align: center;
 }
 
-#hd .back-link::before, #hd .search-ipt, #hd .clear-word, #hd .clear-word .icon, #hd .home-link, #hd .close {
+#hd .back-link::before, #hd .search-ipt, #hd .clear-word, #hd .clear-word .icon, #hd .home-link, #hd .close, #filter-box .tab, #filter-box .tab::after {
   vertical-align: middle;
 }
 
@@ -19,7 +19,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   display: none;
 }
 
-#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt {
+#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt, #filter-box .tab {
   box-sizing: border-box;
 }
 
@@ -230,6 +230,38 @@ html {
 }
 #hd .sug-box .sug-opt:hover, #hd .sug-box .sug-opt:active {
   background-color: #f0f0f0;
+}
+
+/* 筛选排序 */
+#filter-box .filter-hd {
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+}
+#filter-box .tab {
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  background-color: whitesmoke;
+  color: #333;
+}
+#filter-box .tab::after {
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 4px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid;
+  border-color: transparent transparent #333 #333;
+  transform: rotate(-45deg);
+}
+#filter-box .tab.active {
+  color: #57c4cf;
+}
+#filter-box .tab.active::after {
+  margin-bottom: -4px;
+  border-color: #57c4cf #57c4cf transparent transparent;
 }
 
 /*# sourceMappingURL=search.css.map */

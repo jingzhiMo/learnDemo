@@ -216,3 +216,47 @@
 		}
 	}
 }
+
+/* 筛选排序 */
+#filter-box {
+	$h: 40px;
+	.filter-hd {
+		height: $h;
+		line-height: $h;
+		font-size: 0;
+	}
+	.tab {
+		@extend %br-box;
+		@extend %tac;
+		@extend %vam;
+		display: inline-block;
+		width: 25%;
+		height: 100%;
+		background-color: $bgClr;
+		color: $maFtClr;
+		
+		&::after {
+			@extend %vam;
+			content: "";
+			display: inline-block;
+			margin-left: 5px;
+			margin-bottom: 4px;
+			width: 6px;
+			height: 6px;
+			border: 1px solid;
+			border-color: transparent transparent $maFtClr $maFtClr;
+			transform: rotate(-45deg);
+		}
+		&.active {
+			color: $maClr;
+			&::after {
+				margin-bottom: -4px;
+				border-color: $maClr $maClr transparent transparent;
+			}
+		}
+	}
+
+	.filter-bd {
+
+	}
+}
