@@ -6,7 +6,7 @@
 
 /* 页面的header */
 #hd {
-	$h: 45px;
+	$h: 40px;
 
 	position: relative;
 	height: $h;
@@ -46,10 +46,10 @@
 	.search-ipt {
 		@extend %br-box;
 		@extend %vam;
-		padding: 0 0 0 25px;
+		padding: 9px 0 10px 25px;
 		width: 100%;
 		height: $h - 12px;
-		line-height: $h - 12px;
+		line-height: 14px;
 		font-size: 1.4rem;
 		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAHPIZnHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2lpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozNUI2NDExMUZFQThFMzExOTJBQkRBREUzNTNDN0I4QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RURFQTI0NEIwMEQxMUUzODU4Q0IwNTVFQTMwMjE3MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RURFQTI0M0IwMEQxMUUzODU4Q0IwNTVFQTMwMjE3MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDdjODAzZGQtMjVhZC1mZjRiLWE2MzItYzE3OGI5OGFkNmMwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM1QjY0MTExRkVBOEUzMTE5MkFCREFERTM1M0M3QjhBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Y9P6/wAAAm1JREFUWMO9WE1LW1EQTRQSFDVVFMW69TcoCoouiqUiKkVTuijob2gJlChYRYVspOjCRQuCCNm5cSe4EFw0itKPgIUakVJaTSMtZFPwdS7MhXG4X+/l6eJgcu95x3NnJjM3ieRyuQiFfBHDv15Ex/CsjFsLJb7gkYUCpT/Wakj8xsc9KsN9cayYCEOAOF98B/gJqAFklCc1maQGf9lMinD/kIQtjbwnCX9shAeAMRNBvkmyzSw/RR26XyekNV9xoEgANgBFwBXgPf4Hq4AM5ISCPM4rgQo04cakzTJgBLlxKvDXUFK6HBSowGYAgVUegxJuxAwPViPnuykLl6wyKa7J66wpjTZkUOQyqIC1kF4APgLKgGNWx0aBZ4bze1gDWoFFEuEqRoxi3sV+SiXQhpu7ljNvI6+BC5R9FJJHOy5dXHIUSOlaa7ujQEelAg91AjOOAq9UAn6DWOQCLbixEzSNtJDOFIUk8JVUZLWulJ9aStnjIjqr4jNxiGP1AwqrpljgfiAFonfWD+4NLiQxfRfI6LBBjPNlfC6wgSiKcPFTXB8EdAIasRX1AdKAL4x/A3jt18BzJrIPaPUZ2mbAHjPyxMXAGnnoAkd+JTkWl5RvRPONycA0C3VVSIUm0nlCtB/pDHwmpIGQq72HpdR6z02EbKCW3U6UBvKE1B+ygW6ifaAzMEVIecxdWAaOifao6VPwlhALrs3EgHosaKk559IHkqwedgLURD0ZnhLDfjvhvKITfsI7QS/eTmI4zbsALwFHljadpcPYdRaI08xij3eZBSWcHQlyjdYaua+ppzLyT/WN+a6Rxgidy58J/gOh6OBouN0GDQAAAABJRU5ErkJggg==);
 		background-repeat: no-repeat;
@@ -69,8 +69,8 @@
 		right: $hlw;
 		top: $top;
 		width: $h - 20px;
-		height: $h - 12px;
-		line-height: $h - 12px;
+		height: $h - 13px;
+		line-height: $h - 13px;
 		background-color: #fff;
 
 		.icon {
@@ -131,10 +131,10 @@
 		display: inline-block;
 		position: absolute;
 		right: 0;
-		top: $top;
+		top: $top - 1px;
 		width: $hlw;
 		height: $h - 12px;
-		font-size: 15px;
+		font-size: 1.5rem;
 		background-color: $maClr;
 		color: #eee;
 	}
@@ -163,7 +163,7 @@
 			@extend %ellipsis;
 			display: block;
 			padding-left: 25px;
-			font-size: 14px;
+			font-size: 1.4rem;
 			line-height: 44px;
 			color: #999;
 		}
@@ -202,7 +202,7 @@
 			right: 0;
 			height: 100%;
 			max-width: 100px;
-			font-size: 13px;
+			font-size: 1.3rem;
 			color: #999;
 		}
 		.sug-opt {
@@ -221,8 +221,6 @@
 #filter-box {
 	$h: 40px;
 
-	position: relative;
-
 	.filter-hd {
 		height: $h;
 		line-height: $h;
@@ -235,6 +233,7 @@
 		display: inline-block;
 		width: 25%;
 		height: 100%;
+		font-size: 1.4rem;
 		background-color: $bgClr;
 		color: $maFtClr;
 		
@@ -266,9 +265,69 @@
 		top: $h;
 		width: 100%;
 	}
-	// 默认排序
+	.bd-part {
+		border-top: 1px solid $maBrClr;
+	}
+	// 分类列表
+	.catg-part {
+		font-size: 0;
+
+		.main-block, .sub-block {
+			display: inline-block;
+			width: 50%;
+			height: 246px;
+			overflow: hidden;
+			-webkit-overflow-scrolling: touch;
+			background-color: $bgClr;
+			vertical-align: top;
+		}
+		.catg-list {
+
+		}
+		.catg-opt {
+			position: relative;
+			padding-left: 15px;
+			line-height: 40px;
+			font-size: 1.4rem;
+			border-bottom: 1px solid $maBrClr;
+			border-right: 1px solid $maBrClr;
+
+			&.active {
+				background-color: #e2e2e2;
+			}
+		}
+		.opt-count {
+			position: absolute;
+			right: 8px;
+			top: ($h - 16px) / 2;
+			padding: 0 5px;
+			height: 16px;
+			line-height: 16px;
+			font-size: 13px;
+			color: #fff;
+			background-color: #aaa;
+			border: 1px solid #aaa;
+			border-radius: 2px;
+		}
+		.details-list {
+			@extend %unstyled;
+		}
+		.detail-opt {
+			position: relative;
+			padding-left: 15px;
+			line-height: 40px;
+			font-size: 1.4rem;
+			border-bottom: 1px solid $maBrClr;
+
+			&.active {
+				background-color: #e2e2e2;
+			}
+		}
+	}
+	// 默认排序列表
 	.order-part {
 		@extend %hide;
+
 		.order-list {
 			@extend %unstyled;
 		}
@@ -276,7 +335,7 @@
 			@extend %br-box;
 			padding-left: 15px;
 			line-height: 40px;
-			font-size: 14px;
+			font-size: 1.4rem;
 			color: $maFtClr;
 			border-bottom: 1px solid $maBrClr;
 

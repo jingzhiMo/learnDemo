@@ -23,7 +23,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   box-sizing: border-box;
 }
 
-#hd .sug-box .his-list, #hd .sug-box .sug-list, #filter-box .order-part .order-list {
+#hd .sug-box .his-list, #hd .sug-box .sug-list, #filter-box .catg-part .details-list, #filter-box .order-part .order-list {
   list-style: none;
 }
 
@@ -56,8 +56,8 @@ html {
 /* 页面的header */
 #hd {
   position: relative;
-  height: 45px;
-  line-height: 45px;
+  height: 40px;
+  line-height: 40px;
   background-color: #57c4cf;
 }
 #hd .back-link {
@@ -85,13 +85,13 @@ html {
   position: relative;
   display: inline-block;
   width: 100%;
-  line-height: 45px;
+  line-height: 40px;
 }
 #hd .search-ipt {
-  padding: 0 0 0 25px;
+  padding: 9px 0 10px 25px;
   width: 100%;
-  height: 33px;
-  line-height: 33px;
+  height: 28px;
+  line-height: 14px;
   font-size: 1.4rem;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAHPIZnHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2lpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozNUI2NDExMUZFQThFMzExOTJBQkRBREUzNTNDN0I4QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RURFQTI0NEIwMEQxMUUzODU4Q0IwNTVFQTMwMjE3MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RURFQTI0M0IwMEQxMUUzODU4Q0IwNTVFQTMwMjE3MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDdjODAzZGQtMjVhZC1mZjRiLWE2MzItYzE3OGI5OGFkNmMwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM1QjY0MTExRkVBOEUzMTE5MkFCREFERTM1M0M3QjhBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Y9P6/wAAAm1JREFUWMO9WE1LW1EQTRQSFDVVFMW69TcoCoouiqUiKkVTuijob2gJlChYRYVspOjCRQuCCNm5cSe4EFw0itKPgIUakVJaTSMtZFPwdS7MhXG4X+/l6eJgcu95x3NnJjM3ieRyuQiFfBHDv15Ex/CsjFsLJb7gkYUCpT/Wakj8xsc9KsN9cayYCEOAOF98B/gJqAFklCc1maQGf9lMinD/kIQtjbwnCX9shAeAMRNBvkmyzSw/RR26XyekNV9xoEgANgBFwBXgPf4Hq4AM5ISCPM4rgQo04cakzTJgBLlxKvDXUFK6HBSowGYAgVUegxJuxAwPViPnuykLl6wyKa7J66wpjTZkUOQyqIC1kF4APgLKgGNWx0aBZ4bze1gDWoFFEuEqRoxi3sV+SiXQhpu7ljNvI6+BC5R9FJJHOy5dXHIUSOlaa7ujQEelAg91AjOOAq9UAn6DWOQCLbixEzSNtJDOFIUk8JVUZLWulJ9aStnjIjqr4jNxiGP1AwqrpljgfiAFonfWD+4NLiQxfRfI6LBBjPNlfC6wgSiKcPFTXB8EdAIasRX1AdKAL4x/A3jt18BzJrIPaPUZ2mbAHjPyxMXAGnnoAkd+JTkWl5RvRPONycA0C3VVSIUm0nlCtB/pDHwmpIGQq72HpdR6z02EbKCW3U6UBvKE1B+ygW6ifaAzMEVIecxdWAaOifao6VPwlhALrs3EgHosaKk559IHkqwedgLURD0ZnhLDfjvhvKITfsI7QS/eTmI4zbsALwFHljadpcPYdRaI08xij3eZBSWcHQlyjdYaua+ppzLyT/WN+a6Rxgidy58J/gOh6OBouN0GDQAAAABJRU5ErkJggg==);
   background-repeat: no-repeat;
@@ -103,9 +103,9 @@ html {
   position: absolute;
   right: 45px;
   top: 7px;
-  width: 25px;
-  height: 33px;
-  line-height: 33px;
+  width: 20px;
+  height: 27px;
+  line-height: 27px;
   background-color: #fff;
 }
 #hd .clear-word .icon {
@@ -143,7 +143,7 @@ html {
   right: 0;
   top: 7px;
   width: 45px;
-  height: 33px;
+  height: 28px;
   background-color: #57c4cf;
 }
 #hd .home-link::before {
@@ -159,16 +159,16 @@ html {
   display: inline-block;
   position: absolute;
   right: 0;
-  top: 7px;
+  top: 6px;
   width: 45px;
-  height: 33px;
-  font-size: 15px;
+  height: 28px;
+  font-size: 1.5rem;
   background-color: #57c4cf;
   color: #eee;
 }
 #hd .sug-box {
   position: absolute;
-  top: 45px;
+  top: 40px;
   left: 0;
   width: 100%;
   padding: 0 12px 0 0;
@@ -184,7 +184,7 @@ html {
 #hd .sug-box .his-link, #hd .sug-box .sug-link {
   display: block;
   padding-left: 25px;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 44px;
   color: #999;
 }
@@ -219,7 +219,7 @@ html {
   right: 0;
   height: 100%;
   max-width: 100px;
-  font-size: 13px;
+  font-size: 1.3rem;
   color: #999;
 }
 #hd .sug-box .sug-opt {
@@ -233,9 +233,6 @@ html {
 }
 
 /* 筛选排序 */
-#filter-box {
-  position: relative;
-}
 #filter-box .filter-hd {
   height: 40px;
   line-height: 40px;
@@ -245,6 +242,7 @@ html {
   display: inline-block;
   width: 25%;
   height: 100%;
+  font-size: 1.4rem;
   background-color: whitesmoke;
   color: #333;
 }
@@ -271,10 +269,59 @@ html {
   top: 40px;
   width: 100%;
 }
+#filter-box .bd-part {
+  border-top: 1px solid #dbdbdb;
+}
+#filter-box .catg-part {
+  font-size: 0;
+}
+#filter-box .catg-part .main-block, #filter-box .catg-part .sub-block {
+  display: inline-block;
+  width: 50%;
+  height: 246px;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: whitesmoke;
+  vertical-align: top;
+}
+#filter-box .catg-part .catg-opt {
+  position: relative;
+  padding-left: 15px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+}
+#filter-box .catg-part .catg-opt.active {
+  background-color: #e2e2e2;
+}
+#filter-box .catg-part .opt-count {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  padding: 0 5px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+}
+#filter-box .catg-part .detail-opt {
+  position: relative;
+  padding-left: 15px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #dbdbdb;
+}
+#filter-box .catg-part .detail-opt.active {
+  background-color: #e2e2e2;
+}
 #filter-box .order-part .option {
   padding-left: 15px;
   line-height: 40px;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #333;
   border-bottom: 1px solid #dbdbdb;
 }
