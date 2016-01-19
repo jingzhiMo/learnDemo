@@ -262,15 +262,17 @@
 
 	.filter-bd {
 		position: absolute;
-		top: $h;
+		top: $h * 2;
 		width: 100%;
 	}
 	.bd-part {
+		font-size: 0;
 		border-top: 1px solid $maBrClr;
 	}
 	// 分类列表
 	.catg-part {
-		font-size: 0;
+		@extend %hide;
+		background-color: $bgClr;
 
 		.main-block, .sub-block {
 			display: inline-block;
@@ -278,7 +280,6 @@
 			height: 246px;
 			overflow: hidden;
 			-webkit-overflow-scrolling: touch;
-			background-color: $bgClr;
 			vertical-align: top;
 		}
 		.catg-list {
@@ -293,7 +294,8 @@
 			border-right: 1px solid $maBrClr;
 
 			&.active {
-				background-color: #e2e2e2;
+				background-color: #eee;
+				border-right-width: 0;
 			}
 		}
 		.opt-count {
@@ -318,10 +320,56 @@
 			line-height: 40px;
 			font-size: 1.4rem;
 			border-bottom: 1px solid $maBrClr;
+			background-color: #eee;
 
 			&.active {
 				background-color: #e2e2e2;
 			}
+		}
+		.detail-count {
+			color: #999;
+			background-color: transparent;
+			border-width: 0;
+		}
+	}
+	// 地区列表
+	.area-part {
+		$h: 40px;
+
+		background-color: $bgClr;
+
+		.area-hd {
+			@extend %unstyled;
+			font-size: 1.4rem;
+			overflow: hidden;
+			border-bottom: 1px solid $maBrClr;
+		}
+		.item {
+			@extend %lf;
+			@extend %br-box;
+			@extend %tac;
+			margin: 0 10%;
+			width: 30%;
+			line-height: $h;
+			&.active {
+				color: $maClr;
+				border-bottom: 2px solid $maClr;
+			}
+			&:last-child {
+				margin: 7px 0 0;
+				width: 50%;
+				height: $h - 14px;
+				border-left: 1px solid $maBrClr;
+			}
+		}
+		.main-block, .sub-block {
+			display: inline-block;
+			width: 50%;
+			height: 246px;
+			overflow: hidden;
+			-webkit-overflow-scrolling: touch;
+			background-color: $bgClr;
+			vertical-align: top;
 		}
 	}
 	// 默认排序列表

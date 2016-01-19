@@ -63,6 +63,7 @@ input, button {
 
 html {
   font-size: 62.5%;
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
 }
 
 /* 页面的 header */
