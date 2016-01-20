@@ -368,8 +368,58 @@
 			height: 246px;
 			overflow: hidden;
 			-webkit-overflow-scrolling: touch;
+			font-size: 1.4rem;
 			background-color: $bgClr;
 			vertical-align: top;
+		}
+		.area-list {
+
+		}
+		.area-opt {
+			position: relative;
+			padding-left: 15px;
+			line-height: 40px;
+			font-size: 1.4rem;
+			border-bottom: 1px solid $maBrClr;
+			border-right: 1px solid $maBrClr;
+
+			&.active {
+				background-color: #eee;
+				border-right-width: 0;
+			}
+		}
+		.opt-count {
+			position: absolute;
+			right: 8px;
+			top: ($h - 16px) / 2;
+			padding: 0 5px;
+			height: 16px;
+			line-height: 16px;
+			font-size: 13px;
+			color: #fff;
+			background-color: #aaa;
+			border: 1px solid #aaa;
+			border-radius: 2px;
+		}
+		.details-list {
+			@extend %unstyled;
+		}
+		.detail-opt {
+			position: relative;
+			padding-left: 15px;
+			line-height: 40px;
+			font-size: 1.4rem;
+			border-bottom: 1px solid $maBrClr;
+			background-color: #eee;
+
+			&.active {
+				background-color: #e2e2e2;
+			}
+		}
+		.detail-count {
+			color: #999;
+			background-color: transparent;
+			border-width: 0;
 		}
 	}
 	// 默认排序列表

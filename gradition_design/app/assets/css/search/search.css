@@ -27,7 +27,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   box-sizing: border-box;
 }
 
-#hd .sug-box .his-list, #hd .sug-box .sug-list, #filter-box .catg-part .details-list, #filter-box .area-part .area-hd, #filter-box .order-part .order-list {
+#hd .sug-box .his-list, #hd .sug-box .sug-list, #filter-box .catg-part .details-list, #filter-box .area-part .area-hd, #filter-box .area-part .details-list, #filter-box .order-part .order-list {
   list-style: none;
 }
 
@@ -359,8 +359,50 @@ html {
   height: 246px;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+  font-size: 1.4rem;
   background-color: whitesmoke;
   vertical-align: top;
+}
+#filter-box .area-part .area-opt {
+  position: relative;
+  padding-left: 15px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+}
+#filter-box .area-part .area-opt.active {
+  background-color: #eee;
+  border-right-width: 0;
+}
+#filter-box .area-part .opt-count {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  padding: 0 5px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+}
+#filter-box .area-part .detail-opt {
+  position: relative;
+  padding-left: 15px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #eee;
+}
+#filter-box .area-part .detail-opt.active {
+  background-color: #e2e2e2;
+}
+#filter-box .area-part .detail-count {
+  color: #999;
+  background-color: transparent;
+  border-width: 0;
 }
 #filter-box .order-part .option {
   padding-left: 15px;
