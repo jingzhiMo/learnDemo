@@ -3,6 +3,11 @@
 // 导入其他模块文件
 @import "../_paritals/var";
 @import "../_paritals/global";
+@import "../public/pageFt";
+
+body {
+	background-color: $bgClr;
+}
 
 /* 页面的header */
 #hd {
@@ -233,6 +238,7 @@
 		height: $h;
 		line-height: $h;
 		font-size: 0;
+		border-bottom: 1px solid $maBrClr;
 	}
 	.tab {
 		@extend %br-box;
@@ -276,7 +282,7 @@
 	.bd-part {
 		padding-bottom: 15px;
 		font-size: 0;
-		border-top: 1px solid $maBrClr;
+		background-color: #fff;
 	}
 	// 分类列表
 	.catg-part {
@@ -460,6 +466,8 @@
 	}
 	// 其他排序
 	.other-part {
+		@extend %hide;
+
 		%pd {
 			padding-left: 12px;
 			padding-right: 12px;
@@ -548,6 +556,169 @@
 			&:active, &:hover {
 				box-shadow: 2px 2px 5px #ddd inset;
 			}
+		}
+	}
+}
+
+/* 商品列表 */
+#goods-list {
+	
+	.good-box {
+		margin-top: 10px;		
+		padding: 0 12px;
+		background-color: #fff;
+	}
+	.good-hd {
+
+	}
+	.shop-name {
+		line-height: 35px;
+		font-size: 1.6rem;
+		color: #333;
+	}
+	.shop-info {
+		font-size: 1.2rem;
+		line-height: 24px;
+
+		.score {
+			display: inline-block;
+			color: $maClr;	
+			&.no {
+				color: $maFtClr;
+			}
+		}
+		.assess {
+			display: inline-block;
+			margin-left: 10px;
+			color: $maFtClr;
+		}
+		.store {
+			@extend %rh;
+			display: inline-block;
+			color: $maFtClr;
+		}
+	}
+	.good-link {
+		display: -webkit-flex;
+		padding: 12px 0;
+
+		.img-box {
+			padding-right: 10px;
+			font-size: 0;
+		}
+		img {
+			width: 96px;
+			height: 72px;
+		}
+		.info-box {
+			flex-grow: 1;
+		}
+		.title-line {
+			line-height: 16px;
+		}
+		.good-name {
+			@extend %ellipsis;
+			@extend %vam;
+			display: inline-block;
+			width: 70%;
+			font-size: 1.6rem;
+			color: #222;
+		}
+		span {
+			display: inline-block;
+		}
+		.distance {
+			@extend %hide;
+			color: $maFtClr;
+		}
+		.place {
+			@extend %rh;
+			@extend %vam;
+			color: $maFtClr;
+		}
+		.desc {
+			margin: 3px 0 20px 0;
+			width: 98%;
+			height: 32px;
+			line-height: 16px;
+			font-size: 12px;
+			color: $maFtClr;
+		}
+		.price-line {
+			height: 16px;
+			line-height: 16px;
+		}
+		.now {
+			margin-right: 5px;
+			font-weight: bold;
+			font-size: 16px;
+			color: $maClr;
+		}
+		.now::before {
+			content: '￥';
+		}
+		.old {
+			margin-right: 3px;
+			font-size: 12px;
+			text-decoration: line-through;
+			color: $maFtClr;
+		}
+		.discount {
+			padding: 0 2px;
+			font-size: 11px;
+			color: $maClr;
+			border: 1px solid $maClr;
+			border-radius: 3px;
+		}
+		.count {
+			@extend %rh;
+			font-size: 12px;
+			color: $maFtClr;
+		}
+	}
+	.good-ft {
+		.view-more {
+			display: block;
+			width: 100%;
+			font-size: 1.2rem;
+			line-height: 40px;
+			background-color: #fff;
+			&:after {
+				position: relative;
+				content: "";
+				display: inline-block;
+				margin-left: 8px;
+				top: -2px;
+				width: 6px;
+				height: 6px;
+				transform: rotate(135deg);
+				transition: 500ms;
+				border-style: solid;
+				border-color: $maFtClr;
+				border-width: 2px 2px 0 0;
+			}
+			&.top:after {
+				top: 2px;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+/* 加载更多 */
+#load-more {
+	padding: 8px 0;
+	background-color: #eee;
+
+	.load-submit {
+		display: block;
+		margin: 0 auto;
+		width: 80%;
+		line-height: 35px;
+		background-color: #fff;
+		border: 1px solid #eee;
+		&:active, &:hover {
+			box-shadow: 2px 2px 5px #ddd inset;
 		}
 	}
 }

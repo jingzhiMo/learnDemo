@@ -3,6 +3,7 @@
 // 导入其他模块文件
 @import "../_paritals/var";
 @import "../_paritals/global";
+@import "../public/pageFt";
 
 /* 页面的 header */
 #hd {
@@ -450,50 +451,5 @@
 		&:hover, &:active {
 			background-color: #f0f0f0;
 		}
-	}
-}
-
-#ft {
-	padding: 10px 10px 20px;
-	overflow: hidden;
-	background-color: #eee;
-
-	.info-block {
-		overflow: hidden;
-	}
-	.geo-city {
-		@extend %lf;
-		color: lighten($maFtClr, 0.8);
-	}
-	.info {
-		@extend %rh;
-	}
-	.login-info {
-		@extend %hide;
-	}
-	.info-link {
-		@extend %tac;
-		display: inline-block;
-		padding: 0 9px;
-		height: 28px;
-		line-height: 28px;
-		min-width: 60px;
-		color: $maFtClr;
-		border: 1px solid $maBrClr;
-		border-radius: 4px;
-	}
-	.link-block {
-		margin-top: 15px;
-		color: #aaa;
-		@extend %tac;
-	}
-	.top {
-		position: fixed;
-		right: 15px;
-		bottom: 30px;
-		width: 40px;
-		height: 40px;
-		background: url('../../img/top.png') center no-repeat;
-		background-size: 40px;
 	}
 }
