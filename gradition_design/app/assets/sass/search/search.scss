@@ -150,6 +150,13 @@
 		padding: 0 12px 0 0;	
 		background-color: #fff;
 		box-shadow: 0 3px 5px darken($bgclr, 2);
+
+		.history-block {
+
+		}
+		.sug-block {
+			@extend %hide;
+		}
 		
 		// 历史记录 history 和 搜索提示 suggest
 		.his-list, .sug-list {
@@ -220,6 +227,7 @@
 /* 筛选排序 */
 #filter-box {
 	$h: 40px;
+	$maFtClr: #666; // 覆盖全局变量
 
 	.filter-hd {
 		height: $h;
@@ -266,6 +274,7 @@
 		width: 100%;
 	}
 	.bd-part {
+		padding-bottom: 15px;
 		font-size: 0;
 		border-top: 1px solid $maBrClr;
 	}
@@ -334,6 +343,7 @@
 	}
 	// 地区列表
 	.area-part {
+		@extend %hide;
 		$h: 40px;
 
 		background-color: $bgClr;
@@ -445,6 +455,98 @@
 			}
 			&:hover, &:active {
 				background-color: darken($atBgClr, 1.5);
+			}
+		}
+	}
+	// 其他排序
+	.other-part {
+		%pd {
+			padding-left: 12px;
+			padding-right: 12px;
+		}
+
+		.ckbox-block {
+			@extend %pd;
+			padding-top: 12px;
+			padding-bottom: 12px;
+			line-height: 24px;
+		}
+		.ckbox {
+			@extend %br-box;
+			@extend %vam;
+			position: relative;
+			display: inline-block;
+			width: 50%;
+			font-size: 1.4rem;
+			color: lighten($maFtClr, 5);
+			&.active {
+				color: $maClr;
+
+				.ckbox-icon {
+					border-color: $maClr;
+
+					&::after {
+						position: absolute;
+						display: inline-block;
+						content: "";
+						left: 3px;
+						top: 8px;
+						width: 8px;
+						height: 5px;
+						border-left: 2px solid $maClr;
+						border-bottom: 2px solid $maClr;
+						transform: rotate(-45deg);
+					}
+				}
+			}
+		}
+		.ckbox-icon {
+			display: inline-block;
+			@extend %vam;
+			width: 14px;
+			height: 14px;
+			border: 1px solid lighten($maFtClr, 5);
+		}
+		.radio-block {
+			@extend %pd;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-top: 1px solid $maBrClr;
+		}
+		.radio-title {
+			margin-bottom: 10px;
+			font-size: 1.4rem;
+			font-weight: normal;
+			line-height: 20px;
+			color: $maFtClr;
+		}
+		.radio-btn {
+			@extend %br-box;
+			margin: 8px 0;
+			width: 25%;
+			line-height: 24px;
+			font-size: 1.4rem;
+			background-color: #fff;
+			color: $maFtClr;
+			border-radius: 4px;
+			&.active {
+				color: $maClr;
+				border: 1px solid $maClr;
+			}
+		}
+		.submit-block {
+			@extend %pd;
+		}
+		.submit-btn {
+			@extend %tac;
+			display: block;
+			line-height: 35px;
+			font-size: 1.4rem;
+			border: 1px solid $maBrClr;
+			color: $maClr;
+			border-radius: 5px;
+			&:active, &:hover {
+				box-shadow: 2px 2px 5px #ddd inset;
 			}
 		}
 	}

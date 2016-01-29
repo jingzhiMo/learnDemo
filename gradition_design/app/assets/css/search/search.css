@@ -11,19 +11,19 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   float: left;
 }
 
-#hd .back-link, #hd .sug-box .btn-box, #filter-box .tab, #filter-box .area-part .item {
+#hd .back-link, #hd .sug-box .btn-box, #filter-box .tab, #filter-box .area-part .item, #filter-box .other-part .submit-btn {
   text-align: center;
 }
 
-#hd .back-link::before, #hd .search-ipt, #hd .clear-word, #hd .clear-word .icon, #hd .home-link, #hd .close, #filter-box .tab, #filter-box .tab::after {
+#hd .back-link::before, #hd .search-ipt, #hd .clear-word, #hd .clear-word .icon, #hd .home-link, #hd .close, #filter-box .tab, #filter-box .tab::after, #filter-box .other-part .ckbox, #filter-box .other-part .ckbox-icon {
   vertical-align: middle;
 }
 
-.hide, #hd .sug-box, #filter-box .catg-part, #filter-box .order-part {
+.hide, #hd .sug-box, #hd .sug-box .sug-block, #filter-box .catg-part, #filter-box .area-part, #filter-box .order-part {
   display: none;
 }
 
-#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt, #filter-box .tab, #filter-box .area-part .item, #filter-box .order-part .option {
+#hd .search-ipt, #hd .sug-box, #hd .sug-box .his-opt, #filter-box .tab, #filter-box .area-part .item, #filter-box .order-part .option, #filter-box .other-part .ckbox, #filter-box .other-part .radio-btn {
   box-sizing: border-box;
 }
 
@@ -249,7 +249,7 @@ html {
   height: 100%;
   font-size: 1.4rem;
   background-color: whitesmoke;
-  color: #333;
+  color: #666;
 }
 #filter-box .tab::after {
   content: "";
@@ -259,7 +259,7 @@ html {
   width: 6px;
   height: 6px;
   border: 1px solid;
-  border-color: transparent transparent #333 #333;
+  border-color: transparent transparent #666 #666;
   transform: rotate(-45deg);
 }
 #filter-box .tab.active {
@@ -275,6 +275,7 @@ html {
   width: 100%;
 }
 #filter-box .bd-part {
+  padding-bottom: 15px;
   font-size: 0;
   border-top: 1px solid #dbdbdb;
 }
@@ -408,7 +409,7 @@ html {
   padding-left: 15px;
   line-height: 40px;
   font-size: 1.4rem;
-  color: #333;
+  color: #666;
   border-bottom: 1px solid #dbdbdb;
 }
 #filter-box .order-part .option.active {
@@ -419,6 +420,82 @@ html {
 }
 #filter-box .order-part .option:hover, #filter-box .order-part .option:active {
   background-color: #eaeaea;
+}
+#filter-box .other-part .ckbox-block, #filter-box .other-part .radio-block, #filter-box .other-part .submit-block {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+#filter-box .other-part .ckbox-block {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 24px;
+}
+#filter-box .other-part .ckbox {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  font-size: 1.4rem;
+  color: #737373;
+}
+#filter-box .other-part .ckbox.active {
+  color: #57c4cf;
+}
+#filter-box .other-part .ckbox.active .ckbox-icon {
+  border-color: #57c4cf;
+}
+#filter-box .other-part .ckbox.active .ckbox-icon::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  left: 3px;
+  top: 8px;
+  width: 8px;
+  height: 5px;
+  border-left: 2px solid #57c4cf;
+  border-bottom: 2px solid #57c4cf;
+  transform: rotate(-45deg);
+}
+#filter-box .other-part .ckbox-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #737373;
+}
+#filter-box .other-part .radio-block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #dbdbdb;
+}
+#filter-box .other-part .radio-title {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 20px;
+  color: #666;
+}
+#filter-box .other-part .radio-btn {
+  margin: 8px 0;
+  width: 25%;
+  line-height: 24px;
+  font-size: 1.4rem;
+  background-color: #fff;
+  color: #666;
+  border-radius: 4px;
+}
+#filter-box .other-part .radio-btn.active {
+  color: #57c4cf;
+  border: 1px solid #57c4cf;
+}
+#filter-box .other-part .submit-btn {
+  display: block;
+  line-height: 35px;
+  font-size: 1.4rem;
+  border: 1px solid #dbdbdb;
+  color: #57c4cf;
+  border-radius: 5px;
+}
+#filter-box .other-part .submit-btn:active, #filter-box .other-part .submit-btn:hover {
+  box-shadow: 2px 2px 5px #ddd inset;
 }
 
 /*# sourceMappingURL=search.css.map */
