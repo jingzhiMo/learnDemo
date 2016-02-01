@@ -1,84 +1,82 @@
-/*
-Error: Undefined variable: "$maFtClr".
-        on line 11 of app/assets/sass/public/pageFt.scss
+@charset "UTF-8";
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+  margin: 0;
+}
 
-6: 	.info-block {
-7: 		overflow: hidden;
-8: 	}
-9: 	.geo-city {
-10: 		@extend %lf;
-11: 		color: lighten($maFtClr, 0.8);
-12: 	}
-13: 	.info {
-14: 		@extend %rh;
-15: 	}
-16: 	.login-info {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+  padding: 0;
+}
 
-Backtrace:
-app/assets/sass/public/pageFt.scss:11
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:170:in `perform_arg'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:124:in `block in _perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each_with_index'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/engine.rb:378:in `_render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/engine.rb:295:in `render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:414:in `run'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/exec/base.rb:52:in `parse'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/exec/base.rb:19:in `parse!'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$maFtClr\".\A         on line 11 of app/assets/sass/public/pageFt.scss\A \A 6: 	.info-block {\A 7: 		overflow: hidden;\A 8: 	}\A 9: 	.geo-city {\A 10: 		@extend %lf;\A 11: 		color: lighten($maFtClr, 0.8);\A 12: 	}\A 13: 	.info {\A 14: 		@extend %rh;\A 15: 	}\A 16: 	.login-info {"; }
+#ft .geo-city {
+  float: left;
+}
+
+#ft .info {
+  float: right;
+}
+
+#ft .info-link, #ft .link-block {
+  text-align: center;
+}
+
+.hide, #ft .login-info {
+  display: none;
+}
+
+/* btn */
+.btn {
+  display: inline-block;
+}
+
+/* /btn */
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+input, button {
+  outline: none;
+  border: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+}
+
+#ft {
+  padding: 10px 10px 20px;
+  overflow: hidden;
+  background-color: #eee;
+}
+#ft .info-block {
+  overflow: hidden;
+}
+#ft .geo-city {
+  color: #686868;
+}
+#ft .info-link {
+  display: inline-block;
+  padding: 0 9px;
+  height: 28px;
+  line-height: 28px;
+  min-width: 60px;
+  color: #666;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+#ft .link-block {
+  margin-top: 15px;
+  color: #aaa;
+}
+#ft .top {
+  position: fixed;
+  right: 15px;
+  bottom: 30px;
+  width: 40px;
+  height: 40px;
+  background: url("../../img/top.png") center no-repeat;
+  background-size: 40px;
+}
+
+/*# sourceMappingURL=pageFt.css.map */
