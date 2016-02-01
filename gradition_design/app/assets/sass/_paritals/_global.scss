@@ -44,7 +44,7 @@
 /* /btn */
 
 // init layout
-body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
 	@extend %mr0;
 	@extend %pd0;
 }

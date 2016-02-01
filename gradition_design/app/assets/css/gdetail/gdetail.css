@@ -1,9 +1,9 @@
 @charset "UTF-8";
-body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   margin: 0;
 }
 
-body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   padding: 0;
 }
 
@@ -15,11 +15,11 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
   float: right;
 }
 
-#ft .info-link, #ft .link-block, #slide-img, #shop-desc .contact .item {
+#ft .info-link, #ft .link-block, #slide-img, #shop-desc .contact .item, #nav-box .nav-item, .taocan-panel .count, .taocan-panel .price, .taocan-panel .current, .taocan-panel .old {
   text-align: center;
 }
 
-#good-desc .policy .policy-item, #shop-desc .contact .item:before {
+#good-desc .policy .policy-item, #shop-desc .contact .item:before, .notice-panel .item:before {
   vertical-align: middle;
 }
 
@@ -321,5 +321,135 @@ body {
 #shop-desc .envir:before {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAkCAYAAADsHujfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowRjNBM0RERTQwMjA2ODExODIyQTk0ODJEOTE3MUMwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3RkE3MjZEQ0I1QzMxMUU0QjEyNTg1NjE0NzVBQzg4OCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3RkE3MjZEQkI1QzMxMUU0QjEyNTg1NjE0NzVBQzg4OCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTUyMzRGMjI2OTIzNjgxMTgwODNDOEMwM0ExN0UwOTgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEYzQTNEREU0MDIwNjgxMTgyMkE5NDgyRDkxNzFDMEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6pkjnEAAAB00lEQVR42uyXPUsDQRCG947DNEokEFFsE7Aw8aOIBpJWEOystLNRf4Od+CcsTG2llTbGTsVCS4tIbE1hEUKiRUSI78K7slnycYl3l4h54WHvbjY7c3N3MxursXYkNI2BfbAF5sG48Fbv4AmcgmPwqQyONmkWXIBF4Z/kja2SHbABXqXB1jKhgiiCTRAGlseEuXaRvi5BSA9kj4ZnkALnoOpDRqpcO0VfC2BXD2Sb4wGoCP9Voa8f3yqQZY7XIjhdcVxSgUT4jpR9ehydvqAy35GIDCRGw4sIXkWOcRlI3LgYpNTNx9xm5IZ4aWvKiOMyIxkfbH1l5H+9I3WehAYQiPJZt1102KR2PGPYpl3akm3WbnCcsLVqemL8OMoelNeu6XNkt85pNtnaV1gcTVuea0WNbq/m5C3sR+ZwcA8mO2TljVuGSAtbmWM72xeY6tJ30jIjBe4PZFesaRM+wCM4BAk5GZxpbaDK83QXW4JrPHBNpRp9St8Fy9ihDUy2GBLZPZRjr9Xkz+mhHHutzNA/mt9qHZRYpExKtAcSSK5FddWrbi6oQFQQWeMvRLZNC/D9873tcv536sgokFEgo0DcyOmwj+xXjX5sdq+Fx2PdqYNvAQYA961qN69YYQwAAAAASUVORK5CYII=);
 }
+
+/* 商品导航栏 */
+#nav-box {
+  position: relative;
+  margin-top: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+#nav-box .nav-list {
+  font-size: 0;
+}
+#nav-box .nav-item {
+  display: inline-block;
+  width: 25%;
+  font-size: 1.4rem;
+  line-height: 40px;
+  color: #222;
+}
+#nav-box .nav-item.active {
+  color: #57c4cf;
+}
+#nav-box .nav-line {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  width: 25%;
+  height: 2px;
+  background-color: #57c4cf;
+}
+
+/* 以下4个内容模块的共同部分 */
+.panel {
+  background-color: #fff;
+}
+.panel > * {
+  padding: 0 12px;
+}
+.panel .panel-hd {
+  line-height: 30px;
+  font-size: 1.4rem;
+  font-weight: normal;
+  background-color: #eee;
+  color: #666;
+}
+
+/* 套餐内容 */
+.taocan-panel .group {
+  padding-top: 5px;
+}
+.taocan-panel .group:first-child {
+  padding-top: 0;
+}
+.taocan-panel .title {
+  line-height: 30px;
+  font-size: 1.2rem;
+  color: #666;
+}
+.taocan-panel .item {
+  line-height: 30px;
+  font-size: 0;
+  color: #222;
+}
+.taocan-panel .item span {
+  display: inline-block;
+  font-size: 1.3rem;
+}
+.taocan-panel .name {
+  width: 70%;
+}
+.taocan-panel .count, .taocan-panel .price {
+  width: 15%;
+  color: #666;
+}
+.taocan-panel .total {
+  text-align: right;
+  color: #111;
+  font-size: 1.3rem;
+}
+.taocan-panel .total span {
+  display: inline-block;
+}
+.taocan-panel .current {
+  width: 15%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #57c4cf;
+}
+.taocan-panel .current:before {
+  content: "￥";
+}
+.taocan-panel .old {
+  width: 15%;
+  text-decoration: line-through;
+  color: #666;
+}
+.taocan-panel .old:before {
+  content: "￥";
+}
+
+/* 提示内容 */
+.notice-panel .group {
+  margin-bottom: 8px;
+}
+.notice-panel .group:last-child {
+  margin-bottom: 0;
+}
+.notice-panel .title {
+  line-height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+}
+.notice-panel .item {
+  line-height: 30px;
+  font-size: 1.3rem;
+  color: #666;
+}
+.notice-panel .item:before {
+  display: inline-block;
+  content: "";
+  width: 3px;
+  height: 3px;
+  margin-right: 10px;
+  background-color: #666;
+  border: 1px solid #666;
+  border-radius: 3px;
+}
+
+/* 评价内容 */
+/* 推荐内容 */
 
 /*# sourceMappingURL=gdetail.css.map */

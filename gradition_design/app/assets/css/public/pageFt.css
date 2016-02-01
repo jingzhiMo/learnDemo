@@ -1,9 +1,9 @@
 @charset "UTF-8";
-body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   margin: 0;
 }
 
-body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button {
+body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   padding: 0;
 }
 
