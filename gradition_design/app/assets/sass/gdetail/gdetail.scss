@@ -584,3 +584,74 @@ body {
 		}
 	}
 }
+
+/* 购买按钮 */
+.buy-btn-box {
+	@extend %br-box;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 10px 12px;
+	width: 100%;
+	line-height: 24px;
+	font-size: 0;
+	background-color: #eee;
+
+	.price {
+		@extend %vam;
+		display: inline-block;
+		height: 36px;
+		line-height: 36px;
+		color: #999;
+		text-decoration: line-through;
+	}
+	.old {
+		font-size: 1.8rem;
+		&:before {
+			content: "￥";
+		}
+	}
+	.original {
+		margin-left: 3px;
+		font-size: 1.3rem;
+	}
+	.buy-btn {
+		@extend %vam;
+		@extend %rh;
+		display: inline-block;
+		border: 1px solid $maClr;
+		border-radius: 5px;
+		font-size: 0;
+	}
+	.tip {
+		@extend %tac;
+		display: inline-block;
+		font-size: 14px;
+		width: 18px;
+		line-height: 14px;
+		vertical-align: bottom;
+		background-color: $maClr;
+		color: #fff;
+	}
+	.current-price {
+		@extend %vam;
+		margin: 0 3px;
+		color: $maClr;
+		font-size: 3.5rem;
+
+		&:before {
+			content: "￥";
+			font-size: 1.5rem;
+		}
+	}
+	.text {
+		@extend %vam;
+		display: inline-block;
+		padding: 0 3px;
+		height: 100%;
+		line-height: 42px;
+		font-size: 2rem;
+		background-color: $maClr;
+		color: #fff;
+	}
+}
