@@ -187,3 +187,100 @@ body {
 		}
 	}
 }
+
+.shop-good {
+	margin-top: 10px;
+	padding: 0 12px;
+	background-color: #fff;
+
+	.title {
+		line-height: 30px;
+		font-size: 1.5rem;
+		font-weight: normal;
+		color: #222;
+	}
+	.good-list {
+		padding-top: 5px;
+	}
+	.good {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #eee;
+	}
+	.good-link {
+		display: block;
+		position: relative;
+	}
+	.good-name {
+		line-height: 24px;
+		font-size: 1.4rem;
+		color: $maFtClr;
+	}
+	.price {
+		line-height: 23px;
+	}
+	.current {
+		color: $maClr;
+		font-size: 1.4rem;
+		&:before {
+			content: "￥";
+			font-size: 1.3rem;
+		}
+	}
+	.old {
+		margin-left: 5px;
+		color: $maFtClr;
+		font-size: 1.2rem;
+		text-decoration: line-through;
+	}
+	.count {
+		position: absolute;
+		right: 10px;
+		bottom: 5px;
+		font-size: 1.2rem;
+		color: $maFtClr;
+	}
+	.view-all {
+		position: relative;
+		display: block;
+		line-height: 35px;
+		font-size: 1.4rem;
+		color: $maClr;
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 6px;
+			height: 6px;
+			border-right: 1px solid $maFtClr;
+			border-bottom: 1px solid $maFtClr;
+			transform: rotate(45deg);
+		}
+	}
+}
+
+/* 推荐菜市 */
+.recom-menu {
+	padding: 0 12px;
+	margin-top: 10px;
+	background-color: #fff;
+
+	.title {
+		line-height: 30px;
+		font-size: 1.5rem;
+		font-weight: normal;
+		color: #222;
+	}
+	.menu {
+		padding: 10px 0;
+	}
+	.item {
+		display: inline-block;
+		margin: 0 3px;
+		line-height: 20px;
+		font-size: 1.3rem;
+		color: $maFtClr;
+	}
+}

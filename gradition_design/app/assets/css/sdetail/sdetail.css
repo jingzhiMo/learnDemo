@@ -258,4 +258,98 @@ body {
   transform: rotate(-45deg);
 }
 
+.shop-good {
+  margin-top: 10px;
+  padding: 0 12px;
+  background-color: #fff;
+}
+.shop-good .title {
+  line-height: 30px;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #222;
+}
+.shop-good .good-list {
+  padding-top: 5px;
+}
+.shop-good .good {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+.shop-good .good-link {
+  display: block;
+  position: relative;
+}
+.shop-good .good-name {
+  line-height: 24px;
+  font-size: 1.4rem;
+  color: #666;
+}
+.shop-good .price {
+  line-height: 23px;
+}
+.shop-good .current {
+  color: #57c4cf;
+  font-size: 1.4rem;
+}
+.shop-good .current:before {
+  content: "￥";
+  font-size: 1.3rem;
+}
+.shop-good .old {
+  margin-left: 5px;
+  color: #666;
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+.shop-good .count {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 1.2rem;
+  color: #666;
+}
+.shop-good .view-all {
+  position: relative;
+  display: block;
+  line-height: 35px;
+  font-size: 1.4rem;
+  color: #57c4cf;
+}
+.shop-good .view-all::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+  transform: rotate(45deg);
+}
+
+/* 推荐菜市 */
+.recom-menu {
+  padding: 0 12px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+.recom-menu .title {
+  line-height: 30px;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #222;
+}
+.recom-menu .menu {
+  padding: 10px 0;
+}
+.recom-menu .item {
+  display: inline-block;
+  margin: 0 3px;
+  line-height: 20px;
+  font-size: 1.3rem;
+  color: #666;
+}
+
 /*# sourceMappingURL=sdetail.css.map */
