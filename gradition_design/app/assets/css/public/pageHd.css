@@ -1,43 +1,24 @@
 /*
-Error: Undefined variable: "$maFtClr".
-        on line 16 of app/assets/sass/public/pageFt.scss
+Error: Undefined variable: "$maClr".
+        on line 8 of app/assets/sass/public/pageHd.scss
 
-11: 	.info-block {
-12: 		overflow: hidden;
-13: 	}
-14: 	.geo-city {
-15: 		@extend %lf;
-16: 		color: lighten($maFtClr, 0.8);
-17: 	}
-18: 	.info {
-19: 		@extend %rh;
-20: 	}
-21: 	.login-info {
+3: // @import "../_paritals/global";
+4: #hd {
+5: 	position: relative;
+6: 	height: 40px;
+7: 	line-height: 40px;
+8: 	background-color: $maClr;
+9: 	
+10: 	.title {
+11: 		@extend %tac;
+12: 		font-size: 1.6rem;
+13: 		font-weight: normal;
 
 Backtrace:
-app/assets/sass/public/pageFt.scss:16
+app/assets/sass/public/pageHd.scss:8
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:170:in `perform_arg'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:124:in `block in _perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each_with_index'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `each'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/funcall.rb:123:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/script/tree/node.rb:50:in `perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
 /var/lib/gems/1.9.1/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
@@ -81,4 +62,4 @@ app/assets/sass/public/pageFt.scss:16
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$maFtClr\".\A         on line 16 of app/assets/sass/public/pageFt.scss\A \A 11: 	.info-block {\A 12: 		overflow: hidden;\A 13: 	}\A 14: 	.geo-city {\A 15: 		@extend %lf;\A 16: 		color: lighten($maFtClr, 0.8);\A 17: 	}\A 18: 	.info {\A 19: 		@extend %rh;\A 20: 	}\A 21: 	.login-info {"; }
+  content: "Error: Undefined variable: \"$maClr\".\A         on line 8 of app/assets/sass/public/pageHd.scss\A \A 3: // @import \"../_paritals/global\";\A 4: #hd {\A 5: 	position: relative;\A 6: 	height: 40px;\A 7: 	line-height: 40px;\A 8: 	background-color: $maClr;\A 9: 	\A 10: 	.title {\A 11: 		@extend %tac;\A 12: 		font-size: 1.6rem;\A 13: 		font-weight: normal;"; }
