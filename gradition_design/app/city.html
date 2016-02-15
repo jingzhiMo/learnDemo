@@ -5,12 +5,949 @@
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
 	<title>选择城市</title>
 	<link rel="shortcut icon" href="../favicon.ico" />
-	<link rel="stylesheet" href="assets/css/gdetail/city.css">
+	<link rel="stylesheet" href="assets/css/city/city.css">
 </head>
 <body>
 	<header id="hd">
+		<span class="title">选择城市</span>
 		<a href="#" class="back-link"></a>
 		<a href="#" class="home-link"></a>
 	</header>
+	<div class="city-bd">
+		<section id="curr-city">
+			定位城市：
+			<a class="city-name" href="#">广州</a>
+		</section>
+		<section class="recent-city">
+			<h4 class="city-title">最近访问</h4>
+			<div class="city-list">
+				<a href="#" class="city">肇庆</a>
+				<a href="#" class="city">广州</a>
+				<a href="#" class="city">佛山</a>
+				<a href="#" class="city"></a>
+			</div>
+		</section>
+		<section class="hot-city">
+			<h4 class="city-title">热门城市</h4>
+			<div class="city-list">
+				<a href="#" class="city">肇庆</a>
+				<a href="#" class="city">广州</a>
+				<a href="#" class="city">佛山</a>
+				<a href="#" class="city">肇庆</a>
+				<a href="#" class="city">广州</a>
+				<a href="#" class="city">佛山</a>
+				<a href="#" class="city">肇庆</a>
+				<a href="#" class="city">广州</a>
+				<a href="#" class="city">佛山</a>
+				<a href="#" class="city"></a>
+				<a href="#" class="city"></a>
+				<a href="#" class="city"></a>
+			</div>
+		</section>
+		<section class="all-city">
+			<h4 class="city-title">全部城市</h4>
+			<div class="letter-list">
+				<a href="#" class="letter">A</a>
+				<a href="#" class="letter">B</a>
+				<a href="#" class="letter">C</a>
+				<a href="#" class="letter">D</a>
+				<a href="#" class="letter">E</a>
+				<a href="#" class="letter">F</a>
+				<a href="#" class="letter">G</a>
+				<a href="#" class="letter">H</a>
+				<a href="#" class="letter">J</a>
+				<a href="#" class="letter">K</a>
+				<a href="#" class="letter">L</a>
+				<a href="#" class="letter">M</a>
+				<a href="#" class="letter">N</a>
+				<a href="#" class="letter">P</a>
+				<a href="#" class="letter">Q</a>
+				<a href="#" class="letter">R</a>
+				<a href="#" class="letter">S</a>
+				<a href="#" class="letter">T</a>
+				<a href="#" class="letter">W</a>
+				<a href="#" class="letter">X</a>
+				<a href="#" class="letter">Y</a>
+				<a href="#" class="letter">Z</a>
+			</div>
+			<div class="box nopadding">
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="A">A</h4>
+	                    <li><a class="react" data-citypinyin="anshan">鞍山</a>
+	                    </li><li><a class="react" data-citypinyin="anqing">安庆</a>
+	                    </li><li><a class="react" data-citypinyin="anyang">安阳</a>
+	                    </li><li><a class="react" data-citypinyin="anshun">安顺</a>
+	                    </li><li><a class="react" data-citypinyin="ankang">安康</a>
+	                    </li><li><a class="react" data-citypinyin="anqiu">安丘</a>
+	                    </li><li><a class="react" data-citypinyin="alashanmeng">阿拉善盟</a>
+	                    </li><li><a class="react" data-citypinyin="akesu">阿克苏</a>
+	                    </li><li><a class="react" data-citypinyin="anji">安吉</a>
+	                    </li><li><a class="react" data-citypinyin="anyue">安岳</a>
+	                    </li><li><a class="react" data-citypinyin="anping">安平</a>
+	                    </li><li><a class="react" data-citypinyin="anxi">安溪</a>
+	                    </li><li><a class="react" data-citypinyin="anning">安宁</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="B">B</h4>
+	                    <li><a class="react" data-citypinyin="beijing">北京</a>
+	                    </li><li><a class="react" data-citypinyin="baoding">保定</a>
+	                    </li><li><a class="react" data-citypinyin="baotou">包头</a>
+	                    </li><li><a class="react" data-citypinyin="bengbu">蚌埠</a>
+	                    </li><li><a class="react" data-citypinyin="bozhou">亳州</a>
+	                    </li><li><a class="react" data-citypinyin="binzhou">滨州</a>
+	                    </li><li><a class="react" data-citypinyin="baoji">宝鸡</a>
+	                    </li><li><a class="react" data-citypinyin="bayannaoer">巴彦淖尔</a>
+	                    </li><li><a class="react" data-citypinyin="benxi">本溪</a>
+	                    </li><li><a class="react" data-citypinyin="baishan">白山</a>
+	                    </li><li><a class="react" data-citypinyin="baicheng">白城</a>
+	                    </li><li><a class="react" data-citypinyin="beihai">北海</a>
+	                    </li><li><a class="react" data-citypinyin="baise">百色</a>
+	                    </li><li><a class="react" data-citypinyin="bazhong">巴中</a>
+	                    </li><li><a class="react" data-citypinyin="bijiediqu">毕节</a>
+	                    </li><li><a class="react" data-citypinyin="baoshan">保山</a>
+	                    </li><li><a class="react" data-citypinyin="baiyin">白银</a>
+	                    </li><li><a class="react" data-citypinyin="baoying">宝应</a>
+	                    </li><li><a class="react" data-citypinyin="beiliu">北流</a>
+	                    </li><li><a class="react" data-citypinyin="boai">博爱</a>
+	                    </li><li><a class="react" data-citypinyin="boyang">鄱阳</a>
+	                    </li><li><a class="react" data-citypinyin="baofeng">宝丰</a>
+	                    </li><li><a class="react" data-citypinyin="boxing">博兴</a>
+	                    </li><li><a class="react" data-citypinyin="biyang">泌阳</a>
+	                    </li><li><a class="react" data-citypinyin="binhai">滨海</a>
+	                    </li><li><a class="react" data-citypinyin="beipei">北碚</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="C">C</h4>
+	                    <li><a class="react" data-citypinyin="chongqing">重庆</a>
+	                    </li><li><a class="react" data-citypinyin="chengdu">成都</a>
+	                    </li><li><a class="react" data-citypinyin="changsha">长沙</a>
+	                    </li><li><a class="react" data-citypinyin="changzhou">常州</a>
+	                    </li><li><a class="react" data-citypinyin="changchun">长春</a>
+	                    </li><li><a class="react" data-citypinyin="chengde">承德</a>
+	                    </li><li><a class="react" data-citypinyin="cangzhou">沧州</a>
+	                    </li><li><a class="react" data-citypinyin="changzhi">长治</a>
+	                    </li><li><a class="react" data-citypinyin="chifeng">赤峰</a>
+	                    </li><li><a class="react" data-citypinyin="chuzhou">滁州</a>
+	                    </li><li><a class="react" data-citypinyin="changde">常德</a>
+	                    </li><li><a class="react" data-citypinyin="chenzhou">郴州</a>
+	                    </li><li><a class="react" data-citypinyin="changshu">常熟</a>
+	                    </li><li><a class="react" data-citypinyin="cixi">慈溪</a>
+	                    </li><li><a class="react" data-citypinyin="chaoyang">朝阳</a>
+	                    </li><li><a class="react" data-citypinyin="chaohu">巢湖</a>
+	                    </li><li><a class="react" data-citypinyin="chizhou">池州</a>
+	                    </li><li><a class="react" data-citypinyin="chaozhou">潮州</a>
+	                    </li><li><a class="react" data-citypinyin="conghua">从化</a>
+	                    </li><li><a class="react" data-citypinyin="changxing">长兴</a>
+	                    </li><li><a class="react" data-citypinyin="changyi">昌邑</a>
+	                    </li><li><a class="react" data-citypinyin="cangnan">苍南</a>
+	                    </li><li><a class="react" data-citypinyin="changge">长葛</a>
+	                    </li><li><a class="react" data-citypinyin="chongzuo">崇左</a>
+	                    </li><li><a class="react" data-citypinyin="chuxiong">楚雄</a>
+	                    </li><li><a class="react" data-citypinyin="changji">昌吉</a>
+	                    </li><li><a class="react" data-citypinyin="changle">长乐</a>
+	                    </li><li><a class="react" data-citypinyin="chongzhou">崇州</a>
+	                    </li><li><a class="react" data-citypinyin="chibi">赤壁</a>
+	                    </li><li><a class="react" data-citypinyin="chunan">淳安</a>
+	                    </li><li><a class="react" data-citypinyin="chengdexian">承德县</a>
+	                    </li><li><a class="react" data-citypinyin="changlecl">昌乐</a>
+	                    </li><li><a class="react" data-citypinyin="caofeidian">曹妃甸</a>
+	                    </li><li><a class="react" data-citypinyin="cixian">磁县</a>
+	                    </li><li><a class="react" data-citypinyin="changyuan">长垣</a>
+	                    </li><li><a class="react" data-citypinyin="chengan">成安</a>
+	                    </li><li><a class="react" data-citypinyin="changli">昌黎</a>
+	                    </li><li><a class="react" data-citypinyin="cenxi">岑溪</a>
+	                    </li><li><a class="react" data-citypinyin="chiping">茌平</a>
+	                    </li><li><a class="react" data-citypinyin="caoxian">曹县</a>
+	                    </li><li><a class="react" data-citypinyin="chengyang">城阳</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="D">D</h4>
+	                    <li><a class="react" data-citypinyin="dalian">大连</a>
+	                    </li><li><a class="react" data-citypinyin="dongguan">东莞</a>
+	                    </li><li><a class="react" data-citypinyin="daqing">大庆</a>
+	                    </li><li><a class="react" data-citypinyin="datong">大同</a>
+	                    </li><li><a class="react" data-citypinyin="dandong">丹东</a>
+	                    </li><li><a class="react" data-citypinyin="dongying">东营</a>
+	                    </li><li><a class="react" data-citypinyin="dezhou">德州</a>
+	                    </li><li><a class="react" data-citypinyin="deyang">德阳</a>
+	                    </li><li><a class="react" data-citypinyin="dazhou">达州</a>
+	                    </li><li><a class="react" data-citypinyin="dali">大理</a>
+	                    </li><li><a class="react" data-citypinyin="dingxi">定西</a>
+	                    </li><li><a class="react" data-citypinyin="danyang">丹阳</a>
+	                    </li><li><a class="react" data-citypinyin="dongyang">东阳</a>
+	                    </li><li><a class="react" data-citypinyin="dafeng">大丰</a>
+	                    </li><li><a class="react" data-citypinyin="dongtai">东台</a>
+	                    </li><li><a class="react" data-citypinyin="dengfeng">登封</a>
+	                    </li><li><a class="react" data-citypinyin="danzhou">儋州</a>
+	                    </li><li><a class="react" data-citypinyin="dujiangyan">都江堰</a>
+	                    </li><li><a class="react" data-citypinyin="dashiqiao">大石桥</a>
+	                    </li><li><a class="react" data-citypinyin="dengzhou">邓州</a>
+	                    </li><li><a class="react" data-citypinyin="deqing">德清</a>
+	                    </li><li><a class="react" data-citypinyin="dangyang">当阳</a>
+	                    </li><li><a class="react" data-citypinyin="donggang">东港</a>
+	                    </li><li><a class="react" data-citypinyin="daye">大冶</a>
+	                    </li><li><a class="react" data-citypinyin="dongxing">东兴</a>
+	                    </li><li><a class="react" data-citypinyin="diaobingshan">调兵山</a>
+	                    </li><li><a class="react" data-citypinyin="dengta">灯塔</a>
+	                    </li><li><a class="react" data-citypinyin="datongshi">大通</a>
+	                    </li><li><a class="react" data-citypinyin="dongfang">东方</a>
+	                    </li><li><a class="react" data-citypinyin="dongping">东平</a>
+	                    </li><li><a class="react" data-citypinyin="dianbai">电白</a>
+	                    </li><li><a class="react" data-citypinyin="donghai">东海</a>
+	                    </li><li><a class="react" data-citypinyin="dingzhou">定州</a>
+	                    </li><li><a class="react" data-citypinyin="dancheng">郸城</a>
+	                    </li><li><a class="react" data-citypinyin="dalixian">大荔</a>
+	                    </li><li><a class="react" data-citypinyin="dalateqi">达拉特旗</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="E">E</h4>
+	                    <li><a class="react" data-citypinyin="eerduosi">鄂尔多斯</a>
+	                    </li><li><a class="react" data-citypinyin="ezhou">鄂州</a>
+	                    </li><li><a class="react" data-citypinyin="enshi">恩施</a>
+	                    </li><li><a class="react" data-citypinyin="emeishan">峨眉山</a>
+	                    </li><li><a class="react" data-citypinyin="eerguna">额尔古纳</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="F">F</h4>
+	                    <li><a class="react" data-citypinyin="fuzhou">福州</a>
+	                    </li><li><a class="react" data-citypinyin="foshan">佛山</a>
+	                    </li><li><a class="react" data-citypinyin="fushun">抚顺</a>
+	                    </li><li><a class="react" data-citypinyin="fuyang">阜阳</a>
+	                    </li><li><a class="react" data-citypinyin="fuzhoufz">抚州</a>
+	                    </li><li><a class="react" data-citypinyin="fuxin">阜新</a>
+	                    </li><li><a class="react" data-citypinyin="fuyangfy">富阳</a>
+	                    </li><li><a class="react" data-citypinyin="fuling">涪陵</a>
+	                    </li><li><a class="react" data-citypinyin="fuqing">福清</a>
+	                    </li><li><a class="react" data-citypinyin="fenghua">奉化</a>
+	                    </li><li><a class="react" data-citypinyin="feicheng">肥城</a>
+	                    </li><li><a class="react" data-citypinyin="fangchenggang">防城港</a>
+	                    </li><li><a class="react" data-citypinyin="fenghuang">凤凰</a>
+	                    </li><li><a class="react" data-citypinyin="funing">阜宁</a>
+	                    </li><li><a class="react" data-citypinyin="fengcheng">凤城</a>
+	                    </li><li><a class="react" data-citypinyin="fenyang">汾阳</a>
+	                    </li><li><a class="react" data-citypinyin="fukang">阜康</a>
+	                    </li><li><a class="react" data-citypinyin="fch">丰城</a>
+	                    </li><li><a class="react" data-citypinyin="fanxian">范县</a>
+	                    </li><li><a class="react" data-citypinyin="fanchang">繁昌</a>
+	                    </li><li><a class="react" data-citypinyin="feixiang">肥乡</a>
+	                    </li><li><a class="react" data-citypinyin="fengqiu">封丘</a>
+	                    </li><li><a class="react" data-citypinyin="fufeng">扶风</a>
+	                    </li><li><a class="react" data-citypinyin="fengxian">丰县</a>
+	                    </li><li><a class="react" data-citypinyin="fusong">抚松</a>
+	                    </li><li><a class="react" data-citypinyin="fushunxian">富顺</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="G">G</h4>
+	                    <li><a class="react" data-citypinyin="guangzhou">广州</a>
+	                    </li><li><a class="react" data-citypinyin="guiyang">贵阳</a>
+	                    </li><li><a class="react" data-citypinyin="guilin">桂林</a>
+	                    </li><li><a class="react" data-citypinyin="ganzhou">赣州</a>
+	                    </li><li><a class="react" data-citypinyin="guigang">贵港</a>
+	                    </li><li><a class="react" data-citypinyin="guangyuan">广元</a>
+	                    </li><li><a class="react" data-citypinyin="guangan">广安</a>
+	                    </li><li><a class="react" data-citypinyin="gaoyou">高邮</a>
+	                    </li><li><a class="react" data-citypinyin="gongyi">巩义</a>
+	                    </li><li><a class="react" data-citypinyin="gaomi">高密</a>
+	                    </li><li><a class="react" data-citypinyin="gaobeidian">高碑店</a>
+	                    </li><li><a class="react" data-citypinyin="gaozhou">高州</a>
+	                    </li><li><a class="react" data-citypinyin="guyuan">固原</a>
+	                    </li><li><a class="react" data-citypinyin="guangrao">广饶</a>
+	                    </li><li><a class="react" data-citypinyin="guiping">桂平</a>
+	                    </li><li><a class="react" data-citypinyin="gongzhuling">公主岭</a>
+	                    </li><li><a class="react" data-citypinyin="guanghan">广汉</a>
+	                    </li><li><a class="react" data-citypinyin="gaocheng">藁城</a>
+	                    </li><li><a class="react" data-citypinyin="gaoping">高平</a>
+	                    </li><li><a class="react" data-citypinyin="gejiu">个旧</a>
+	                    </li><li><a class="react" data-citypinyin="gaizhou">盖州</a>
+	                    </li><li><a class="react" data-citypinyin="gujiao">古交</a>
+	                    </li><li><a class="react" data-citypinyin="geermu">格尔木</a>
+	                    </li><li><a class="react" data-citypinyin="guanyun">灌云</a>
+	                    </li><li><a class="react" data-citypinyin="guannan">灌南</a>
+	                    </li><li><a class="react" data-citypinyin="ganyu">赣榆</a>
+	                    </li><li><a class="react" data-citypinyin="gaoan">高安</a>
+	                    </li><li><a class="react" data-citypinyin="guangde">广德</a>
+	                    </li><li><a class="react" data-citypinyin="gongqingcheng">共青城</a>
+	                    </li><li><a class="react" data-citypinyin="gaoyang">高阳</a>
+	                    </li><li><a class="react" data-citypinyin="gaoling">高陵</a>
+	                    </li><li><a class="react" data-citypinyin="gaoxiong">高雄</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="H">H</h4>
+	                    <li><a class="react" data-citypinyin="hangzhou">杭州</a>
+	                    </li><li><a class="react" data-citypinyin="hefei">合肥</a>
+	                    </li><li><a class="react" data-citypinyin="haerbin">哈尔滨</a>
+	                    </li><li><a class="react" data-citypinyin="haikou">海口</a>
+	                    </li><li><a class="react" data-citypinyin="handan">邯郸</a>
+	                    </li><li><a class="react" data-citypinyin="huhehaote">呼和浩特</a>
+	                    </li><li><a class="react" data-citypinyin="huaian">淮安</a>
+	                    </li><li><a class="react" data-citypinyin="huzhou">湖州</a>
+	                    </li><li><a class="react" data-citypinyin="hengyang">衡阳</a>
+	                    </li><li><a class="react" data-citypinyin="huizhou">惠州</a>
+	                    </li><li><a class="react" data-citypinyin="huludao">葫芦岛</a>
+	                    </li><li><a class="react" data-citypinyin="hengshui">衡水</a>
+	                    </li><li><a class="react" data-citypinyin="huainan">淮南</a>
+	                    </li><li><a class="react" data-citypinyin="heze">菏泽</a>
+	                    </li><li><a class="react" data-citypinyin="huangshi">黄石</a>
+	                    </li><li><a class="react" data-citypinyin="huanggang">黄冈</a>
+	                    </li><li><a class="react" data-citypinyin="huaihua">怀化</a>
+	                    </li><li><a class="react" data-citypinyin="huangdao">黄岛</a>
+	                    </li><li><a class="react" data-citypinyin="hulunbeier">呼伦贝尔</a>
+	                    </li><li><a class="react" data-citypinyin="hegang">鹤岗</a>
+	                    </li><li><a class="react" data-citypinyin="heihe">黑河</a>
+	                    </li><li><a class="react" data-citypinyin="huaibei">淮北</a>
+	                    </li><li><a class="react" data-citypinyin="huangshan">黄山</a>
+	                    </li><li><a class="react" data-citypinyin="hebi">鹤壁</a>
+	                    </li><li><a class="react" data-citypinyin="heyuan">河源</a>
+	                    </li><li><a class="react" data-citypinyin="hezhou">贺州</a>
+	                    </li><li><a class="react" data-citypinyin="hechi">河池</a>
+	                    </li><li><a class="react" data-citypinyin="honghe">红河</a>
+	                    </li><li><a class="react" data-citypinyin="hanzhong">汉中</a>
+	                    </li><li><a class="react" data-citypinyin="huadu">花都</a>
+	                    </li><li><a class="react" data-citypinyin="haining">海宁</a>
+	                    </li><li><a class="react" data-citypinyin="huidong">惠东</a>
+	                    </li><li><a class="react" data-citypinyin="haicheng">海城</a>
+	                    </li><li><a class="react" data-citypinyin="haimen">海门</a>
+	                    </li><li><a class="react" data-citypinyin="haiyang">海阳</a>
+	                    </li><li><a class="react" data-citypinyin="hbbazhou">霸州</a>
+	                    </li><li><a class="react" data-citypinyin="haian">海安</a>
+	                    </li><li><a class="react" data-citypinyin="huazhou">化州</a>
+	                    </li><li><a class="react" data-citypinyin="hechuan">合川</a>
+	                    </li><li><a class="react" data-citypinyin="hengdian">横店</a>
+	                    </li><li><a class="react" data-citypinyin="haidong">海东</a>
+	                    </li><li><a class="react" data-citypinyin="hami">哈密</a>
+	                    </li><li><a class="react" data-citypinyin="heshan">鹤山</a>
+	                    </li><li><a class="react" data-citypinyin="huadian">桦甸</a>
+	                    </li><li><a class="react" data-citypinyin="huayin">华阴</a>
+	                    </li><li><a class="react" data-citypinyin="houma">侯马</a>
+	                    </li><li><a class="react" data-citypinyin="hejin">河津</a>
+	                    </li><li><a class="react" data-citypinyin="huozhou">霍州</a>
+	                    </li><li><a class="react" data-citypinyin="huanghua">黄骅</a>
+	                    </li><li><a class="react" data-citypinyin="hailin">海林</a>
+	                    </li><li><a class="react" data-citypinyin="haiyan">海盐</a>
+	                    </li><li><a class="react" data-citypinyin="huaiyang">淮阳</a>
+	                    </li><li><a class="react" data-citypinyin="hanyin">汉阴</a>
+	                    </li><li><a class="react" data-citypinyin="hanshan">含山</a>
+	                    </li><li><a class="react" data-citypinyin="hexian">和县</a>
+	                    </li><li><a class="react" data-citypinyin="huxian">户县</a>
+	                    </li><li><a class="react" data-citypinyin="huixian">辉县</a>
+	                    </li><li><a class="react" data-citypinyin="huairen">怀仁</a>
+	                    </li><li><a class="react" data-citypinyin="huaxian">滑县</a>
+	                    </li><li><a class="react" data-citypinyin="huian">惠安</a>
+	                    </li><li><a class="react" data-citypinyin="hancheng">韩城</a>
+	                    </li><li><a class="react" data-citypinyin="huating">华亭</a>
+	                    </li><li><a class="react" data-citypinyin="hongtong">洪洞</a>
+	                    </li><li><a class="react" data-citypinyin="hekou">河口</a>
+	                    </li><li><a class="react" data-citypinyin="huarong">华容</a>
+	                    </li><li><a class="react" data-citypinyin="hualian">花莲</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="J">J</h4>
+	                    <li><a class="react" data-citypinyin="jinan">济南</a>
+	                    </li><li><a class="react" data-citypinyin="jilin">吉林</a>
+	                    </li><li><a class="react" data-citypinyin="jiaxing">嘉兴</a>
+	                    </li><li><a class="react" data-citypinyin="jinhua">金华</a>
+	                    </li><li><a class="react" data-citypinyin="jining">济宁</a>
+	                    </li><li><a class="react" data-citypinyin="jingzhou">荆州</a>
+	                    </li><li><a class="react" data-citypinyin="jiangmen">江门</a>
+	                    </li><li><a class="react" data-citypinyin="jiangyin">江阴</a>
+	                    </li><li><a class="react" data-citypinyin="jiaozuo">焦作</a>
+	                    </li><li><a class="react" data-citypinyin="jinzhou">锦州</a>
+	                    </li><li><a class="react" data-citypinyin="jiujiang">九江</a>
+	                    </li><li><a class="react" data-citypinyin="jiamusi">佳木斯</a>
+	                    </li><li><a class="react" data-citypinyin="jingmen">荆门</a>
+	                    </li><li><a class="react" data-citypinyin="jieyang">揭阳</a>
+	                    </li><li><a class="react" data-citypinyin="jinjiang">晋江</a>
+	                    </li><li><a class="react" data-citypinyin="jincheng">晋城</a>
+	                    </li><li><a class="react" data-citypinyin="jinzhong">晋中</a>
+	                    </li><li><a class="react" data-citypinyin="jixi">鸡西</a>
+	                    </li><li><a class="react" data-citypinyin="jingdezhen">景德镇</a>
+	                    </li><li><a class="react" data-citypinyin="jian">吉安</a>
+	                    </li><li><a class="react" data-citypinyin="jiyuan">济源</a>
+	                    </li><li><a class="react" data-citypinyin="jiuquan">酒泉</a>
+	                    </li><li><a class="react" data-citypinyin="jingjiang">靖江</a>
+	                    </li><li><a class="react" data-citypinyin="jintan">金坛</a>
+	                    </li><li><a class="react" data-citypinyin="jiashan">嘉善</a>
+	                    </li><li><a class="react" data-citypinyin="jurong">句容</a>
+	                    </li><li><a class="react" data-citypinyin="jiaozhou">胶州</a>
+	                    </li><li><a class="react" data-citypinyin="jimo">即墨</a>
+	                    </li><li><a class="react" data-citypinyin="jinchang">金昌</a>
+	                    </li><li><a class="react" data-citypinyin="jiayuguan">嘉峪关</a>
+	                    </li><li><a class="react" data-citypinyin="jiangshan">江山</a>
+	                    </li><li><a class="react" data-citypinyin="jianhu">建湖</a>
+	                    </li><li><a class="react" data-citypinyin="jinzhoushi">晋州</a>
+	                    </li><li><a class="react" data-citypinyin="jiande">建德</a>
+	                    </li><li><a class="react" data-citypinyin="jianyang">简阳</a>
+	                    </li><li><a class="react" data-citypinyin="jiexiu">介休</a>
+	                    </li><li><a class="react" data-citypinyin="jianshi">集安</a>
+	                    </li><li><a class="react" data-citypinyin="jiaohe">蛟河</a>
+	                    </li><li><a class="react" data-citypinyin="jianyangjy">建阳</a>
+	                    </li><li><a class="react" data-citypinyin="jiaxian">郏县</a>
+	                    </li><li><a class="react" data-citypinyin="jianli">监利</a>
+	                    </li><li><a class="react" data-citypinyin="jiangjin">江津</a>
+	                    </li><li><a class="react" data-citypinyin="juye">巨野</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="K">K</h4>
+	                    <li><a class="react" data-citypinyin="kunming">昆明</a>
+	                    </li><li><a class="react" data-citypinyin="kunshan">昆山</a>
+	                    </li><li><a class="react" data-citypinyin="kaifeng">开封</a>
+	                    </li><li><a class="react" data-citypinyin="kelamayi">克拉玛依</a>
+	                    </li><li><a class="react" data-citypinyin="kaiping">开平</a>
+	                    </li><li><a class="react" data-citypinyin="kuerle">库尔勒</a>
+	                    </li><li><a class="react" data-citypinyin="kuitun">奎屯</a>
+	                    </li><li><a class="react" data-citypinyin="kaixian">开县</a>
+	                    </li><li><a class="react" data-citypinyin="kenli">垦利</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="L">L</h4>
+	                    <li><a class="react" data-citypinyin="lianyungang">连云港</a>
+	                    </li><li><a class="react" data-citypinyin="linyi">临沂</a>
+	                    </li><li><a class="react" data-citypinyin="luoyang">洛阳</a>
+	                    </li><li><a class="react" data-citypinyin="liuzhou">柳州</a>
+	                    </li><li><a class="react" data-citypinyin="lanzhou">兰州</a>
+	                    </li><li><a class="react" data-citypinyin="langfang">廊坊</a>
+	                    </li><li><a class="react" data-citypinyin="linfen">临汾</a>
+	                    </li><li><a class="react" data-citypinyin="liaoyang">辽阳</a>
+	                    </li><li><a class="react" data-citypinyin="lishui">丽水</a>
+	                    </li><li><a class="react" data-citypinyin="liuan">六安</a>
+	                    </li><li><a class="react" data-citypinyin="longyan">龙岩</a>
+	                    </li><li><a class="react" data-citypinyin="liaocheng">聊城</a>
+	                    </li><li><a class="react" data-citypinyin="leshan">乐山</a>
+	                    </li><li><a class="react" data-citypinyin="lasa">拉萨</a>
+	                    </li><li><a class="react" data-citypinyin="lvliang">吕梁</a>
+	                    </li><li><a class="react" data-citypinyin="liaoyuan">辽源</a>
+	                    </li><li><a class="react" data-citypinyin="laiwu">莱芜</a>
+	                    </li><li><a class="react" data-citypinyin="luohe">漯河</a>
+	                    </li><li><a class="react" data-citypinyin="loudi">娄底</a>
+	                    </li><li><a class="react" data-citypinyin="laibin">来宾</a>
+	                    </li><li><a class="react" data-citypinyin="luzhou">泸州</a>
+	                    </li><li><a class="react" data-citypinyin="liangshan">凉山</a>
+	                    </li><li><a class="react" data-citypinyin="liupanshui">六盘水</a>
+	                    </li><li><a class="react" data-citypinyin="lijiang">丽江</a>
+	                    </li><li><a class="react" data-citypinyin="liyang">溧阳</a>
+	                    </li><li><a class="react" data-citypinyin="linhai">临海</a>
+	                    </li><li><a class="react" data-citypinyin="lanxi">兰溪</a>
+	                    </li><li><a class="react" data-citypinyin="longkou">龙口</a>
+	                    </li><li><a class="react" data-citypinyin="leiyang">耒阳</a>
+	                    </li><li><a class="react" data-citypinyin="laizhou">莱州</a>
+	                    </li><li><a class="react" data-citypinyin="linan">临安</a>
+	                    </li><li><a class="react" data-citypinyin="laiyang">莱阳</a>
+	                    </li><li><a class="react" data-citypinyin="lufeng">陆丰</a>
+	                    </li><li><a class="react" data-citypinyin="liuyang">浏阳</a>
+	                    </li><li><a class="react" data-citypinyin="lianjiang">廉江</a>
+	                    </li><li><a class="react" data-citypinyin="linzhou">林州</a>
+	                    </li><li><a class="react" data-citypinyin="lincang">临沧</a>
+	                    </li><li><a class="react" data-citypinyin="linxia">临夏</a>
+	                    </li><li><a class="react" data-citypinyin="lechang">乐昌</a>
+	                    </li><li><a class="react" data-citypinyin="linqing">临清</a>
+	                    </li><li><a class="react" data-citypinyin="lingbao">灵宝</a>
+	                    </li><li><a class="react" data-citypinyin="lengshuijiang">冷水江</a>
+	                    </li><li><a class="react" data-citypinyin="laoling">乐陵</a>
+	                    </li><li><a class="react" data-citypinyin="longhai">龙海</a>
+	                    </li><li><a class="react" data-citypinyin="liling">醴陵</a>
+	                    </li><li><a class="react" data-citypinyin="laixi">莱西</a>
+	                    </li><li><a class="react" data-citypinyin="leping">乐平</a>
+	                    </li><li><a class="react" data-citypinyin="langzhong">阆中</a>
+	                    </li><li><a class="react" data-citypinyin="luquan">鹿泉</a>
+	                    </li><li><a class="react" data-citypinyin="lichuan">利川</a>
+	                    </li><li><a class="react" data-citypinyin="laohekou">老河口</a>
+	                    </li><li><a class="react" data-citypinyin="linghai">凌海</a>
+	                    </li><li><a class="react" data-citypinyin="luannan">滦南</a>
+	                    </li><li><a class="react" data-citypinyin="lingshan">灵山</a>
+	                    </li><li><a class="react" data-citypinyin="lianzhou">连州</a>
+	                    </li><li><a class="react" data-citypinyin="lingshui">陵水</a>
+	                    </li><li><a class="react" data-citypinyin="linjiang">临江</a>
+	                    </li><li><a class="react" data-citypinyin="lianjiangxian">连江</a>
+	                    </li><li><a class="react" data-citypinyin="linqu">临朐</a>
+	                    </li><li><a class="react" data-citypinyin="laoting">乐亭</a>
+	                    </li><li><a class="react" data-citypinyin="luanxian">滦县</a>
+	                    </li><li><a class="react" data-citypinyin="luancheng">栾城</a>
+	                    </li><li><a class="react" data-citypinyin="lushanls">鲁山</a>
+	                    </li><li><a class="react" data-citypinyin="lingshi">灵石</a>
+	                    </li><li><a class="react" data-citypinyin="linzhang">临漳</a>
+	                    </li><li><a class="react" data-citypinyin="lintong">临潼</a>
+	                    </li><li><a class="react" data-citypinyin="lantian">蓝田</a>
+	                    </li><li><a class="react" data-citypinyin="longchang">隆昌</a>
+	                    </li><li><a class="react" data-citypinyin="luyi">鹿邑</a>
+	                    </li><li><a class="react" data-citypinyin="liuhe">柳河</a>
+	                    </li><li><a class="react" data-citypinyin="linyixian">临猗</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="M">M</h4>
+	                    <li><a class="react" data-citypinyin="mianyang">绵阳</a>
+	                    </li><li><a class="react" data-citypinyin="mudanjiang">牡丹江</a>
+	                    </li><li><a class="react" data-citypinyin="maanshan">马鞍山</a>
+	                    </li><li><a class="react" data-citypinyin="maoming">茂名</a>
+	                    </li><li><a class="react" data-citypinyin="meizhou">梅州</a>
+	                    </li><li><a class="react" data-citypinyin="meishan">眉山</a>
+	                    </li><li><a class="react" data-citypinyin="mishan">密山</a>
+	                    </li><li><a class="react" data-citypinyin="manzhouli">满洲里</a>
+	                    </li><li><a class="react" data-citypinyin="meihekou">梅河口</a>
+	                    </li><li><a class="react" data-citypinyin="miluo">汨罗</a>
+	                    </li><li><a class="react" data-citypinyin="mingguang">明光</a>
+	                    </li><li><a class="react" data-citypinyin="macheng">麻城</a>
+	                    </li><li><a class="react" data-citypinyin="mengzhou">孟州</a>
+	                    </li><li><a class="react" data-citypinyin="mengjin">孟津</a>
+	                    </li><li><a class="react" data-citypinyin="muping">牟平</a>
+	                    </li><li><a class="react" data-citypinyin="meixian">眉县</a>
+	                    </li><li><a class="react" data-citypinyin="minquan">民权</a>
+	                    </li><li><a class="react" data-citypinyin="mianchi">渑池</a>
+	                    </li><li><a class="react" data-citypinyin="mohe">漠河</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="N">N</h4>
+	                    <li><a class="react" data-citypinyin="nanjing">南京</a>
+	                    </li><li><a class="react" data-citypinyin="ningbo">宁波</a>
+	                    </li><li><a class="react" data-citypinyin="nanning">南宁</a>
+	                    </li><li><a class="react" data-citypinyin="nantong">南通</a>
+	                    </li><li><a class="react" data-citypinyin="nanchang">南昌</a>
+	                    </li><li><a class="react" data-citypinyin="nanyang">南阳</a>
+	                    </li><li><a class="react" data-citypinyin="ningde">宁德</a>
+	                    </li><li><a class="react" data-citypinyin="nanchong">南充</a>
+	                    </li><li><a class="react" data-citypinyin="nanping">南平</a>
+	                    </li><li><a class="react" data-citypinyin="neijiang">内江</a>
+	                    </li><li><a class="react" data-citypinyin="ninghai">宁海</a>
+	                    </li><li><a class="react" data-citypinyin="nanan">南安</a>
+	                    </li><li><a class="react" data-citypinyin="ningxiang">宁乡</a>
+	                    </li><li><a class="react" data-citypinyin="nansha">南沙</a>
+	                    </li><li><a class="react" data-citypinyin="nehe">讷河</a>
+	                    </li><li><a class="react" data-citypinyin="nanxiong">南雄</a>
+	                    </li><li><a class="react" data-citypinyin="nanle">南乐</a>
+	                    </li><li><a class="react" data-citypinyin="nanling">南陵</a>
+	                    </li><li><a class="react" data-citypinyin="ningyang">宁阳</a>
+	                    </li><li><a class="react" data-citypinyin="ningguo">宁国</a>
+	                    </li><li><a class="react" data-citypinyin="ningjin">宁晋</a>
+	                    </li><li><a class="react" data-citypinyin="ningjinnj">宁津</a>
+	                    </li><li><a class="react" data-citypinyin="nantou">南投</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="P">P</h4>
+	                    <li><a class="react" data-citypinyin="putian">莆田</a>
+	                    </li><li><a class="react" data-citypinyin="panjin">盘锦</a>
+	                    </li><li><a class="react" data-citypinyin="pingdingshan">平顶山</a>
+	                    </li><li><a class="react" data-citypinyin="puyang">濮阳</a>
+	                    </li><li><a class="react" data-citypinyin="pingxiang">萍乡</a>
+	                    </li><li><a class="react" data-citypinyin="panzhihua">攀枝花</a>
+	                    </li><li><a class="react" data-citypinyin="puer">普洱</a>
+	                    </li><li><a class="react" data-citypinyin="pingliang">平凉</a>
+	                    </li><li><a class="react" data-citypinyin="pizhou">邳州</a>
+	                    </li><li><a class="react" data-citypinyin="pinghu">平湖</a>
+	                    </li><li><a class="react" data-citypinyin="puning">普宁</a>
+	                    </li><li><a class="react" data-citypinyin="pingdu">平度</a>
+	                    </li><li><a class="react" data-citypinyin="pengzhou">彭州</a>
+	                    </li><li><a class="react" data-citypinyin="penglai">蓬莱</a>
+	                    </li><li><a class="react" data-citypinyin="peixian">沛县</a>
+	                    </li><li><a class="react" data-citypinyin="pujiang">浦江</a>
+	                    </li><li><a class="react" data-citypinyin="panshi">磐石</a>
+	                    </li><li><a class="react" data-citypinyin="pingyuan">平原</a>
+	                    </li><li><a class="react" data-citypinyin="pingtan">平潭</a>
+	                    </li><li><a class="react" data-citypinyin="pucheng">蒲城</a>
+	                    </li><li><a class="react" data-citypinyin="panxian">盘县</a>
+	                    </li><li><a class="react" data-citypinyin="pingjiang">平江</a>
+	                    </li><li><a class="react" data-citypinyin="puyangxian">濮阳县</a>
+	                    </li><li><a class="react" data-citypinyin="pingshan">平山</a>
+	                    </li><li><a class="react" data-citypinyin="pingdong">屏东</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="Q">Q</h4>
+	                    <li><a class="react" data-citypinyin="qingdao">青岛</a>
+	                    </li><li><a class="react" data-citypinyin="quanzhou">泉州</a>
+	                    </li><li><a class="react" data-citypinyin="qinhuangdao">秦皇岛</a>
+	                    </li><li><a class="react" data-citypinyin="qiqihaer">齐齐哈尔</a>
+	                    </li><li><a class="react" data-citypinyin="quzhou">衢州</a>
+	                    </li><li><a class="react" data-citypinyin="qingyuan">清远</a>
+	                    </li><li><a class="react" data-citypinyin="qujing">曲靖</a>
+	                    </li><li><a class="react" data-citypinyin="qitaihe">七台河</a>
+	                    </li><li><a class="react" data-citypinyin="qinzhou">钦州</a>
+	                    </li><li><a class="react" data-citypinyin="qiandongnan">黔东南</a>
+	                    </li><li><a class="react" data-citypinyin="qingyang">庆阳</a>
+	                    </li><li><a class="react" data-citypinyin="qianan">迁安</a>
+	                    </li><li><a class="react" data-citypinyin="qingzhou">青州</a>
+	                    </li><li><a class="react" data-citypinyin="qidong">启东</a>
+	                    </li><li><a class="react" data-citypinyin="qianjiang">潜江</a>
+	                    </li><li><a class="react" data-citypinyin="qianxinan">黔西南</a>
+	                    </li><li><a class="react" data-citypinyin="qiannan">黔南</a>
+	                    </li><li><a class="react" data-citypinyin="qionghai">琼海</a>
+	                    </li><li><a class="react" data-citypinyin="qinyang">沁阳</a>
+	                    </li><li><a class="react" data-citypinyin="qionglai">邛崃</a>
+	                    </li><li><a class="react" data-citypinyin="qihe">齐河</a>
+	                    </li><li><a class="react" data-citypinyin="qingfeng">清丰</a>
+	                    </li><li><a class="react" data-citypinyin="qixian">淇县</a>
+	                    </li><li><a class="react" data-citypinyin="quanjiao">全椒</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="R">R</h4>
+	                    <li><a class="react" data-citypinyin="rizhao">日照</a>
+	                    </li><li><a class="react" data-citypinyin="ruian">瑞安</a>
+	                    </li><li><a class="react" data-citypinyin="rongcheng">荣成</a>
+	                    </li><li><a class="react" data-citypinyin="rushan">乳山</a>
+	                    </li><li><a class="react" data-citypinyin="rugao">如皋</a>
+	                    </li><li><a class="react" data-citypinyin="ruzhou">汝州</a>
+	                    </li><li><a class="react" data-citypinyin="renhuai">仁怀</a>
+	                    </li><li><a class="react" data-citypinyin="ruijin">瑞金</a>
+	                    </li><li><a class="react" data-citypinyin="ruichang">瑞昌</a>
+	                    </li><li><a class="react" data-citypinyin="renshou">仁寿</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="S">S</h4>
+	                    <li><a class="react" data-citypinyin="shanghai">上海</a>
+	                    </li><li><a class="react" data-citypinyin="shenzhen">深圳</a>
+	                    </li><li><a class="react" data-citypinyin="shenyang">沈阳</a>
+	                    </li><li><a class="react" data-citypinyin="shijiazhuang">石家庄</a>
+	                    </li><li><a class="react" data-citypinyin="suzhou">苏州</a>
+	                    </li><li><a class="react" data-citypinyin="sanya">三亚</a>
+	                    </li><li><a class="react" data-citypinyin="shantou">汕头</a>
+	                    </li><li><a class="react" data-citypinyin="shaoxing">绍兴</a>
+	                    </li><li><a class="react" data-citypinyin="songyuan">松原</a>
+	                    </li><li><a class="react" data-citypinyin="suqian">宿迁</a>
+	                    </li><li><a class="react" data-citypinyin="suzhousz">宿州</a>
+	                    </li><li><a class="react" data-citypinyin="shangrao">上饶</a>
+	                    </li><li><a class="react" data-citypinyin="shangqiu">商丘</a>
+	                    </li><li><a class="react" data-citypinyin="shiyan">十堰</a>
+	                    </li><li><a class="react" data-citypinyin="shaoyang">邵阳</a>
+	                    </li><li><a class="react" data-citypinyin="shaoguan">韶关</a>
+	                    </li><li><a class="react" data-citypinyin="shunde">顺德</a>
+	                    </li><li><a class="react" data-citypinyin="shuozhou">朔州</a>
+	                    </li><li><a class="react" data-citypinyin="siping">四平</a>
+	                    </li><li><a class="react" data-citypinyin="shuangyashan">双鸭山</a>
+	                    </li><li><a class="react" data-citypinyin="suihua">绥化</a>
+	                    </li><li><a class="react" data-citypinyin="sanming">三明</a>
+	                    </li><li><a class="react" data-citypinyin="sanmenxia">三门峡</a>
+	                    </li><li><a class="react" data-citypinyin="suizhou">随州</a>
+	                    </li><li><a class="react" data-citypinyin="shanwei">汕尾</a>
+	                    </li><li><a class="react" data-citypinyin="suining">遂宁</a>
+	                    </li><li><a class="react" data-citypinyin="shangluo">商洛</a>
+	                    </li><li><a class="react" data-citypinyin="shizuishan">石嘴山</a>
+	                    </li><li><a class="react" data-citypinyin="shihezi">石河子</a>
+	                    </li><li><a class="react" data-citypinyin="shishi">石狮</a>
+	                    </li><li><a class="react" data-citypinyin="shangyu">上虞</a>
+	                    </li><li><a class="react" data-citypinyin="shouguang">寿光</a>
+	                    </li><li><a class="react" data-citypinyin="shengzhou">嵊州</a>
+	                    </li><li><a class="react" data-citypinyin="shuyang">沭阳</a>
+	                    </li><li><a class="react" data-citypinyin="sheyang">射阳</a>
+	                    </li><li><a class="react" data-citypinyin="sanhe">三河</a>
+	                    </li><li><a class="react" data-citypinyin="suiningxian">睢宁</a>
+	                    </li><li><a class="react" data-citypinyin="shaoshan">韶山</a>
+	                    </li><li><a class="react" data-citypinyin="shahe">沙河</a>
+	                    </li><li><a class="react" data-citypinyin="sihui">四会</a>
+	                    </li><li><a class="react" data-citypinyin="songzi">松滋</a>
+	                    </li><li><a class="react" data-citypinyin="shulan">舒兰</a>
+	                    </li><li><a class="react" data-citypinyin="shaodong">邵东</a>
+	                    </li><li><a class="react" data-citypinyin="suixian">睢县</a>
+	                    </li><li><a class="react" data-citypinyin="siyang">泗阳</a>
+	                    </li><li><a class="react" data-citypinyin="shawan">沙湾</a>
+	                    </li><li><a class="react" data-citypinyin="shexian">涉县</a>
+	                    </li><li><a class="react" data-citypinyin="shenmu">神木</a>
+	                    </li><li><a class="react" data-citypinyin="suizhong">绥中</a>
+	                    </li><li><a class="react" data-citypinyin="shanggao">上高</a>
+	                    </li><li><a class="react" data-citypinyin="shiquan">石泉</a>
+	                    </li><li><a class="react" data-citypinyin="sihong">泗洪</a>
+	                    </li><li><a class="react" data-citypinyin="shanxian">单县</a>
+	                    </li><li><a class="react" data-citypinyin="shenqiu">沈丘</a>
+	                    </li><li><a class="react" data-citypinyin="sanmen">三门</a>
+	                    </li><li><a class="react" data-citypinyin="shangcai">上蔡</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="T">T</h4>
+	                    <li><a class="react" data-citypinyin="tianjin">天津</a>
+	                    </li><li><a class="react" data-citypinyin="taiyuan">太原</a>
+	                    </li><li><a class="react" data-citypinyin="tangshan">唐山</a>
+	                    </li><li><a class="react" data-citypinyin="taizhou">泰州</a>
+	                    </li><li><a class="react" data-citypinyin="taizhoutz">台州</a>
+	                    </li><li><a class="react" data-citypinyin="taian">泰安</a>
+	                    </li><li><a class="react" data-citypinyin="tongxiang">桐乡</a>
+	                    </li><li><a class="react" data-citypinyin="taicang">太仓</a>
+	                    </li><li><a class="react" data-citypinyin="tongliao">通辽</a>
+	                    </li><li><a class="react" data-citypinyin="tieling">铁岭</a>
+	                    </li><li><a class="react" data-citypinyin="tonghua">通化</a>
+	                    </li><li><a class="react" data-citypinyin="tongling">铜陵</a>
+	                    </li><li><a class="react" data-citypinyin="tongrendiqu">铜仁</a>
+	                    </li><li><a class="react" data-citypinyin="tongchuan">铜川</a>
+	                    </li><li><a class="react" data-citypinyin="tianshui">天水</a>
+	                    </li><li><a class="react" data-citypinyin="taishan">台山</a>
+	                    </li><li><a class="react" data-citypinyin="taixing">泰兴</a>
+	                    </li><li><a class="react" data-citypinyin="tengzhou">滕州</a>
+	                    </li><li><a class="react" data-citypinyin="tianmen">天门</a>
+	                    </li><li><a class="react" data-citypinyin="tianchang">天长</a>
+	                    </li><li><a class="react" data-citypinyin="tonglu">桐庐</a>
+	                    </li><li><a class="react" data-citypinyin="taonan">洮南</a>
+	                    </li><li><a class="react" data-citypinyin="tongcheng">桐城</a>
+	                    </li><li><a class="react" data-citypinyin="taiqian">台前</a>
+	                    </li><li><a class="react" data-citypinyin="taihe">太和</a>
+	                    </li><li><a class="react" data-citypinyin="tiantai">天台</a>
+	                    </li><li><a class="react" data-citypinyin="taigu">太谷</a>
+	                    </li><li><a class="react" data-citypinyin="tengxian">藤县</a>
+	                    </li><li><a class="react" data-citypinyin="tangyin">汤阴</a>
+	                    </li><li><a class="react" data-citypinyin="tumoteyouqi">土默特右旗</a>
+	                    </li><li><a class="react" data-citypinyin="taibei">台北</a>
+	                    </li><li><a class="react" data-citypinyin="taizhong">台中</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="W">W</h4>
+	                    <li><a class="react" data-citypinyin="wuhan">武汉</a>
+	                    </li><li><a class="react" data-citypinyin="wuxi">无锡</a>
+	                    </li><li><a class="react" data-citypinyin="wenzhou">温州</a>
+	                    </li><li><a class="react" data-citypinyin="wuhu">芜湖</a>
+	                    </li><li><a class="react" data-citypinyin="weifang">潍坊</a>
+	                    </li><li><a class="react" data-citypinyin="weihai">威海</a>
+	                    </li><li><a class="react" data-citypinyin="wulumuqi">乌鲁木齐</a>
+	                    </li><li><a class="react" data-citypinyin="weinan">渭南</a>
+	                    </li><li><a class="react" data-citypinyin="wujiang">吴江</a>
+	                    </li><li><a class="react" data-citypinyin="wenling">温岭</a>
+	                    </li><li><a class="react" data-citypinyin="wuhai">乌海</a>
+	                    </li><li><a class="react" data-citypinyin="wulanchabu">乌兰察布</a>
+	                    </li><li><a class="react" data-citypinyin="wuzhou">梧州</a>
+	                    </li><li><a class="react" data-citypinyin="wuwei">武威</a>
+	                    </li><li><a class="react" data-citypinyin="wanzhou">万州</a>
+	                    </li><li><a class="react" data-citypinyin="wuan">武安</a>
+	                    </li><li><a class="react" data-citypinyin="wendeng">文登</a>
+	                    </li><li><a class="react" data-citypinyin="wuchuan">吴川</a>
+	                    </li><li><a class="react" data-citypinyin="wenshan">文山</a>
+	                    </li><li><a class="react" data-citypinyin="wuzhong">吴忠</a>
+	                    </li><li><a class="react" data-citypinyin="wuyuan">婺源</a>
+	                    </li><li><a class="react" data-citypinyin="wenchang">文昌</a>
+	                    </li><li><a class="react" data-citypinyin="wuxue">武穴</a>
+	                    </li><li><a class="react" data-citypinyin="wanning">万宁</a>
+	                    </li><li><a class="react" data-citypinyin="wugang">舞钢</a>
+	                    </li><li><a class="react" data-citypinyin="wenxian">温县</a>
+	                    </li><li><a class="react" data-citypinyin="wuzhi">武陟</a>
+	                    </li><li><a class="react" data-citypinyin="wusu">乌苏</a>
+	                    </li><li><a class="react" data-citypinyin="wuweiww">无为</a>
+	                    </li><li><a class="react" data-citypinyin="wuhuxian">芜湖县</a>
+	                    </li><li><a class="react" data-citypinyin="weihui">卫辉</a>
+	                    </li><li><a class="react" data-citypinyin="wltqq">乌拉特前旗</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="X">X</h4>
+	                    <li><a class="react" data-citypinyin="xian">西安</a>
+	                    </li><li><a class="react" data-citypinyin="xiamen">厦门</a>
+	                    </li><li><a class="react" data-citypinyin="xuzhou">徐州</a>
+	                    </li><li><a class="react" data-citypinyin="xiangyang">襄阳</a>
+	                    </li><li><a class="react" data-citypinyin="xinxiang">新乡</a>
+	                    </li><li><a class="react" data-citypinyin="xingtai">邢台</a>
+	                    </li><li><a class="react" data-citypinyin="xuancheng">宣城</a>
+	                    </li><li><a class="react" data-citypinyin="xuchang">许昌</a>
+	                    </li><li><a class="react" data-citypinyin="xinyang">信阳</a>
+	                    </li><li><a class="react" data-citypinyin="xiaogan">孝感</a>
+	                    </li><li><a class="react" data-citypinyin="xiangtan">湘潭</a>
+	                    </li><li><a class="react" data-citypinyin="xianyang">咸阳</a>
+	                    </li><li><a class="react" data-citypinyin="xining">西宁</a>
+	                    </li><li><a class="react" data-citypinyin="xinzhou">忻州</a>
+	                    </li><li><a class="react" data-citypinyin="xinganmeng">兴安盟</a>
+	                    </li><li><a class="react" data-citypinyin="xinyu">新余</a>
+	                    </li><li><a class="react" data-citypinyin="xianning">咸宁</a>
+	                    </li><li><a class="react" data-citypinyin="xishuangbanna">西双版纳</a>
+	                    </li><li><a class="react" data-citypinyin="xiantao">仙桃</a>
+	                    </li><li><a class="react" data-citypinyin="xinghua">兴化</a>
+	                    </li><li><a class="react" data-citypinyin="xintai">新泰</a>
+	                    </li><li><a class="react" data-citypinyin="xinji">辛集</a>
+	                    </li><li><a class="react" data-citypinyin="xinyi">新沂</a>
+	                    </li><li><a class="react" data-citypinyin="xinzheng">新郑</a>
+	                    </li><li><a class="react" data-citypinyin="xinmi">新密</a>
+	                    </li><li><a class="react" data-citypinyin="xinyixy">信宜</a>
+	                    </li><li><a class="react" data-citypinyin="xilinguolemeng">锡林郭勒</a>
+	                    </li><li><a class="react" data-citypinyin="xiangxi">湘西</a>
+	                    </li><li><a class="react" data-citypinyin="xiangyin">湘阴</a>
+	                    </li><li><a class="react" data-citypinyin="xiangshui">响水</a>
+	                    </li><li><a class="react" data-citypinyin="xingyang">荥阳</a>
+	                    </li><li><a class="react" data-citypinyin="xingning">兴宁</a>
+	                    </li><li><a class="react" data-citypinyin="xinmin">新民</a>
+	                    </li><li><a class="react" data-citypinyin="xiangcheng">项城</a>
+	                    </li><li><a class="react" data-citypinyin="xiaoyi">孝义</a>
+	                    </li><li><a class="react" data-citypinyin="xiangxiang">湘乡</a>
+	                    </li><li><a class="react" data-citypinyin="xingcheng">兴城</a>
+	                    </li><li><a class="react" data-citypinyin="xingping">兴平</a>
+	                    </li><li><a class="react" data-citypinyin="xiangshan">象山</a>
+	                    </li><li><a class="react" data-citypinyin="xiuwu">修武</a>
+	                    </li><li><a class="react" data-citypinyin="xiajin">夏津</a>
+	                    </li><li><a class="react" data-citypinyin="xinhua">新化</a>
+	                    </li><li><a class="react" data-citypinyin="xianju">仙居</a>
+	                    </li><li><a class="react" data-citypinyin="xiangyuan">襄垣</a>
+	                    </li><li><a class="react" data-citypinyin="xuanwei">宣威</a>
+	                    </li><li><a class="react" data-citypinyin="xiapu">霞浦</a>
+	                    </li><li><a class="react" data-citypinyin="xinan">新安</a>
+	                    </li><li><a class="react" data-citypinyin="xinxiangxian">新乡县</a>
+	                    </li><li><a class="react" data-citypinyin="xuyi">盱眙</a>
+	                    </li><li><a class="react" data-citypinyin="xuwen">徐闻</a>
+	                    </li><li><a class="react" data-citypinyin="xiayi">夏邑</a>
+	                    </li><li><a class="react" data-citypinyin="xunxian">浚县</a>
+	                    </li><li><a class="react" data-citypinyin="xixiang">西乡</a>
+	                    </li><li><a class="react" data-citypinyin="xiping">西平</a>
+	                    </li><li><a class="react" data-citypinyin="xinle">新乐</a>
+	                    </li><li><a class="react" data-citypinyin="xinbei">新北</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="Y">Y</h4>
+	                    <li><a class="react" data-citypinyin="yantai">烟台</a>
+	                    </li><li><a class="react" data-citypinyin="yangzhou">扬州</a>
+	                    </li><li><a class="react" data-citypinyin="yancheng">盐城</a>
+	                    </li><li><a class="react" data-citypinyin="yichang">宜昌</a>
+	                    </li><li><a class="react" data-citypinyin="yueyang">岳阳</a>
+	                    </li><li><a class="react" data-citypinyin="yinchuan">银川</a>
+	                    </li><li><a class="react" data-citypinyin="yuncheng">运城</a>
+	                    </li><li><a class="react" data-citypinyin="yingkou">营口</a>
+	                    </li><li><a class="react" data-citypinyin="yichun">宜春</a>
+	                    </li><li><a class="react" data-citypinyin="yiyang">益阳</a>
+	                    </li><li><a class="react" data-citypinyin="yangjiang">阳江</a>
+	                    </li><li><a class="react" data-citypinyin="yulin">玉林</a>
+	                    </li><li><a class="react" data-citypinyin="yibin">宜宾</a>
+	                    </li><li><a class="react" data-citypinyin="yulinyl">榆林</a>
+	                    </li><li><a class="react" data-citypinyin="yiwu">义乌</a>
+	                    </li><li><a class="react" data-citypinyin="yixing">宜兴</a>
+	                    </li><li><a class="react" data-citypinyin="yuyao">余姚</a>
+	                    </li><li><a class="react" data-citypinyin="yueqing">乐清</a>
+	                    </li><li><a class="react" data-citypinyin="yangquan">阳泉</a>
+	                    </li><li><a class="react" data-citypinyin="yanbian">延边</a>
+	                    </li><li><a class="react" data-citypinyin="yingtan">鹰潭</a>
+	                    </li><li><a class="react" data-citypinyin="yongzhou">永州</a>
+	                    </li><li><a class="react" data-citypinyin="yunfu">云浮</a>
+	                    </li><li><a class="react" data-citypinyin="yuxi">玉溪</a>
+	                    </li><li><a class="react" data-citypinyin="yanan">延安</a>
+	                    </li><li><a class="react" data-citypinyin="yanzhou">兖州</a>
+	                    </li><li><a class="react" data-citypinyin="yongkang">永康</a>
+	                    </li><li><a class="react" data-citypinyin="yingde">英德</a>
+	                    </li><li><a class="react" data-citypinyin="yizheng">仪征</a>
+	                    </li><li><a class="react" data-citypinyin="yongcheng">永城</a>
+	                    </li><li><a class="react" data-citypinyin="yuzhou">禹州</a>
+	                    </li><li><a class="react" data-citypinyin="yining">伊宁</a>
+	                    </li><li><a class="react" data-citypinyin="yongchuan">永川</a>
+	                    </li><li><a class="react" data-citypinyin="yaan">雅安</a>
+	                    </li><li><a class="react" data-citypinyin="yangshuo">阳朔</a>
+	                    </li><li><a class="react" data-citypinyin="yichuan">伊川</a>
+	                    </li><li><a class="react" data-citypinyin="yanshi">偃师</a>
+	                    </li><li><a class="react" data-citypinyin="yangzhong">扬中</a>
+	                    </li><li><a class="react" data-citypinyin="yongji">永济</a>
+	                    </li><li><a class="react" data-citypinyin="yucheng">禹城</a>
+	                    </li><li><a class="react" data-citypinyin="yicheng">宜城</a>
+	                    </li><li><a class="react" data-citypinyin="yuanping">原平</a>
+	                    </li><li><a class="react" data-citypinyin="yingcheng">应城</a>
+	                    </li><li><a class="react" data-citypinyin="yidu">宜都</a>
+	                    </li><li><a class="react" data-citypinyin="yuanjiang">沅江</a>
+	                    </li><li><a class="react" data-citypinyin="yuhuan">玉环</a>
+	                    </li><li><a class="react" data-citypinyin="yongnian">永年</a>
+	                    </li><li><a class="react" data-citypinyin="yangcheng">阳城</a>
+	                    </li><li><a class="react" data-citypinyin="yunyang">云阳</a>
+	                    </li><li><a class="react" data-citypinyin="yexian">叶县</a>
+	                    </li><li><a class="react" data-citypinyin="yixian">易县</a>
+	                    </li><li><a class="react" data-citypinyin="yiyangyy">宜阳</a>
+	                    </li><li><a class="react" data-citypinyin="yanliang">阎良</a>
+	                    </li><li><a class="react" data-citypinyin="yuanyang">原阳</a>
+	                    </li><li><a class="react" data-citypinyin="yuchengxian">虞城</a>
+	                    </li><li><a class="react" data-citypinyin="yushan">玉山</a>
+	                    </li><li><a class="react" data-citypinyin="yanggu">阳谷</a>
+	                    </li><li><a class="react" data-citypinyin="yunchengxian">郓城</a>
+	                </li></ul>
+	            </div>
+	            <div class="abc">
+	                <ul class="table">
+	                    <h4 id="Z">Z</h4>
+	                    <li><a class="react" data-citypinyin="zhengzhou">郑州</a>
+	                    </li><li><a class="react" data-citypinyin="zibo">淄博</a>
+	                    </li><li><a class="react" data-citypinyin="zhuhai">珠海</a>
+	                    </li><li><a class="react" data-citypinyin="zhongshan">中山</a>
+	                    </li><li><a class="react" data-citypinyin="zhenjiang">镇江</a>
+	                    </li><li><a class="react" data-citypinyin="zhuzhou">株洲</a>
+	                    </li><li><a class="react" data-citypinyin="zhanjiang">湛江</a>
+	                    </li><li><a class="react" data-citypinyin="zhangjiakou">张家口</a>
+	                    </li><li><a class="react" data-citypinyin="zhoushan">舟山</a>
+	                    </li><li><a class="react" data-citypinyin="zhangzhou">漳州</a>
+	                    </li><li><a class="react" data-citypinyin="zaozhuang">枣庄</a>
+	                    </li><li><a class="react" data-citypinyin="zhoukou">周口</a>
+	                    </li><li><a class="react" data-citypinyin="zhumadian">驻马店</a>
+	                    </li><li><a class="react" data-citypinyin="zhaoqing">肇庆</a>
+	                    </li><li><a class="react" data-citypinyin="zunyi">遵义</a>
+	                    </li><li><a class="react" data-citypinyin="zhangjiagang">张家港</a>
+	                    </li><li><a class="react" data-citypinyin="zhuji">诸暨</a>
+	                    </li><li><a class="react" data-citypinyin="zhangjiajie">张家界</a>
+	                    </li><li><a class="react" data-citypinyin="zigong">自贡</a>
+	                    </li><li><a class="react" data-citypinyin="ziyang">资阳</a>
+	                    </li><li><a class="react" data-citypinyin="zhaotong">昭通</a>
+	                    </li><li><a class="react" data-citypinyin="zhangye">张掖</a>
+	                    </li><li><a class="react" data-citypinyin="zhuozhou">涿州</a>
+	                    </li><li><a class="react" data-citypinyin="zhangqiu">章丘</a>
+	                    </li><li><a class="react" data-citypinyin="zengcheng">增城</a>
+	                    </li><li><a class="react" data-citypinyin="zaoyang">枣阳</a>
+	                    </li><li><a class="react" data-citypinyin="zhucheng">诸城</a>
+	                    </li><li><a class="react" data-citypinyin="zhuanghe">庄河</a>
+	                    </li><li><a class="react" data-citypinyin="zhaoyuan">招远</a>
+	                    </li><li><a class="react" data-citypinyin="zunhua">遵化</a>
+	                    </li><li><a class="react" data-citypinyin="zoucheng">邹城</a>
+	                    </li><li><a class="react" data-citypinyin="zhongwei">中卫</a>
+	                    </li><li><a class="react" data-citypinyin="zouping">邹平</a>
+	                    </li><li><a class="react" data-citypinyin="zhongxiang">钟祥</a>
+	                    </li><li><a class="react" data-citypinyin="zhijiang">枝江</a>
+	                    </li><li><a class="react" data-citypinyin="zhangpu">漳浦</a>
+	                    </li><li><a class="react" data-citypinyin="zhangshu">樟树</a>
+	                    </li><li><a class="react" data-citypinyin="zhengding">正定</a>
+	                    </li><li><a class="react" data-citypinyin="zhongmou">中牟</a>
+	                    </li><li><a class="react" data-citypinyin="zhaoxian">赵县</a>
+	                    </li><li><a class="react" data-citypinyin="zhecheng">柘城</a>
+	                    </li><li><a class="react" data-citypinyin="zhungeerqi">准格尔旗</a>
+	                    </li><li><a class="react" data-citypinyin="zhouzhuang">周庄</a>
+	                </li></ul>
+	            </div>
+		    </div>
+		</section>
+	</div>
+	<footer id="ft">
+		<section class="info-block">
+			<div class="geo-city">
+				<span>城市：</span><a href="#" class="city-name info-link">广州</a>
+			</div>
+			<div class="login-info info">
+				<a href="#" class="info-link" data-role="login">登陆</a>
+				<a href="#" class="info-link" data-role="register">注册</a>
+			</div>
+			<div class="user-info info">
+				<a href="#" class="info-link" data-role="ticket">喵喵券</a>
+				<a href="#" class="info-link" data-role="unpaid">待付款</a>
+			</div>
+		</section>
+		<section class="link-block">
+			<p class="copyright">©miaomiao.com 2015-2016</p>
+		</section>
+		<div class="top"></div>
+	</footer>
 </body>
 </html>

@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+@import "../_paritals/var";
+@import "../_paritals/global";
+@import "../public/pageHd";
+@import "../public/pageFt";
+
+body {
+	background-color: $bgClr;
+}
+.city-bd {
+	padding: 0 12px;
+}
+#curr-city {
+	margin-top: 12px;
+	padding: 8px 12px;
+	font-size: 1.4rem;
+	line-height: 20px;
+	color: $maFtClr;
+	background-color: #fff;
+	border: 1px solid $maBrClr;
+
+	.city-name {
+		color: $maClr;
+		font-size: 1.4rem;
+	}
+}
+.city-title {
+	margin-bottom: 10px;
+	line-height: 24px;
+	font-size: 1.5rem;
+	font-weight: normal;
+	color: #222;
+}
+.recent-city, .hot-city {
+	margin-top: 15px;
+
+	.city-list {
+		border: 1px solid $maBrClr;
+		border-bottom-width: 0;
+		background-color: #fff;
+		font-size: 0;
+	}
+	.city {
+		@extend %br-box;
+		@extend %tac;
+		@extend %vam;
+		display: inline-block;
+		width: 25%;
+		height: 36px;
+		font-size: 1.4rem;
+		line-height: 36px;
+		color: $maFtClr;
+		border-right: 1px solid $maBrClr;
+		border-bottom: 1px solid $maBrClr;
+
+		&:nth-child(4n) {
+			border-right-width: 0;
+		}
+	}
+}
+.all-city {
+	.letter-list {
+		font-size: 0;
+		background-color: #fff;		
+		border: 1px solid $maBrClr;
+	}
+	.letter {
+		@extend %tac;
+		@extend %vam;
+		display: inline-block;
+		width: 20%;
+		height: 36px;
+		line-height: 36px;
+		font-size: 1.4rem;
+		color: $maClr;
+	}
+	.box {
+		margin-top: 10px;
+		border: 1px solid $maBrClr;
+	    border-radius: 4px;
+	    overflow: hidden;
+	    background-color: #fff;
+	}
+	.abc {
+		// border-top: 1px solid $maBrClr;
+		border-bottom: 1px solid $maBrClr;
+	}
+	.table {
+		// min-height: .8rem;
+	    position: relative;
+	    overflow: hidden;
+	    z-index: 0;
+	    &:before {
+	    	content: '';
+	    	position: absolute;
+	    	width: 25%;
+	    	left: 25%;
+	    	height: 100%;
+	    	border-left: 1px solid #ddd8ce;
+	    	border-right: 1px solid #ddd8ce;
+	    }
+	    &:after {
+	    	content: '';
+    	    position: absolute;
+    	    width: 10%;
+    	    left: 75%;
+    	    height: 100%;
+    	    border-left: 1px solid #ddd8ce;
+    	    border-right: none;
+	    }
+	    li, h4 {
+	    	display: inline-block;
+	    	width: 25%;
+	    	height: 40px;
+	    	line-height: 40px;
+	    	font-size: 1.4rem;
+	    	text-align: center;
+	    	border-bottom: 1px solid #ddd8ce;
+	    	margin-bottom: -1px;
+	    	float: left;
+	    	position: relative;
+	    	z-index: 10;
+	    }
+	    h4 {
+	    	margin: 0;
+	    	margin-bottom: -1px;
+	    	height: 80px;
+	    	line-height: 80px;
+	    	color: #B7B7B7;
+	    	font-size: 3.4rem;
+	    }
+	    .react {
+	    	display: block;
+	    	height: 100%;
+	    }
+	}
+}
