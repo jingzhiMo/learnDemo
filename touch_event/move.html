@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test move event</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		#ha {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			width: 500px;
+			height: 800px;
+			transform: translate(-50%, -50%);
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="ha">
+		
+	</div>
+	<script>
+		var ha = document.querySelector('#ha');
+
+		ha.addEventListener('touchstart', function() {
+			console.log('start');
+		}, false);
+		ha.addEventListener('touchmove', function(e) {
+			console.log('move');
+		}, false);
+		ha.addEventListener('touchend', function() {
+			console.log('end');
+		}, false);
+		ha.addEventListener('touchcancel', function() {
+			console.log('cancel');
+		}, false);
+
+		
+	</script>
+</body>
+</html>

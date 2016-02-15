@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test move event</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		#ha {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			width: 500px;
+			height: 800px;
+			line-height: 800px;
+			text-align: center;
+			font-size: 90px;
+			transform: translate(-50%, -50%);
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="ha">
+		0
+	</div>
+	<script>
+		var ha = document.querySelector('#ha');
+		var throttle = function(fn, delay, mustRunDelay) {
+			var timer = null,
+				mustRunDelay = mustRunDelay || 100,
+				t_start;
+
+			return function() {
+				var args = arguments;
+				clearTimeout(timer);
+				timer = setTimeout(function() {
+					var context = this,
+						t_curr = +new Date();
+
+					if ( !t_start ) { // 初始化没有开始时间戳
+						t_start = +new Date();
+					}
+					// 判断是否超时；超时则必须执行函数
+					if ( t_curr - t_start >= mustRunDelay ) {
+						fn.apply(context, args);
+						t_start = t_curr;
+					}
+					else {
+						fn.apply(context, args);
+					}
+				}, delay);
+			};
+		};
+
+		var num = 0,
+			s_position = {
+				x: 0,
+				y: 0
+			},
+			e_position = {
+				x: 0,
+				y: 0
+			};
+		ha.addEventListener('touchstart', function(e) {
+			var touch = e.touches[0];
+
+			s_position.x = touch.pageX;
+			s_position.y = touch.pageY;
+		}, false);
+		// =optimize touchmove
+		ha.addEventListener('touchmove', throttle(markPoint, 50), false);
+
+		ha.addEventListener('touchend', function() {
+
+			setTimeout(function() {
+				if ( e_position.x - s_position.x > 0) {
+					console.log('right');
+					num += 50;
+					ha.innerHTML = num;
+				}
+				else {
+					console.log('left');
+					num -= 50;
+					ha.innerHTML = num;
+				}
+			}, 50);
+		}, false);
+
+		ha.addEventListener('touchcancel', function() {
+			console.log('cancel');
+		}, false);
+
+		function markPoint(e) {
+			console.log('move');
+			var touch = e.touches[0];
+			e_position.x = touch.pageX;
+			e_position.y = touch.pageY;
+		};
+	</script>
+</body>
+</html>
