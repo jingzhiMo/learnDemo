@@ -7,15 +7,19 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   padding: 0;
 }
 
+#reg-box .change-tab, #login-box .change-tab {
+  float: right;
+}
+
 #hd .title, #hd .back-link {
   text-align: center;
 }
 
-.hide {
+.hide, #login-box {
   display: none;
 }
 
-#reg-box .ipt {
+#reg-box .ipt, #login-box .ipt {
   box-sizing: border-box;
 }
 
@@ -85,10 +89,10 @@ body {
   background-color: #eee;
 }
 
-#reg-box {
+#reg-box, #login-box {
   padding: 0 12px;
 }
-#reg-box .notice {
+#reg-box .notice, #login-box .notice {
   padding-left: 18px;
   line-height: 24px;
   font-size: 1.4rem;
@@ -96,26 +100,26 @@ body {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeZJREFUeNq8lk1LAlEUho+DSJEhuGjRF9hGEAolghJjFpG5CgqF2gRt+wUFLoX2Qb+hwCioVQaRJLgSg0CKWhVKJQiCYWhF5wwzMQ2j917NeeGFw3jPebjer2Orh0eBQ5PoFfQiuh/tV7/foOvoC/RJ3/nzLauQjQEkyC7aC3y6R8cRfCQKHEcfouegM2XRawh+Mv4gmQyW0fkuYKDm5j+WxmQWkAak0G7oXlQjZYTqgR50Eu1oV0WamgXH3pliihmiWkmEeszW8BodYlY4yIHkHlLi78obNNaneWabwfWc188wygNTElSYMWYohLOM6oEJ6L0SGlAWOGfdyEsbiIARsE4RqcvzJnw+CeizEOgjoMtCoEsCi0XAqkhC86VkGnOqSsCCSEZxewua5VfFFAuqYFefEpk3Y/AhC3czE0o8POIEcDqEni26Swl2ZdESLtBfmlZfar5FF3st/nQDeIFfars0zptl39kHyetXTLGA4vrLm3qQDE/WV+PTNGatndbn6M/hJrrcg11KNTdaNVFai9Fy673XGlAq1n536UD7XdpAh3F26XZdG0GP/6GvqaBX9bBWXRsNCKjns1NRbsAIawUkUT8ZRMfQjwIgGhtDUNCsJ+XpvDVRp7TMaPVPEZJjFfoRYABVdpdocs7cXQAAAABJRU5ErkJggg==") no-repeat 0 5px;
   background-size: 14px;
 }
-#reg-box .ipt-box {
+#reg-box .ipt-box, #login-box .ipt-box {
   margin-bottom: 10px;
   padding: 15px;
   border: 1px solid #dbdbdb;
   background-color: #fff;
 }
-#reg-box .ipt-desc {
+#reg-box .ipt-desc, #login-box .ipt-desc {
   display: inline-block;
   width: 50px;
   line-height: 14px;
   font-size: 1.4rem;
   color: #222;
 }
-#reg-box .ipt {
+#reg-box .ipt, #login-box .ipt {
   display: inline-block;
   padding-left: 10px;
   width: calc(100% - 55px);
   font-size: 1.4rem;
 }
-#reg-box .submit {
+#reg-box .submit, #login-box .submit {
   width: 100%;
   line-height: 40px;
   font-size: 1.6rem;
@@ -124,9 +128,16 @@ body {
   border: 1px solid #57c4cf;
   border-radius: 5px;
 }
-#reg-box .submit[disabled="disabled"] {
+#reg-box .submit[disabled="disabled"], #login-box .submit[disabled="disabled"] {
   background-color: #a6e0e6;
   border: 1px solid #a6e0e6;
+}
+#reg-box .change-tab, #login-box .change-tab {
+  display: inline-block;
+  margin-top: 10px;
+  color: #57c4cf;
+  font-size: 1.3rem;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=register.css.map */

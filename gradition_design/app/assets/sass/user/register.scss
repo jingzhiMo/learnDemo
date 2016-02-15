@@ -7,7 +7,7 @@
 body {
 	background-color: #eee;
 }
-#reg-box {
+#reg-box, #login-box {
 	padding: 0 12px;
 	.notice {
 		padding-left: 18px;
@@ -53,4 +53,15 @@ body {
 		background-color: lighten($maClr, 20);
 		border: 1px solid lighten($maClr, 20);
 	}
+	.change-tab {
+		@extend %rh;
+		display: inline-block;
+		margin-top: 10px;
+		color: $maClr;
+		font-size: 1.3rem;
+		text-decoration: underline;
+	}
+}
+#login-box {
+	@extend %hide;
 }
