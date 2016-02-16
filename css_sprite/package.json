@@ -1,0 +1,15 @@
+{
+  "name": "css_sprite",
+  "version": "1.0.0",
+  "description": "css sprite tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mojingzhi",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt-css-sprite": "^0.2.2",
+    "grunt-spritesmith": "^6.3.0"
+  }
+}
