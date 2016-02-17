@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="accountMD">
 <head>
 	<title>注册账号</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/user/register.css">
+	<link rel="stylesheet" href="assets/css/user/account.css">
 	<link rel="shortcut icon" href="../favicon.ico" />
 </head>
 <body>
@@ -26,11 +26,11 @@
 				<label class="ipt-desc">密码:</label>
 				<input class="ipt" type="password" placeholder="6-12位、数字，字母，下划线,横杠(-)">
 			</div>
-			<button class="submit btn" disabled="disabled">注册</button>
+			<button class="reg-submit btn" disabled="disabled">注册</button>
 		</form>
 		<a href="#" class="change-tab">切换到 登录</a>
 	</section>
-	<section id="login-box">
+	<section id="login-box" ng-controller="login">
 		<p class="notice">账号或密码不正确</p>
 		<form action="" id="login">
 			<div class="ipt-box phone">
@@ -41,9 +41,12 @@
 				<label class="ipt-desc">密码:</label>
 				<input class="ipt" type="password" placeholder="请输入您的密码">
 			</div>
-			<button class="submit btn" disabled="disabled">登录</button>
+			<button class="login-submit btn" disabled="disabled">登录</button>
 		</form>
-		<a href="#" class="change-tab">切换到 注册</a>
+		<a href="#" class="change-tab" ng-click="click()">切换到 注册</a>
 	</section>
+
+	<script src="assets/scripts/public/ng/angular.js"></script>
+	<script src="assets/scripts/user/account.js"></script>
 </body>
 </html>

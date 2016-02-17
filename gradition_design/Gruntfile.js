@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		path: {
 			assets: {
 				index:   './app/assets/',
-				scripts: './app/assets/scripts/',
+				scripts: 'app/assets/scripts/',
 				sass:    './app/assets/sass/',
 				css:     './app/assets/css/'
 			},
@@ -72,22 +72,26 @@ module.exports = function(grunt) {
 		jshint: {
 			// front-end
 			fe: {
-				files: [
-					'<%= path.assets.scripts %>*/*.js',
-				],
+				files: {
+					src: [
+						'<%= path.assets.scripts %>*/*.js',
+						'<%= path.assets.scripts %>*/*/*.js',
+						'!<%= path.assets.scripts %>public/ng/*.js'
+					]
+				},
 				options: {
-					eqeqeq: true,
-					curly: true,
-					newcap: true,
-					sub: true,
-					undef: true,
-					boss: true,
-					globals: {
-						window: true,
-						document: true,
-						console: true,
-						angular: true
-					}
+					eqeqeq: true
+					// curly: true,
+					// newcap: true,
+					// sub: true,
+					// undef: true,
+					// boss: true,
+					// globals: {
+					// 	window: true,
+					// 	document: true,
+					// 	console: true,
+					// 	angular: true
+					// }
 				}
 			},
 			// back-end
