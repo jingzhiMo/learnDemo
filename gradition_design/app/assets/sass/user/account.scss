@@ -29,7 +29,7 @@ body {
 	}
 	.ipt-desc {
 		display: inline-block;
-		width: 50px;
+		width: 60px;
 		line-height: 14px;
 		font-size: 1.4rem;
 		color: #222;
@@ -38,7 +38,7 @@ body {
 		@extend %br-box;
 		display: inline-block;
 		padding-left: 10px;
-		width: calc(100% - 55px);
+		width: calc(100% - 65px);
 		font-size: 1.4rem;
 	}
 	.phone {
@@ -66,6 +66,6 @@ body {
 		text-decoration: underline;
 	}
 }
-#reg-box {
+#login-box {
 	@extend %hide;
 }
