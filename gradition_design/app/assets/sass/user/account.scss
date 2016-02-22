@@ -10,7 +10,8 @@ body {
 #reg-box, #login-box {
 	padding: 0 12px;
 	.notice {
-		@extend %hide;
+		// @extend %hide;
+		margin-top: 10px;
 		padding-left: 18px;
 		line-height: 24px;
 		font-size: 1.4rem;

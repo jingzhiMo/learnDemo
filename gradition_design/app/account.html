@@ -15,12 +15,12 @@
 	</section>
 	<section id="reg-box">
 		<p class="notice">
-			账号已经被注册了哟
+			{{noticTips}}
 		</p>
 		<form action="" id="reg">
 			<div class="ipt-box phone">
 				<label class="ipt-desc">手机号:</label>
-				<input class="ipt" type="text" ng-model="regPhone" placeholder="填写手机号，其他用户不可见" maxlength="11">
+				<input class="ipt" type="text" ng-model="regPhone" ng-blur="checkPhone(regPhone);" placeholder="填写手机号，其他用户不可见" maxlength="11">
 			</div>
 			<div class=" ipt-box pwd">
 				<label class="ipt-desc">密码:</label>
