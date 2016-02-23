@@ -7,16 +7,14 @@
 	<link rel="stylesheet" href="assets/css/user/account.css">
 	<link rel="shortcut icon" href="../favicon.ico" />
 </head>
-<body ng-controller="accountCtrl">
+<body ng-controller="accountCtrl" ng-init="tipShow = true">
 	<section id="hd">
 		<a href="#" class="back-link"></a>
 		<h1 class="title">注册账号</h1>
 		<a href="#" class="home-link"></a>
 	</section>
 	<section id="reg-box">
-		<p class="notice">
-			{{noticTips}}
-		</p>
+		<p class="notice" ng-show="tipShow" ng-model="noticTips">123</p>
 		<form action="" id="reg">
 			<div class="ipt-box phone">
 				<label class="ipt-desc">手机号:</label>
@@ -24,11 +22,11 @@
 			</div>
 			<div class=" ipt-box pwd">
 				<label class="ipt-desc">密码:</label>
-				<input class="ipt" type="password" ng-model="regPwd" placeholder="6-12位、数字，字母，下划线,横杠(-)">
+				<input class="ipt" type="password" ng-model="regPwd" ng-blur="checkPwd(regPwd)" placeholder="6-12位、数字，字母，下划线">
 			</div>
 			<div class=" ipt-box pwd">
 				<label class="ipt-desc">确认密码:</label>
-				<input class="ipt" type="password" ng-model="confPwd" placeholder="6-12位、数字，字母，下划线,横杠(-)">
+				<input class="ipt" type="password" ng-model="confPwd" ng-blur="confirmPwd(regPwd, confPwd)" placeholder="6-12位、数字，字母，下划线">
 			</div>
 			<button class="reg-submit btn" disabled="disabled">注册</button>
 		</form>

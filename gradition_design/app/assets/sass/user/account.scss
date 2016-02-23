@@ -54,7 +54,7 @@ body {
 		border: 1px solid $maClr;
 		border-radius: 5px;
 	}
-	.btn[disabled="disabled"] {
+	.btn.disabled {
 		background-color: lighten($maClr, 20);
 		border: 1px solid lighten($maClr, 20);
 	}
