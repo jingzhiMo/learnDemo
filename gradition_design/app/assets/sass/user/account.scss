@@ -10,7 +10,6 @@ body {
 #reg-box, #login-box {
 	padding: 10px 12px;
 	.notice {
-		// @extend %hide;
 		margin-top: 10px;
 		padding-left: 18px;
 		line-height: 24px;
@@ -67,6 +66,6 @@ body {
 		text-decoration: underline;
 	}
 }
-#login-box {
-	@extend %hide;
-}
+// #reg-box, #login-box {
+// 	@extend %hide;
+// }

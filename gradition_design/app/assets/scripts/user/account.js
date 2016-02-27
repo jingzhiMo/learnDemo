@@ -1,17 +1,23 @@
-;(function(win, doc, ng) {
-	var app = angular.module('app', []);
+;(function(win, doc, ng, GP) {
+	var app = ng.module('app', []);
 
 	app.controller('accountCtrl', ['$scope', function($scope){
 		// init
-		$scope.noticTips = '';		  // 提示语的内容
-		$scope.isShow = false;        // 提示语是否显示
-		$scope.isDisabled = false;    // 是否可以点击提交
+		$scope.title     = '登录账户'; // 页面标题
+		$scope.noticTips = '';		   // 提示语的内容
+		$scope.isShow = false;         // 提示语是否显示
+		$scope.isDisabled = false;     // 是否可以点击提交
+		$scope.showLogin = true;       // 展示登录视图，与注册视图展示互斥
 
-		var submitArr = [0, 0, 0];    // 三个输入是否正确性的数组
+		var submitArr = [0, 0, 0],    // 三个输入是否正确性的数组
 			tipArr = [                // 提示语内容
 				'手机号码不正确或者已经被注册',
 				'密码不正确，6-12位、数字，字母，下划线,横杠(-)',
 				'两次输入的密码不正确'
+			],
+			pageTitle = [
+				'注册账户',
+				'登录账户'
 			];
 
 		/**
@@ -32,6 +38,7 @@
 			}
 		};
 
+
 		/**
 		 *  =check password
 		 *  @about    检查输入密码是否正确
@@ -49,6 +56,7 @@
 				$scope.isShow = true;
 			}
 		};
+
 
 		/**
 		 *  =confirm password
@@ -69,6 +77,7 @@
 			}
 		};
 
+
 		/**
 		 *  =check register form
 		 *  @about    检查注册的表单提交是否正确
@@ -87,5 +96,35 @@
 			ev.preventDefault();
 			ev.stopPropagation();
 		};
+
+
+		/**
+		 *  =check login form
+		 *  @about    检查输入账号密码是否正确
+		 *
+		 *  @param    {number}  phone  手机号码
+		 *  @param    {string}  pwd    密码
+		*/
+		$scope.checkLogin = function(phone, num) {
+			if ( !true ) {
+				alert('haha');
+			}
+			else {
+				$scope.isShow = true;
+				$scope.noticTips = '用户名或者密码不正确';
+			}
+			GP.util.stopProAndPreventDafault();
+		};
+
+
+		/**
+		 *  =switch view
+		 *  @about    登录与注册视图之间的切换
+		 */
+		$scope.switchView = function(ev) {
+			$scope.showLogin = !$scope.showLogin;
+			$scope.isShow = false;
+			GP.util.stopProAndPreventDafault(ev);
+		};
 	}]);
-}(window, document, angular));
+}(window, document, angular, GP));
