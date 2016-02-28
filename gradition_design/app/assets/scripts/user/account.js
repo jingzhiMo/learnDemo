@@ -1,7 +1,6 @@
-var app = angular.module('app', ['eventMD']);
-var mymodule = angular.module('mymodule', []);
+var app = angular.module('app', ['eventMD', 'pageMD']);
 
-app.controller('accountCtrl', ['$scope', 'event', function($scope, event){
+app.controller('accountCtrl', ['$scope', 'event', 'history', function($scope, event, history){
 	// init
 	$scope.title     = '登录账户'; // 页面标题
 	$scope.noticTips = '';		   // 提示语的内容

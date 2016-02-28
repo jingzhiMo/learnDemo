@@ -151,7 +151,8 @@ module.exports = function(grunt) {
 			// js 变化，语法检查
 			instinctJs: {
 				files: [
-					'<%= path.assets.scripts %>*/*.js'
+					'<%= path.assets.scripts %>*/*.js',
+					'<%= path.assets.scripts %>*/*/*.js'
 				],
 				tasks: [
 					'jshint'

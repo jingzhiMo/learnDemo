@@ -8,10 +8,10 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
 </head>
 <body ng-controller="accountCtrl">
-	<section id="hd">
-		<a href="#" class="back-link"></a>
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="historyBack()"></a>
 		<h1 class="title" ng-bind="title"></h1>
-		<a href="#" class="home-link"></a>
+		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
 	<section id="reg-box" ng-show="!showLogin">
 		<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
@@ -50,6 +50,7 @@
 	
 	<script src="assets/scripts/public/ng/angular.js"></script>
 	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
 	<script src="assets/scripts/user/account.js"></script>
 </body>
 </html>
