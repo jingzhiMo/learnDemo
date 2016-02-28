@@ -10,11 +10,11 @@
 <body ng-controller="accountCtrl">
 	<section id="hd">
 		<a href="#" class="back-link"></a>
-		<h1 class="title" ng-model="title">{{title}}</h1>
+		<h1 class="title" ng-bind="title"></h1>
 		<a href="#" class="home-link"></a>
 	</section>
 	<section id="reg-box" ng-show="!showLogin">
-		<p class="notice" ng-show="isShow">{{noticTips}}</p>
+		<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
 		<form action="" id="reg">
 			<div class="ipt-box phone">
 				<label class="ipt-desc">手机号:</label>
@@ -33,7 +33,7 @@
 		<a href="#" class="change-tab" ng-click="switchView($event)">切换到 登录</a>
 	</section>
 	<section id="login-box" ng-show="showLogin">
-		<p class="notice" ng-show="isShow">{{noticTips}}</p>
+		<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
 		<form action="" id="login">
 			<div class="ipt-box phone">
 				<label class="ipt-desc" maxlength="11">手机号:</label>
