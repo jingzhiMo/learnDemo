@@ -9,7 +9,7 @@
 </head>
 <body ng-controller="accountCtrl">
 	<section id="hd" ng-controller="pageHdCtrl">
-		<a href="#" class="back-link" ng-click="historyBack()"></a>
+		<a href="#" class="back-link" ng-click="back()"></a>
 		<h1 class="title" ng-bind="title"></h1>
 		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
@@ -30,7 +30,7 @@
 			</div>
 			<button class="reg-submit btn" ng-class="{true: 'disabled', false: ''}" ng-disabled="isDisabled" ng-click="checkReg($event)">注 册</button>
 		</form>
-		<a href="#" class="change-tab" ng-click="switchView($event)">切换到 登录</a>
+		<a href="#login" class="change-tab" ng-click="switchView($event)">切换到 登录</a>
 	</section>
 	<section id="login-box" ng-show="showLogin">
 		<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
@@ -43,9 +43,9 @@
 				<label class="ipt-desc">密码:</label>
 				<input class="ipt" type="password" ng-model="logPwd" placeholder="请输入您的密码">
 			</div>
-			<button class="login-submit btn" ng-click="checkLogin(logPhone, logPwd)">登录</button>
+			<button class="login-submit btn" ng-click="checkLogin(logPhone, logPwd, $event)">登录</button>
 		</form>
-		<a href="#" class="change-tab" ng-click="switchView($event)">切换到 注册</a>
+		<a href="#register" class="change-tab" ng-click="switchView($event)">切换到 注册</a>
 	</section>
 	
 	<script src="assets/scripts/public/ng/angular.js"></script>

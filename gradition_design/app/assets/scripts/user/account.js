@@ -92,8 +92,7 @@ app.controller('accountCtrl', ['$scope', 'event', 'history', function($scope, ev
 		else { // 填写正确
 			alert('表单填写正确');
 		}
-		ev.preventDefault();
-		ev.stopPropagation();
+		event.stopProAndPreventDafault(ev);
 	};
 
 
@@ -103,8 +102,9 @@ app.controller('accountCtrl', ['$scope', 'event', 'history', function($scope, ev
 	 *
 	 *  @param    {number}  phone  手机号码
 	 *  @param    {string}  pwd    密码
+	 *  @param    {object}  ev     事件处理对象
 	*/
-	$scope.checkLogin = function(phone, num) {
+	$scope.checkLogin = function(phone, num, ev) {
 		if ( !true ) {
 			alert('haha');
 		}
@@ -112,7 +112,7 @@ app.controller('accountCtrl', ['$scope', 'event', 'history', function($scope, ev
 			$scope.isShow = true;
 			$scope.noticTips = '用户名或者密码不正确';
 		}
-		GP.util.stopProAndPreventDafault();
+		event.stopProAndPreventDafault(ev);
 	};
 
 

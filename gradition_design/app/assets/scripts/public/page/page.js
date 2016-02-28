@@ -23,6 +23,14 @@ angular.module('pageMD', [])
 			}
 		};
 	})
-	.controller('pageHdCtrl', ['$scope', function($scope){
+	.controller('pageHdCtrl', ['$scope', 'history', function($scope, history){
 		$scope.homeLink = '/app/index.html';
+
+		/**
+		 *  =back
+		 *  @about    后退
+		 */
+		$scope.back = function() {
+			history.historyBack();
+		};
 	}]);
