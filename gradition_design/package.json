@@ -2,7 +2,7 @@
   "name": "gradition-design",
   "version": "1.0.0",
   "description": "毕业设计-喵喵团",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
