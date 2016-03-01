@@ -1,4 +1,4 @@
-var AccountModel = require('../model/accountModel');
+var AccountModel = require('../model/accountModel').AccountModel;
 
 module.exports = {
 	login: function(req, res) {
@@ -13,7 +13,6 @@ module.exports = {
 				accountLogin(err, data, res);
 			}
 		);
-		res.send(req.query);
 	},
 	register: function(req, res) {
 
@@ -29,12 +28,16 @@ module.exports = {
  *  @param   {object}  res      响应处理对象
  */
 function accountLogin(err, data, res) {
+	var result;
+
 	if ( err ) { // 查询数据库出错
-		res.send({c: -1});
-		return;
+		result = {c: -500};
 	}
-	else { // 有该用户
-		res.send({c: 0});
-		return;
+	else if ( data.length ){ // 有该用户
+		result = {c: 0};
 	}
+	else { // 没有该用户
+		result = {c: -404};
+	}
+	res.send(JSON.stringify(result));
 }

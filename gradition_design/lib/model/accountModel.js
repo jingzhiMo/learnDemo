@@ -9,4 +9,4 @@ var _Account = new Schema({
 	password: String
 });
 
-exports.Account = mongo.model('Account', _Account);
+exports.AccountModel = mongo.model('Account', _Account, 'account'); // account 是集合的名称
