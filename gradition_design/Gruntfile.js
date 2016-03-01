@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		path: {
 			assets: {
 				index:   './app/assets/',
-				scripts: 'app/assets/scripts/',
+				scripts: './app/assets/scripts/',
 				sass:    './app/assets/sass/',
 				css:     './app/assets/css/'
 			},
@@ -23,6 +23,11 @@ module.exports = function(grunt) {
 				index:   './app/dist/',
 				scripts: './app/dist/scripts/',
 				css:     './app/dist/css/'
+			},
+			lib: {
+				index:   './lib/',
+				model:   './lib/model/',
+				router:  './lib/router/'
 			}
 		},
 
@@ -80,24 +85,30 @@ module.exports = function(grunt) {
 					]
 				},
 				options: {
-					eqeqeq: true
-					// curly: true,
-					// newcap: true,
-					// sub: true,
-					// undef: true,
-					// boss: true,
-					// globals: {
-					// 	window: true,
-					// 	document: true,
-					// 	console: true,
-					// 	angular: true
-					// }
+					eqeqeq: true,
+					curly: true,
+					newcap: true,
+					sub: true,
+					undef: true,
+					boss: true,
+					globals: {
+						window: true,
+						document: true,
+						console: true,
+						angular: true,
+						alert:   true,
+						module:  true,
+						history: true
+					}
 				}
 			},
 			// back-end
 			be: {
 				files: [{
-
+					src: [
+						'*.js',
+						'<%= path.lib.index %>*/*.js'
+					]
 				}],
 				options: {
 					eqeqeq: true,
@@ -151,8 +162,10 @@ module.exports = function(grunt) {
 			// js 变化，语法检查
 			instinctJs: {
 				files: [
+					'*.js',
 					'<%= path.assets.scripts %>*/*.js',
-					'<%= path.assets.scripts %>*/*/*.js'
+					'<%= path.assets.scripts %>*/*/*.js',
+					'<%= path.lib.index %>*/*.js'
 				],
 				tasks: [
 					'jshint'
