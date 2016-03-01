@@ -9,11 +9,20 @@ mongo.connect('mongodb://localhost/test');
 var app = express();
 
 app.get('/init', function(req, res) {
-	var user = new User({
-		name: 'testname',
-		password: 'testpwd'
+	// var user = new User({
+	// 	name: 'testname2',
+	// 	password: 'testpwd3'
+	// });
+	// user.save();
+	User.find({name: 'testname', password: 'testpwd'}, function(err, result) {
+		if ( err ) {
+			console.log('db check error');
+			return;
+		}
+		res.send(result);
 	});
-	user.save();
-	res.send('data init');
+	
 });
-app.listen(3000);
+app.listen(3000, function() {
+	console.log('server is running');
+});
