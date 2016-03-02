@@ -9,6 +9,7 @@
   "author": "mojingzhi",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.15.0",
     "bower": "^1.7.1",
     "express": "^4.13.4",
     "grunt-contrib-clean": "^0.7.0",
