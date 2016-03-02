@@ -22,9 +22,22 @@ angular.module('eventMD', [])
 			 */
 			move: function(ele) {
 				var startX = 0;
+
 				ele.addEventListener('touchstart', function(ev) {
 					startX = ev.touches[0].pageX;
-				});
+				}, false);
+
+				ele.addEventListener('touchmove', throttle(function(ev) {
+						var moveX     = ev.touches[0].pageX,
+							distanceX = moveX - startX;
+
+						ele.style = 'transform: (' + distanceX + 'px, 0px, 0px)';
+					}, 50, 100), 
+				false);
+
+				ele.addEventListener('touchend', function(ev) {
+					// TODO
+				}, false);
 			}
 		};
 	});
@@ -39,9 +52,9 @@ angular.module('eventMD', [])
  */
 function throttle(fn, delay, mustRun) {
 	var timer   = null,
-		mustRun = mustRun || 100,
 		t_start = 0;
 
+	mustRun = mustRun || 100;
 	return function() {
 		var args = arguments;
 
@@ -62,5 +75,5 @@ function throttle(fn, delay, mustRun) {
 				fn.apply(context, args);
 			}
 		}, delay);
-	}
+	};
 }
