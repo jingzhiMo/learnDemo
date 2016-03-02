@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/user/account.css">
-	<link rel="shortcut icon" href="../favicon.ico" />
+	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body ng-controller="accountCtrl">
 	<section id="hd" ng-controller="pageHdCtrl">
@@ -36,8 +36,8 @@
 		<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
 		<form action="" id="login">
 			<div class="ipt-box phone">
-				<label class="ipt-desc" maxlength="11">手机号:</label>
-				<input class="ipt" type="text" ng-model="logPhone" placeholder="手机号">
+				<label class="ipt-desc">手机号:</label>
+				<input class="ipt" type="text" ng-model="logPhone" placeholder="手机号" maxlength="11">
 			</div>
 			<div class=" ipt-box pwd">
 				<label class="ipt-desc">密码:</label>

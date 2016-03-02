@@ -1,5 +1,6 @@
 var express = require('express'),
 	mongo   = require('mongoose'),
+	session = require('express-session'),
 	config  = require('./config'),
 	router  = require('./lib/router/router');
 
@@ -7,7 +8,10 @@ var app = express();
 
 // 部署前端资源
 app.use(express.static('app'))
-   .use(express.static('favicon.ico'));
+   .use(session({
+   		secret: 'keyboard cat',
+   		maxAge: 10 * 1000 // session 时长为30分钟
+   }));
 
 // 监听端口
 var server = app.listen(3000, function() {

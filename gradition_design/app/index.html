@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="indexApp">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
 	<title>喵喵团 更优质的团购网站</title>
-	<link rel="shortcut icon" href="../favicon.ico" />
+	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="assets/css/index/index.css">
 </head>
-<body ontouchstart="">
+<body ontouchstart="" controller="indexCtrl">
 	<header id="hd">
 		<a href="#" id="geo-city">广州<i class="city"></i></a>
 		<h1 id="title">喵喵团</h1>
@@ -58,7 +58,7 @@
 		</form>
 	</section>
 	<section id="catalog">
-		<ul class="catg-box">
+		<!-- <ul class="catg-box">
 			<li class="menu">
 				<a href="##" class="menu-item">
 					<div class="bgimg meishi"></div>
@@ -127,7 +127,8 @@
 					<span class="text">更多分类</span>
 				</a>
 			</li>
-		</ul>
+		</ul> -->
+		<catalog></catalog>
 		<div class="points-box">
 			<i class="point active"></i><i class="point"></i>
 		</div>
@@ -245,5 +246,8 @@
 		</section>
 		<div class="top"></div>
 	</footer>
+	<script src="assets/scripts/public/ng/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/index/index.js"></script>
 </body>
 </html>
