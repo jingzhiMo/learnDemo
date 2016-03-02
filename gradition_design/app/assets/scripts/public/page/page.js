@@ -24,7 +24,7 @@ angular.module('pageMD', [])
 		};
 	})
 	.controller('pageHdCtrl', ['$scope', 'history', function($scope, history){
-		$scope.homeLink = '/app/index.html';
+		$scope.homeLink = '/';
 
 		/**
 		 *  =back

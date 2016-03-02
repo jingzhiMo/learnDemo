@@ -20,12 +20,16 @@ module.exports = {
 				res.status(500).send('mongodb find error');
 			}
 			else if ( code === 0 ) { // 不存在该用户
-				addNewAccount({
-					ID: 10,
-					phone: req.body.phone,
-					username: req.body.username,
-					password: req.body.password
-				}, res);
+				calcAccountLen( function(ID) {
+
+					addNewAccount({
+						ID: ID,
+						phone: req.body.phone,
+						username: req.body.username,
+						password: req.body.password
+					}, res);
+					
+				});
 			}
 			else {
 				res.send({
@@ -34,6 +38,9 @@ module.exports = {
 				});
 			}
 		});
+	},
+	checkNewAccount: function(req, res) {
+		checkNewAccount(req.query.phone, function() {}, res);
 	}
 };
 
@@ -57,7 +64,7 @@ function accountLogin(err, data, res) {
 	else { // 没有该用户
 		result = {c: -404};
 	}
-	res.send(JSON.stringify(result));
+	res.send(result);
 	return;
 }
 
@@ -129,5 +136,23 @@ function addNewAccount(accountMsg, res) {
 			c: 0,
 			token: '1'
 		});
+	});
+}
+
+
+/**
+ *  =calulate account
+ *  @about    计算用户的数量
+ *
+ *  @param    {function}  fun  计算成功后调用的函数
+ */
+function calcAccountLen(fun) {
+	AccountModel.find({}, function(err, data) {
+		if ( err ) {
+			console.log('计算用户数量出错');
+			res.status(500).send();
+			return;
+		}
+		fun(data.length);
 	});
 }
