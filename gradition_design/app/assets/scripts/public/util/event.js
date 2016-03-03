@@ -72,14 +72,15 @@ angular.module('eventMD', [])
  */
 var timer = null;
 function throttle(fn, delay, mustRun) {
-	// var timer   = null,
 	var t_start = 0;
 
 	mustRun = mustRun || 100;
 	return function() {
 		var args = arguments;
 
-		timer && clearTimeout(timer);
+		if ( timer ) {
+			clearTimeout(timer);
+		}
 		timer = setTimeout(function() {
 			var context = this,
 				t_curr  = +new Date();

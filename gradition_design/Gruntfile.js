@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 					curly: true,
 					newcap: true,
 					sub: true,
-					undef: true,
+					// undef: true,
 					boss: true,
 					globals: {
 						window: true,
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
 					curly: true,
 					newcap: true,
 					sub: true,
-					undef: true,
+					// undef: true,
 					boss: true,
 					globals: {
 

@@ -108,7 +108,9 @@ function checkNewAccount(phone, fun, res) {
 
 			// 执行回调函数，需要响应的话，就把响应结果返回
 			fun(code);
-			res && res.send(result);
+			if ( res ) {
+				res.send(result);
+			}
 		}
 	);
 }
