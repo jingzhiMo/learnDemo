@@ -26,7 +26,7 @@ gradition-gp
             useTime: { // 具体时间，精确到时、分 object
             	start: 0, // 开始时间  number
                 end: 0,   // 结束时间  number
-                else: ['', ''] // 其他使用提示语，提示语为 string
+                other: ['', ''] // 其他使用提示语，提示语为 string
             },
             book: [''], // array 预约提示语 string
             rule: [''], // 使用规则，数组的元素为 string

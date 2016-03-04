@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品页</title>
+	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+	<style>
+		body {
+			background-color: #f0f0f0;
+		}
+		#hd {
+			text-align: center;
+			padding-top: 15px;
+		}
+		.content {
+			padding: 0 12px;
+		}
+		.content.show {
+			display: block;
+		}
+		.content.hide {
+			display: block;
+		}
+		p {
+			font-weight: bold;
+		}
+		.mr-10 {
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<header id="hd">
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default" ng-class="{'add': 'btn-primary', 'modify': '', 'delete': ''}[pageView]" ng-click="changeView('add', $event)">新增商品</button>
+			<button type="button" class="btn btn-default" ng-class="{'add': '', 'modify': 'btn-primary', 'delete': ''}[pageView]" ng-click="changeView('modify', $event)">修改商品</button>
+			<button type="button" class="btn btn-default" ng-class="{'add': '', 'modify': '', 'delete': 'btn-primary'}[pageView]" ng-click="changeView('delete', $event)">删除商品</button>
+		</div>
+	</header>
+	<section class="content" ng-class="{'add': 'show', 'modify': 'hide', 'delete': 'hide'}[pageView]" ng-controller="add">
+		<h1>商品录入</h1>
+		<form action="/shopAdd" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="name">商品名称</label>
+				<input type="text" class="form-control" id="name" ng-model="name" placeholder="请输入商品的全称" require>
+			</div>
+			<div class="form-group">
+				<label for="place">描述</label>
+				<input type="text" class="form-control" id="place" ng-model="desc" placeholder="简单描述一下商品" require>
+			</div>
+			<div class="form-group">
+				<label>
+					旧的价格
+					<input type="text" ng-model="oldPrice" class="form-control">
+				</label>
+				<label>
+					当前的价格
+					<input type="text" ng-model="currPrice" class="form-control">
+				</label>
+			</div>
+			<div class="form-group">
+				<p>商品类型</p>
+				<select name="selectShop" ng-model="type" class="form-control">
+					<option value="1">代金券</option>
+					<option value="2">套餐</option>
+					<option value="3">N选M</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<p>选择商店</p>
+				<input type="text" class="form-control" placeholder="输入关键字">
+				<p>筛选后的商店</p>
+				<select name="select-shop" class="form-control" ng-model="shopID">
+					<option value="default">请选择商店</option>
+					<option value="bfc">肯德基</option>
+					<option value="bsk">必胜客</option>
+					<option value="mdl">麦当劳</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>活动开始时间</label>
+				<input type="text" class="form-control" ng-model="startDate" placeholder="2016-01-01 格式">
+				<label>活动结束时间</label>
+				<input type="text" class="form-control" ng-model="endDate" placeholder="2016-01-01 格式">
+				<label>营业时间</label>
+				<input type="text" class="form-control" ng-model="openTime" placeholder="10:08 格式">
+				<label>时间段提醒</label>
+				<input type="text" class="form-control" ng-model="timeTip" placeholder="可选">
+			</div>
+			<div class="form-group">
+				<label>预约提示语</label>
+				<input type="text" class="form-control" ng-model="book1" placeholder="预约提示语1（可选）">
+				<input type="text" class="form-control mr-10" ng-model="book2" placeholder="预约提示语2（可选）">
+				<input type="text" class="form-control mr-10" ng-model="book3" placeholder="预约提示语3（可选）">
+			</div>
+			<div class="form-group">
+				<p>使用规则</p>
+				<input type="text" class="form-control" ng-mode="rule1" placeholder="使用规则1">
+				<input type="text" class="form-control mr-10" ng-mode="rule2" placeholder="使用规则2">
+				<input type="text" class="form-control mr-10" ng-mode="rule3" placeholder="使用规则3">
+			</div>
+			<div class="form-group">
+				<p>温馨提示</p>
+				<input type="text" class="form-control" ng-mode="other1" placeholder="温馨提示1">
+				<input type="text" class="form-control mr-10" ng-mode="other2" placeholder="温馨提示2">
+				<input type="text" class="form-control mr-10" ng-mode="other3" placeholder="温馨提示3">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary">提交</button>
+			</div>
+			<div class="form-group"></div>
+			<div class="form-group"></div>
+		</form>
+	</section>
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/good/good.js"></script>
+</body>
+</html>
