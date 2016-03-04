@@ -11,8 +11,8 @@ var _Good = new Schema({
 	oldPrice: Number,
 	currPrice:Number,
 	tips: {
-		startDate: Date,
-		endDate: Date,
+		startDate: String,
+		endDate: String,
 		useTime: {
 			start: String,
 			end: String,
@@ -26,4 +26,4 @@ var _Good = new Schema({
 	shopID: String
 });
 
-exports.GoodModel = mongo('Good', _Good, 'good'); // good 为集合的名称
+exports.GoodModel = mongo.model('Good', _Good, 'good'); // good 为集合的名称
