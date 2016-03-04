@@ -173,7 +173,12 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true
 				}
-			}
+			},
+
+			// html 变化，紧紧刷新页面
+			// html: {
+			// 	// TODO
+			// }
 		}
 
 	});
