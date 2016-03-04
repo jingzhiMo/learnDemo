@@ -19,6 +19,7 @@ gradition-gp
         goodName: '', // 商品的名字 string
         goodDesc: '', // 商品的描述 strng
         goodType: '', // 商品类型 number 1: 代金券；2. 套餐；3.N选M 套餐
+        goodImg: [], // 商品图片
         tips: {
         	startDate: 0, // 活动开始时间 number
         	endDate: 0, // 活动结束时间  number
@@ -43,6 +44,7 @@ gradition-gp
         shopName: '', // 商家的名字
         shopPlace: '', // 商家的地点
         shopPhone: 0, // 商家的电话
+        shopImg: [], //商家的图片
         isChain: true, // 是否是连锁店
         chainID: 0, // 连锁店的ID
         goodList: [

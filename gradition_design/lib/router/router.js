@@ -1,8 +1,11 @@
-var parser = require('body-parser');
-var accountRouter = require('./accountRouter');
+var parser = require('body-parser'),
+	multipart  = require('connect-multiparty');
+var accountRouter = require('./accountRouter'),
+	shopRouter = require('./shopRouter');
 
 module.exports = function(app) {
 	app.get('/login', accountRouter.login)             				  // 登录处理
 	   .get('/checkNewAccount', accountRouter.checkNewAccount)        // 检查是否新用户处理
-	   .post('/register', parser.json(), accountRouter.register);     // 注册处理
+	   .post('/register', parser.json(), accountRouter.register)      // 注册处理
+	   .post('/shopAdd', multipart(), shopRouter.add);                             // 增加商家
 };

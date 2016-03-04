@@ -8,6 +8,7 @@ var app = express();
 
 // 部署前端资源
 app.use(express.static('app'))
+   .use(express.static('bower_components'))
    .use(session({
    		secret: 'keyboard cat',
    		maxAge: 10 * 1000 // session 时长为30分钟
