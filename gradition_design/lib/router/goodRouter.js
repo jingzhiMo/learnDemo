@@ -49,7 +49,7 @@ function addNewGood(goodMsg, res) {
 				return;
 			}
 			console.log(good);
-			res.redirect('/');
+			res.send({c: 0});
 		});
 	});
 }
