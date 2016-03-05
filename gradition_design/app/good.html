@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
 	<title>商品页</title>
@@ -29,7 +29,7 @@
 		}
 	</style>
 </head>
-<body>
+<body ng-controller="all">
 	<header id="hd">
 		<div class="btn-group" role="group">
 			<button type="button" class="btn btn-default" ng-class="{'add': 'btn-primary', 'modify': '', 'delete': ''}[pageView]" ng-click="changeView('add', $event)">新增商品</button>
@@ -39,7 +39,6 @@
 	</header>
 	<section class="content" ng-class="{'add': 'show', 'modify': 'hide', 'delete': 'hide'}[pageView]" ng-controller="add">
 		<h1>商品录入</h1>
-		<form action="/shopAdd" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="name">商品名称</label>
 				<input type="text" class="form-control" id="name" ng-model="name" placeholder="请输入商品的全称" require>
@@ -71,10 +70,8 @@
 				<input type="text" class="form-control" placeholder="输入关键字">
 				<p>筛选后的商店</p>
 				<select name="select-shop" class="form-control" ng-model="shopID">
-					<option value="default">请选择商店</option>
-					<option value="bfc">肯德基</option>
-					<option value="bsk">必胜客</option>
-					<option value="mdl">麦当劳</option>
+					<option value="default" ng-selected="true">请选择商店</option>
+					<option ng-repeat="shop in shopList" value="{{shop.ID}}" ng-bind="shop.shopName"></option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -83,7 +80,7 @@
 				<label>活动结束时间</label>
 				<input type="text" class="form-control" ng-model="endDate" placeholder="2016-01-01 格式">
 				<label>营业时间</label>
-				<input type="text" class="form-control" ng-model="openTime" placeholder="10:08 格式">
+				<input type="text" class="form-control" ng-model="openTime" placeholder="10:08-21:00 格式">
 				<label>时间段提醒</label>
 				<input type="text" class="form-control" ng-model="timeTip" placeholder="可选">
 			</div>
@@ -95,22 +92,19 @@
 			</div>
 			<div class="form-group">
 				<p>使用规则</p>
-				<input type="text" class="form-control" ng-mode="rule1" placeholder="使用规则1">
-				<input type="text" class="form-control mr-10" ng-mode="rule2" placeholder="使用规则2">
-				<input type="text" class="form-control mr-10" ng-mode="rule3" placeholder="使用规则3">
+				<input type="text" class="form-control" ng-model="rule1" placeholder="使用规则1">
+				<input type="text" class="form-control mr-10" ng-model="rule2" placeholder="使用规则2">
+				<input type="text" class="form-control mr-10" ng-model="rule3" placeholder="使用规则3">
 			</div>
 			<div class="form-group">
 				<p>温馨提示</p>
-				<input type="text" class="form-control" ng-mode="other1" placeholder="温馨提示1">
-				<input type="text" class="form-control mr-10" ng-mode="other2" placeholder="温馨提示2">
-				<input type="text" class="form-control mr-10" ng-mode="other3" placeholder="温馨提示3">
+				<input type="text" class="form-control" ng-model="other1" placeholder="温馨提示1">
+				<input type="text" class="form-control mr-10" ng-model="other2" placeholder="温馨提示2">
+				<input type="text" class="form-control mr-10" ng-model="other3" placeholder="温馨提示3">
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary">提交</button>
+				<button class="btn btn-primary" ng-click="addGood();" ng-disabled="isAddDisabled">提交</button>
 			</div>
-			<div class="form-group"></div>
-			<div class="form-group"></div>
-		</form>
 	</section>
 	<script src="angular/angular.js"></script>
 	<script src="assets/scripts/good/good.js"></script>

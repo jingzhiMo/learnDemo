@@ -14,9 +14,8 @@ var _Good = new Schema({
 		startDate: String,
 		endDate: String,
 		useTime: {
-			start: String,
-			end: String,
-			other: Array
+			openTime: String,
+			other: String
 		},
 		book: Array,
 		rule: Array,

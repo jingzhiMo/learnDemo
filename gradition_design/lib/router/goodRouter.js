@@ -4,6 +4,7 @@ module.exports = {
 	add: function(req, res) {
 		var params = req.body;
 
+		// console.log(params);
 		addNewGood(params, res);
 	}
 };
@@ -21,9 +22,9 @@ function addNewGood(goodMsg, res) {
 	getGoodLen(function(len) {
 		var good = new GoodModel({
 			ID: 'g-' + len,
-			goodName: goodMsg.name,
-			goodDesc: goodMsg.desc,
-			goodType: goodMsg.type,
+			goodName: goodMsg.goodName,
+			goodDesc: goodMsg.goodDesc,
+			goodType: goodMsg.goodType,
 			goodImg: [], // TODO
 			oldPrice: goodMsg.oldPrice,
 			currPrice: goodMsg.currPrice,
@@ -31,9 +32,8 @@ function addNewGood(goodMsg, res) {
 				startDate: goodMsg.tips.startDate,
 				endDate: goodMsg.tips.endDate,
 				useTime: {
-					start: goodMsg.tips.start,
-					end: goodMsg.tips.end,
-					other: goodMsg.tips.other,
+					openTime: goodMsg.openTime,
+					other: goodMsg.timeTip,
 				},
 				book: goodMsg.book,
 				rule: goodMsg.rule,
@@ -48,7 +48,7 @@ function addNewGood(goodMsg, res) {
 				res.status(500).send('mongodb save good message error');
 				return;
 			}
-			console.log(shop);
+			console.log(good);
 			res.redirect('/');
 		});
 	});

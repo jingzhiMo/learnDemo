@@ -5,6 +5,20 @@ module.exports = {
 		var params = req.body;
 
 		addNewShop(params, res);
+	},
+	fetch: function(req, res) {
+		var params = {
+				isNull: true
+			},
+			query  = req.query;
+
+		for( var val in query ) {
+			if ( query.hasOwnProperty(val) ) {
+				params[val] = query[val];
+				params.isNull = false;
+			}
+		}
+		fetchShop(res, params);
 	}
 };
 
@@ -64,5 +78,29 @@ function getShopLen(fun) {
 		else {
 			fun(data.length);
 		}
+	});
+}
+
+
+/**
+ *  =fetch shop
+ *  @about  获取商家
+ *
+ *  @param  {object} res     响应处理对象
+ *  @param  {json}   params  商家的参数，为空则获取全部
+ */
+function fetchShop(res, params) {
+	if ( params.isNull ) { // 判断对象是否为空
+		params = {};
+	}
+	else {
+		delete(params.isNull);
+	}
+	ShopModel.find(params, function(err, data) {
+		if ( err ) {
+			res.status(500).send('fetch shop msg error');
+			return;
+		}
+		res.send(data);
 	});
 }
