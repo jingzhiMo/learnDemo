@@ -24,9 +24,8 @@ gradition-gp
         	startDate: 0, // 活动开始时间 number
         	endDate: 0, // 活动结束时间  number
             useTime: { // 具体时间，精确到时、分 object
-            	start: 0, // 开始时间  number
-                end: 0,   // 结束时间  number
-                other: ['', ''] // 其他使用提示语，提示语为 string
+            	openTime: // 营业时间 String
+                other:  // 其他使用提示语，提示语为 string
             },
             book: [''], // array 预约提示语 string
             rule: [''], // 使用规则，数组的元素为 string
