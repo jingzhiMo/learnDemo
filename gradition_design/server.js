@@ -8,6 +8,7 @@ var app = express();
 
 // 部署前端资源
 app.use(express.static('app'))
+   .use(express.static('uploads'))
    .use(express.static('bower_components'))
    .use(session({
    		secret: 'keyboard cat',
