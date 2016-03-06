@@ -38,9 +38,9 @@ function addNewShop(shopMsg, res) {
 			shopName: shopMsg.name,
 			shopPlace: shopMsg.place,
 			shopPhone: shopMsg.phone,
-			shopImg: [],
+			shopImg: shopMsg.shopImg,
 			isChain: shopMsg.isChain,
-			chainID: shopMsg.chainShop,
+			chainID: shopMsg.chainShop !== 'new' ? shopMsg.chainShop : 's-' + len,
 			goodList: [],
 			evalID: '',
 			points: {
@@ -56,8 +56,7 @@ function addNewShop(shopMsg, res) {
 				res.status(500).send('mongodb save shop message error');
 				return;
 			}
-			console.log(shop);
-			res.redirect('/');
+			res.send({c: 0});
 		});
 	});
 }
