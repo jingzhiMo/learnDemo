@@ -4,35 +4,7 @@
 	<meta charset="UTF-8">
 	<title>商家页</title>
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
-	<style>
-		body {
-			background-color: #f0f0f0;
-		}
-		#hd {
-			text-align: center;
-			padding-top: 15px;
-		}
-		.content {
-			padding: 0 12px;
-		}
-		.content.show {
-			display: block;
-		}
-		.content.hide {
-			display: block;
-		}
-		p {
-			font-weight: bold;
-		}
-		.search-msg {
-			margin-left: 12px;
-			display: inline-block;
-			width: 80%;
-		}
-		.search {
-			width: 15%;
-		}
-	</style>
+	<link rel="stylesheet" href="assets/css/shop/shop.css">
 </head>
 <body ng-controller="all">
 	<header id="hd">
@@ -44,43 +16,59 @@
 	</header>
 	<section class="content" ng-class="{'add': 'show', 'modify': 'hide', 'delete': 'hide'}[pageView]" ng-controller="add">
 		<h1>商家录入页面</h1>
-		<form action="/shopAdd" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="name">商家名称</label>
-				<input type="text" class="form-control" id="name" name="name" placeholder="请输入商家的全称" require>
-			</div>
-			<div class="form-group">
-				<label for="place">商家地点</label>
-				<input type="text" class="form-control" id="place" name="place" placeholder="地级市--县/区--街道" require>
-			</div>
-			<div class="form-group">
-				<label for="phone">商家预留电话</label>
-				<input type="text" class="form-control" id="phone" name="phone" placeholder="手机或固话" require>
-			</div>
-			<div class="form-group">
-				<p>是否是连锁商店</p>
-				<label class="radio-inline">
-					<input type="radio" name="isChain" value="true" ng-click="toggleChain()">是
-				</label>	
-				<label class="radio-inline">
-					<input type="radio" name="isChain" value="false" ng-click="toggleChain()" checked>否
-				</label>
+		<!-- <form action="/shopAdd" method="post" enctype="multipart/form-data"> -->
+		<div class="form-group">
+			<label for="name">商家名称</label>
+			<input type="text" class="form-control" id="name" ng-model="name" placeholder="请输入商家的全称" require>
 		</div>
-			<div class="form-group" ng-show="isChain">
-				<p>选择连锁商店</p>
-				<select name="chainShop" id="chainShop" class="form-control">
-					<option value="new">新建连锁店</option>
-					<option value="kfc">肯德基</option>
-					<option value="mdl">麦当劳</option>
-					<option value="bsk">必胜客</option>
-					<option value="zgf">真功夫</option>
-				</select>
+		<div class="form-group">
+			<label for="place">商家地点</label>
+			<input type="text" class="form-control" id="place" ng-model="place" placeholder="地级市--县/区--街道" require>
+		</div>
+		<div class="form-group">
+			<label for="phone">商家预留电话</label>
+			<input type="text" class="form-control" id="phone" ng-model="phone" placeholder="手机或固话" require>
+		</div>
+		<div class="form-group">
+			<p>是否是连锁商店</p>
+			<label class="radio-inline">
+				<input type="radio" value="true" ng-click="toggleChain()">是
+			</label>
+			<label class="radio-inline">
+				<input type="radio" value="false" ng-click="toggleChain()" checked>否
+			</label>
+		</div>
+		<div class="form-group" ng-show="isChain">
+			<p>选择连锁商店</p>
+			<select ng-model="chainShop" id="chainShop" class="form-control">
+				<option value="new">新建连锁店</option>
+				<option value="kfc">肯德基</option>
+				<option value="mdl">麦当劳</option>
+				<option value="bsk">必胜客</option>
+				<option value="zgf">真功夫</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<a class="btn" ng-class="{true: 'btn-info', false: 'btn-default'}[uploadFlag]" ng-click="uploadImg($event)" ng-disabled="!uploadFlag">上传图片</a>
+		</div>
+		<div class="form-group tal">
+			<div class="img-box" ng-click="imgMaskDelete(0)">
+				<input type="text" ng-model="imgList[0]">
 			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">提交</button>
+			<div class="img-box" ng-click="imgMaskDelete(1)">
+				<input type="text" ng-model="imgList[1]">
 			</div>
-			<div class="form-group"></div>
-			<div class="form-group"></div>
+			<div class="img-box" ng-click="imgMaskDelete(2)">
+				<input type="text" ng-model="imgList[2]">
+			</div>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="addShop($event)">提交</button>
+		</div>
+		<!-- </form> -->
+		<form id="imgform" name="testupload" action="/upload/img" target="javascript:;" enctype="multipart/form-data" style="display: none;">
+			<input type="file" name="upload" multiple="multiple" id="file" ng-model="fileName">
+			<input type="submit" value="Upload" id="submit">
 		</form>
 	</section>
 	<section class="content" ng-class="{'add': 'hide', 'modify': 'show', 'delete': 'hide'}[pageView]">
