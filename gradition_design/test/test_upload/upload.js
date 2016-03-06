@@ -5,10 +5,10 @@ var express = require('express'),
 
 var app = express();
 
-app.use(express.static('uploadImg.html'));
+app.use(express.static('/'));
 
 app.post('/upload/img', function(req, res) {
-  var form = new formidable.IncomingForm();
+    var form = new formidable.IncomingForm();
       //设置编辑
       form.encoding = 'utf-8';
       //设置文件存储路径
@@ -47,11 +47,15 @@ app.post('/upload/img', function(req, res) {
 app.get('/', function(req, res) {
   res.writeHead(200, {'content-type': 'text/html'});
     res.end(
-      '<form action="/upload/img" enctype="multipart/form-data" method="post">'+
+      '<button id="btn">上传图片</button>' +
+      '<form action="/upload/img" enctype="multipart/form-data" method="post" target="javascript:;" style="display:none;">'+
       '<input type="text" name="title"><br>'+
-      '<input type="file" name="upload" multiple="multiple"><br>'+
+      '<input type="file" name="upload" multiple="multiple" id="file"><br>'+
       '<input type="submit" value="Upload">'+
-      '</form>'
+      '</form>' + 
+      '<script src="angular.js"></script>' + 
+      '<script>var file = document.getElementById("file");file.addEventListener("change", function(ev) {console.log(ev);}, false);' + 
+      'var btn = document.getElementById("btn");btn.addEventListener("click", function() {file.click()}, false);</script>'
     );
 });
 

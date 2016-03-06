@@ -5,9 +5,14 @@
 	<title>测试上传图片</title>
 </head>
 <body>
-	<form action="/upload/img" enctype="multipart/form-data">
-		<input type="file" name="upload" multiple="multiple">
+	<form action="/upload/img" enctype="multipart/form-data" target="javascript:;">
+		<input type="file" name="upload" multiple="multiple" id="file">
 		<input type="submit" value="Upload">
 	</form>
+
+	<script src="angular.js"></script>
+	<script>
+		var file = document.getElementById('file');file.addEventListener('change', function(ev) {console.log(ev);}, false);
+	</script>
 </body>
 </html>
