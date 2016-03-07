@@ -4,7 +4,6 @@ module.exports = {
 	add: function(req, res) {
 		var params = req.body;
 
-		// console.log(params);
 		addNewGood(params, res);
 	}
 };
@@ -25,19 +24,20 @@ function addNewGood(goodMsg, res) {
 			goodName: goodMsg.goodName,
 			goodDesc: goodMsg.goodDesc,
 			goodType: goodMsg.goodType,
-			goodImg: [], // TODO
+			goodCont: goodMsg.goodCont,
+			goodImg: goodMsg.goodImg,
 			oldPrice: goodMsg.oldPrice,
 			currPrice: goodMsg.currPrice,
 			tips: {
 				startDate: goodMsg.tips.startDate,
 				endDate: goodMsg.tips.endDate,
 				useTime: {
-					openTime: goodMsg.openTime,
-					other: goodMsg.timeTip,
+					openTime: goodMsg.tips.useTime.openTime,
+					other: goodMsg.tips.useTime.other
 				},
-				book: goodMsg.book,
-				rule: goodMsg.rule,
-				other: goodMsg.other
+				book: goodMsg.tips.book,
+				rule: goodMsg.tips.rule,
+				other: goodMsg.tips.other
 			},
 			shopID: goodMsg.shopID,
 			evalID: ''

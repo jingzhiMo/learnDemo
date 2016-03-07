@@ -1,0 +1,89 @@
+body {
+	background-color: #f0f0f0;
+}
+#hd {
+	text-align: center;
+	padding-top: 15px;
+}
+.content {
+	padding: 0 12px;
+}
+.content.show {
+	display: block;
+}
+.content.hide {
+	display: block;
+}
+p {
+	font-weight: bold;
+}
+.mr-10 {
+	margin-top: 10px;
+}
+textarea {
+	margin-top: 10px;
+}
+.btn-disabled {
+	background-color: #eee;
+	border-color: #eee;
+	color: #fff;
+}
+.tal {
+	font-size: 0;
+	text-align: left;
+}
+.img-box {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin-right: 10px;
+	display: inline-block;
+	background: url("/assets/image/wait.jpg") center no-repeat;
+	background-size: 50px auto;
+	border: 1px solid #ccc;
+}
+.img-box img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 150px;
+	height: 150px;
+}
+.img-box:hover .mask {
+	display: block;
+	cursor: pointer;
+}
+.img-box .mask {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 150px;
+	height: 150px;
+	background-color: rgba(100, 100 ,100, 0.5);
+	z-index: 2;
+	text-align: center;
+}
+.img-box .mask::before {
+	content: "";
+	position: absolute;
+	left: 50px;
+	top: 65px;
+	width: 50px;
+	height: 2px;
+	background-color: #000;
+	transform: rotate(45deg);
+}
+.img-box .mask::after {
+	content: "";
+	position: absolute;
+	left: 50px;
+	top: 65px;
+	width: 50px;
+	height: 2px;
+	background-color: #000;
+	transform: rotate(-45deg);
+}
+.img-box input {
+	display: none;
+}
