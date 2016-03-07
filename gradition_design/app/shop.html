@@ -32,20 +32,21 @@
 		<div class="form-group">
 			<p>是否是连锁商店</p>
 			<label class="radio-inline">
-				<input type="radio" value="true" ng-click="toggleChain()">是
+				<input type="radio" name="isChain" value="true" ng-click="toggleChain()">是
 			</label>
 			<label class="radio-inline">
-				<input type="radio" value="false" ng-click="toggleChain()" checked>否
+				<input type="radio" name="isChain" value="false" ng-click="toggleChain()" checked>否
 			</label>
 		</div>
 		<div class="form-group" ng-show="isChain">
 			<p>选择连锁商店</p>
 			<select ng-model="chainShop" id="chainShop" class="form-control">
 				<option value="new">新建连锁店</option>
-				<option value="kfc">肯德基</option>
+				<!-- <option value="kfc">肯德基</option>
 				<option value="mdl">麦当劳</option>
 				<option value="bsk">必胜客</option>
-				<option value="zgf">真功夫</option>
+				<option value="zgf">真功夫</option> -->
+				<option ng-repeat="shop in shopList" value="shop.ID" ng-bind="shop.shopName"></option>
 			</select>
 		</div>
 		<div class="form-group">

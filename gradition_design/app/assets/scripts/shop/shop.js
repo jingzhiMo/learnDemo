@@ -13,7 +13,24 @@ app.controller('all', ['$scope', function($scope){
 	$scope.uploadFlag = true;
 	$scope.imgList = ['', '', ''];
 	$scope.alertMsg = '图片数量还不够';
+	$scope.shopList = [];
 
+
+	/**
+	 *  =fetch all shop
+	 *  @about  获取所有店铺
+	 */
+	$http({
+		url: '/shopFetch',
+		method: 'GET'
+	})
+	.success(function(data) {
+		$scope.shopList = data;
+	})
+	.error(function(data, status) {
+		// TODO
+		console.log('获取所有商店失败');
+	});
 
 	/**
 	 *  =toggle shop is chain
