@@ -23,6 +23,10 @@ module.exports = {
 	modify: function(req, res) {
 		var params = req.body;
 		modifyShop(params, res);
+	},
+	remove: function(req, res) {
+		console.log(req.body);
+		res.send({c: 0});
 	}
 };
 

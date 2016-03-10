@@ -292,7 +292,7 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 		clearTimeout(timer);
 		timer = setTimeout(function() {
 			$scope.searchShop();
-		}, 1500);
+		}, 1000);
 	};
 
 
@@ -529,6 +529,80 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 		return true;
 	}
 }])
-.controller('delete', ['', function($scope){
-	
+.controller('delete', ['$scope', '$http', function($scope, $http){
+	$scope.shopName = '';
+	$scope.hasSearch = false;
+	$scope.isPending = false;
+
+	var reqLock = true;
+
+	/**
+	 *  =search shop
+	 *  @about  根据商店的名字搜索商店
+	 */
+	$scope.searchShop = function() {
+		if ( !reqLock ) { // 上一次请求还没完成
+			return;
+		}
+		$http({
+			url: '/shopFetch?shopName=' + $scope.shopName,
+			method: 'GET'
+		})
+		.success(function(data) {
+			$scope.shopList = data;
+			$scope.hasSearch = true;
+			reqLock = true;
+		})
+		.error(function(err, status) {
+			// TODO
+			console.log('查询 商店出错; ' + status);
+			reqLock = true;
+		});
+	};
+
+
+	/**
+	 *  =delete shop
+	 *  @about  删除商家
+	 *
+	 *  @param  {number}  index  列表的下标
+	 *  @param  {string}  ID     商家的ID
+	 */
+	$scope.deleteShop = function(index, ID) {
+		$scope.isPending = true;
+		$http({
+			method: 'POST',
+			url: '/shopDelete',
+			data: {
+				ID: ID
+			},
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		.success(function() {
+			// TODO
+			alert('delete shop success');
+			$scope.isPending = false;
+			$scope.shopList.splice(index, 1);
+		})
+		.error(function(data, status) {
+			// TODO
+			console.log('delete shop error; ' + status);
+			$scope.isPending = false;
+		});
+	};
+
+
+	/**
+	 *  =search shop by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchShopByKeyboard = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			$scope.searchShop();
+		}, 1000);
+	};
 }]);

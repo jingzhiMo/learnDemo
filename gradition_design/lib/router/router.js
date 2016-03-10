@@ -12,6 +12,7 @@ module.exports = function(app) {
 	   // .post('/shopAdd', multipart(), shopRouter.add)              // 增加商家
 	   .post('/shopAdd', parser.json(), shopRouter.add)   			  // 增加商家(json)
 	   .post('/shopModify', parser.json(), shopRouter.modify)         // 修改商家信息
+	   .post('/shopDelete', parser.json(), shopRouter.remove)         // 删除商家
 	   .get('/shopFetch', shopRouter.fetch)                           // 获取商家
 	   .post('/goodAdd', parser.json(), goodRouter.add)               // 增加商品
 	   .post('/upload/img', uploadRouter.upload);   				  // 上传图片
