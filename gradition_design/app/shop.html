@@ -150,19 +150,19 @@
 			<table class="table table-hover tac" ng-show="hasSearch">
 				<tr>
 					<th class="tac">序号</th>
-					<th class="tac">商家名</th>
+					<th class="tac">商品名</th>
 					<th class="tac">商家地址</th>
 					<th class="tac">商家电话</th>
 					<th class="tac">操作</th>
 				</tr>
-				<tr ng-repeat="shop in shopList">
+				<tr ng-repeat="good in goodList">
 					<td ng-bind="$index + 1"></td>
-					<td ng-bind="shop.ID" style="display: none;"></td>
-					<td ng-bind="shop.shopName"></td>
-					<td ng-bind="shop.shopPlace"></td>
-					<td ng-bind="shop.shopPhone"></td>
+					<td ng-bind="good.ID" style="display: none;"></td>
+					<td ng-bind="good.shopName"></td>
+					<td ng-bind="good.shopPlace"></td>
+					<td ng-bind="good.shopPhone"></td>
 					<td>
-						<button class="btn btn-danger" ng-click="deleteShop($index, shop.ID)" ng-disabled="isPending">删除</button>
+						<button class="btn btn-danger" ng-click="deleteGood($index, good.ID)" ng-disabled="isPending">删除</button>
 					</td>
 				</tr>
 			</table>

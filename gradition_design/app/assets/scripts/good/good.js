@@ -6,12 +6,16 @@ var app = angular.module('app', []);
  */
 app.controller('all', ['$scope', '$http', function($scope, $http){
 	$scope.pageView = 'add';
+
+	$scope.changeView = function(viewName) {
+		$scope.pageView = viewName;
+	};
 }]);
 
 
 /**
  *  =add controller
- *  @about 增加商品的控制器
+ *  @about  增加商品的控制器
  */
 app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch){
 
@@ -281,6 +285,28 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 		}
 		return true;
 	}
+}]);
+
+
+/**
+ *  =modify controller
+ *  @about  修改商品的控制器
+ */
+app.controller('modify', ['$scope', '$http', function($scope, $http){
+	
+}]);
+
+
+/**
+ *  =delete controller
+ *  @about  修改商品的控制器
+ */
+app.controller('delete', ['$scope', '$http', function($scope, $http){
+	$scope.hasSearch = true;
+	$scope.goodList = [];
+	$scope.deleteGood = function() {
+
+	};
 }]);
 
 
