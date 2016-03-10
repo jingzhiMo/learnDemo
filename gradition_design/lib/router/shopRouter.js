@@ -14,11 +14,15 @@ module.exports = {
 
 		for( var val in query ) {
 			if ( query.hasOwnProperty(val) ) {
-				params[val] = query[val];
+				params[val] = new RegExp(query[val]); // 模糊搜索需要加上正则表达式
 				params.isNull = false;
 			}
 		}
 		fetchShop(res, params);
+	},
+	modify: function(req, res) {
+		console.log(req.body);
+		res.send({c: 0});
 	}
 };
 

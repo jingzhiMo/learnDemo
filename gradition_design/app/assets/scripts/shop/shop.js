@@ -1,11 +1,12 @@
 var app = angular.module('app', []);
 
-app.controller('all', ['$scope', function($scope){
+app.controller('all', ['$scope', '$location', function($scope, $location){
 	$scope.pageView = 'add'; // modify, delete
 
 	$scope.changeView = function(viewName) {
 		$scope.pageView = viewName;
 	};
+	console.log($location.search().view);
 }])
 .controller('add', ['$scope', '$http', function($scope, $http){
 
@@ -239,8 +240,290 @@ app.controller('all', ['$scope', function($scope){
 		return true;
 	}
 }])
-.controller('modify', ['$scope', function($scope){
-	
+.controller('modify', ['$scope', '$http', function($scope, $http){
+	$scope.hasSearch = false;
+	$scope.shopName = '';
+	$scope.hasSelectShop = false;
+	$scope.imgList = [];
+	$scope.uploadFlag = true;
+	$scope.alertMsg = '图片数量不正确';
+
+	var reqLock = true;
+
+	/**
+	 *  =search shop
+	 *  @about  根据商店的名字搜索商店
+	 */
+	$scope.searchShop = function() {
+		if ( !reqLock ) { // 上一次请求还没完成
+			return;
+		}
+		$http({
+			url: '/shopFetch?shopName=' + $scope.shopName,
+			method: 'GET'
+		})
+		.success(function(data) {
+			$scope.shopList = data;
+			$scope.hasSearch = true;
+			reqLock = true;
+
+			if (data.length === 1) {
+				$scope.shop = data[0];
+				$scope.shop.name = data[0].shopName + ''; // 特别处理shopName
+				$scope.imgList = data[0].shopImg;
+				setImgSrc(document.querySelectorAll('.modifyImg'), data[0].shopImg);
+			}
+		})
+		.error(function(err, status) {
+			// TODO
+			console.log('查询 商店出错; ' + status);
+			reqLock = true;
+		});
+	};
+
+
+	/**
+	 *  =search shop by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchShopByKeyboard = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			$scope.searchShop();
+		}, 1500);
+	};
+
+
+	/**
+	 *  =change select shop
+	 *  @about  改变选中的商店
+	 */
+	$scope.changeShop = function(idx) {
+		var shopList = $scope.shopList,
+			img      = document.querySelectorAll('.modifyImg');
+
+		$scope.hasSelectShop = $scope.shopID ? true : false;
+
+		for( var i = 0, len = shopList.length; i < len; i++ ) {
+			if ( $scope.shopID === shopList[i].shopID ) {
+				$scope.shop = shopList[i];
+				$scope.shop.shopName = shopList[i].shopName + ''; // 特别处理shopName
+				setImgSrc(img, shopList[i].shopImg);
+				return;
+			}
+		}
+	};
+
+
+	/**
+	 *  =modify shop message
+	 *  @about  修改商店的信息
+	 *
+	 *  @param  {object}  ev  事件处理对象
+	 */
+	$scope.modifyShop = function(ev) {
+		if ( checkShopMsg() ) { // 检查输入是否正确
+			 // TODO
+			$http({
+			 	url: '/shopModify',
+			 	method: 'POST',
+			 	headers: {
+			 		'Content-Type': 'application/json'
+			 	},
+			 	data: {
+			 		ID: $scope.shop.ID,
+			 		name: $scope.shop.name,
+			 		place: $scope.shop.shopPlace,
+			 		phone: $scope.shop.shopPhone,
+			 		shopImg: $scope.imgList
+			 	}
+			})
+			.success(function(data) {
+				// TODO
+				alert('success');
+				ev.stopPropagation();
+				ev.preventDefault();
+			})
+			.error(function() {
+				// TODO
+				alert('add shop error');
+				ev.stopPropagation();
+				ev.preventDefault();
+			});
+		}
+	};
+
+
+	/**
+	 *  =set img src
+	 *  @about  设置图片的路径
+	 */
+	function setImgSrc(img, src) {
+		for(var i = 0, len = img.length; i < len; i++) {
+			img[i].src = src[i];
+		}
+	}
+
+
+	/**
+	 *  =upload image
+	 *  @about  上传图片
+	 *
+	 *  @param  {object}  ev  事件处理对象
+	 */
+	$scope.uploadImg = function(ev) {
+
+		if ( ev.target.disabled ) { // 当前按钮处于禁用状态，直接返回
+			return;
+		}
+
+		if ( !checkImgList() ) { // 图片数量不正确
+			alert($scope.alertMsg);
+			return;
+		}
+
+		var file = document.getElementById('file-modify');
+
+		file.addEventListener('change', function(ev) {
+			if ( $scope.uploadFlag ){ // 判断当前是否可以提交
+				$scope.uploadFlag = false;
+			}
+			else {
+				console.log('重复提交');
+				return;
+			}
+			if ( ev.target.files.length ) {
+				var formData = new FormData(document.getElementById('img-form-modify')),
+					xhr      = new XMLHttpRequest();
+
+				xhr.open('POST', '/upload/img', true);
+
+				xhr.onreadystatechange = function(data) {
+					if ( xhr.readyState === 4 && xhr.status === 200 ) {	
+						fillImgBox(JSON.parse(xhr.responseText));
+						$scope.uploadFlag = true;
+					}
+				};
+
+				xhr.send(formData);
+			}
+		}, false);
+
+		file.click(); // 触发上传文件按钮
+	};
+
+
+	/**
+ 	 *  =fill img box
+ 	 *  @about  填充图片
+ 	 *
+ 	 *  @param  {json}  path  图片在服务器上面的路径
+	 */
+	function fillImgBox(path) {
+		var imgList = $scope.imgList,
+			doc = document,
+			imgBox = doc.querySelectorAll('.img-modify-box');
+
+		for(var i = 0; i < 3; i++) {
+			if ( imgList[i] === '' ) {
+				imgMaskAdd(i, path.filepath);
+				return;
+			}
+		}
+	}
+
+
+	/**
+	 *  =add img mask
+	 *  @about  增加图片的遮罩
+	 *
+	 *  @param  {number}  index  img-box 的下标
+	 *  @param  {string}  imgSrc 图片的路径
+	 */
+	function imgMaskAdd(index, imgSrc) {
+		var doc = document,
+			imgBox = doc.querySelectorAll('.img-modify-box'),
+			fragment = doc.createDocumentFragment(),
+			ipt = imgBox[index].innerHTML;
+
+		imgBox[index].innerHTML = ipt + '<div class="mask">'+
+								  '</div><img src="'+ imgSrc + '">';
+		$scope.imgList[index] = imgSrc;
+	}
+
+
+	/**
+	 *  =delete img mask
+	 *  @about  删除图片的遮罩
+	 *
+	 *  @param  {number}  index  被删除图片的遮罩
+	 */
+	$scope.imgMaskDelete = function(index) {
+
+		if ( $scope.imgList[index] === '' ) {
+			return;
+		}
+
+		var doc = document,
+			imgBox = doc.querySelectorAll('.img-modify-box');
+
+		imgBox[index].innerHTML = '<input type="text" ng-model="imgList['+ index + ']">';
+		$scope.imgList[index] = '';
+	};
+
+
+	/**
+	 *  =check img list
+	 *  @about  检查图片的数量是否正确
+	 */
+	function checkImgList() {
+		var imgList = $scope.imgList;
+
+		for(var i = 0; i < 3; i++) {
+			if ( imgList[i] === '' ) {
+				return true;
+			}
+		}
+
+		if (i === 3) {
+			$scope.alertMsg = '图片数量已满';
+			return false;
+		}
+		return true;
+	}
+
+
+	/**
+	 *  =check shop message
+	 *  @about  检查输入的商家信息
+	 *
+	 *  @return  {boolean}    输入是否正确
+	 */
+	function checkShopMsg() {
+		if ( !$scope.shop.shopName ) {
+			alert('请填写商家名称');
+			return false;
+		}
+		else if ( !$scope.shop.shopPlace ) {
+			alert('请填写商家地址');
+			return false;
+		}
+		else if ( !$scope.shop.shopPhone ) {
+			alert('请填写商家的预留电话');
+			return false;
+		}
+		else {
+			for ( var i = 0; i < 3; i++) {
+				if ( $scope.imgList[i] === '' ) {
+					alert('请上传三张图片');
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }])
 .controller('delete', ['', function($scope){
 	
