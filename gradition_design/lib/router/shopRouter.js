@@ -21,8 +21,8 @@ module.exports = {
 		fetchShop(res, params);
 	},
 	modify: function(req, res) {
-		console.log(req.body);
-		res.send({c: 0});
+		var params = req.body;
+		modifyShop(params, res);
 	}
 };
 
@@ -62,6 +62,35 @@ function addNewShop(shopMsg, res) {
 			}
 			res.send({c: 0});
 		});
+	});
+}
+
+
+/**
+ *  =modify shop
+ *  @about  修改商家信息
+ *
+ *  @param  {json}   shopMsg  商家信息
+ *  @param  {object} res      响应处理对象
+ */
+function modifyShop(shopMsg, res) {
+	var query = shopMsg.ID;
+	ShopModel.update(query, {$set: {
+		shopName: shopMsg.name,
+		shopPhone: shopMsg.phone,
+		shopPlace: shopMsg.place,
+		shopImg: shopMsg.shopImg
+	}}, function(err, data) {
+		if ( err ) {
+			console.log('modify shop error: ' + err);
+			res.status(500).send('modify shop error');
+			return;
+		}
+		else {
+			// console.log(data);
+			console.log('success');
+			res.send({c: 0});
+		}
 	});
 }
 

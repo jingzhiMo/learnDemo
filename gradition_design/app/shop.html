@@ -131,7 +131,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary" ng-click="modifyShop($event)">提交</button>
+				<button class="btn btn-primary" ng-click="modifyShop($event)" ng-disabled="isPending">提交</button>
 			</div>
 			<form id="img-form-modify" name="uploadModify" action="/upload/img" target="javascript:;" enctype="multipart/form-data" style="display: none;">
 				<input type="file" name="upload" multiple="multiple" id="file-modify" ng-model="fileName">

@@ -247,6 +247,7 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 	$scope.imgList = [];
 	$scope.uploadFlag = true;
 	$scope.alertMsg = '图片数量不正确';
+	$scope.isPending = false;
 
 	var reqLock = true;
 
@@ -324,7 +325,8 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 	 */
 	$scope.modifyShop = function(ev) {
 		if ( checkShopMsg() ) { // 检查输入是否正确
-			 // TODO
+			 
+			$scope.isPending = true;
 			$http({
 			 	url: '/shopModify',
 			 	method: 'POST',
@@ -344,12 +346,14 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 				alert('success');
 				ev.stopPropagation();
 				ev.preventDefault();
+				$scope.isPending = false;
 			})
 			.error(function() {
 				// TODO
 				alert('add shop error');
 				ev.stopPropagation();
 				ev.preventDefault();
+				$scope.isPending = false;
 			});
 		}
 	};
