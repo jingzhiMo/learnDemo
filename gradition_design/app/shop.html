@@ -142,8 +142,8 @@
 	<section class="content" ng-class="{'add': 'hide', 'modify': 'hide', 'delete': 'show'}[pageView]" ng-controller="delete">
 		<h3>删除商家</h3>
 		<div class="row">
-			<input type="text" class="form-control search-msg" ng-model="shopName" ng-keydown="searchShopByKeyboard()">
-			<button class="btn btn-primary search" ng-click="searchShop()">搜索</button>
+			<input type="text" class="form-control search-msg" ng-model="shopName" ng-keydown="searchGoodByKeyboard()">
+			<button class="btn btn-primary search" ng-click="searchGood()">搜索</button>
 		</div>
 		<div class="form-group" ng-show="hasSearch">
 			<p>筛选后的商家</p>

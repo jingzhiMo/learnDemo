@@ -569,28 +569,30 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 	 *  @param  {string}  ID     商家的ID
 	 */
 	$scope.deleteShop = function(index, ID) {
-		$scope.isPending = true;
-		$http({
-			method: 'POST',
-			url: '/shopDelete',
-			data: {
-				ID: ID
-			},
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-		.success(function() {
-			// TODO
-			alert('delete shop success');
-			$scope.isPending = false;
-			$scope.shopList.splice(index, 1);
-		})
-		.error(function(data, status) {
-			// TODO
-			console.log('delete shop error; ' + status);
-			$scope.isPending = false;
-		});
+		if ( confirm('是否删除该商家') ) {
+			$scope.isPending = true;
+			$http({
+				method: 'POST',
+				url: '/shopDelete',
+				data: {
+					ID: ID
+				},
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			.success(function() {
+				// TODO
+				alert('delete shop success');
+				$scope.isPending = false;
+				$scope.shopList.splice(index, 1);
+			})
+			.error(function(data, status) {
+				// TODO
+				console.log('delete shop error; ' + status);
+				$scope.isPending = false;
+			});
+		}
 	};
 
 
