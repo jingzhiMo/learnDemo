@@ -19,6 +19,7 @@ gradition-gp
         goodName: '', // 商品的名字 string
         goodDesc: '', // 商品的描述 strng
         goodType: '', // 商品类型 number 1: 代金券；2. 套餐；3.N选M 套餐
+        goodCont: '', // 套餐商品的内容
         goodImg: [], // 商品图片
         tips: {
         	startDate: 0, // 活动开始时间 number

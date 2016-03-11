@@ -41,31 +41,13 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 			book  = [],
 			other = [];
 
+		for( var i = 0; i < 3; i++ ) {
+			rule.push($scope.rule[i] || '');
+			book.push($scope.book[i] || '');
+			other.push($scope.other[i] || '');
+		}
+
 		if ( checkGoodInput() ) { // 输入正确
-
-			book = [$scope.book1];
-			if ( $scope.book2 ) {
-				book.push($scope.book2);
-			}
-			if ( $scope.book3 ) {
-				book.push($scope.book3);
-			}
-
-			rule = [$scope.rule1];
-			if ( $scope.rule2 ) {
-				rule.push($scope.rule2);
-			}
-			if ( $scope.rule3 ) {
-				rule.push($scope.rule3);
-			}
-
-			other = [$scope.other1];
-			if ( $scope.other2 ) {
-				other.push($scope.other2);
-			}
-			if ( $scope.other3 ) {
-				other.push($scope.other3);
-			}
 
 			$http({
 				url: '/goodAdd',
@@ -263,15 +245,15 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 			alert('请输入营业时间');
 			return false;
 		}
-		else if ( !$scope.book1 ) {
+		else if ( !( $scope.book[0] || $scope.book[1] || $scope.book[2] ) ) {
 			alert('请输入预约提示语');
 			return false;
 		}
-		else if ( !$scope.rule1 ) {
+		else if ( !( $scope.rule[0] || $scope.rule[1] || $scope.rule[2] ) ) {
 			alert('请输入使用规则');
 			return false;
 		}
-		else if ( !$scope.other1 ) {
+		else if ( !( $scope.other[0] || $scope.other[1] || $scope.other[2] ) ) {
 			alert('请输入温馨提示');
 			return false;
 		}
@@ -293,7 +275,69 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
  *  @about  修改商品的控制器
  */
 app.controller('modify', ['$scope', '$http', function($scope, $http){
-	
+	$scope.types = [
+		{
+			value: 1,
+			msg:   '代金券'
+		},
+		{
+			value: 2,
+			msg:   '套餐'
+		}
+	];
+	$scope.hasSelectShop = true;
+	$scope.good = {};
+
+	var reqLock = true;
+
+	/**
+	 *  =search good
+	 *  @about  根据商店的名字搜索商店
+	 */
+	$scope.searchGood = function() {
+		if ( !reqLock ) { // 上一次请求还没完成
+			return;
+		}
+		$http({
+			url: '/goodFetch?goodName=' + $scope.goodName,
+			method: 'GET'
+		})
+		.success(function(data) {
+			$scope.goodList = data;
+			$scope.hasSearch = true;
+			reqLock = true;
+			console.log(data);
+		})
+		.error(function(err, status) {
+			// TODO
+			console.log('查询 商品出错; ' + status);
+			reqLock = true;
+		});
+	};
+
+	/**
+	 *  =search shop by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchGoodByKeyboard = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			$scope.searchGood();
+		}, 1500);
+	};
+
+	$http({
+		url: '/goodFetch',
+		method: 'GET'
+	})
+	.success(function(data) {
+		$scope.good = data[data.length - 1].good;
+		$scope.good.name = '' + $scope.good.goodName;
+	})
+	.error(function() {
+		alert('fetch good error');
+	});
 }]);
 
 
