@@ -1,10 +1,29 @@
-var GoodModel = require('../model/goodModel').GoodModel;
+var GoodModel = require('../model/goodModel').GoodModel,
+	ShopModel = require('../model/shopModel').ShopModel;
 
 module.exports = {
 	add: function(req, res) {
 		var params = req.body;
 
 		addNewGood(params, res);
+	},
+	fetch: function(req, res) {
+		var params = {
+				isNull: true
+			},
+			query = req.query;
+
+		for( var val in query ) {
+			if ( query.hasOwnProperty(val) ) {
+				params[val] = new RegExp(query[val]); // 模糊搜索需要加上正则表达式
+				params.isNull = false;
+			}
+		}
+		fetchGood(res, params);
+	},
+	remove: function(req, res) {
+		console.log(req.body);
+		res.send({c: 0});
 	}
 };
 
@@ -56,6 +75,63 @@ function addNewGood(goodMsg, res) {
 
 
 /**
+ *  =fetch good
+ *  @about  获取商品的信息
+ *
+ *  @param  {object}  res    响应处理对象
+ *  @param  {json}    params 查询的条件
+ */
+function fetchGood(res, params) {
+	if ( params.isNull ) {
+		params = {};
+	}
+	else {
+		delete(params.isNull);
+	}
+	GoodModel.find(params, function(err, data) {
+
+		if ( err ) {
+			console.log('fetch good error');
+			res.status(500).send({c: -1});
+			return;
+		}
+
+		var result   = [],
+			goodData = data,
+			len      = goodData.length > 10 ? 10 : goodData.length,
+			callback = [];
+
+		for( var i = 0; i < len; i++) {
+			callback[i] = false;
+		}
+
+		for( i = 0, len = goodData.length; i < len; i++) {
+			// 异步循环不能获取到下标，所以要给个闭包
+			(function(i) {
+				ShopModel.find({ID: goodData[i].shopID}, function(err, data) {
+					if ( err ) {
+						console.log('fetch good err by shopID');
+						res.status(500).send({c: -1});
+					}
+					else {
+						result.push({
+							good: goodData[i],
+							shop: data[0]
+						});
+						callback[i] = true;
+						if ( callback.indexOf(false) === -1 ) {
+							res.send(result);
+							return;
+						}
+					}
+				});
+			})(i);
+		}
+	});
+}
+
+
+/**
  *  =get good len
  *  @about  获取商品的数量
  *
@@ -72,3 +148,19 @@ function getGoodLen(fun) {
 		}
 	});
 }
+
+
+/**
+ *  =get shop message by id
+ *  @about  通过商家的id，获取商家信息
+ *
+ *  @param  {string}   shopID  商家的id
+ *  @param  {function} fn      回调函数
+ *  @param  {number}   idx     查询的下标
+ *  @param  {number}   sum     查询的总数
+ */
+// function getShopMsgById(goodID, fn, idx, sum) {
+// 	ShopModel.find({ID: goodID}, function(err, data) {
+
+// 	});
+// }

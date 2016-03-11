@@ -302,10 +302,92 @@ app.controller('modify', ['$scope', '$http', function($scope, $http){
  *  @about  修改商品的控制器
  */
 app.controller('delete', ['$scope', '$http', function($scope, $http){
-	$scope.hasSearch = true;
+	$scope.hasSearch = false;
 	$scope.goodList = [];
-	$scope.deleteGood = function() {
+	$scope.isPending = false;
 
+	var reqLock = true;
+
+	/**
+	 *  =search good
+	 *  @about  根据商店的名字搜索商店
+	 */
+	$scope.searchGood = function() {
+		if ( !reqLock ) { // 上一次请求还没完成
+			return;
+		}
+		$http({
+			url: '/goodFetch?goodName=' + $scope.goodName,
+			method: 'GET'
+		})
+		.success(function(data) {
+			$scope.goodList = data;
+			$scope.hasSearch = true;
+			reqLock = true;
+			console.log(data);
+		})
+		.error(function(err, status) {
+			// TODO
+			console.log('查询 商品出错; ' + status);
+			reqLock = true;
+		});
+	};
+
+	/**
+	 *  =delete good
+	 *  @about  通过商品的ID删除商品
+	 */
+	$scope.deleteGood = function(index, ID) {
+		if ( confirm('是否删除该商品') ) {
+			$scope.isPending = true;
+			$http({
+				url: '/goodDelete',
+				method: 'POST',
+				data: {
+					ID: ID
+				},
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			.success(function(data) {
+				alert('delete success');
+				$scope.goodList.splice(index, 1);
+				$scope.isPending = false;
+			})
+			.error(function() {
+				console.log('delete good error');
+				$scope.isPending = false;
+			});
+		}
+	};
+
+
+	/**
+	 *  =search shop by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchGoodByKeyboard = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			$scope.searchGood();
+		}, 1500);
+	};
+
+	/**
+	 *  =calc good type
+	 *  @about  选择商品的类型
+	 *
+	 *  @param  {number}  type  商品类型的代号
+	 */
+	$scope.calcGoodType = function(type) {
+		if ( type === 1 ) {
+			return '代金券';
+		}
+		else {
+			return '套餐';
+		}
 	};
 }]);
 
