@@ -10,7 +10,7 @@ var _Good = new Schema({
 	goodImg: Array,
 	goodCont: String,
 	oldPrice: Number,
-	currPrice:Number,
+	currPrice: Number,
 	tips: {
 		startDate: String,
 		endDate: String,

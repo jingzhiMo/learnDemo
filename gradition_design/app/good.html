@@ -86,13 +86,13 @@
 			<a class="btn" ng-class="{true: 'btn-info', false: 'btn-default'}[uploadFlag]" ng-click="uploadImg($event)" ng-disabled="!uploadFlag">上传图片</a>
 		</div>
 		<div class="form-group tal">
-			<div class="img-box" ng-click="imgMaskDelete(0)">
+			<div class="img-box img-add-box" ng-click="imgMaskDelete(0)">
 				<input type="text" ng-model="imgList[0]">
 			</div>
-			<div class="img-box" ng-click="imgMaskDelete(1)">
+			<div class="img-box img-add-box" ng-click="imgMaskDelete(1)">
 				<input type="text" ng-model="imgList[1]">
 			</div>
-			<div class="img-box" ng-click="imgMaskDelete(2)">
+			<div class="img-box img-add-box" ng-click="imgMaskDelete(2)">
 				<input type="text" ng-model="imgList[2]">
 			</div>
 		</div>
@@ -110,7 +110,17 @@
 			<input type="text" class="form-control search-msg" ng-model="goodName" ng-keydown="searchGoodByKeyboard()">
 			<button class="btn btn-primary search" ng-click="searchGood()">搜索</button>
 		</div>
+		<div class="form-group" ng-show="hasSearch">
+			<p>筛选后的商店</p>
+			<select class="shop-list form-control" ng-model="goodID" ng-change="changeGood($index)">
+				<option ng-repeat="goods in goodList" value="{{goods.good.ID}}">{{goods.good.goodName}}</option>
+			</select>
+		</div>
 		<div class="selected-good" ng-show="hasSelectShop">
+			<div class="form-group" style="display: none;">
+				<label for="name">商品ID</label>
+				<input type="text" class="form-control" id="name" ng-model="good.ID" placeholder="请输入商品的全称" require>
+			</div>
 			<div class="form-group">
 				<label for="name">商品名称</label>
 				<input type="text" class="form-control" id="name" ng-model="good.name" placeholder="请输入商品的全称" require>
@@ -131,11 +141,9 @@
 			</div>
 			<div class="form-group">
 				<p>商品类型</p>
-				<select class="form-control" name="selectShop" ng-init="haha = types[0].msg"  ng-model="haha" ng-options="type.value as type.msg for type in types" ng-selected="哈">
-					<!-- <option value="1">代金券</option>
-					<option value="2">套餐</option> -->
+				<select class="form-control" ng-model="selectedType" ng-options="type.msg as type.val for type in types">
 				</select>
-				<div class="package" ng-show="good.type==2">
+				<div class="package" ng-show="selectedType==2">
 					<p class="title">套餐内容（换行用 || 表示）</p>
 					<textarea class="package-content form-control" placeholder="请输入套餐内容，如果需要内容换行，则用 || 隔开" ng-model="good.goodCont"></textarea>
 				</div>
@@ -152,37 +160,30 @@
 			</div>
 			<div class="form-group">
 				<label>预约提示语</label>
-				<!-- <input type="text" class="form-control" ng-model="book1" placeholder="预约提示语1（可选）">
-				<input type="text" class="form-control mr-10" ng-model="book2" placeholder="预约提示语2（可选）">
-				<input type="text" class="form-control mr-10" ng-model="book3" placeholder="预约提示语3（可选）"> -->
-				<input type="text" class="form-control mr-10" ng-repeat="book in good.tips.book" ng-model="good.tips.book[$index]" placeholder="预约提示语{{$index + 1}}(可选)">
+				<input type="text" class="form-control mr-10" ng-model="good.tips.book[0]" placeholder="预约提示语1(可选)">
+				<input type="text" class="form-control mr-10" ng-model="good.tips.book[1]" placeholder="预约提示语2(可选)">
+				<input type="text" class="form-control mr-10" ng-model="good.tips.book[2]" placeholder="预约提示语3(可选)">
 			</div>
 			<div class="form-group">
 				<p>使用规则</p>
-				<!-- <input type="text" class="form-control" ng-model="rule1" placeholder="使用规则1">
-				<input type="text" class="form-control mr-10" ng-model="rule2" placeholder="使用规则2">
-				<input type="text" class="form-control mr-10" ng-model="rule3" placeholder="使用规则3"> -->
-				<input type="text" class="form-control mr-10" ng-repeat="rule in good.tips.rule" ng-model="good.tips.rule[$index]" placeholder="使用规则{{$index + 1}}">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.rule[0]" placeholder="使用规则1">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.rule[1]" placeholder="使用规则2">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.rule[2]" placeholder="使用规则3">
 			</div>
 			<div class="form-group">
 				<p>温馨提示</p>
-				<!-- <input type="text" class="form-control" ng-model="other1" placeholder="温馨提示1">
-				<input type="text" class="form-control mr-10" ng-model="other2" placeholder="温馨提示2">
-				<input type="text" class="form-control mr-10" ng-model="other3" placeholder="温馨提示3"> -->
-				<input type="text" class="form-control mr-10" ng-repeat="other in good.tips.other" ng-model="good.tips.other[$index]" placeholder="温馨提示{{$index + 1}}">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.other[0]" placeholder="温馨提示1">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.other[1]" placeholder="温馨提示2">
+				<input type="text" class="form-control mr-10"ng-model="good.tips.other[2]" placeholder="温馨提示3">
 			</div>
 			<div class="form-group">
-				<a class="btn" ng-class="{true: 'btn-info', false: 'btn-default'}[uploadFlag]" ng-click="uploadImg($event)" ng-disabled="!uploadFlag">上传图片</a>
+				<a class="btn btn-info" ng-click="upload.uploadImg($event)" ng-disabled="!uploadFlag">上传图片</a>
 			</div>
 			<div class="form-group tal">
-				<div class="img-box" ng-click="imgMaskDelete(0)">
-					<input type="text" ng-model="imgList[0]">
-				</div>
-				<div class="img-box" ng-click="imgMaskDelete(1)">
-					<input type="text" ng-model="imgList[1]">
-				</div>
-				<div class="img-box" ng-click="imgMaskDelete(2)">
-					<input type="text" ng-model="imgList[2]">
+				<div class="img-box img-modify-box" ng-repeat="imgData in good.goodImg" ng-click="upload.imgMaskDelete($index)">
+					<input type="text" ng-model="good.goodImg[$index]">
+					<div class="mask" ng-show="good.goodImg[$index]"></div>
+					<img src="" ng-src="{{imgData}}" ng-show="good.goodImg[$index]">
 				</div>
 			</div>
 			<form id="imgform" name="testupload" action="/upload/img" target="javascript:;" enctype="multipart/form-data" style="display: none;">
@@ -190,7 +191,7 @@
 				<input type="submit" value="Upload" id="submit">
 			</form>
 			<div class="form-group">
-				<button class="btn btn-primary" ng-click="addGood();" ng-disabled="isAddDisabled">提交</button>
+				<button class="btn btn-primary" ng-click="modifyGood();" ng-disabled="isAddDisabled">提交</button>
 			</div>
 		</div>
 	</section>

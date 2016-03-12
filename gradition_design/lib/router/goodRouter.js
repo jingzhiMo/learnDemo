@@ -87,7 +87,9 @@ function addNewGood(goodMsg, res) {
  *  @param  {object} res      响应处理对象
  */
 function modifyGood(goodMsg, res) {
-	var query = goodMsg.ID;
+	var query = {
+		ID: goodMsg.ID
+	};
 
 	GoodModel.update(query, {$set: goodMsg}, function(err, data) {
 		if ( err ) {

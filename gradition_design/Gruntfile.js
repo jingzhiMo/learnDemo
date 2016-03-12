@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 					curly: true,
 					newcap: true,
 					sub: true,
-					// undef: true,
+					loopfunc: true, // 循环里面有声明函数，不报错
 					boss: true,
 					globals: {
 						window: true,
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
 					curly: true,
 					newcap: true,
 					sub: true,
-					// undef: true,
+					loopfunc: true, // 循环里面有声明函数，不报错
 					boss: true,
 					globals: {
 
