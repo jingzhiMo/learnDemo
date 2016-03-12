@@ -79,7 +79,10 @@ function addNewShop(shopMsg, res) {
  *  @param  {object} res      响应处理对象
  */
 function modifyShop(shopMsg, res) {
-	var query = shopMsg.ID;
+	var query = {
+		ID: shopMsg.ID
+	};
+
 	ShopModel.update(query, {$set: {
 		shopName: shopMsg.name,
 		shopPhone: shopMsg.phone,
