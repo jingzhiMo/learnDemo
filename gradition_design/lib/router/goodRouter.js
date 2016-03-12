@@ -21,6 +21,11 @@ module.exports = {
 		}
 		fetchGood(res, params);
 	},
+	modify: function(req, res) {
+		var params = req.body;
+
+		modifyGood(params, res);
+	},
 	remove: function(req, res) {
 		console.log(req.body);
 		res.send({c: 0});
@@ -70,6 +75,30 @@ function addNewGood(goodMsg, res) {
 			console.log(good);
 			res.send({c: 0});
 		});
+	});
+}
+
+
+/**
+ *  =modify good message
+ *  @about  修改商品的信息
+ *
+ *  @param  {json}   goodMsg  修改后的商品的信息
+ *  @param  {object} res      响应处理对象
+ */
+function modifyGood(goodMsg, res) {
+	var query = goodMsg.ID;
+
+	GoodModel.update(query, {$set: goodMsg}, function(err, data) {
+		if ( err ) {
+			console.log('修改商品信息失败');
+			res.status(500).send({c: -1});
+			return;
+		}
+		else {
+			console.log('update good success');
+			res.send({c: 0});
+		}
 	});
 }
 

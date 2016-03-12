@@ -15,6 +15,7 @@ module.exports = function(app) {
 	   .post('/shopDelete', parser.json(), shopRouter.remove)         // 删除商家
 	   .get('/shopFetch', shopRouter.fetch)                           // 获取商家
 	   .post('/goodAdd', parser.json(), goodRouter.add)               // 增加商品
+	   .post('/goodModify', parser.json(), goodRouter.modify)         // 修改商品信息
 	   .post('/goodDelete', parser.json(), goodRouter.remove)         // 删除商品
 	   .get('/goodFetch', goodRouter.fetch)                           // 获取商品
 	   .post('/upload/img', uploadRouter.upload);   				  // 上传图片
