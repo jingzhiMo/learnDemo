@@ -2,7 +2,7 @@ body {
 	background-color: #f0f0f0;
 }
 #hd {
-	text-align: center;
+	text-align: left;
 	padding-top: 15px;
 }
 .content {
@@ -22,6 +22,14 @@ p {
 }
 textarea {
 	margin-top: 10px;
+}
+.search-msg {
+	margin-left: 12px;
+    display: inline-block;
+    width: 80%;
+}
+.search {
+	width: 15%;
 }
 .btn-disabled {
 	background-color: #eee;
@@ -86,4 +94,26 @@ textarea {
 }
 .img-box input {
 	display: none;
+}
+
+footer#ft {
+	text-align: left;
+	margin-top: 20px;
+	margin-left: 12px;
+	padding-bottom: 50px;
+}
+.tips {
+	width: 90%;
+	padding: 10px 30px;
+	font-weight: normal;
+	font-size: 16px;
+	background-color: rgb(141, 204, 121);
+	color: #fff;
+	border: 1px solid rgb(141, 204, 121);
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+.tips.err {
+	background-color: rgb(242, 102, 81);
+	border-color: rgb(242, 102, 81);
 }

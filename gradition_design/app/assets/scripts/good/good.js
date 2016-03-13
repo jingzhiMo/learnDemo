@@ -6,9 +6,35 @@ var app = angular.module('app', []);
  */
 app.controller('all', ['$scope', '$http', function($scope, $http){
 	$scope.pageView = 'add';
+	$scope.showTips = false;
+	$scope.isSuc = false;
+	$scope.isErr = false;
+	$scope.tips = "增加";
 
 	$scope.changeView = function(viewName) {
 		$scope.pageView = viewName;
+		$scope.showTips = false;
+	};
+
+	/**
+	 *  =toggle show tips
+	 *  @about  绑定切换显示操作是否完成
+	*/
+	$scope.$on('toggleShow', function(event, msg) {
+		$scope.showTips = true;
+		$scope.isSuc = msg.isSuc;
+		$scope.isErr = msg.isErr;
+		$scope.tips = msg.tips;
+		$scope.pageView = 'none';
+	});
+
+
+	/**
+	 *  =reload
+	 *  @about  刷新页面
+	 */
+	$scope.reload = function() {
+		window.location.reload();
 	};
 }]);
 
@@ -79,11 +105,19 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 			})
 			.success(function(data) {
 				// TODO
-				alert('添加成功');
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '增加商店'
+				});
 			})
 			.error(function(data, status) {
 				// TODO
-				alert('添加失败');
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '增加商店'
+				});
 			});
 		}
 	};
@@ -317,8 +351,6 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			if (data.length === 1) {
 				$scope.good = data[0];
 				$scope.good.name = data[0].goodName + ''; // 特别处理goodName
-				// $scope.imgList = data[0].shopImg;
-				// setImgSrc(document.querySelectorAll('.modifyImg'), data[0].shopImg);
 			}
 		})
 		.error(function(err, status) {
@@ -340,20 +372,6 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 		}, 1500);
 	};
 
-	// $http({
-	// 	url: '/goodFetch',
-	// 	method: 'GET'
-	// })
-	// .success(function(data) {
-	// 	$scope.good = data[data.length - 1].good;
-	// 	$scope.good.name = '' + $scope.good.goodName; // 特别处理商品的名称
-	// 	$scope.selectedType = $scope.types[$scope.good.goodType - 1].msg;
-	// 	$scope.upload.imgList = $scope.good.goodImg;
-	// })
-	// .error(function() {
-	// 	alert('fetch good error');
-	// });
-
 
 	/**
 	 *  =change select shop
@@ -361,7 +379,6 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 	 */
 	$scope.changeGood = function(idx) {
 		var goodList = $scope.goodList;
-			// img      = document.querySelectorAll('.modifyImg');
 
 		$scope.hasSelectShop = $scope.goodID ? true : false;
 
@@ -369,7 +386,6 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			if ( $scope.goodID === goodList[i].good.ID ) {
 				$scope.good = goodList[i].good;
 				$scope.good.name = goodList[i].good.goodName + ''; // 特别处理goodName
-				// setImgSrc(img, goodList[i].goodImg);
 				return;
 			}
 		}
@@ -424,11 +440,19 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			})
 			.success(function(data) {
 				// TODO
-				alert('修改成功');
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '修改商店'
+				});
 			})
 			.error(function(data, status) {
 				// TODO
-				alert('修改失败');
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '修改商店'
+				});
 			});
 		}
 	};
@@ -550,13 +574,22 @@ app.controller('delete', ['$scope', '$http', function($scope, $http){
 				}
 			})
 			.success(function(data) {
-				alert('delete success');
 				$scope.goodList.splice(index, 1);
 				$scope.isPending = false;
+
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '删除商店'
+				});
 			})
 			.error(function() {
-				console.log('delete good error');
 				$scope.isPending = false;
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '增加商店'
+				});
 			});
 		}
 	};
