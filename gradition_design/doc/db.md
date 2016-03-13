@@ -21,6 +21,7 @@ gradition-gp
         goodType: '', // 商品类型 number 1: 代金券；2. 套餐；3.N选M 套餐
         goodCont: '', // 套餐商品的内容
         goodImg: [], // 商品图片
+        goodCount: , 0 // 商品卖出数量 number
         tips: {
         	startDate: 0, // 活动开始时间 number
         	endDate: 0, // 活动结束时间  number
