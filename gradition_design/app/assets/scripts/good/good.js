@@ -351,6 +351,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			if (data.length === 1) {
 				$scope.good = data[0];
 				$scope.good.name = data[0].goodName + ''; // 特别处理goodName
+				$scope.upload.imgList = $scope.good.goodImg;
 			}
 		})
 		.error(function(err, status) {
@@ -386,6 +387,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			if ( $scope.goodID === goodList[i].good.ID ) {
 				$scope.good = goodList[i].good;
 				$scope.good.name = goodList[i].good.goodName + ''; // 特别处理goodName
+				$scope.upload.imgList = $scope.good.goodImg;
 				return;
 			}
 		}
@@ -512,6 +514,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 	 *  @about  处理上传组件成功回调函数
 	 */
 	function uploadSuc() {
+		$scope.good.goodImg = $scope.upload.imgList;
 		// 告诉 angular 数据模型发生了改变
 		$scope.$apply(function() {
 			// TODO
