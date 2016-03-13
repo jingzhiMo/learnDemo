@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="assets/css/index/index.css">
 </head>
-<body ontouchstart="" controller="indexCtrl">
+<body ng-controller="indexCtrl">
 	<header id="hd">
 		<a href="#" id="geo-city">广州<i class="city"></i></a>
 		<h1 id="title">喵喵团</h1>
@@ -201,23 +201,23 @@
 					</div>
 				</a>
 			</section>
-			<section class="good-item">
-				<a href="#" class="good-link">
+			<section class="good-item" ng-repeat="good in goodList">
+				<a href="/good?ID={{good.good.ID}}" class="good-link">
 					<div class="img-box">
-						<img src="assets/img/kfc.jpg" alt="点都得">
+						<img src="{{good.good.goodImg[0]}}">
 					</div>
 					<div class="info-box">
 						<div class="title-line">
-							<h3 class="good-name">点都得</h3>
+							<h3 class="good-name" ng-bind="good.good.goodName"></h3>
 							<span class="distance"></span>
-							<span class="place">天河</span>
+							<span class="place" ng-bind="good.shop.shopPlace"></span>
 						</div>
-						<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
+						<p class="desc" ng-bind="good.good.goodDesc"></p>
 						<div class="price-line">
-							<span class="now">88</span>
-							<span class="old">100</span>
-							<span class="discount">立减10元</span>
-							<span class="count">已售3.1万</span>
+							<span class="now" ng-bind="good.good.currPrice"></span>
+							<span class="old" ng-bind="good.good.oldPrice"></span>
+							<!-- <span class="discount">立减10元</span> -->
+							<span class="count">已售{{good.good.goodCount || 888}}</span>
 						</div>
 					</div>
 				</a>
@@ -225,7 +225,7 @@
 		</div>
 	</section>
 	<section id="load-more">
-		<a href="#" class="load-more-link">查看更多团购</a>
+		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)">查看更多团购</a>
 	</section>
 	<footer id="ft">
 		<section class="info-block">

@@ -414,7 +414,7 @@ html {
 }
 #goods .good-link .good-name {
   display: inline-block;
-  width: 70%;
+  width: 40%;
   font-size: 1.6rem;
   color: #222;
 }
