@@ -2,11 +2,35 @@ var app = angular.module('app', []);
 
 app.controller('all', ['$scope', '$location', function($scope, $location){
 	$scope.pageView = 'add'; // modify, delete
+	$scope.showTips = false;
+	$scope.isSuc = false;
+	$scope.isErr = false;
+	$scope.tips = "增加";
 
 	$scope.changeView = function(viewName) {
 		$scope.pageView = viewName;
+		$scope.showTips = false;
 	};
-	console.log($location.search().view);
+
+	/**
+	 *  =toggle show tips
+	 *  @about  绑定切换显示操作是否完成
+	*/
+	$scope.$on('toggleShow', function(event, msg) {
+		$scope.showTips = true;
+		$scope.isSuc = msg.isSuc;
+		$scope.isErr = msg.isErr;
+		$scope.tips = msg.tips;
+		$scope.pageView = 'none';
+	});
+
+	/**
+	 *  =reload
+	 *  @about  刷新页面
+	 */
+	$scope.reload = function() {
+		window.location.reload();
+	};
 }])
 .controller('add', ['$scope', '$http', function($scope, $http){
 
@@ -67,15 +91,24 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 			})
 			.success(function(data) {
 				// TODO
-				alert('success');
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '增加商家'
+				});
 				ev.stopPropagation();
 				ev.preventDefault();
 			})
 			.error(function() {
 				// TODO
-				alert('add shop error');
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '增加商家'
+				});
 				ev.stopPropagation();
 				ev.preventDefault();
+
 			});
 		}
 	};
@@ -343,17 +376,25 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 			})
 			.success(function(data) {
 				// TODO
-				alert('success');
+				$scope.isPending = false;
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '修改商家'
+				});
 				ev.stopPropagation();
 				ev.preventDefault();
-				$scope.isPending = false;
 			})
 			.error(function() {
 				// TODO
-				alert('add shop error');
+				$scope.isPending = false;
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '修改商家'
+				});
 				ev.stopPropagation();
 				ev.preventDefault();
-				$scope.isPending = false;
 			});
 		}
 	};
@@ -583,14 +624,22 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 			})
 			.success(function() {
 				// TODO
-				alert('delete shop success');
 				$scope.isPending = false;
 				$scope.shopList.splice(index, 1);
+				$scope.$emit('toggleShow', {
+					isSuc: true,
+					isErr: false,
+					tips: '删除商家'
+				});
 			})
 			.error(function(data, status) {
 				// TODO
-				console.log('delete shop error; ' + status);
 				$scope.isPending = false;
+				$scope.$emit('toggleShow', {
+					isSuc: false,
+					isErr: true,
+					tips: '删除商家'
+				});
 			});
 		}
 	};

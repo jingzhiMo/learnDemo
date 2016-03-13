@@ -8,13 +8,24 @@
 </head>
 <body ng-controller="all">
 	<header id="hd">
+		<div class="btn-group">
+		    <button type="button" class="btn btn-info">商家页</button>
+		    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <span class="caret"></span>
+		        <span class="sr-only">Toggle Dropdown</span>
+		    </button>
+		    <ul class="dropdown-menu">
+		        <li><a href="/shop.html">商家页面</a></li>
+		        <li><a href="/good.html">商品页面</a></li>
+		    </ul>
+		</div>
 		<div class="btn-group" role="group">
 			<button type="button" class="btn btn-default" ng-class="{'add': 'btn-primary', 'modify': '', 'delete': ''}[pageView]" ng-click="changeView('add', $event)">新增商家</button>
 			<button type="button" class="btn btn-default" ng-class="{'add': '', 'modify': 'btn-primary', 'delete': ''}[pageView]" ng-click="changeView('modify', $event)">修改商家</button>
 			<button type="button" class="btn btn-default" ng-class="{'add': '', 'modify': '', 'delete': 'btn-primary'}[pageView]" ng-click="changeView('delete', $event)">删除商家</button>
 		</div>
 	</header>
-	<section class="content" ng-class="{'add': 'show', 'modify': 'hide', 'delete': 'hide'}[pageView]" ng-controller="add">
+	<section class="content" ng-class="{'add': 'show', 'modify': 'hide', 'delete': 'hide', 'none': 'hide'}[pageView]" ng-controller="add">
 		<h2>商家录入页面</h2>
 		<div class="form-group">
 			<label for="name">商家名称</label>
@@ -66,7 +77,7 @@
 			<input type="submit" value="Upload" id="submit">
 		</form>
 	</section>
-	<section class="content" ng-class="{'add': 'hide', 'modify': 'show', 'delete': 'hide'}[pageView]" ng-controller="modify">
+	<section class="content" ng-class="{'add': 'hide', 'modify': 'show', 'delete': 'hide', 'none': 'hide'}[pageView]" ng-controller="modify">
 		<h2>修改商家信息</h2>
 		<div class="row">
 			<input type="text" class="form-control search-msg" ng-model="shopName" ng-keydown="searchShopByKeyboard()">
@@ -139,7 +150,7 @@
 			</form>
 		</div>
 	</section>
-	<section class="content" ng-class="{'add': 'hide', 'modify': 'hide', 'delete': 'show'}[pageView]" ng-controller="delete">
+	<section class="content" ng-class="{'add': 'hide', 'modify': 'hide', 'delete': 'show', 'none': 'hide'}[pageView]" ng-controller="delete">
 		<h3>删除商家</h3>
 		<div class="row">
 			<input type="text" class="form-control search-msg" ng-model="shopName" ng-keydown="searchShopByKeyboard()">
@@ -168,7 +179,14 @@
 			</table>
 		</div>
 	</section>
+	<footer id="ft" ng-show="showTips" class="row">
+		<p class="success-tips tips suc" ng-show="isSuc">{{tips}}成功</p>
+		<p class="success-tips tips err" ng-show="isErr">{{tips}}失败</p>
+		<button class="btn btn-info" ng-click="reload()">返回页面</button>
+	</footer>
 	<script src="angular/angular.js"></script>
+	<script src="jquery/dist/jquery.min.js"></script>
+	<script src="bootstrap/js/dropdown.js"></script>
 	<script src="assets/scripts/shop/shop.js"></script>
 </body>
 </html>
