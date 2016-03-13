@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gdetail">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
@@ -7,16 +7,16 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<link rel="stylesheet" href="assets/css/gdetail/gdetail.css">
 </head>
-<body>
+<body ng-controller="gdCtrl">
 	<header id="hd">
 		<a href="#" class="back-link"></a>
 		<a href="#" class="home-link"></a>
 	</header>
 	<section id="slide-img">
 		<div class="slide-cont">
-			<div class="img-box"><img src="assets/img/kfc.jpg"></div>
-			<div class="img-box"><img src="assets/img/pisa.jpg"></div>
-			<div class="img-box"><img src="assets/img/mdl.jpg"></div>
+			<div class="img-box" ng-repeat="imgSrc in good.goodImg"><img ng-src="{{imgSrc}}"></div>
+			<div class="img-box"><img ng-src="{{imgSrc}}"></div>
+			<div class="img-box"><img ng-src="{{imgSrc}}"></div>
 		</div>
 		<div class="slide-index">
 			<i class="index active"></i>
@@ -25,8 +25,8 @@
 		</div>
 	</section>
 	<section id="good-desc">
-		<h4 class="shop-name">尊宝披萨双人餐</h4>
-		<p class="desc">仅售68元，价格94元双人餐！节假日通过！</p>
+		<h4 class="shop-name" ng-bind="good.goodName"></h4>
+		<p class="desc" ng-bind="good.goodDesc"></p>
 		<p class="acty-desc">
 			<span class="acty-item">
 				立减4.5元
@@ -394,5 +394,9 @@
 			<button class="cancel">取消</button>
 		</div>
 	</div>
+
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/gdetail/gdetail.js"></script>
 </body>
 </html>
