@@ -202,7 +202,7 @@
 				</a>
 			</section>
 			<section class="good-item" ng-repeat="good in goodList">
-				<a href="/good?ID={{good.good.ID}}" class="good-link">
+				<a href="/gdetail.html?ID={{good.good.ID}}" class="good-link">
 					<div class="img-box">
 						<img src="{{good.good.goodImg[0]}}">
 					</div>
@@ -225,7 +225,7 @@
 		</div>
 	</section>
 	<section id="load-more">
-		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)">查看更多团购</a>
+		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)" ng-show="hasMore">查看更多团购</a>
 	</section>
 	<footer id="ft">
 		<section class="info-block">

@@ -6,6 +6,8 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 	$scope.allGood = []; // 所有商品的信息
 	$scope.currLen = 0; // 当前商品信息的下标
 
+	$scope.hasMore = true;
+
 
 	/**
 	 *  =good message init
@@ -19,13 +21,13 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		.success(function(data) {
 
 			$scope.allGood = data;
-			if ( data.length <= 15 ) {
+			if ( data.length <= 3 ) {
 				$scope.goodList = data;
 				$scope.currLen = data.length;
 			}
 			else {
-				$scope.goodList = data.slice(0, 15);
-				$scope.currLen = 15;
+				$scope.goodList = data.slice(0, 3);
+				$scope.currLen = 3;
 			}
 		})
 		.error(function(err) {
@@ -45,19 +47,19 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		var distance = 0;
 
 		if ( $scope.currLen === $scope.allGood.length ) {
-			// TODO
-			console.log('已经没有更多的商品了');
+			$scope.hasMore = false;
 		}
 		else {
 			console.log('还有更多的商品');
 			distance = $scope.allGood.length - $scope.currLen;
 
-			if ( distance <= 15 ) { // 已经是到了最后一页了
+			if ( distance <= 3 ) { // 已经是到了最后一页了
 				$scope.goodList = $scope.allGood;
 			}
 			else {
-				$scope.goodList.push($scope.allGood.slice($scope.currLen, $scope.currLen + 15));
+				$scope.goodList = $scope.goodList.concat($scope.allGood.slice($scope.currLen, $scope.currLen + 3));
 			}
+			$scope.currLen = $scope.goodList.length;
 		}
 		event.stopProAndPreventDafault(ev);
 	};
