@@ -21,13 +21,13 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		.success(function(data) {
 
 			$scope.allGood = data;
-			if ( data.length <= 3 ) {
+			if ( data.length <= 10 ) {
 				$scope.goodList = data;
 				$scope.currLen = data.length;
 			}
 			else {
-				$scope.goodList = data.slice(0, 3);
-				$scope.currLen = 3;
+				$scope.goodList = data.slice(0, 10);
+				$scope.currLen = 10;
 			}
 		})
 		.error(function(err) {
@@ -53,11 +53,11 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 			console.log('还有更多的商品');
 			distance = $scope.allGood.length - $scope.currLen;
 
-			if ( distance <= 3 ) { // 已经是到了最后一页了
+			if ( distance <= 10 ) { // 已经是到了最后一页了
 				$scope.goodList = $scope.allGood;
 			}
 			else {
-				$scope.goodList = $scope.goodList.concat($scope.allGood.slice($scope.currLen, $scope.currLen + 3));
+				$scope.goodList = $scope.goodList.concat($scope.allGood.slice($scope.currLen, $scope.currLen + 10));
 			}
 			$scope.currLen = $scope.goodList.length;
 		}
