@@ -64,6 +64,9 @@ function addNewGood(goodMsg, res) {
 				rule: goodMsg.tips.rule,
 				other: goodMsg.tips.other
 			},
+			points: {
+				sum: 5 // TODO 商品的评分
+			}
 			shopID: goodMsg.shopID,
 			evalID: ''
 		});

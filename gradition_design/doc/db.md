@@ -32,7 +32,10 @@ gradition-gp
             book: [''], // array 预约提示语 string
             rule: [''], // 使用规则，数组的元素为 string
             other: [''] // 温馨提示，数组元素为 string
-        }
+        },
+        points: {
+        	sum: 5, // 商品评价的分数
+        },
         oldPrice: 0, // 旧的价格 number
         currPrice: 0, // 现在的价格 number
         evalID: 0, // 评价列表的ID number

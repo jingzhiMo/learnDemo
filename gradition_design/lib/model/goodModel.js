@@ -23,6 +23,9 @@ var _Good = new Schema({
 		rule: Array,
 		other: Array
 	},
+	points: {
+		sum: Number
+	},
 	evalID: String,
 	shopID: String
 });
