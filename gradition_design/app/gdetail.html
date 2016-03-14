@@ -55,17 +55,17 @@
 	</section>
 	<section id="shop-desc">
 		<a href="#" class="shop-link">
-			<h4 class="shop-name">肯德基(五山店)</h4>
-			<p class="shop-pos">广州市天河区五山路485号</p>
+			<h4 class="shop-name" ng-bind="shop.shopName"></h4>
+			<p class="shop-pos" ng-bind="shop.shopPlace"></p>
 		</a>
 		<div class="contact">
-			<a href="#" class="item phone" data-num="12345678901">电话</a>
+			<a href="#" class="item phone" data-num="{{shop.shopPhone}}">电话</a>
 			<a href="#" class="item envir">环境</a>
 		</div>
 	</section>
 	<section id="nav-box">
 		<div class="nav-list">
-			<a href="#" class="nav-item active">套餐</a>
+			<a href="#" class="nav-item active">内容</a>
 			<a href="#" class="nav-item">提示</a>
 			<a href="#" class="nav-item">评价</a>
 			<a href="#" class="nav-item">推荐</a>
@@ -149,30 +149,41 @@
 		<div class="group-box">
 			<dl class="group">
 				<dt class="title">有效期</dt>
-				<dd class="item">2015年11月04日至2016年05月02日</dd>
+				<dd class="item">{{good.tips.startDate}}至{{good.tips.endDate}}</dd>
 			</dl>
 			<dl class="group">
 				<dt class="title">使用时间</dt>
-				<dd class="item">周末法定节假日通用</dd>
-				<dd class="item">11:00 ~ 22:00</dd>
+				<!-- <dd class="item">周末法定节假日通用</dd>
+				<dd class="item">11:00 ~ 22:00</dd> -->
+				<dd class="item">{{good.tips.useTime.openTime}}</dd>
+				<dd class="item">{{good.tips.useTime.other}}</dd>
 			</dl>
 			<dl class="group">
 				<dt class="title">预约提醒</dt>
-				<dd class="item">无需预约，直接消费（高峰期间消费需排号等位）</dd>
+				<!-- <dd class="item">无需预约，直接消费（高峰期间消费需排号等位）</dd> -->
+				<dd class="item" ng-repeat="book in good.tips.book">
+					{{book}}
+				</dd>
 			</dl>
 			<dl class="group">
 				<dt class="title">使用规则</dt>
-				<dd class="item">团购用户暂不享受店内其他优惠</dd>
+				<!-- <dd class="item">团购用户暂不享受店内其他优惠</dd>
 				<dd class="item">每张糯米券限2人使用</dd>
 				<dd class="item">每次消费不限使用糯米券张数，可叠加使用</dd>
-				<dd class="item">仅限大厅使用，无包间</dd>
+				<dd class="item">仅限大厅使用，无包间</dd> -->
+				<dd class="item" ng-repeat="rule in good.tips.rule">
+					{{rule}}
+				</dd>
 			</dl>
 			<dl class="group">
 				<dt class="title">温馨提示</dt>
-				<dd class="item">无停车位</dd>
+				<!-- <dd class="item">无停车位</dd>
 				<dd class="item">店内无网络</dd>
 				<dd class="item">本单堂食外带均可</dd>
-				<dd class="item">商家免费提供餐后打包服务</dd>
+				<dd class="item">商家免费提供餐后打包服务</dd> -->
+				<dd class="item" ng-repeat="other in good.tips.other">
+					{{other}}
+				</dd>
 			</dl>
 		</div>
 	</section>
@@ -302,12 +313,12 @@
 	</section>
 	<section class="buy-btn-box">
 		<div class="price">
-			<span class="old">68</span>
-			<span class="original">/ 94</span>
+			<span class="old" ng-bind="good.oldPrice"></span>
+			<span class="original">/ {{good.currPrice}}</span>
 		</div>
 		<a href="#" class="buy-btn">
 			<span class="tip">活动价</span>
-			<span class="current-price">68</span>
+			<span class="current-price" ng-bind="good.currPrice"></span>
 			<span class="text">立即抢购</span>
 		</a>
 	</section>
@@ -397,6 +408,7 @@
 
 	<script src="angular/angular.js"></script>
 	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
 	<script src="assets/scripts/gdetail/gdetail.js"></script>
 </body>
 </html>
