@@ -21,8 +21,9 @@ angular.module('eventMD', [])
 			 *  @param    {object}  ele   需要绑定事件的 dom 元素
 			 *  @param    {number}  width 每滑动一屏的宽度
 			 *  @param    {number}  count 一共有多少屏
+			 *  @param    {object}  idx   显示下标的元素
 			 */
-			move: function(ele, width, count) {
+			move: function(ele, width, count, idx) {
 				var startX = 0, moveX, distanceX,
 					eleStyle = ele.style,
 					index = 1,
@@ -47,6 +48,7 @@ angular.module('eventMD', [])
 							index++;
 						}
 						setStyle(ele, currX, 300);
+						// setIndex(idx, index, 'active');
 					}
 					else { // 向右滑动
 
@@ -55,7 +57,9 @@ angular.module('eventMD', [])
 							index--;
 						}
 						setStyle(ele, currX, 300);
+						// setIndex(idx, index, 'active');
 					}
+					setIndex(idx, index, 'active');
 					startX = currX;
 				}, false);
 			}
@@ -115,4 +119,29 @@ function setStyle(ele, wid, delay) {
 					    '-webkit-transform: translate3d(' + wid + 'px, 0px, 0px);' +
 					    'transition-duration: ' + delay + 'ms;' +
 					    '-webkit-transition-duration: ' + delay + 'ms;';
+}
+
+
+/**
+ *  =set index active
+ *  @about  设置下标的高亮
+ *
+ *  @param  {array}   ele            下标的元素集合
+ *  @param  {number}  currIndex      当前的下标
+ *  @param  {string}  hightlightCls  高亮的类名
+ */
+function setIndex(ele, currIndex, hightlightCls) {
+	var testPattern = new RegExp(hightlightCls),
+		replacePattern = new RegExp("\\s?" + hightlightCls + "\\s?", 'gi');
+
+	for( var i = 0, len = ele.length; i < len; i++) {
+
+		// 存在高亮，但不是当前下标
+		if ( testPattern.test(ele[i].className) && ( i + 1 ) !== currIndex ) {
+			ele[i].className = ele[i].className.replace(replacePattern, '');
+		}
+		else if ( i + 1 === currIndex ){
+			ele[i].className = ele[i].className + ' ' + hightlightCls;
+		}
+	}
 }
