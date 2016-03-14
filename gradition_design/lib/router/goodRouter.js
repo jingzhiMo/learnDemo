@@ -167,6 +167,30 @@ function fetchGood(res, params) {
 
 
 /**
+ *  =fetch good by id
+ *  @about  通过商品的 id 获取商品信息，只返回商品的信息
+ *
+ *  @param  {string}    goodID  商品的ID
+ *  @param  {function}  fn      回调函数
+ */
+function fetchGoodByID(goodID, fn) {
+	var query = {
+		ID: goodID
+	};
+
+	GoodModel.find(query, function(err, data) {
+		if ( err ) {
+			console.log('fetch good by id error');
+			fn([]); // 数组为空
+			return;
+		}
+		console.log(data);
+		fn(data);
+	});
+}
+
+
+/**
  *  =get good len
  *  @about  获取商品的数量
  *
