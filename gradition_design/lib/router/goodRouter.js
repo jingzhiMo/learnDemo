@@ -21,6 +21,9 @@ module.exports = {
 		}
 		fetchGood(res, params);
 	},
+	fetchByID: function(req, res) {
+		fetchGoodByID(req.query.ID, res);
+	},
 	modify: function(req, res) {
 		var params = req.body;
 
@@ -170,10 +173,10 @@ function fetchGood(res, params) {
  *  =fetch good by id
  *  @about  通过商品的 id 获取商品信息，只返回商品的信息
  *
- *  @param  {string}    goodID  商品的ID
- *  @param  {function}  fn      回调函数
+ *  @param  {string}  goodID  商品的ID
+ *  @param  {object}  res     响应处理对象
  */
-function fetchGoodByID(goodID, fn) {
+function fetchGoodByID(goodID, res) {
 	var query = {
 		ID: goodID
 	};
@@ -181,11 +184,9 @@ function fetchGoodByID(goodID, fn) {
 	GoodModel.find(query, function(err, data) {
 		if ( err ) {
 			console.log('fetch good by id error');
-			fn([]); // 数组为空
-			return;
+			res.status(500).send({c: -1});
 		}
-		console.log(data);
-		fn(data);
+		res.send(data[0]);
 	});
 }
 
