@@ -20,6 +20,14 @@ module.exports = {
 		}
 		fetchShop(res, params);
 	},
+	fetchWithGood: function(req, res) {
+		var params = {
+			ID: req.query.ID
+		};
+		fetchShop(params).then(function(shop) {
+			fetchGoodByID(shop[0].goodList, res);
+		});
+	},
 	modify: function(req, res) {
 		var params = req.body;
 
@@ -130,17 +138,37 @@ function getShopLen(fun) {
  *  @param  {json}   params  商家的参数，为空则获取全部
  */
 function fetchShop(res, params) {
-	if ( params.isNull ) { // 判断对象是否为空
-		params = {};
-	}
-	else {
-		delete(params.isNull);
-	}
-	ShopModel.find(params, function(err, data) {
-		if ( err ) {
-			res.status(500).send('fetch shop msg error');
-			return;
+	var p = new Promise(function(resolve) {
+		if ( params.isNull ) { // 判断对象是否为空
+			params = {};
 		}
-		res.send(data);
+		else {
+			delete(params.isNull);
+		}
+		ShopModel.find(params, function(err, data) {
+			if ( err ) {
+				res.status(500).send('fetch shop msg error');
+				return;
+			}
+			if ( res ) {
+				res.send(data);
+			}
+			resolve(data);
+		});
 	});
+	
+	return p;
+}
+
+
+/**
+ *  =fetch good by id
+ *  @about  通过商品的id，获取商品信息
+ *
+ *  @param  {array}  idArr  商品id的数组
+ *  @param  {object} res    响应处理对象
+ */
+function fetchGoodByID(idArr, res) {
+	console.log(idArr); //
+	res.send({c: 0});
 }

@@ -45,45 +45,113 @@ module.exports = {
  */
 function addNewGood(goodMsg, res) {
 	
-	getGoodLen(function(len) {
-		var good = new GoodModel({
-			ID: 'g-' + len,
-			goodName: goodMsg.goodName,
-			goodDesc: goodMsg.goodDesc,
-			goodType: goodMsg.goodType,
-			goodCont: goodMsg.goodCont,
-			goodCount: 880, // TODO 商品出售数量
-			goodImg: goodMsg.goodImg,
-			oldPrice: goodMsg.oldPrice,
-			currPrice: goodMsg.currPrice,
-			tips: {
-				startDate: goodMsg.tips.startDate,
-				endDate: goodMsg.tips.endDate,
-				useTime: {
-					openTime: goodMsg.tips.useTime.openTime,
-					other: goodMsg.tips.useTime.other
-				},
-				book: goodMsg.tips.book,
-				rule: goodMsg.tips.rule,
-				other: goodMsg.tips.other
-			},
-			points: {
-				sum: 5 // TODO 商品的评分
-			},
-			shopID: goodMsg.shopID,
-			evalID: ''
+	// getGoodLen(function(len) {
+	// 	var good = new GoodModel();
+
+	// 	good.save(function(err) {
+	// 		if (err) {
+	// 			res.status(500).send('mongodb save good message error');
+	// 			return;
+	// 		}
+	// 		console.log(good);
+	// 		res.send({c: 0});
+	// 	});
+	// });
+	getGoodLen()
+	.then(function(len) { // 保存商品信息
+		var p = new Promise(function(resolve) {
+			var good = new GoodModel({
+					ID: 'g-' + len,
+					goodName: goodMsg.goodName,
+					goodDesc: goodMsg.goodDesc,
+					goodType: goodMsg.goodType,
+					goodCont: goodMsg.goodCont,
+					goodCount: 880, // TODO 商品出售数量
+					goodImg: goodMsg.goodImg,
+					oldPrice: goodMsg.oldPrice,
+					currPrice: goodMsg.currPrice,
+					tips: {
+						startDate: goodMsg.tips.startDate,
+						endDate: goodMsg.tips.endDate,
+						useTime: {
+							openTime: goodMsg.tips.useTime.openTime,
+							other: goodMsg.tips.useTime.other
+						},
+						book: goodMsg.tips.book,
+						rule: goodMsg.tips.rule,
+						other: goodMsg.tips.other
+					},
+					points: {
+						sum: 5 // TODO 商品的评分
+					},
+					shopID: goodMsg.shopID,
+					evalID: ''
+			});
+			good.save(function(err) {
+				if (err) {
+					res.status(500).send('mongodb save good message error');
+					return;
+				}
+				resolve({
+					goodID: 'g-' + len,
+					shopID: goodMsg.shopID
+				});
+			});
 		});
 
-		good.save(function(err) {
-			if (err) {
-				res.status(500).send('mongodb save good message error');
+		return p;
+	})
+	.then(function(ID) { // 更新商家信息
+		var p = new Promise(function(resolve) {
+
+			ShopModel.find({
+				ID: ID.shopID
+			}, 
+			function(err, data) {
+				if ( err ) {
+					console.log('fetch shop error after save good');
+					res.status(500).send({c: -1});
+				}
+				resolve({
+					shopID: ID.shopID,
+					goodID: ID.goodID,
+					shopMsg: data[0]
+					// ID.shopID, ID.goodID, data[0]
+				}); // 传商户的信息
+			});
+		});
+
+		return p;
+	})
+	.then(function(msg) {
+		ShopModel.update(
+		{
+			ID: msg.shopID
+		},
+		{$set: {
+			goodList: msg.shopMsg.goodList.push({goodID: msg.goodID})
+		}
+		},
+		function(err) {
+			if ( err ) {
+				console.log('update shop message error');
+				res.status(500).send({c: -1});
 				return;
 			}
-			console.log(good);
 			res.send({c: 0});
 		});
 	});
 }
+
+
+/**
+ *  =save good message
+ *  @about  保存商品信息
+ *
+ *  @param  {object}  goodMsg  商品信息
+ *  @param  {object}  res      响应处理对象
+ */
+
 
 
 /**
@@ -198,15 +266,22 @@ function fetchGoodByID(goodID, res) {
  *  @param  {function}  fun  回调函数
  */
 function getGoodLen(fun) {
-	GoodModel.find({}, function(err, data) {
-		if ( err ) {
-			res.status(500).send('mongodb get good length error');
-			return;
-		}
-		else {
-			fun(data.length);
-		}
+	var p = new Promise(function(resolve) {
+		GoodModel.find({}, function(err, data) {
+			if ( err ) {
+				res.status(500).send('mongodb get good length error');
+				return;
+			}
+			else {
+				if ( fun ) {
+					fun(data.length);
+				}
+				resolve(data.length);
+			}
+		});
 	});
+
+	return p;
 }
 
 
@@ -224,3 +299,10 @@ function getGoodLen(fun) {
 
 // 	});
 // }
+
+
+/**
+ *  =append good to shop
+ *  @about  把商品的ID，添加商店的信息里面
+ *
+ */
