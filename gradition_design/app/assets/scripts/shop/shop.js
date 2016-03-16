@@ -333,7 +333,7 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 	 *  =change select shop
 	 *  @about  改变选中的商店
 	 */
-	$scope.changeShop = function(idx) {
+	$scope.changeShop = function() {
 		var shopList = $scope.shopList,
 			img      = document.querySelectorAll('.modifyImg');
 

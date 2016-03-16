@@ -30,13 +30,14 @@ module.exports = {
 		modifyGood(params, res);
 	},
 	remove: function(req, res) {
-		console.log(req.body);
-		var goodID = req.query.goodID;
-		// res.send({c: 0});
+		// console.log(req.body);
+		var goodID = req.body.goodID;
 
-		// removeGood(req.body.goodID, res);
 		fetchGoodByID(goodID)
-		.then(removeGoodInShop);
+		.then(removeGoodInShop) // 删除所在商店，的该商品信息
+		.then(function() {
+			removeGood(goodID, res);
+		});
 	}
 };
 
@@ -53,6 +54,7 @@ function addNewGood(goodMsg, res) {
 	getGoodLen()
 	.then(function(len) { // 保存商品信息
 		var p = new Promise(function(resolve) {
+			len = parseInt((+new Date() / 1000));
 			var good = new GoodModel({
 					ID: 'g-' + len,
 					goodName: goodMsg.goodName,
@@ -310,10 +312,31 @@ function removeGoodInShop(good) {
 				console.log('remove good in shop update error');
 				return;
 			}
-			console.log('success');
+			resolve();
 		}
 		);
 	});
 
 	return p;
+}
+
+
+/**
+ *  =remove good
+ *  @about  删除该商品
+ *
+ *  @param  {string}  goodID  商品的ID
+ *  @param  {object}  res     响应处理对象
+ */
+function removeGood(goodID, res) {
+	GoodModel.rmeove({
+		ID: goodID,
+	}, function(err) {
+		if ( err ) {
+			console.log('delete good error');
+			res.status(500).send({c: -1});
+			return;
+		}
+		res.send({c: 0});
+	});
 }

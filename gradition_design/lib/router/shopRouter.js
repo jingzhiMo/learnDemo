@@ -49,7 +49,7 @@ module.exports = {
  */
 function addNewShop(shopMsg, res) {
 	getShopLen(function(len) {
-
+		len = parseInt((+new Date() / 1000));
 		var shop = new ShopModel({
 			ID: 's-' + len,
 			shopName: shopMsg.name,
@@ -90,13 +90,13 @@ function modifyShop(shopMsg, res) {
 	var query = {
 		ID: shopMsg.ID
 	};
-
-	ShopModel.update(query, {$set: {
+	var msg = {
 		shopName: shopMsg.name,
 		shopPhone: shopMsg.phone,
 		shopPlace: shopMsg.place,
 		shopImg: shopMsg.shopImg
-	}}, function(err, data) {
+	};
+	ShopModel.update(query, {$set: msg}, function(err, data) {
 		if ( err ) {
 			console.log('modify shop error: ' + err);
 			res.status(500).send('modify shop error');
