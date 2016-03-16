@@ -181,7 +181,8 @@ function fetchGood(res, params) {
 		var result   = [],
 			goodData = data,
 			len      = goodData.length > 10 ? 10 : goodData.length,
-			callback = [];
+			callback = [],
+			isSent   = false; // 是否已经做出了回应
 
 		for( var i = 0; i < len; i++) {
 			callback[i] = false;
@@ -201,7 +202,8 @@ function fetchGood(res, params) {
 							shop: data[0]
 						});
 						callback[i] = true;
-						if ( callback.indexOf(false) === -1 ) {
+						if ( callback.indexOf(false) === -1 && !isSent ) {
+							isSent = true;
 							res.send(result);
 							return;
 						}
