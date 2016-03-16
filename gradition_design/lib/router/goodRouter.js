@@ -31,7 +31,12 @@ module.exports = {
 	},
 	remove: function(req, res) {
 		console.log(req.body);
-		res.send({c: 0});
+		var goodID = req.query.goodID;
+		// res.send({c: 0});
+
+		// removeGood(req.body.goodID, res);
+		fetchGoodByID(goodID)
+		.then(removeGoodInShop);
 	}
 };
 
@@ -45,18 +50,6 @@ module.exports = {
  */
 function addNewGood(goodMsg, res) {
 	
-	// getGoodLen(function(len) {
-	// 	var good = new GoodModel();
-
-	// 	good.save(function(err) {
-	// 		if (err) {
-	// 			res.status(500).send('mongodb save good message error');
-	// 			return;
-	// 		}
-	// 		console.log(good);
-	// 		res.send({c: 0});
-	// 	});
-	// });
 	getGoodLen()
 	.then(function(len) { // 保存商品信息
 		var p = new Promise(function(resolve) {
@@ -104,42 +97,25 @@ function addNewGood(goodMsg, res) {
 	.then(function(ID) { // 更新商家信息
 		var p = new Promise(function(resolve) {
 
-			ShopModel.find({
+			ShopModel.update({
 				ID: ID.shopID
-			}, 
+			},
+			{$pushAll: {
+				goodList: [{goodID: ID.goodID}]
+			}},
+			{
+				upsert: true
+			},
 			function(err, data) {
 				if ( err ) {
-					console.log('fetch shop error after save good');
-					res.status(500).send({c: -1});
+					console.log('update shop msg error');
 				}
-				resolve({
-					shopID: ID.shopID,
-					goodID: ID.goodID,
-					shopMsg: data[0]
-					// ID.shopID, ID.goodID, data[0]
-				}); // 传商户的信息
+				console.log('ha');
+				res.send({c: 0});
 			});
 		});
 
 		return p;
-	})
-	.then(function(msg) {
-		ShopModel.update(
-		{
-			ID: msg.shopID
-		},
-		{$set: {
-			goodList: msg.shopMsg.goodList.push({goodID: msg.goodID})
-		}
-		},
-		function(err) {
-			if ( err ) {
-				console.log('update shop message error');
-				res.status(500).send({c: -1});
-				return;
-			}
-			res.send({c: 0});
-		});
 	});
 }
 
@@ -245,17 +221,25 @@ function fetchGood(res, params) {
  *  @param  {object}  res     响应处理对象
  */
 function fetchGoodByID(goodID, res) {
-	var query = {
-		ID: goodID
-	};
+	var p = new Promise(function(resolve) {
+		var query = {
+			ID: goodID
+		};
 
-	GoodModel.find(query, function(err, data) {
-		if ( err ) {
-			console.log('fetch good by id error');
-			res.status(500).send({c: -1});
-		}
-		res.send(data[0]);
+		GoodModel.find(query, function(err, data) {
+			if ( err ) {
+				console.log('fetch good by id error');
+				res.status(500).send({c: -1});
+			}
+			if ( res ) {
+				res.send(data[0]);
+				return;
+			}
+			resolve(data[0]);
+		});
 	});
+
+	return p;
 }
 
 
@@ -302,7 +286,32 @@ function getGoodLen(fun) {
 
 
 /**
- *  =append good to shop
- *  @about  把商品的ID，添加商店的信息里面
+ *  =remove good in shop
+ *  @about  删除该商品，对应的商店，的商品信息
  *
+ *  @param  {object}  good    商品对象
  */
+function removeGoodInShop(good) {
+	var shopID = good.shopID,
+		gID    = good.ID;
+
+	var p = new Promise(function(resolve) {
+		ShopModel.update({
+			ID: shopID
+		},
+		{$pull: {
+			goodList: { goodID: gID}
+		}},
+		{ multi: true },
+		function(err) {
+			if ( err ) {
+				console.log('remove good in shop update error');
+				return;
+			}
+			console.log('success');
+		}
+		);
+	});
+
+	return p;
+}
