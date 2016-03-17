@@ -52,7 +52,7 @@
 			<p>选择连锁商店</p>
 			<select ng-model="chainShop" id="chainShop" class="form-control">
 				<option value="new">新建连锁店</option>
-				<option ng-repeat="shop in shopList" value="shop.ID" ng-bind="shop.shopName"></option>
+				<option ng-repeat="shop in shopList" value="{{shop.ID}}" ng-bind="shop.shopName"></option>
 			</select>
 		</div>
 		<div class="form-group">

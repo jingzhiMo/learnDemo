@@ -3,7 +3,7 @@ angular.module('urlMD', [])
 		return {
 			getParamByUrl: function(url) {
 			    var result = {},
-			        p = /(?:[\?&])([^?=&]+)(?:=?([^?=&]*))/g,
+			        p = /(?:[\?&#])([^?=&]+)(?:=?([^?=&#]*))/g,
 			        match, name, value;
 			 
 			    while(match = p.exec(url)) {

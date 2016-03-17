@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="sdetail">
 <head>
 	<title>商户详情</title>
 	<meta charset="UTF-8">
@@ -7,65 +7,56 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<link rel="stylesheet" href="assets/css/sdetail/sdetail.css">
 </head>
-<body>
-	<section id="hd">
-		<a href="#" class="back-link"></a>
+<body ng-controller="sdCtrl">
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
 		<h1 class="title">商户详情</h1>
-		<a href="#" class="home-link"></a>
+		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
 	<section class="shop-detail">
 		<div class="shop-info">
 			<a href="#" class="more-link">
-				<img class="cover-img" src="assets/img/kfc.jpg" alt="">
+				<img class="cover-img" src="{{shop.shopImg[0]}}" alt="">
 				<span class="img-count">21</span>
 			</a>
 			<div class="cont">
-				<h2 class="shop-name">尊宝比萨(燕塘店)</h2>
+				<h2 class="shop-name" ng-bind="shop.shopName"></h2>
 				<div class="score">
 					<div class="basic-score">
-						<div class="real-score"></div>
+						<div class="real-score" style="width: {{(shop.points.sum * 20).toFixed(1)}}%"></div>
 					</div>
-					<span class="price">人均：￥30</span>
+					<!-- <span class="price">人均：￥30</span> -->
 				</div>
 				<div class="sp-score">
-					<span class="item">口味：4.7</span>
-					<span class="item">环境：4.6</span>
-					<span class="item">服务：4.7</span>
+					<span class="item">口味：{{shop.points.eat.toFixed(1)}}</span>
+					<span class="item">环境：{{shop.points.envir.toFixed(1)}}</span>
+					<span class="item">服务：{{shop.points.service.toFixed(1)}}</span>
 				</div>
 			</div>
 		</div>
-		<p class="shop-pos">广州市天河区燕岭路113号华图教育大厦首层（燕塘地铁站C出口）</p>
+		<p class="shop-pos" ng-bind="shop.shopPlace"></p>
 		<div class="contact">
-			<a href="#" class="item phone">电话</a>
-			<a href="#" class="item envir">商家环境</a>
+			<span class="item phone" ng-click="showPhone($event)">电话</span>
+			<span class="item envir">商家环境</span>
 		</div>
-		<a class="view-all" href="#">查看全部83家分店</a>
+		<a class="view-all" href="#" ng-click="viewAllShop($event)">查看全部{{chainShopList.length || 0}}家分店</a>
 	</section>
 	<section class="shop-good">
 		<h3 class="title">代金券/团购</h3>
 		<div class="goods-list">
-			<div class="good">
-				<a href="#" class="good-link">
-					<p class="good-name">尊宝比萨双人餐</p>
+			<div class="good" ng-repeat="good in viewGoodList">
+				<a href="/gdetail.html?ID={{good.ID}}" class="good-link">
+					<p class="good-name" ng-bind="good.goodName"></p>
 					<div class="price">
-						<span class="current">68</span>
-						<span class="old">94</span>
+						<span class="current" ng-bind="good.currPrice"></span>
+						<span class="old" ng-bind="good.oldPrice"></span>
 					</div>
-					<span class="count">已售21625</span>
-				</a>
-			</div>
-			<div class="good">
-				<a href="#" class="good-link">
-					<p class="good-name">尊宝榴莲比萨</p>
-					<div class="price">
-						<span class="current">56</span>
-						<span class="old">98</span>
-					</div>
-					<span class="count">已售32194</span>
+					<span class="count">已售{{good.goodCount}}</span>
 				</a>
 			</div>
 		</div>
-		<a href="#" class="view-all /*top">查看全部5个团单</a>
+		<a href="#" class="view-all /*top" ng-show="viewMore" ng-click="toggleMore($event)">查看全部{{goodList.length}}个团单</a>
+		<a href="#" class="view-all top" ng-show="packup" ng-click="toggleMore($event)">收起</a>
 	</section>
 	<section class="recom-menu">
 		<h4 class="title">推荐菜</h4>
@@ -201,5 +192,92 @@
 		</section>
 		<div class="top"></div>
 	</footer>
+	
+	<!-- 遮层 -->
+	<div class="bg-mask" ng-show="isShowMask"></div>
+
+	<!-- 弹出电话 -->
+	<div class="phone-popup" ng-show="isShowPhone">
+		<div class="content">
+			<h4 class="title">拨打电话</h4>
+			<a href="tel:{{shop.shopPhone}}" class="phone" ng-bind="shop.shopPhone"></a>
+			<button class="cancel" ng-click="hidePhone($event)">取消</button>
+		</div>
+	</div>
+
+	<!-- 全部分店 -->
+	<div class="shop-popup" ng-show="isShowShop">
+		<div class="popup-hd">
+			<h3 class="title">全部分店</h3>
+			<p class="shop-count">{{chainShopList.length}}店通用</p>
+		</div>
+		<a href="#" class="close" ng-click="closeShopPopup($event)"></a>
+		<div class="shop-bd shop-list">
+			<div>
+				<div class="shop-item" ng-repeat="chainShop in chainShopList">
+					<a href="/sdetail.html?ID={{chainShop.ID}}" class="shop">
+						<h4 class="shop-name" ng-bind="chainShop.shopName"></h4>
+						<p class="shop-pos" ng-bind="chainShop.shopPlace"></p>
+					</a>
+					<a href="tel:{{chainShop.shopPhone}}" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<!-- <div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div>
+				<div class="shop-item">
+					<a href="#" class="shop">
+						<h4 class="shop-name">尊宝比萨(燕塘店)</h4>
+						<p class="shop-pos">广州市天河区燕玲路100号xx大厦首层（xx地铁站C出口）</p>
+					</a>
+					<a href="#" class="shop-phone"></a>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/sdetail/sdetail.js"></script>
 </body>
 </html>

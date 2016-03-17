@@ -66,6 +66,48 @@ angular.module('eventMD', [])
 
 
 			/**
+			 *  =move Y direction
+			 *  @about    封装 touch move 事件，Y方向 滚动
+			 *
+			 *  @param    {dom}    ele   需要滑动的父元素
+			 *  @param    {number} maxY  Y方向的最大滚动高度
+			 */
+			moveY: function(ele, maxY) {
+				var startY = 0,
+					currY = 0,
+					moveY, endY;
+
+				ele.addEventListener('touchstart', function(ev) {
+					startY = ev.touches[0].pageY;
+					ev.preventDefault();
+				}, false);
+
+				ele.addEventListener('touchmove', function(ev) {
+					distanceY = ev.touches[0].pageY - startY;
+					currY = currY + distanceY;
+					setTransformY(ele, currY);
+					ev.preventDefault();
+				}, false);
+
+				// ele.addEventListener('touchend', function(ev) {
+				// 	clearTimeout(timer);
+				// 	if ( distanceY < 0 ) { // 向上滑动
+
+				// 		currY = currY < maxY ? maxY : currY;
+				// 		setTransformY(ele, currY);
+				// 	}
+				// 	else { // 向下滑动
+
+				// 		currY = currY > 0 ? 0 : currY;
+				// 		setTransformY(ele, currY);
+				// 	}
+				// 	// startY = currY;
+				// 	ev.preventDefault();
+				// }, false);
+			},
+
+
+			/**
 			 *  =nav scroll
 			 *  @about  滚动的时候，对导航栏进行不同高亮
 			 *
@@ -181,6 +223,19 @@ function setStyle(ele, wid, delay) {
 					    '-webkit-transform: translate3d(' + wid + 'px, 0px, 0px);' +
 					    'transition-duration: ' + delay + 'ms;' +
 					    '-webkit-transition-duration: ' + delay + 'ms;';
+}
+
+
+/**
+ *  set style transform y
+ *  @about    设置元素上下滑动的样式
+ *
+ *  @param    {dom}    ele  需要设置的元素
+ *  @param    {number} h    上下滑动的大小
+ */
+function setTransformY(ele, h) {
+	ele.style.cssText = 'transform: translate3d(0px, ' + h +'px, 0px);' +
+					    '-webkit-transform: translate3d(0px, ' + h +'px, 0px);';
 }
 
 
