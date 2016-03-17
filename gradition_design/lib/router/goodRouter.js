@@ -329,7 +329,7 @@ function removeGoodInShop(good) {
  *  @param  {object}  res     响应处理对象
  */
 function removeGood(goodID, res) {
-	GoodModel.rmeove({
+	GoodModel.remove({
 		ID: goodID,
 	}, function(err) {
 		if ( err ) {

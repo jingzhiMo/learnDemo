@@ -570,7 +570,7 @@ app.controller('delete', ['$scope', '$http', function($scope, $http){
 				url: '/goodDelete',
 				method: 'POST',
 				data: {
-					ID: ID
+					goodID: ID
 				},
 				headers: {
 					'Content-Type': 'application/json'
