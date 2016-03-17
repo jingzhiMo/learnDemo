@@ -171,12 +171,47 @@ function fetchShop(params, res) {
  *  =fetch good by id
  *  @about  通过商品的id，获取商品信息
  *
- *  @param  {array}  idArr  商品id的数组
- *  @param  {object} res    响应处理对象
+ *  @param  {array}  goodList  商品id的对象
+ *  @param  {object} res       响应处理对象
  */
-function fetchGoodByID(idArr, res) {
-	console.log(idArr); //
-	res.send({c: 0});
+function fetchGoodByID(goodList, res) {
+	var len = goodList.length,
+		callback = [],
+		result = [],
+		isSent = false;
+
+	if ( len === 0 ) { // 该商店无商品
+		res.send({c: -2});
+		return;
+	}
+
+	for( var i = 0; i < len; i++ ) {
+		callback[i] = false;
+	}
+
+	for( i = 0; i < len; i++ ) {
+		(function(i) {
+			GoodModel.find({
+				ID: goodList[i].goodID
+			}, function(err, data) {
+				if ( err ) {
+					res.status(500).send({c: -1});
+					return;
+				}
+				else {
+
+					result.push(data[0]);
+					callback[i] = true;
+
+					if ( callback.indexOf(false) === -1 && !isSent ) {
+						isSent = true;
+						res.send(result);
+						return;
+					}
+				}
+			});
+		})(i);
+	}
 }
 
 
@@ -197,6 +232,11 @@ function removeGoodLoop(shop) {
 	}
 
 	var p = new Promise(function(resolve) {
+
+		if ( len === 0 ) { // 该商家下无商品
+			resolve(true);
+		}
+
 		for ( i = 0; i < len; i++ ) {
 			(function(i) {
 				GoodModel.remove({ ID: idArr[i].goodID }, function(err) {

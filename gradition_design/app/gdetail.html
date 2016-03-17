@@ -281,32 +281,11 @@
 	<section class="panel recom-panel">
 		<h4 class="panel-hd">本商家其他热卖套餐</h4>
 		<div class="recom-list">
-			<a href="#" class="recom-item">
-				<h4 class="recom-title">尊宝榴莲披萨！节假日通用！</h4>
+			<a ng-repeat="recom in recomGood" href="/gdetail.html?ID={{recom.ID}}" class="recom-item">
+				<h4 class="recom-title" ng-bind="recom.goodName"></h4>
 				<p class="price">
-					<span class="current">56</span>
-					<span class="old">98</span>
-				</p>
-			</a>
-			<a href="#" class="recom-item">
-				<h4 class="recom-title">尊宝披萨单人餐意粉套餐！节假日通用！</h4>
-				<p class="price">
-					<span class="current">25</span>
-					<span class="old">50</span>
-				</p>
-			</a>
-			<a href="#" class="recom-item">
-				<h4 class="recom-title">披萨15选1！节假日通用！</h4>
-				<p class="price">
-					<span class="current">48</span>
-					<span class="old">73</span>
-				</p>
-			</a>
-			<a href="#" class="recom-item">
-				<h4 class="recom-title">尊宝披萨3人套餐！节假日通用！</h4>
-				<p class="price">
-					<span class="current">99</span>
-					<span class="old">134</span>
+					<span class="current" ng-bind="recom.currPrice"></span>
+					<span class="old" ng-bind="recom.oldPrice"></span>
 				</p>
 			</a>
 		</div>
