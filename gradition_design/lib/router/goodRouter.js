@@ -197,6 +197,7 @@ function fetchGood(res, params) {
 					if ( err ) {
 						console.log('fetch good err by shopID');
 						res.status(500).send({c: -1});
+						return;
 					}
 					else {
 						result.push({

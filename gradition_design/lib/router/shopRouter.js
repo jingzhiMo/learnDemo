@@ -1,4 +1,5 @@
 var ShopModel = require('../model/shopModel').ShopModel;
+var GoodModel = require('../model/goodModel').GoodModel;
 
 module.exports = {
 	add: function(req, res) {
@@ -18,7 +19,7 @@ module.exports = {
 				params.isNull = false;
 			}
 		}
-		fetchShop(res, params);
+		fetchShop(params, res);
 	},
 	fetchWithGood: function(req, res) {
 		var params = {
@@ -34,8 +35,13 @@ module.exports = {
 		modifyShop(params, res);
 	},
 	remove: function(req, res) {
-		console.log(req.body);
-		res.send({c: 0});
+		var shopID = req.body.shopID;
+
+		fetchShop({ ID: shopID})
+		.then(removeGoodLoop)
+		.then(function() {
+			removeShop(shopID, res);
+		});
 	}
 };
 
@@ -134,10 +140,10 @@ function getShopLen(fun) {
  *  =fetch shop
  *  @about  获取商家
  *
- *  @param  {object} res     响应处理对象
  *  @param  {json}   params  商家的参数，为空则获取全部
+ *  @param  {object} res     响应处理对象
  */
-function fetchShop(res, params) {
+function fetchShop(params, res) {
 	var p = new Promise(function(resolve) {
 		if ( params.isNull ) { // 判断对象是否为空
 			params = {};
@@ -171,4 +177,67 @@ function fetchShop(res, params) {
 function fetchGoodByID(idArr, res) {
 	console.log(idArr); //
 	res.send({c: 0});
+}
+
+
+/**
+ *  =remove good loop
+ *  @about  循环删除商品信息
+ *
+ *  @param  {object}  shop  商品的信息
+ */
+function removeGoodLoop(shop) {
+	var callback = [],
+		idArr    = shop[0].goodList,
+		len      = idArr.length,
+		isSent   = false;
+
+	for( var i = 0; i < len; i++) {
+		callback[i] = false;
+	}
+
+	var p = new Promise(function(resolve) {
+		for ( i = 0; i < len; i++ ) {
+			(function(i) {
+				GoodModel.remove({ ID: idArr[i].goodID }, function(err) {
+					if ( err ) {
+						console.log('remove good error in loop');
+						return;
+					}
+					else {
+						callback[i] = true;
+
+						if ( callback.indexOf(false) === -1 && !isSent ) {
+							isSent = true;
+							resolve(true);
+							return;
+						}
+					}
+				});
+			})(i);
+		}
+	});
+
+	return p;
+}
+
+
+/**
+ *  =remove shop 
+ *  @about  删除商店的信息
+ *
+ *  @param  {string}  shopID  商店的ID
+ *  @param  {object}  res     响应处理对象
+ */
+function removeShop(shopID, res) {
+	ShopModel.remove({
+		ID: shopID
+	}, function(err) {
+		if ( err ) {
+			console.log('delete shop error');
+			res.status(500).send({ c: -1});
+			return;
+		}
+		res.send({c: 0});
+	});
 }

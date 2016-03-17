@@ -610,13 +610,13 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 	 *  @param  {string}  ID     商家的ID
 	 */
 	$scope.deleteShop = function(index, ID) {
-		if ( confirm('是否删除该商家') ) {
+		if ( confirm('删除该商家，会将该商家下的所有商品都删除，是否删除？') ) {
 			$scope.isPending = true;
 			$http({
 				method: 'POST',
 				url: '/shopDelete',
 				data: {
-					ID: ID
+					shopID: ID
 				},
 				headers: {
 					'Content-Type': 'application/json'
