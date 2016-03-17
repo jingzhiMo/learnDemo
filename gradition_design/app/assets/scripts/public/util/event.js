@@ -62,6 +62,68 @@ angular.module('eventMD', [])
 					setIndex(idx, index, 'active');
 					startX = currX;
 				}, false);
+			},
+
+
+			/**
+			 *  =nav scroll
+			 *  @about  滚动的时候，对导航栏进行不同高亮
+			 *
+			 *  @param  {dom}  nav      导航栏
+			 *  @param  {dom}  navItem  导航栏的子元素
+			 */
+			navScroll: function(nav, navItem) {
+				var doc    = document,
+					body   = doc.body,
+					contTop= '',
+					topArr = [],
+					panel  = [];
+
+				for( var i = 0 , len = navItem.length; i < len; i++) {
+					panel[i] = doc.querySelector(navItem[i].getAttribute('href'));
+
+					(function(i) {
+						navItem[i].addEventListener('click', function() {
+							topArr[i] = topArr[i] || angular.element(panel[i]).prop('offsetTop');
+							window.scrollY = topArr[i] - 40;
+						}, false);
+					})(i);
+				}
+
+				window.addEventListener('scroll', throttle(function() {
+
+					var ele = doc.querySelector('#cont'),
+						top = contTop || angular.element(ele).prop('offsetTop') + 40;
+						scrollTop = window.scrollY;
+
+					if ( top - 50 < window.scrollY ) {
+						nav.style.cssText = 'z-index: 999;position: fixed;top: 0;margin-top: 0;';
+						body.style.cssText = 'padding-top: 41px;';
+					}
+					else {
+						nav.style.cssText = '';
+						body.style.cssText = 'padding-top: 0';
+					}
+
+					var _offsetTop;
+					for( var i = 0, len = navItem.length; i < len; i++) {
+
+						if ( !topArr[i] ) {
+							topArr[i] = angular.element(panel[i]).prop('offsetTop');
+						}
+						_offsetTop = topArr[i];
+
+						if ( _offsetTop < window.scrollY + 42) {
+							// 去掉 active 类
+							var avtiveEle = nav.querySelectorAll('.active')[0];
+							avtiveEle.className = avtiveEle.className.replace(/\s?active\s?/g, '');
+							navItem[i].className += ' active';
+						}
+
+					}
+
+				}, 10, 20), false);
+
 			}
 		};
 	});

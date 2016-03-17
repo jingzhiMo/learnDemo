@@ -1,12 +1,30 @@
-var gdetail = angular.module('gdetail', ['urlMD', 'eventMD']);
+var gdetail = angular.module('gdetail', ['urlMD', 'eventMD', 'pageMD']);
 
 gdetail.controller('gdCtrl', ['$scope', '$http', 'calcUrlParam', 'event', 
 function($scope, $http, url, event){
 	$scope.good = {};
 	$scope.recomGood = [];
-	$scope.good.goodImg = ['assets/image/loading1.gif',
-						   'assets/image/loading2.gif',
-						   'assets/image/loading3.gif'];
+	$scope.good.goodImg = ['assets/image/loading1.gif', 'assets/image/loading2.gif', 'assets/image/loading3.gif'];
+	$scope.isShowPhone = false;
+	$scope.isShowMask = false;
+
+	/**
+	 *  =show phone
+	 *  @about  显示手机号码
+	 */
+	$scope.showPhone = function(ev) {
+		$scope.isShowPhone = true;
+		$scope.isShowMask = true;
+		event.stopProAndPreventDafault(ev);
+	};
+
+
+	$scope.hidePhone = function(ev) {
+		$scope.isShowPhone = false;
+		$scope.isShowMask = false;
+		event.stopProAndPreventDafault(ev);	
+	};
+
 
 	var urlReq = url.getParamByUrl(window.location.href);
 
@@ -83,7 +101,7 @@ function($scope, $http, url, event){
 		.success(function(data) {
 			console.log(data);
 			for( var i = 0, len = data.length; i < len; i++ ) {
-				if ( urlReq.ID === data[i].ID ) {
+				if ( $scope.good.ID === data[i].ID ) {
 					data.splice(i, 1);
 					break;
 				}
@@ -100,4 +118,10 @@ function($scope, $http, url, event){
 	var slideBox = document.querySelectorAll('.slide-cont')[0],
 		slideIdx = document.querySelectorAll('.index');
 	event.move(slideBox, screen.width, 3, slideIdx);
+
+	// 绑定导航栏事件
+	var nav = document.querySelector('#nav-box'),
+		navItem = nav.querySelectorAll('.nav-item');
+
+	event.navScroll(nav, navItem);
 }]);

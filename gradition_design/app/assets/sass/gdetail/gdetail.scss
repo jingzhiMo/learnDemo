@@ -275,6 +275,7 @@ body {
 	
 	position: relative;
 	margin-top: 10px;
+	width: 100%;
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
 
@@ -290,6 +291,7 @@ body {
 		color: $ftClr;
 
 		&.active {
+			border-bottom: 2px solid $maClr;
 			color: $maClr;
 		}
 	}
@@ -343,15 +345,21 @@ body {
 	.name {
 		width: 70%;
 	}
+	.cont {
+		line-height: 35px;
+	}
 	.count, .price {
 		@extend %tac;
 		width: 15%;
 		color: $maFtClr;
 	}
 	.total {
+		margin-top: 8px;
+		font-size: 1.3rem;
+		line-height: 30px;
 		text-align: right;
 		color: #111;
-		font-size: 1.3rem;
+		border-top: 1px solid #eee;
 
 		span {
 			display: inline-block;
@@ -661,7 +669,7 @@ body {
 
 /* 弹出层 */
 .bg-mask {
-	@extend %hide;
+	// @extend %hide;
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -767,7 +775,7 @@ body {
 }
 /* 电话号码弹出层 */
 .phone-popup {
-	@extend %hide;
+	// @extend %hide;
 	@extend %tac;
 	position:fixed;
 	left: 0;
@@ -807,5 +815,9 @@ body {
 		width: 100%;
 		color: #296da1;	
 		background-color: #fff;
+
+		&:active {
+			background-color: #eee;
+		}
 	}
 }

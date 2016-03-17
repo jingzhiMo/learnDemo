@@ -23,7 +23,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   vertical-align: middle;
 }
 
-.hide, #ft .login-info, .bg-mask, .shop-popup, .phone-popup {
+.hide, #ft .login-info, .shop-popup {
   display: none;
 }
 
@@ -331,6 +331,7 @@ body {
 #nav-box {
   position: relative;
   margin-top: 10px;
+  width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #eee;
 }
@@ -345,6 +346,7 @@ body {
   color: #222;
 }
 #nav-box .nav-item.active {
+  border-bottom: 2px solid #57c4cf;
   color: #57c4cf;
 }
 #nav-box .nav-line {
@@ -395,14 +397,20 @@ body {
 .taocan-panel .name {
   width: 70%;
 }
+.taocan-panel .cont {
+  line-height: 35px;
+}
 .taocan-panel .count, .taocan-panel .price {
   width: 15%;
   color: #666;
 }
 .taocan-panel .total {
+  margin-top: 8px;
+  font-size: 1.3rem;
+  line-height: 30px;
   text-align: right;
   color: #111;
-  font-size: 1.3rem;
+  border-top: 1px solid #eee;
 }
 .taocan-panel .total span {
   display: inline-block;
@@ -806,6 +814,9 @@ body {
   width: 100%;
   color: #296da1;
   background-color: #fff;
+}
+.phone-popup .cancel:active {
+  background-color: #eee;
 }
 
 /*# sourceMappingURL=gdetail.css.map */
