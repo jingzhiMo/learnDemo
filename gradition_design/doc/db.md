@@ -22,6 +22,7 @@ gradition-gp
         goodCont: '', // 套餐商品的内容
         goodImg: [], // 商品图片
         goodCount: , 0 // 商品卖出数量 number
+        goodPolicy: [0, 0, 0, 0]
         tips: {
         	startDate: 0, // 活动开始时间 number
         	endDate: 0, // 活动结束时间  number
