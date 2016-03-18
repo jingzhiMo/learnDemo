@@ -75,7 +75,7 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		link: function(scope, ele, attr) {
 
 			var ul = ele.children()[0];
-			event.move(ul, ul.offsetWidth / 2, 2);
+			event.move(ul, ul.offsetWidth / 2, 2, document.querySelectorAll('.point'));
 		}
 	};
 }]);

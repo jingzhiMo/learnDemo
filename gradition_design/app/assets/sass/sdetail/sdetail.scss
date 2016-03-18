@@ -425,10 +425,6 @@ body {
 }
 /* 所有分店弹出层 */
 .shop-popup {
-	// @extend %hide;
-	position: fixed;
-	bottom: 0;
-	left: 0;
 	width: 100%;
 	padding: 0 12px;
 	z-index: 2;
@@ -476,13 +472,11 @@ body {
 		}
 		&:active, &:hover {
 			background-color: #eee;
-			// border: 1px solid $maFtClr;
 			border-radius: 50%;
 		}
 	}
 	.shop-list {
-		height: 330px;
-		overflow: hidden;
+		// TODO
 	}
 	.shop-item {
 		position: relative;

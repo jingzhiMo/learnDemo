@@ -10,6 +10,8 @@ function($scope, $http, url, event){
 	$scope.isShowPhone = false;
 	$scope.isShowMask = false;
 	$scope.isShowShop = false;
+	$scope.isShowBd = true;
+	$scope.isShowFt = true;
 	$scope.viewMore = false;
 	$scope.packup = false;
 
@@ -52,13 +54,14 @@ function($scope, $http, url, event){
 	 *  @about  查看所有商店
 	 */
 	$scope.viewAllShop = function(ev) {
-		var chainList = document.querySelectorAll('.shop-list')[0].children[0],
-			maxY = -(document.querySelectorAll('.shop-item')[0].offsetHeight) * 5; // 最多容下5个分店的信息
-
+		// var chainList = document.querySelectorAll('.shop-list')[0].children[0],
+		// 	maxY = -(document.querySelectorAll('.shop-item')[0].offsetHeight) * 5; // 最多容下5个分店的信息
+		// $scope.
 		$scope.isShowShop = true;
-		$scope.isShowMask = true;
-		event.moveY(chainList, maxY);
-		event.stopProAndPreventDafault(ev);
+		$scope.isShowBd = false;
+		$scope.isShowFt = false;
+		history.pushState({ischain: true}, null, '#chainShop');
+		ev.preventDefault();
 	};
 
 
@@ -70,6 +73,15 @@ function($scope, $http, url, event){
 		$scope.isShowShop = false;
 		$scope.isShowMask = false;
 		event.stopProAndPreventDafault(ev);
+	};
+
+	$scope.backDetail = function() {
+		if ( history.state && history.state.ischain ) {
+			$scope.isShowShop = false;
+			$scope.isShowBd = true;
+			$scope.isShowFt = true;
+		}
+		history.back();
 	};
 
 	var urlReq = url.getParamByUrl(window.location.href);

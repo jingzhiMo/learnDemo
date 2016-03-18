@@ -88,22 +88,6 @@ angular.module('eventMD', [])
 					setTransformY(ele, currY);
 					ev.preventDefault();
 				}, false);
-
-				// ele.addEventListener('touchend', function(ev) {
-				// 	clearTimeout(timer);
-				// 	if ( distanceY < 0 ) { // 向上滑动
-
-				// 		currY = currY < maxY ? maxY : currY;
-				// 		setTransformY(ele, currY);
-				// 	}
-				// 	else { // 向下滑动
-
-				// 		currY = currY > 0 ? 0 : currY;
-				// 		setTransformY(ele, currY);
-				// 	}
-				// 	// startY = currY;
-				// 	ev.preventDefault();
-				// }, false);
 			},
 
 
@@ -257,7 +241,7 @@ function setIndex(ele, currIndex, hightlightCls) {
 		if ( testPattern.test(ele[i].className) && ( i + 1 ) !== currIndex ) {
 			ele[i].className = ele[i].className.replace(replacePattern, '');
 		}
-		else if ( i + 1 === currIndex ){
+		else if ( i + 1 === currIndex && !testPattern.test(ele[i].className)){
 			ele[i].className = ele[i].className + ' ' + hightlightCls;
 		}
 	}
