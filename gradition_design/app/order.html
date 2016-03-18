@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>确认订单</title>
+	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/order/order.css">
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
+		<h1 class="title" ng-bind="title">确认订单</h1>
+		<a href="{{homeLink}}" class="home-link"></a>
+	</section>
+	<article>
+		<section class="order-msg mrt12">
+			<div class="msg-box goodName ft-0">
+				<span class="lf normal-ft">双人自助餐</span>
+				<span class="rh normal-ft">单价：￥45</span>
+			</div>
+			<div class="msg-box count ft-0">
+				<span class="lf normal-ft">数量 <span class="tip">(最多买30件)</span></span>
+				<div class="change-count rh ft-0">
+					<button class="btn minus"></button>
+					<input type="text" value="1">
+					<button class="btn plus"></button>
+				</div>
+			</div>
+			<div class="msg-box sum ft-0">
+				<span class="lf normal-ft">总价</span>
+				<span class="rh normal-ft">￥45</span>
+			</div>
+		</section>
+		<section class="msg-box bind-phone mrt12 ft-0">
+			<span class="lf normal-ft">已绑定手机</span>
+			<span class="normal-ft rh">1353****5853</span>
+		</section>
+		<section class="submit-box mrt12 ft-0">
+			<button class="submit">确 认</button>
+		</section>
+	</article>
+</body>
+</html>

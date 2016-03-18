@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+@import "../_paritals/var";
+@import "../_paritals/global";
+@import "../public/pageHd";
+
+body {
+	background-color: #eee;
+}
+
+.mrt12 {
+	margin-top: 12px;
+}
+.msg-box {
+	padding: 0 12px;
+	background-color: #fff;
+	border-bottom: 1px solid $maBrClr;
+}
+span.lf {
+	display: inline-block;
+	width: 70%;
+	text-align: left;
+	vertical-align: middle;
+}
+span.rh, div.rh {
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+	vertical-align: middle;
+}
+.change-count input {
+	width: 33.33%;
+	text-align: center;
+}
+.change-count > * {
+	display: inline-block;
+	width: 33.33%;
+	box-sizing: border-box;
+	line-height: 35px;
+	vertical-align: middle;
+}
+.btn {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	border: 1px solid $maBrClr;
+	border-radius: 4px;
+}
+.btn.plus {
+	border-color: $maClr;
+}
+.btn::before {
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: 3px;
+	margin-top: -1px;
+	width: 12px;
+	height: 1px;
+	background-color: $maBrClr;
+}
+.plus::before {
+	background-color: $maClr;
+}
+.plus::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 3px;
+	margin-top: -1px;
+	width: 12px;
+	height: 1px;
+	background-color: $maClr;
+	transform: rotate(90deg);
+}
+.tip {
+	font-size: 1.2rem;
+	color: #ccc;
+}
+.normal-ft {
+	line-height: 35px;
+	font-size: 1.3rem;
+	color: $maFtClr;
+}
+.ft-0 {
+	font-size: 0;
+}
+.submit-box {
+	padding: 0 12px;
+	.submit{
+		width: 100%;
+		line-height: 35px;
+		font-size: 1.5rem;
+		font-family: inherit;
+		background-color: $maClr;
+		color: #fff;
+		border: 1px solid $maClr;
+		border-radius: 4px;
+	}
+}
