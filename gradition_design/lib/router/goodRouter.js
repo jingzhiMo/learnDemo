@@ -24,6 +24,28 @@ module.exports = {
 	fetchByID: function(req, res) {
 		fetchGoodByID(req.query.ID, res);
 	},
+	/**
+	 *  =get good by id
+	 *  @about  给其他router 获取商品的信息，不是用于处理http 请求
+	 *
+	 *  @param  {string}  goodID  商品的ID
+	 */
+	getGoodByID: function(goodID) {
+		var p = new Promise(function(resolve) {
+			GoodModel.find({
+				ID: goodID
+			}, function(err, data) {
+				if ( err ) {
+					console.log('get good message error');
+					resolve(false);
+					return;
+				}
+				resolve(data[0]);
+			});
+		});
+
+		return p;
+	},
 	modify: function(req, res) {
 		var params = req.body;
 

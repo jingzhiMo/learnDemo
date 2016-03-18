@@ -21,3 +21,5 @@ var _Order = new Schema({
 	singlePrice: Number,
 	sumPrice: Number
 });
+
+exports.OrderModel = mongo.model('Order', _Order, 'order'); // good 为集合的名称
