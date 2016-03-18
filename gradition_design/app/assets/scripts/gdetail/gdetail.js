@@ -26,6 +26,14 @@ function($scope, $http, url, event){
 	};
 
 
+	/**
+	 *  =purchase good
+	 *  @about  购买商品
+	 */
+	$scope.purchase = function() {
+		localStorage.setItem('goodName', $scope.good.goodName);
+	};
+
 	var urlReq = url.getParamByUrl(window.location.href);
 
 	if ( !urlReq.ID ) { // 进入页面没有传商品的ID

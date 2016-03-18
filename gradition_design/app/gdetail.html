@@ -268,7 +268,7 @@
 			<span class="old" ng-bind="good.oldPrice"></span>
 			<span class="original">/ {{good.currPrice}}</span>
 		</div>
-		<a href="#" class="buy-btn">
+		<a href="/purchase?goodID={{good.ID}}&shopID={{shop.ID}}&price={{good.currPrice}}&name={{good.goodName}}" class="buy-btn" ng-click="purchase()">
 			<span class="tip">活动价</span>
 			<span class="current-price" ng-bind="good.currPrice"></span>
 			<span class="text">立即抢购</span>
