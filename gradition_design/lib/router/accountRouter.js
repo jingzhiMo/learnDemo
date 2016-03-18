@@ -10,7 +10,7 @@ module.exports = {
 				password: params.password
 			}, 
 			function(err, data) {
-				accountLogin(err, data, res);
+				accountLogin(err, data, req, res);
 			}
 		);
 	},
@@ -27,7 +27,7 @@ module.exports = {
 						phone: req.body.phone,
 						username: req.body.username,
 						password: req.body.password
-					}, res);
+					}, req, res);
 					
 				});
 			}
@@ -50,15 +50,19 @@ module.exports = {
  *
  *  @param   {object}  err      查询出错
  *  @param   {string}  data     查询的结果
+ *  @param   {object}  req      请求处理对象
  *  @param   {object}  res      响应处理对象
  */
-function accountLogin(err, data, res) {
+function accountLogin(err, data, req, res) {
 	var result;
 
 	if ( err ) { // 查询数据库出错
 		result = {c: -500};
 	}
 	else if ( data.length ){ // 有该用户
+		req.session.phone = data[0].phone;
+		req.session.userID = data[0].ID;
+		req.session.isOnline = 1;
 		result = {c: 0};
 	}
 	else { // 没有该用户
@@ -124,9 +128,10 @@ function checkNewAccount(phone, fun, res) {
  *  		  ID:       新用户的ID
  *            phone:    新用户的手机号
  *            password: 新用户的密码
+ *  @param    {object}  req  请求处理对象
  *  @param    {object}  res  响应处理对象
  */
-function addNewAccount(accountMsg, res) {
+function addNewAccount(accountMsg, req, res) {
 	// TODO
 	var account = new AccountModel(accountMsg);
 	account.save(function(err) {
@@ -134,6 +139,9 @@ function addNewAccount(accountMsg, res) {
 			res.status(500).send('mongodb save message error');
 			return;
 		}
+		req.session.phone = accountMsg.phone;
+		req.session.userID = accountMsg.ID;
+		req.session.isOnline = 1;
 		res.send({
 			c: 0,
 			token: '1'
@@ -155,6 +163,9 @@ function calcAccountLen(fun) {
 			res.status(500).send();
 			return;
 		}
-		fun(data.length);
+		// fun(data.length);
+		// 原来是使用用户的长度来定位用户的ID，但是这样会重复，所以还是使用时间戳作为ID
+		var id = 'u-' + parseInt((+new Date() / 1000));
+		fun(id);
 	});
 }

@@ -1,6 +1,7 @@
-var app = angular.module('app', ['eventMD', 'pageMD']);
+var app = angular.module('app', ['eventMD', 'pageMD', 'urlMD']);
 
-app.controller('accountCtrl', ['$scope', '$http', 'event', 'history', function($scope, $http, event, history){
+app.controller('accountCtrl', ['$scope', '$http', 'event', 'history', 'calcUrlParam', 
+function($scope, $http, event, history, calcUrlParam){
 	// init
 	$scope.title     = '登录账户'; // 页面标题
 	$scope.noticTips = '';		   // 提示语的内容
@@ -150,8 +151,8 @@ app.controller('accountCtrl', ['$scope', '$http', 'event', 'history', function($
 					submitArr[0] = 1;
 				}
 				else if ( !data.c ){ // 注册成功
-					// TODO
-					alert('注册成功');
+					var sourceUrl = calcUrlParam.getParamByUrl(window.location.href).sourceUrl;
+					window.location.href = sourceUrl || '/';
 				}
 				// 设置按钮可点击
 				$scope.regDisabled = false;
@@ -182,8 +183,9 @@ app.controller('accountCtrl', ['$scope', '$http', 'event', 'history', function($
 		})
 		.success(function(data) {
 			if ( !data.c ) {
-				// TODO
-				alert('登录成功');
+				var sourceUrl = calcUrlParam.getParamByUrl(window.location.href).sourceUrl;
+
+				window.location.href = sourceUrl || '/';
 				$scope.logDisabled = false;
 				return;
 			}

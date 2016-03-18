@@ -3,7 +3,7 @@ var mongo = require('mongoose');
 var Schema = mongo.Schema;
 
 var _Account = new Schema({
-	ID: Number,
+	ID: String,
 	phone: Number,
 	username: String,
 	password: String

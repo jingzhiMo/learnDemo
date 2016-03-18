@@ -4,6 +4,8 @@ var express = require('express'),
 	config  = require('./config'),
 	router  = require('./lib/router/router');
 
+var accountFilter = require('./lib/filter/accountFilter');
+
 var app = express();
 
 // 部署前端资源
@@ -11,9 +13,10 @@ app.use(express.static('app'))
    .use(express.static('uploads'))
    .use(express.static('bower_components'))
    .use(session({
-   		secret: 'keyboard cat',
-   		maxAge: 10 * 1000 // session 时长为30分钟
-   }));
+   		secret: 'keyboard cat recommand 128 bytes random string',
+   		cookie: { maxAge: 30 * 60 * 1000 } // cookie 时长为30分钟
+   }))
+   .use(accountFilter);
 
 // 监听端口
 var server = app.listen(3000, function() {

@@ -21,5 +21,5 @@ module.exports = function(app) {
 	   .post('/goodModify', parser.json(), goodRouter.modify)         // 修改商品信息
 	   .post('/goodDelete', parser.json(), goodRouter.remove)         // 删除商品
 	   .get('/goodFetch', goodRouter.fetch)                           // 获取商品
-	   .post('/upload/img', uploadRouter.upload);   				  // 上传图片
+	   .post('/upload/img', uploadRouter.upload);    				  // 上传图片
 };

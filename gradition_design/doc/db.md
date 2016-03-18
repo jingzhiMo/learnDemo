@@ -71,6 +71,8 @@ gradition-gp
 ### evaluate 评价
 	{
     	ID: 0, // 评价的ID
+        goodID: ,// 评价该商品的ID
+        shopID: ,// 评价该商家的ID
     	points: 0, // 评分
         tag: { // 标签
         	good: {
@@ -104,4 +106,25 @@ gradition-gp
             },
             {} // ...
         ]
+    }
+    
+### order 订单
+	{
+    	ID: 'o-121312', // 订单的ID
+        goodID: '', // 订单对应着的商品ID，
+        good: { // 订单的商品信息
+            goodCount: '', // 购买商品的数量
+            goodName: '', // 购买的时候，商品的名称
+            goodDesc: ''  // 购买的时候，商品的描述
+            oldPrice: '', // 购买的时候，的旧价格
+            currPrice: '', // 购买的时候，的价格
+        }
+        shopID: '', // 订单的商家对应的ID
+        accountID: '', // 该订单属于的用户的ID
+        evalID: '', // 评价的ID
+        status: 1, // 订单的状态 1: 待付款；2：已付款，未评价；3. 已付款，已评价；4.已取消或过期；
+        beginTime: '', // 开始的时间戳
+        endTime: '', // 结束的时间戳
+        siglePrice: '', // 单个商品的价格
+        sumPrice: '' // 该订单总价
     }
