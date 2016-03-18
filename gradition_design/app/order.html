@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="orderMD">
 <head>
 	<meta charset="UTF-8">
 	<title>确认订单</title>
@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="assets/css/order/order.css">
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body>
+<body ng-controller="orCtrl">
 	<section id="hd" ng-controller="pageHdCtrl">
 		<a href="#" class="back-link" ng-click="back()"></a>
 		<h1 class="title" ng-bind="title">确认订单</h1>
@@ -16,29 +16,35 @@
 	<article>
 		<section class="order-msg mrt12">
 			<div class="msg-box goodName ft-0">
-				<span class="lf normal-ft">双人自助餐</span>
-				<span class="rh normal-ft">单价：￥45</span>
+				<span class="lf normal-ft" ng-bind="goodName"></span>
+				<span class="rh normal-ft">单价：￥{{price}}</span>
 			</div>
 			<div class="msg-box count ft-0">
-				<span class="lf normal-ft">数量 <span class="tip">(最多买30件)</span></span>
+				<span class="lf normal-ft">数量 <span class="tip">(最多买10件)</span></span>
 				<div class="change-count rh ft-0">
-					<button class="btn minus"></button>
-					<input type="text" value="1">
-					<button class="btn plus"></button>
+					<button class="btn minus" ng-class="{true: 'active', false: ''}[canMinus]" ng-click="minus()"></button>
+					<input type="text" ng-model="count">
+					<button class="btn plus" ng-class="{true: 'active', false: ''}[canPlus]" ng-click="plus()"></button>
 				</div>
 			</div>
 			<div class="msg-box sum ft-0">
 				<span class="lf normal-ft">总价</span>
-				<span class="rh normal-ft">￥45</span>
+				<span class="rh normal-ft">￥{{price * count}}</span>
 			</div>
 		</section>
 		<section class="msg-box bind-phone mrt12 ft-0">
 			<span class="lf normal-ft">已绑定手机</span>
-			<span class="normal-ft rh">1353****5853</span>
+			<span class="normal-ft rh" ng-bind="phone"></span>
 		</section>
 		<section class="submit-box mrt12 ft-0">
-			<button class="submit">确 认</button>
+			<button class="submit" ng-click="submitOrder()" ng-disabled="isPending">确 认</button>
 		</section>
 	</article>
+
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/order/order.js"></script>
 </body>
 </html>

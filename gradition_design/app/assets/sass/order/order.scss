@@ -48,7 +48,7 @@ span.rh, div.rh {
 	border-radius: 4px;
 }
 .btn.plus {
-	border-color: $maClr;
+	border-color: $maBrClr;
 }
 .btn::before {
 	position: absolute;
@@ -61,7 +61,7 @@ span.rh, div.rh {
 	background-color: $maBrClr;
 }
 .plus::before {
-	background-color: $maClr;
+	background-color: $maBrClr;
 }
 .plus::after {
 	content: "";
@@ -70,9 +70,15 @@ span.rh, div.rh {
 	left: 3px;
 	margin-top: -1px;
 	width: 12px;
-	height: 1px;
-	background-color: $maClr;
+	height: 1px;	
+	background-color: $maBrClr;
 	transform: rotate(90deg);
+}
+.plus.active, .minus.active {
+	border-color: $maClr;
+}
+.plus.active::before, .plus.active::after, .minus.active::before, .minus.active::after {
+	background-color: $maClr;
 }
 .tip {
 	font-size: 1.2rem;

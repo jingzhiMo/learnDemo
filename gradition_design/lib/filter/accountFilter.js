@@ -1,7 +1,6 @@
 // 需要进行过滤的请求链接
 var url = [
-	'/',
-	'gdetail.html',
+	'/purchase',
 	'/orderAdd',
 	'/orderFetch',
 	'/orderModify'
@@ -15,7 +14,7 @@ function accountFilter(req, res, next) {
 	// 用户不在线，且请求地址需要用户过滤
 	if ( !req.session.isOnline && url.indexOf(req.url.split('?')[0]) !== -1 ) {
 		// req.sourceUrl = req.url;
-		res.redirect('/account.html?sourceUrl=' + decodeURIComponent(req.url));
+		res.redirect('/account.html?sourceUrl=' + req.url);
 		return;
 	}
 	next();

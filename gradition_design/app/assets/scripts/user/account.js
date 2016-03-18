@@ -151,7 +151,7 @@ function($scope, $http, event, history, calcUrlParam){
 					submitArr[0] = 1;
 				}
 				else if ( !data.c ){ // 注册成功
-					var sourceUrl = calcUrlParam.getParamByUrl(window.location.href).sourceUrl;
+					var sourceUrl = window.location.href.split('sourceUrl=')[1];
 					window.location.href = sourceUrl || '/';
 				}
 				// 设置按钮可点击
@@ -183,7 +183,7 @@ function($scope, $http, event, history, calcUrlParam){
 		})
 		.success(function(data) {
 			if ( !data.c ) {
-				var sourceUrl = calcUrlParam.getParamByUrl(window.location.href).sourceUrl;
+				var sourceUrl = window.location.href.split('sourceUrl=')[1];
 
 				window.location.href = sourceUrl || '/';
 				$scope.logDisabled = false;

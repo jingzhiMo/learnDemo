@@ -60,6 +60,16 @@ module.exports = {
 		.then(function() {
 			removeGood(goodID, res);
 		});
+	},
+	purchase: function(req, res) {
+		var query = req.query,
+			phone = req.session.phone + '',
+			redirectUrl = '/order.html?shopID=' + query.shopID + 
+						   '&goodID=' + query.goodID + 
+						   '&price=' + query.price +
+						   '&phone=' + phone.slice(0, 3) + '***' + phone.slice(7);
+
+		res.redirect(redirectUrl);
 	}
 };
 
