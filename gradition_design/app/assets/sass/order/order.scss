@@ -277,3 +277,198 @@ span.rh, div.rh {
 		}
 	}
 }
+
+// 订单列表页
+.order-list {
+	$lightClr: rgb(154, 154, 154);
+	$ftClr: rgb(85, 85, 85);
+
+	padding-bottom: 40px;
+
+	.edit-order {
+		position: absolute;
+	    display: inline-block;
+	    right: 0;
+	    top: 0;
+	    height: 100%;
+	    width: 50px;
+	    font-size: 1.3rem;
+	    color: #fff;
+	}
+
+	.title {
+		@extend %tac;
+	    padding: 8px 0;
+		line-height: 24px;
+	    font-weight: normal;
+	    font-size: 1.4rem;
+	    box-sizing: border-box;
+	    border-bottom: 2px solid $maClr;
+	    color: $maClr;
+	}
+
+	.list {
+		transform: translateX(0);
+		transition: 300ms;
+
+		&.editing {
+			transform: translateX(65px);
+		}
+	}
+
+	.item {
+		position: relative;
+		background-color: #fff;
+		margin-bottom: 12px;
+		padding: 0 12px;
+		border-bottom: 1px solid $maBrClr;
+	}
+
+	.good-link {
+		display: -webkit-flex;
+		padding: 12px 0;
+		border-bottom: 1px solid $maBrClr;
+
+		.img-box {
+			padding-right: 10px;
+			font-size: 0;
+		}
+		img {
+			width: 96px;
+			height: 72px;
+		}
+		.info-box {
+			flex-grow: 1;
+		}
+		.title-line {
+			margin-top: 10px;
+			line-height: 16px;
+		}
+		.good-name {
+			@extend %ellipsis;
+			@extend %vam;
+			display: inline-block;
+			width: 40%;
+			font-size: 1.6rem;
+			color: #222;
+		}
+		span {
+			display: inline-block;
+		}
+		.distance {
+			@extend %hide;
+			color: $ftClr;
+		}
+		.place {
+			@extend %rh;
+			@extend %vam;
+			color: $ftClr;
+		}
+		.info {
+			margin-top: 12px;
+			width: 98%;
+			line-height: 16px;
+			font-size: 1.2rem;
+			color: $lightClr;
+		}
+		.price-line {
+			height: 16px;
+			line-height: 16px;
+		}
+		.now {
+			margin-right: 5px;
+			font-weight: bold;
+			font-size: 16px;
+			color: $maClr;
+		}
+		.now::before {
+			content: '￥';
+		}
+		.old {
+			margin-right: 3px;
+			font-size: 12px;
+			text-decoration: line-through;
+			color: $ftClr;
+		}
+		.discount {
+			padding: 0 2px;
+			font-size: 11px;
+			color: $maClr;
+			border: 1px solid $maClr;
+		}
+		.count {
+			@extend %rh;
+			font-size: 12px;
+			color: $ftClr;
+		}
+	}
+
+	.pay-box {
+		line-height: 40px;
+		font-size: 0;
+		.pay-price {
+			@extend %br-box;
+			display: inline-block;
+			width: 70%;
+			color: #333;
+			font-size: 1.3rem;
+			vertical-align: middle;
+		}
+		.sum-price {
+			font-weight: bold;
+			font-size: 1.4rem;
+		}
+		.pay-btn {
+			@extend %br-box;
+			display: inline-block;
+			width: 30%;
+			height: 26px;
+			vertical-align: middle;
+			color: #fff;
+			background-color: $maBrClr;
+			border: 1px solid $maBrClr;
+			border-radius: 4px;
+			&.active {
+				background-color: $maClr;
+				border: 1px solid $maClr;
+			}
+		}
+	}
+
+	.isDelete {
+		position: absolute;
+		left: -50px;
+		top: 50%;
+		width: 30px;
+		margin-top: -15px;
+	}
+
+	/* 加载更多团购信息 */
+	#load-more {
+		line-height: 24px;
+		font-size: 15px;
+
+		.load-more-link {
+			@extend %tac;
+			display: block;
+			padding: 5px 0;
+			color: $maFtClr;
+			&:hover, &:active {
+				background-color: #f0f0f0;
+			}
+		}
+	}
+
+	.delete-btn {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		line-height: 38px;
+		font-size: 1.5rem;
+		background-color: $maClr;
+		border: 1px solid $maClr;
+		border-radius: 4px;
+		color: #fff;
+	}
+}

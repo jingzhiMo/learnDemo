@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>待付款</title>
+	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/order/order.css">
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="order-list">
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
+		<h1 class="title" ng-bind="title">订单详情</h1>
+		<a href="#" class="edit-order">编辑</a>
+	</section>
+	<h3 class="title">团购（3）</h3>
+	<section class="list">
+		<section class="item">
+			<a href="#" class="good-link">
+				<div class="img-box">
+					<img src="assets/img/kfc.jpg" alt="点都得">
+				</div>
+				<div class="info-box">
+					<div class="title-line">
+						<h3 class="good-name">点都得</h3>
+						<span class="distance"></span>
+					</div>
+					<p class="info">总价：45元 数量：1</p>
+				</div>
+			</a>
+			<div class="pay-box">
+				<div class="pay-price">
+					还需支付：
+					<span class="sum-price">45元</span>
+				</div>
+				<button class="pay-btn active">
+					付款
+				</button>
+			</div>
+			<input type="checkbox" class="isDelete">
+		</section>
+		<section class="item">
+			<a href="#" class="good-link">
+				<div class="img-box">
+					<img src="assets/img/kfc.jpg" alt="点都得">
+				</div>
+				<div class="info-box">
+					<div class="title-line">
+						<h3 class="good-name">点都得</h3>
+						<span class="distance"></span>
+					</div>
+					<p class="info">总价：45元 数量：1</p>
+				</div>
+			</a>
+			<div class="pay-box">
+				<div class="pay-price">
+					还需支付：
+					<span class="sum-price active">45元</span>
+				</div>
+				<button class="pay-btn">
+					付款
+				</button>
+			</div>
+			<input type="checkbox" class="isDelete">
+		</section>
+		<section class="item">
+			<a href="#" class="good-link">
+				<div class="img-box">
+					<img src="assets/img/kfc.jpg" alt="点都得">
+				</div>
+				<div class="info-box">
+					<div class="title-line">
+						<h3 class="good-name">点都得</h3>
+						<span class="distance"></span>
+					</div>
+					<p class="info">总价：45元 数量：1</p>
+				</div>
+			</a>
+			<div class="pay-box">
+				<div class="pay-price">
+					还需支付：
+					<span class="sum-price active">45元</span>
+				</div>
+				<button class="pay-btn">
+					评价
+				</button>
+			</div>
+			<input type="checkbox" class="isDelete">
+		</section>
+	</section>
+	<section id="load-more">
+		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)" ng-show="hasMore">查看更多订单</a>
+	</section>
+	<section class="delete-box">
+		<button class="delete-btn">
+			删除（2）
+		</button>
+	</section>
+</body>
+</html>
