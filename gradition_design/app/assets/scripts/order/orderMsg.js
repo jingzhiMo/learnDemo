@@ -9,6 +9,10 @@ function($scope, $http, $location, url, event){
 
 	var ID = url.getParamByUrl(window.location.href).orderID;
 
+	if ( !ID ) {
+		location.href = '/';
+	}
+
 	$http({
 		method: 'GET',
 		url: '/orderFetch?ID=' + ID + '&async=true'
@@ -17,6 +21,9 @@ function($scope, $http, $location, url, event){
 		if ( data.c === 302 ) {
 			location.href = '/account.html?sourceUrl=' + location.href;
 			return;
+		}
+		else if ( data === '' ) {
+			location.href = '/';
 		}
 		else {
 			$scope.order = data;

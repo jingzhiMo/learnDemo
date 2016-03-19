@@ -71,6 +71,10 @@ module.exports = {
 				res.status(500).send({c: -1});
 			}
 		});
+	},
+	fetchByUserID: function(req, res) {
+		var userID = req.query.userID;
+		orderGetByUserID(userID, res);
 	}
 };
 
@@ -99,6 +103,37 @@ function orderGetByID(orderID, res) {
 				return;
 			}
 			resolve(data[0]);
+		});
+	});
+
+	return p;
+}
+
+
+/**
+ *  =get order by userID
+ *  @about  获取订单信息
+ *
+ *  @param  {string}  userID  用户的ID
+ *  @param  {object}  res     响应处理对象
+ */
+function orderGetByUserID(userID, res) {
+	var p = new Promise(function(resolve) {
+		OrderModel.find({
+			accountID: userID
+		}, function(err, data) {
+			if ( err ) {
+				console.log('fetch order error');
+				if ( res ) {
+					res.status(500).send({c: -1});
+					return;
+				}
+			}
+			if ( res ) {
+				res.send(data);
+				return;
+			}
+			resolve(data);
 		});
 	});
 

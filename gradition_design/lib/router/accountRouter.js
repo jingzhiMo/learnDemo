@@ -41,6 +41,17 @@ module.exports = {
 	},
 	checkNewAccount: function(req, res) {
 		checkNewAccount(req.query.phone, function() {}, res);
+	},
+	fetch: function(req, res) {
+		var ID = req.session.userID;
+		getUserMsg(ID)
+		.then(function(data) {
+			if ( !data ) {
+				res.status(500).send({c: -1});
+				return;
+			}
+			res.send(data);
+		});
 	}
 };
 
@@ -168,4 +179,28 @@ function calcAccountLen(fun) {
 		var id = 'u-' + parseInt((+new Date() / 1000));
 		fun(id);
 	});
+}
+
+
+/**
+ *  =get user msg
+ *  @about  获取用户信息
+ *
+ *  @param  {string}  userID  用户的ID
+ */
+function getUserMsg(userID) {
+	var p = new Promise(function(resolve) {
+		AccountModel.find({
+			ID: userID
+		}, function(err, data) {
+			if ( err ) {
+				console.log('get user message error');
+				resolve(false);
+				return;
+			}
+			resolve(data[0]);
+		})
+	});
+
+	return p;
 }

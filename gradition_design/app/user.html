@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="userApp">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
@@ -7,23 +7,28 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<link rel="stylesheet" href="assets/css/user/center.css">
 </head>
-<body>
-	<section id="hd">
-		<a href="#" class="back-link"></a>
+<body ng-controller="userCtrl">
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
 		<h1 class="title">用户中心</h1>
-		<a href="#" class="home-link"></a>
+		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
 	<section class="user-center">
 		<section id="setting-area">
-			<a href="#" class="setting-link">jingzhi_</a>
+			<a href="#" class="setting-link" ng-bind="userMsg.username"></a>
 		</section>
 		<h4 class="title">订单情况</h4>
 		<section class="list-link">
-			<a href="#" class="link">未付款</a>
-			<a href="#" class="link paied">已付款</a>
-			<a href="#" class="link finish">已完成</a>
-			<a href="#" class="link cancel">已取消</a>
+			<a href="#" class="link">未付款（{{unpay}}）</a>
+			<a href="#" class="link paied">已付款（{{paied}}）</a>
+			<a href="#" class="link finish">已完成（{{finish}}）</a>
+			<a href="#" class="link cancel">已过期（{{over}}）</a>
 		</section>
 	</section>
+
+	<script src="assets/scripts/public/ng/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/user/user.js"></script>
 </body>
 </html>
