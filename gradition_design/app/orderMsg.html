@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单详情</title>
+	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/order/order.css">
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="order-msg">
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
+		<h1 class="title" ng-bind="title">订单详情</h1>
+		<a href="{{homeLink}}" class="home-link"></a>
+	</section>
+	<section class="good-msg">
+		<section class="good-item">
+			<a href="#" class="good-link">
+				<div class="img-box">
+					<img src="assets/img/kfc.jpg" alt="点都得">
+				</div>
+				<div class="info-box">
+					<div class="title-line">
+						<h3 class="good-name">点都得</h3>
+						<span class="distance"></span>
+						<!-- <span class="place">天河</span> -->
+					</div>
+					<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
+					<div class="price-line">
+						<span class="now">88</span>
+						<span class="old">100</span>
+					</div>
+				</div>
+			</a>
+		</section>
+	</section>
+	<section class="good-cont">
+		<h4 class="title">套餐内容</h4>
+		<div class="cont">
+			一对烤翅，两对烤翅，三对烤翅。。。好多对。。
+		</div>
+	</section>
+	<section class="order-msg">
+		<h3 class="title">订单详情</h3>
+		<div class="msg-box order">
+			<span class="lf">订单编号</span>
+			<span class="rh">123456456</span>
+		</div>
+		<div class="msg-box order">
+			<span class="lf">数量</span>
+			<span class="rh">1</span>
+		</div>
+		<div class="msg-box order">
+			<span class="lf">下单时间</span>
+			<span class="rh">2016-03-19 10:00</span>
+		</div>
+		<div class="msg-box order">
+			<span class="lf">手机号</span>
+			<span class="rh">135****5853</span>
+		</div>
+		<div class="msg-box order">
+			<span class="lf">总价</span>
+			<span class="rh unit">45</span>
+		</div>
+	</section>
+	<section class="pay-box">
+		<span class="money unit">42</span>
+		<button class="pay-btn">立即付款</button>
+	</section>
+</body>
+</html>

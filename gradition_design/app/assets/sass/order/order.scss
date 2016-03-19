@@ -105,3 +105,175 @@ span.rh, div.rh {
 		border-radius: 4px;
 	}
 }
+
+// 订单详情页
+.order-msg {
+
+	$lightClr: rgb(154, 154, 154);
+	
+	> section {
+		padding: 0 12px;
+		margin-bottom: 12px;
+		background-color: #fff;
+		border-bottom: 1px solid $maBrClr;
+	}
+
+	.good-msg {
+		$ftClr: rgb(85, 85, 85);
+
+		.good-link {
+			display: -webkit-flex;
+			padding: 12px 0;
+
+			.img-box {
+				padding-right: 10px;
+				font-size: 0;
+			}
+			img {
+				width: 96px;
+				height: 72px;
+			}
+			.info-box {
+				flex-grow: 1;
+			}
+			.title-line {
+				line-height: 16px;
+			}
+			.good-name {
+				@extend %ellipsis;
+				@extend %vam;
+				display: inline-block;
+				width: 40%;
+				font-size: 1.6rem;
+				color: #222;
+			}
+			span {
+				display: inline-block;
+			}
+			.distance {
+				@extend %hide;
+				color: $ftClr;
+			}
+			.place {
+				@extend %rh;
+				@extend %vam;
+				color: $ftClr;
+			}
+			.desc {
+				margin: 3px 0;
+				width: 98%;
+				height: 32px;
+				line-height: 16px;
+				font-size: 12px;
+				color: $ftClr;
+			}
+			.price-line {
+				height: 16px;
+				line-height: 16px;
+			}
+			.now {
+				margin-right: 5px;
+				font-weight: bold;
+				font-size: 16px;
+				color: $maClr;
+			}
+			.now::before {
+				content: '￥';
+			}
+			.old {
+				margin-right: 3px;
+				font-size: 12px;
+				text-decoration: line-through;
+				color: $ftClr;
+			}
+			.discount {
+				padding: 0 2px;
+				font-size: 11px;
+				color: $maClr;
+				border: 1px solid $maClr;
+			}
+			.count {
+				@extend %rh;
+				font-size: 12px;
+				color: $ftClr;
+			}
+		}
+	}
+
+	.good-cont {
+		.title {
+			line-height: 35px;
+			font-weight: normal;
+			border-bottom: 1px solid $maBrClr;
+		}
+		.cont {
+			padding: 12px 0;
+			color: $lightClr;
+		}
+	}
+	.order.msg-box {
+		padding: 0;
+		font-size: 0px;
+		line-height: 40px;
+	}
+	.order.msg-box:last-child {
+		border-bottom: 0;
+	}
+	span.unit::before {
+		content: "￥";
+		font-size: inherit;
+		color: inherit;
+	}
+	.order-msg {
+		.title {
+			line-height: 40px;
+			font-size: 1.3rem;
+			border-bottom: 1px solid $maBrClr;
+		}
+		.lf {
+			width: 50%;
+			line-height: 24px;
+			font-size: 1.3rem;
+			color: $lightClr;
+		}
+		.rh {
+			width: 50%;
+			line-height: 24px;
+			font-size: 1.2rem;
+			color: $maFtClr;
+		}
+	}
+
+	.pay-box {
+		@extend %br-box;
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		height: 60px;
+		padding: 8px 12px;
+		margin: 0;
+		font-size: 0;
+		.money {
+			@extend %br-box;
+			display: inline-block;
+			width: 68%;
+			color: $maClr;
+			font-size: 2.8rem;
+			vertical-align: middle;
+		}
+		.pay-btn {
+			@extend %br-box;
+			display: inline-block;
+			width: 32%;
+			height: 40px;
+			font-size: 1.8rem;
+			vertical-align: middle;
+			line-height: 100%;
+			background-color: $maClr;
+			color: #fff;
+			border: 1px solid $maClr;
+			border-radius: 4px;
+		}
+	}
+}
