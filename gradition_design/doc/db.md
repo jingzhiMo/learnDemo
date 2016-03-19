@@ -115,6 +115,9 @@ gradition-gp
         good: { // 订单的商品信息
             goodCount: '', // 购买商品的数量
             goodName: '', // 购买的时候，商品的名称
+            goodImg: '', // 商品的图片
+            goodType: '', // 商品类型
+            goodCont: '', // 商品的 
             goodDesc: ''  // 购买的时候，商品的描述
             oldPrice: '', // 购买的时候，的旧价格
             currPrice: '', // 购买的时候，的价格

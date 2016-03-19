@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="orderMsgMD">
 <head>
 	<meta charset="UTF-8">
 	<title>订单详情</title>
@@ -7,28 +7,27 @@
 	<link rel="stylesheet" href="assets/css/order/order.css">
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body class="order-msg">
+<body class="order-msg" ng-controller="orMsgCtrl">
 	<section id="hd" ng-controller="pageHdCtrl">
 		<a href="#" class="back-link" ng-click="back()"></a>
-		<h1 class="title" ng-bind="title">订单详情</h1>
+		<h1 class="title">订单详情</h1>
 		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
 	<section class="good-msg">
 		<section class="good-item">
-			<a href="#" class="good-link">
+			<a href="/gdetail.html?ID={{order.goodID}}" class="good-link">
 				<div class="img-box">
-					<img src="assets/img/kfc.jpg" alt="点都得">
+					<img src="{{order.good.goodImg}}">
 				</div>
 				<div class="info-box">
 					<div class="title-line">
-						<h3 class="good-name">点都得</h3>
+						<h3 class="good-name" ng-bind="order.good.goodName"></h3>
 						<span class="distance"></span>
-						<!-- <span class="place">天河</span> -->
 					</div>
-					<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
+					<p class="desc" ng-bind="order.good.goodDesc"></p>
 					<div class="price-line">
-						<span class="now">88</span>
-						<span class="old">100</span>
+						<span class="now" ng-bind="order.good.currPrice"></span>
+						<span class="old" ng-bind="order.good.oldPrice"></span>
 					</div>
 				</div>
 			</a>
@@ -36,36 +35,40 @@
 	</section>
 	<section class="good-cont">
 		<h4 class="title">套餐内容</h4>
-		<div class="cont">
-			一对烤翅，两对烤翅，三对烤翅。。。好多对。。
-		</div>
+		<div class="cont" ng-bind="order.good.goodCont"></div>
 	</section>
 	<section class="order-msg">
 		<h3 class="title">订单详情</h3>
 		<div class="msg-box order">
 			<span class="lf">订单编号</span>
-			<span class="rh">123456456</span>
+			<span class="rh" ng-bind="order.ID.slice(2)"></span>
 		</div>
 		<div class="msg-box order">
 			<span class="lf">数量</span>
-			<span class="rh">1</span>
+			<span class="rh" ng-bind="order.count"></span>
 		</div>
 		<div class="msg-box order">
 			<span class="lf">下单时间</span>
-			<span class="rh">2016-03-19 10:00</span>
+			<span class="rh" ng-bind="bookTime"></span>
 		</div>
 		<div class="msg-box order">
 			<span class="lf">手机号</span>
-			<span class="rh">135****5853</span>
+			<span class="rh" ng-bind="order.phone"></span>
 		</div>
 		<div class="msg-box order">
 			<span class="lf">总价</span>
-			<span class="rh unit">45</span>
+			<span class="rh unit" ng-bind="order.sumPrice"></span>
 		</div>
 	</section>
 	<section class="pay-box">
-		<span class="money unit">42</span>
-		<button class="pay-btn">立即付款</button>
+		<span class="money unit" ng-bind="order.sumPrice"></span>
+		<button class="pay-btn" ng-class="{true: 'disabled', false: ''}[paySuc]" ng-disabled="isPending" ng-bind="btnMsg"></button>
 	</section>
+
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/order/orderMsg.js"></script>
 </body>
 </html>

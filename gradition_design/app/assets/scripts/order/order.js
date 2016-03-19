@@ -22,7 +22,6 @@ function($scope, $http, $location, url, event){
 	 */
 	$scope.minus = function() {
 		$scope.count = $scope.count <= 1  || $scope.count === '' ? 1 : $scope.count - 1;
-		// $scope.canMinus = $scope.count <= 1 ? false : true;
 	};
 
 
@@ -32,7 +31,6 @@ function($scope, $http, $location, url, event){
 	 */
 	$scope.plus = function() {
 		$scope.count = $scope.count >= 10 ? 10 : $scope.count + 1;
-		// $scope.canPlus = $scope.count >= 10 ? false : true;
 	};
 
 
@@ -75,8 +73,8 @@ function($scope, $http, $location, url, event){
 		})
 		.success(function(data) {
 			if ( !data.c ) {
-				alert('提交成功');
 				$scope.isPending = false;
+				window.location.href = '/orderMsg.html?orderID=' + data.ID;
 			}
 			else if ( data.c === 302 ) { // 用户没登陆，重定向到登录页面
 				window.location.href = '/account.html?sourceUrl=' + window.location.href;

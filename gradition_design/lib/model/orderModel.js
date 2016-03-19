@@ -5,9 +5,14 @@ var Schema = mongo.Schema;
 var _Order = new Schema({
 	ID: String,
 	goodID: String,
+	count: Number,
+	phone: String,
 	good: {
 		goodCount: Number,
 		goodName: String,
+		goodImg: String,
+		goodCont: String,
+		goodType: Number,
 		goodDesc: String,
 		oldPrice: Number,
 		currPrice: Number
