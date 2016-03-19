@@ -2,6 +2,7 @@
 var url = [
 	'/purchase',
 	'/orderAdd',
+	'/orderPay',
 	'/orderFetch',
 	'/orderModify'
 ];
@@ -13,7 +14,7 @@ var url = [
 function accountFilter(req, res, next) {
 	// 用户不在线，且请求地址需要用户过滤
 	if ( !req.session.isOnline && url.indexOf(req.url.split('?')[0]) !== -1 ) {
-		if ( req.method === 'GET' && req.query.async !== true ) {
+		if ( req.method === 'GET' && req.query.async !== 'true' ) {
 			req.sourceUrl = req.url;
 			res.redirect('/account.html?sourceUrl=' + req.url);	
 		}

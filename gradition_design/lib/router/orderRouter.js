@@ -57,6 +57,20 @@ module.exports = {
 				res.send({c: 0, ID: ID});
 			});
 		});
+	},
+	pay: function(req, res) {
+		var ID     = req.body.ID,
+			status = req.body.status;
+
+		changeStatus(ID, status)
+		.then(function(flag) {
+			if ( flag ) {
+				res.send({c: 0});
+			}
+			else {
+				res.status(500).send({c: -1});
+			}
+		});
 	}
 };
 
@@ -106,6 +120,34 @@ function addOrder(orderMsg) {
 		order.save(function(err) {
 			if ( err ) {
 				console.log('save order error');
+				resolve(false);
+				return;
+			}
+			resolve(true);
+		});
+	});
+
+	return p;
+}
+
+
+/**
+ *  =change status
+ *  @about  改变状态
+ *
+ *  @param  {string}  ID     订单的ID
+ *  @param  {number}  status 订单即将改变的状态
+ */
+function changeStatus(ID, status) {
+	var p = new Promise(function(resolve) {
+		OrderModel.update({
+			ID: ID
+		}, {$set: {
+			status: status
+		}},
+		function(err) {
+			if ( err ) {
+				console.log('update order status error');
 				resolve(false);
 				return;
 			}
