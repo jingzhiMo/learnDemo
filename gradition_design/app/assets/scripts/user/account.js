@@ -152,7 +152,8 @@ function($scope, $http, event, history, calcUrlParam){
 				}
 				else if ( !data.c ){ // 注册成功
 					var sourceUrl = window.location.href.split('sourceUrl=')[1];
-					window.location.href = sourceUrl || '/';
+
+					window.location.href = decodeURIComponent(sourceUrl || '/');
 				}
 				// 设置按钮可点击
 				$scope.regDisabled = false;
@@ -185,7 +186,7 @@ function($scope, $http, event, history, calcUrlParam){
 			if ( !data.c ) {
 				var sourceUrl = window.location.href.split('sourceUrl=')[1];
 
-				window.location.href = sourceUrl || '/';
+				window.location.href = decodeURIComponent(sourceUrl || '/');
 				$scope.logDisabled = false;
 				return;
 			}

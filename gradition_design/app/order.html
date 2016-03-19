@@ -13,17 +13,20 @@
 		<h1 class="title" ng-bind="title">确认订单</h1>
 		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
-	<article>
+	<form action="/orderAdd" method="POST" multiple>
+		<input type="text" style="display: none;" name="goodID" ng-model="goodID">
+		<input type="text" style="display: none;" name="shopID" ng-model="shopID">
 		<section class="order-msg mrt12">
 			<div class="msg-box goodName ft-0">
 				<span class="lf normal-ft" ng-bind="goodName"></span>
 				<span class="rh normal-ft">单价：￥{{price}}</span>
+				<input type="text" style="display: none;" name="goodName" ng-model="goodName">
 			</div>
 			<div class="msg-box count ft-0">
 				<span class="lf normal-ft">数量 <span class="tip">(最多买10件)</span></span>
 				<div class="change-count rh ft-0">
 					<button class="btn minus" ng-class="{true: 'active', false: ''}[canMinus]" ng-click="minus()"></button>
-					<input type="text" ng-model="count">
+					<input type="text" ng-model="count" name="count">
 					<button class="btn plus" ng-class="{true: 'active', false: ''}[canPlus]" ng-click="plus()"></button>
 				</div>
 			</div>
@@ -39,7 +42,7 @@
 		<section class="submit-box mrt12 ft-0">
 			<button class="submit" ng-click="submitOrder()" ng-disabled="isPending">确 认</button>
 		</section>
-	</article>
+	</form >
 
 	<script src="angular/angular.js"></script>
 	<script src="assets/scripts/public/page/page.js"></script>

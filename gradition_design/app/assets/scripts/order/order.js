@@ -2,7 +2,7 @@ var order = angular.module('orderMD', ['eventMD', 'pageMD', 'urlMD']);
 
 order.controller('orCtrl', ['$scope', '$http', '$location', 'calcUrlParam', 'event', 
 function($scope, $http, $location, url, event){
-	var param = $location.url(location.href).$$search;
+	var param = url.getParamByUrl(window.location.href);
 
 	$scope.goodName = localStorage.getItem('goodName');
 	$scope.price = param.price;
@@ -60,12 +60,32 @@ function($scope, $http, $location, url, event){
 	 *  @about  提交订单
 	 */
 	$scope.submitOrder = function() {
+		$scope.isPending = true;
 		$http({
 			url: '/orderAdd',
 			method: 'POST',
 			data: {
-
+				goodID: $scope.goodID,
+				shopID: $scope.shopID,
+				count: $scope.count
+			},
+			headers: {
+				'Content-type': 'application/json'
 			}
+		})
+		.success(function(data) {
+			if ( !data.c ) {
+				alert('提交成功');
+				$scope.isPending = false;
+			}
+			else if ( data.c === 302 ) { // 用户没登陆，重定向到登录页面
+				window.location.href = '/account.html?sourceUrl=' + window.location.href;
+			}
+		})
+		.error(function() {
+			// TODO
+			alert('提交失败');
+			$scope.isPending = false;
 		});
 	};
 }]);
