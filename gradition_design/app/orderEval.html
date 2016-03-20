@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评价</title>
+	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/order/order.css">
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="order-eval">
+	<section id="hd" ng-controller="pageHdCtrl">
+		<a href="#" class="back-link" ng-click="back()"></a>
+		<h1 class="title">订单详情</h1>
+		<a href="{{homeLink}}" class="home-link"></a>
+	</section>
+	
+	<section class="order-msg">
+		<div class="img-box">
+			<img src="assets/img/kfc.jpg" alt="点都得">
+		</div>
+		<div class="info-box">
+			<div class="title-line">
+				<h3 class="good-name">点都得</h3>
+			</div>
+			<p class="desc">总价：￥
+				<span class="main-clr">59.60</span> 
+				数量：<span class="main-clr">2</span>
+			</p>
+			<div class="price-line">
+				购买时间：2016-03-20
+			</div>
+		</div>
+	</section>
+
+	<section class="eval-box">
+		<div class="eval-block sum-block">
+			<label class="title">总体评价</label>
+			<div class="basic-score">
+				<div class="real-score"></div>
+
+				<div class="btn-group">
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+				</div>
+			</div>
+		</div>
+		<div class="eval-block eat-block">
+			<label class="title">口味</label>
+			<div class="basic-score">
+				<div class="real-score"></div>
+
+				<div class="btn-group">
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+				</div>
+			</div>
+		</div>
+		<div class="eval-block envir-block">
+			<label class="title">环境</label>
+			<div class="basic-score">
+				<div class="real-score"></div>
+
+				<div class="btn-group">
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+				</div>
+			</div>
+		</div>
+		<div class="eval-block service-block">
+			<label class="title">服务</label>
+			<div class="basic-score">
+				<div class="real-score"></div>
+
+				<div class="btn-group">
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+					<button class="score-btn"></button>
+				</div>
+			</div>
+		</div>
+		<p class="eval-tip">说说这次团购不足和亮点吧</p>
+		<div class="eval-cont" contentEditable="true" placrholder="haha"></div>
+	</section>
+
+	<section class="eval-img">
+		<p class="eval-tip ft14">上传图片</p>
+		<div class="eval-img-box">
+			<img src="assets/img/kfc.jpg" alt="">
+			<button class="upload-btn">
+				
+			</button>
+		</div>
+	</section>
+
+	<section class="submit-box">
+		<button class="submit-eval">提交评价</button>
+	</section>
+
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/order/orderMsg.js"></script>
+</body>
+</html>
