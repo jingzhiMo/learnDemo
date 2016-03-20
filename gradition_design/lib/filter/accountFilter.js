@@ -7,6 +7,7 @@ var url = [
 	'/orderDelete',
 	'/orderFetchByUserID',
 	'/orderModify',
+	'/evalAdd',
 	'/userFetch'
 ];
 

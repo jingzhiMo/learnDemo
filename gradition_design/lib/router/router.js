@@ -4,7 +4,8 @@ var accountRouter = require('./accountRouter'),
 	shopRouter    = require('./shopRouter'),
 	goodRouter    = require('./goodRouter'),
 	uploadRouter  = require('./uploadRouter'),
-	orderRouter   = require('./orderRouter');
+	orderRouter   = require('./orderRouter'),
+	evalRouter    = require('./evalRouter');
 
 module.exports = function(app) {
 	app.get('/login', accountRouter.login)             				  // 登录处理
@@ -25,6 +26,7 @@ module.exports = function(app) {
 	   .get('/orderFetch', orderRouter.fetch)    		              // 订单查询
 	   .post('/orderPay', parser.json(), orderRouter.pay)             // 订单付款
 	   .post('/orderDelete', parser.json(), orderRouter.remove)       // 订单删除
+	   .post('/evalAdd', parser.json(), evalRouter.add)               // 添加评价
 	   .get('/userFetch', accountRouter.fetch)                        // 获取用户信息
 	   .post('/upload/img', uploadRouter.upload);    				  // 上传图片
 };

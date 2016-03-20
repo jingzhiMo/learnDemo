@@ -73,6 +73,7 @@ function accountLogin(err, data, req, res) {
 	else if ( data.length ){ // 有该用户
 		req.session.phone = data[0].phone;
 		req.session.userID = data[0].ID;
+		req.session.username = data[0].username;
 		req.session.isOnline = 1;
 		result = {c: 0};
 	}
@@ -152,6 +153,7 @@ function addNewAccount(accountMsg, req, res) {
 		}
 		req.session.phone = accountMsg.phone;
 		req.session.userID = accountMsg.ID;
+		req.session.username = accountMsg.username;
 		req.session.isOnline = 1;
 		res.send({
 			c: 0,

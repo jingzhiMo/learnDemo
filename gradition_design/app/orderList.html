@@ -38,7 +38,7 @@
 							还需支付：
 							<span class="sum-price">{{unPayItem.sumPrice.toFixed(2)}}元</span>
 						</div>
-						<button class="pay-btn active" ng-click="pay(unPayItem.ID, $index)">
+						<button class="pay-btn active" ng-click="pay(unPayItem.ID, unPayItem.goodID, unPayItem.count, $index)">
 							付款
 						</button>
 					</div>

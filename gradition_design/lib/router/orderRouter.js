@@ -56,10 +56,17 @@ module.exports = {
 				}
 				res.send({c: 0, ID: ID});
 			});
+			// 增加销售的份数
+			// goodRouter.modifyGood({
+			// 	ID: goodID,
+			// 	goodCount: data.goodCount + count
+			// });
 		});
 	},
 	pay: function(req, res) {
 		var ID     = req.body.ID,
+			goodID = req.body.goodID,
+			count  = req.body.count,
 			status = req.body.status;
 
 		changeStatus(ID, status)
@@ -70,6 +77,15 @@ module.exports = {
 			else {
 				res.status(500).send({c: -1});
 			}
+		});
+
+		// 增加份数
+		goodRouter.getGoodByID(goodID)
+		.then(function(data) {
+			goodRouter.modifyGood({
+				ID: goodID,
+				goodCount: data.goodCount + count
+			});
 		});
 	},
 	fetchByUserID: function(req, res) {

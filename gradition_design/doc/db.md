@@ -73,39 +73,19 @@ gradition-gp
     	ID: 0, // 评价的ID
         goodID: ,// 评价该商品的ID
         shopID: ,// 评价该商家的ID
-    	points: 0, // 评分
-        tag: { // 标签
-        	good: {
-            	img: 10, // 有图 number
-                weidao: 20 // 味道不错 number
-                taidu: 10, // 态度
-                huanjing: 50, // 环境
-                jiage: 10, // 价格
-            },
-            shop: {
-            	jiaqian: 10, // 价钱合理
-                weidaohao: 10, // 味道好
-                weidaoyiban: 5, // 味道一般
-                taiduyiban: 5, // 态度一般
-                taiduhao: 10, // 态度好
-                fenliangduo: 10, // 份量多
-                fenliangshao: 5, // 分量少
+        orderID: , // 评价的订单的ID
+        cont: {
+            username: '12111', // 用户名 string
+            date: 0, // 时间戳 string
+            points: { // 分数 object
+                eat: 0, // 口味的分数
+                envir: 0, // 环境的分数
+                service: 0, // 服务的分数
+                sum: 0 // 综合评分，就是上面三个评分的平均分
             }
-        },
-        cont: [
-        	{
-            	username: '12111', // 用户名 string
-                date: 0, // 时间戳 number
-                points: { // 分数 object
-                	eat: 0, // 口味的分数
-                    envir: 0, // 环境的分数
-                    service: 0, // 服务的分数
-                    sum: 0 // 综合评分，就是上面三个评分的平均分
-				}
-                word: '' // 评论内容 strng
-            },
-            {} // ...
-        ]
+            imgList： [], // 图片的列表
+            word: '' // 评论内容 strng
+        }
     }
     
 ### order 订单

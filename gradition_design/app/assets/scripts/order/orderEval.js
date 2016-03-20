@@ -28,8 +28,12 @@ function($scope, $http, url, event){
 		method: 'GET'
 	})
 	.success(function(data) {
+		if ( data.c === 302 ) {
+			location.href = '/account.html?sourceUrl=' + location.href;
+		}
 		$scope.order = data;
 		$scope.order.bookTime = parseDate(data.beginTime);
+		console.log($scope.order);
 	})
 	.error(function() {
 		console.log('获取订单信息失败');
@@ -67,7 +71,7 @@ function($scope, $http, url, event){
 			// 总评
 			case 0:
 				$scope.sumScore = score;
-				$scope.sumWidth = width
+				$scope.sumWidth = width;
 			break;
 			// 口味
 			case 1:
@@ -85,11 +89,6 @@ function($scope, $http, url, event){
 				$scope.serviceWidth = width;
 			break;
 		}
-
-		// console.log($scope.sumScore);
-		// console.log($scope.eatScore);
-		// console.log($scope.envirScore);
-		// console.log($scope.serviceScore);
 	};
 
 
@@ -162,11 +161,55 @@ function($scope, $http, url, event){
 	 */
 	$scope.submitEval = function() {
 		if ( checkEval() ) {
-			var cont = document.getElementById('evalCont').innerHTML;
-			
-			var data = {
-				
-			}
+			var word = document.getElementById('evalCont').innerHTML;
+			var order = $scope.order;
+			// var data = {
+			// 	goodID: order.goodID,
+			// 	shopID: order.shopID,
+			// 	orderID: order.ID,
+			// 	cont: {
+			// 		points: {
+			// 			eat: $scope.eatScore,
+			// 			envir: $scope.envirScore,
+			// 			service: $scope.serviceScore,
+			// 			sum: $scope.sumScore
+			// 		},
+			// 		imgList: $scope.imgSrc,
+			// 		word: word
+			// 	}
+			// };
+			$http({
+				url: '/evalAdd',
+				method: 'POST',
+				data: {
+					goodID: order.goodID,
+					shopID: order.shopID,
+					orderID: order.ID,
+					cont: {
+						points: {
+							eat: $scope.eatScore,
+							envir: $scope.envirScore,
+							service: $scope.serviceScore,
+							sum: $scope.sumScore
+						},
+						imgList: $scope.imgSrc,
+						word: word
+					}
+				},
+				headers: {
+					'Content-type': 'application/json'
+				}
+			})
+			.success(function(data) {
+				if ( data.c === 302 ) {
+					location.href = '/account.html?sourceUrl=' + location.href;
+					return;
+				}
+				location.href = '/orderMsg.html?orderID=' + $scope.order.ID;
+			})
+			.error(function() {
+				alert('评论失败');
+			});
 		}
 		else {
 		}

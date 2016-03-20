@@ -60,15 +60,19 @@ function($scope, $http, url, event){
 	 *  =pay order
 	 *  @about  支付订单
 	 *
-	 *  @param  {string}  ID  订单的ID
-	 *  @param  {number}  idx 下标
+	 *  @param  {string}  ID      订单的ID
+	 *  @param  {string}  goodID  商品的ID
+	 *  @param  {number}  count   商品的数量
+	 *  @param  {number}  idx     下标
 	 */
-	$scope.pay = function(ID, idx) {
+	$scope.pay = function(ID, goodID, count, idx) {
 		$http({
 			method: 'POST',
 			url: '/orderPay',
 			data: {
 				ID: ID,
+				goodID: goodID,
+				count: count,
 				status: 2
 			},
 			headers: {

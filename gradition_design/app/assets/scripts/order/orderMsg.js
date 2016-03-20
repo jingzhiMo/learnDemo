@@ -69,6 +69,8 @@ function($scope, $http, $location, url, event){
 			url: '/orderPay',
 			data: {
 				ID: ID,
+				goodID: $scope.order.goodID,
+				count: $scope.order.count,
 				status: 2
 			},
 			headers: {

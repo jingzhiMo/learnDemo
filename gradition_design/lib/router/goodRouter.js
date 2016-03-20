@@ -51,6 +51,7 @@ module.exports = {
 
 		modifyGood(params, res);
 	},
+	modifyGood: modifyGood,
 	remove: function(req, res) {
 		// console.log(req.body);
 		var goodID = req.body.goodID;
@@ -172,21 +173,32 @@ function addNewGood(goodMsg, res) {
  *  @param  {object} res      响应处理对象
  */
 function modifyGood(goodMsg, res) {
-	var query = {
-		ID: goodMsg.ID
-	};
+	var p = new Promise(function(resolve) {
+		var query = {
+			ID: goodMsg.ID
+		};
 
-	GoodModel.update(query, {$set: goodMsg}, function(err, data) {
-		if ( err ) {
-			console.log('修改商品信息失败');
-			res.status(500).send({c: -1});
-			return;
-		}
-		else {
-			console.log('update good success');
-			res.send({c: 0});
-		}
+		GoodModel.update(query, {$set: goodMsg}, function(err, data) {
+			if ( err ) {
+				console.log('修改商品信息失败');
+				if ( res ) {
+					res.status(500).send({c: -1});
+					return;
+				}
+				resolve(false);
+			}
+			else {
+				console.log('update good success');
+				if ( res ) {
+					res.send({c: 0});
+					return;
+				}
+				resolve(true);
+			}
+		});
 	});
+
+	return p;
 }
 
 
