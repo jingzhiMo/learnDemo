@@ -4,6 +4,7 @@ var url = [
 	'/orderAdd',
 	'/orderPay',
 	'/orderFetch',
+	'/orderDelete',
 	'/orderFetchByUserID',
 	'/orderModify',
 	'/userFetch'

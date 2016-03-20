@@ -135,10 +135,31 @@ function($scope, $http, url, event){
 	 */
 	$scope.deleteOrder = function() {
 		if ( $scope.deleteArr.length ) {
-			console.log($scope.deleteArr);
+			// console.log($scope.deleteArr);
+			$http({
+				url: '/orderDelete',
+				method: 'POST',
+				data: {
+					idArr: $scope.deleteArr
+				},
+				headers: {
+					'Content-type': 'application/json'
+				}
+			})
+			.success(function(data) {
+				if ( data.c === 302 ) {
+					location.href = 'account.html?sourceUrl=' + location.href;
+					return;
+				}
+				// 成功
+				location.reload();
+			})
+			.error(function() {
+				alert('删除订单失败');
+			});
 		}
 		else {
-			alert('请选中订单')
+			alert('请选中订单');
 		}
 	};
 }]);

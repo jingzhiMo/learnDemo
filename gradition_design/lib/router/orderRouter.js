@@ -26,7 +26,7 @@ module.exports = {
 				res.status(500).send({c: -1});
 				return;
 			}
-			addOrder({
+			orderAdd({
 					ID: ID,
 					goodID: goodID,
 					shopID: shopID,
@@ -75,6 +75,19 @@ module.exports = {
 	fetchByUserID: function(req, res) {
 		var userID = req.query.userID || req.session.userID;
 		orderGetByUserID(userID, res);
+	},
+	remove: function(req, res) {
+		var idArr = req.body.idArr;
+
+		orderRemove(idArr)
+		.then(function(flag) {
+			if ( flag ) {
+				res.send({c: 0});
+			}
+			else {
+				res.status(500).send({c: -1});
+			}
+		});
 	}
 };
 
@@ -148,7 +161,7 @@ function orderGetByUserID(userID, res) {
  *  @param  {object}  orderMsg  订单的一些信息，需要补全
  *  
  */
-function addOrder(orderMsg) {
+function orderAdd(orderMsg) {
 	var p = new Promise(function(resolve) {
 		var order = new OrderModel(orderMsg);
 
@@ -160,6 +173,51 @@ function addOrder(orderMsg) {
 			}
 			resolve(true);
 		});
+	});
+
+	return p;
+}
+
+
+/**
+ *  =order remove
+ *  @about  删除订单信息
+ *
+ *  @param  {array}  idArr  订单ID的数组
+ */
+function orderRemove(idArr) {
+	var p = new Promise(function(resolve) {
+		var callback = [],
+			isSent = false;
+
+		for(var i = 0, len = idArr.length; i < len; i++ ) {
+			callback[i] = false;
+		}
+
+		for( i = 0; i < len; i++ ) {
+			(function(i) {
+				OrderModel.remove({
+					ID: idArr[i]
+				}, function(err) {
+					if ( err ) {
+						console.log('remove order error');
+						if ( !isSent ) {
+							isSent = true;
+							resolve(false);
+						}
+						return;
+					}
+					else {
+						callback[i] = true;
+						if ( callback.indexOf(false) === -1 && !isSent ) {
+							isSent = true;
+							resolve(true);
+							return;
+						}
+					}
+				});
+			})(i);
+		}
 	});
 
 	return p;
