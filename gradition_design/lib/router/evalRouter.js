@@ -1,4 +1,5 @@
 var EvalModel = require('../model/evalModel').EvalModel;
+var OrderRouter = require('./orderRouter');
 
 module.exports = {
 	add: function(req, res) {
@@ -22,8 +23,9 @@ module.exports = {
 					word: req.body.cont.word
 				}
 			};
-		console.log(evalMsg);
-		addEval(evalMsg).then(function(flag) {
+		addEval(evalMsg)
+		.then(OrderRouter.changeStatus)
+		.then(function(flag) {
 			if ( flag ) {
 				res.send({c: 0});
 				return;
@@ -52,7 +54,10 @@ function addEval(evalMsg) {
 				resolve(false);
 				return;
 			}
-			resolve(true);
+			resolve({
+				ID: evalMsg.ID,
+				status: 3
+			});
 		});
 	});
 

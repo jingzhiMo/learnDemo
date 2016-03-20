@@ -88,6 +88,7 @@ module.exports = {
 			});
 		});
 	},
+	changeStatus: changeStatus,
 	fetchByUserID: function(req, res) {
 		var userID = req.query.userID || req.session.userID;
 		orderGetByUserID(userID, res);
@@ -248,6 +249,12 @@ function orderRemove(idArr) {
  *  @param  {number}  status 订单即将改变的状态
  */
 function changeStatus(ID, status) {
+	var obj;
+	if ( typeof ID === 'object' ) {
+		obj = ID;
+		ID = obj.ID;
+		status = obj.status;
+	}
 	var p = new Promise(function(resolve) {
 		OrderModel.update({
 			ID: ID
