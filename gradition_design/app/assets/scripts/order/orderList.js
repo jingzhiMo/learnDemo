@@ -95,6 +95,17 @@ function($scope, $http, url, event){
 
 
 	/**
+	 *  =eval order
+	 *  @about  评价
+	 *
+	 *  @param  {string} orderID  订单的ID
+	 */
+	$scope.evalOrder = function(orderID) {
+		location.href = '/orderEval.html?orderID=' + orderID;
+	};
+
+
+	/**
 	 *  =edit order
 	 *  @about  编辑订单，取消选择
 	 */
