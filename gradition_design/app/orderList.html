@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="orderList">
 <head>
 	<meta charset="UTF-8">
 	<title>待付款</title>
@@ -7,94 +7,139 @@
 	<link rel="stylesheet" href="assets/css/order/order.css">
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body class="order-list">
+<body class="order-list" ng-controller="orListCtrl">
 	<section id="hd" ng-controller="pageHdCtrl">
 		<a href="#" class="back-link" ng-click="back()"></a>
 		<h1 class="title" ng-bind="title">订单详情</h1>
-		<a href="#" class="edit-order">编辑</a>
+		<a href="#" class="edit-order" ng-click="toggleEdit($event)" ng-bind="editWord"></a>
 	</section>
-	<h3 class="title">团购（3）</h3>
-	<section class="list">
-		<section class="item">
-			<a href="#" class="good-link">
-				<div class="img-box">
-					<img src="assets/img/kfc.jpg" alt="点都得">
-				</div>
-				<div class="info-box">
-					<div class="title-line">
-						<h3 class="good-name">点都得</h3>
-						<span class="distance"></span>
+	<h3 class="title">团购（{{all.length}}）</h3>
+	<article ng-class="{true: 'editing', false: ''}[editing]">
+		<section id="unpay" class="panel" ng-show="unpay.length">
+			<h4 class="panel-title unpay">
+				待付款
+			</h4>
+			<section class="list">
+				<section class="item" ng-repeat="unPayItem in unpay">
+					<a href="/orderMsg.html?orderID={{unPayItem.ID}}" class="good-link">
+						<div class="img-box">
+							<img src="{{unPayItem.good.goodImg}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<h3 class="good-name" ng-bind="unPayItem.good.goodName"></h3>
+								<span class="distance"></span>
+							</div>
+							<p class="info">总价：{{unPayItem.sumPrice.toFixed(2)}}元 数量：{{unPayItem.count || 1}}</p>
+						</div>
+					</a>
+					<div class="pay-box">
+						<div class="pay-price">
+							还需支付：
+							<span class="sum-price">{{unPayItem.sumPrice.toFixed(2)}}元</span>
+						</div>
+						<button class="pay-btn active" ng-click="pay(unPayItem.ID, $index)">
+							付款
+						</button>
 					</div>
-					<p class="info">总价：45元 数量：1</p>
-				</div>
-			</a>
-			<div class="pay-box">
-				<div class="pay-price">
-					还需支付：
-					<span class="sum-price">45元</span>
-				</div>
-				<button class="pay-btn active">
-					付款
-				</button>
-			</div>
-			<input type="checkbox" class="isDelete">
+					<input type="checkbox" class="isDelete" ng-click="selectCkBox(1, $index, unPayItem.ID, $event)">
+				</section>
+			</section>
 		</section>
-		<section class="item">
-			<a href="#" class="good-link">
-				<div class="img-box">
-					<img src="assets/img/kfc.jpg" alt="点都得">
-				</div>
-				<div class="info-box">
-					<div class="title-line">
-						<h3 class="good-name">点都得</h3>
-						<span class="distance"></span>
+		<section id="eval" class="panel" ng-show="eval.length">
+			<h4 class="panel-title eval">
+				待评价
+			</h4>
+			<section class="list">
+				<section class="item" ng-repeat="evalItem in eval">
+					<a href="/orderMsg.html?orderID={{evalItem.ID}}" class="good-link">
+						<div class="img-box">
+							<img src="{{evalItem.good.goodImg}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<h3 class="good-name" ng-bind="evalItem.good.goodName"></h3>
+								<span class="distance"></span>
+							</div>
+							<p class="info">总价：{{evalItem.sumPrice.toFixed(2)}}元 数量：{{evalItem.good.goodCount || 1}}</p>
+						</div>
+					</a>
+					<div class="pay-box">
+						<button class="pay-btn active mr70">
+							评价
+						</button>
 					</div>
-					<p class="info">总价：45元 数量：1</p>
-				</div>
-			</a>
-			<div class="pay-box">
-				<div class="pay-price">
-					还需支付：
-					<span class="sum-price active">45元</span>
-				</div>
-				<button class="pay-btn">
-					付款
-				</button>
-			</div>
-			<input type="checkbox" class="isDelete">
+					<input type="checkbox" class="isDelete" ng-click="selectCkBox(2, $index, evalItem.ID, $event)">
+				</section>
+			</section>
 		</section>
-		<section class="item">
-			<a href="#" class="good-link">
-				<div class="img-box">
-					<img src="assets/img/kfc.jpg" alt="点都得">
-				</div>
-				<div class="info-box">
-					<div class="title-line">
-						<h3 class="good-name">点都得</h3>
-						<span class="distance"></span>
+		<section id="finish" class="panel" ng-show="finish.length">
+			<h4 class="panel-title">
+				已完成
+			</h4>
+			<section class="list">
+				<section class="item" ng-repeat="finishItem in finish">
+					<a href="/orderMsg.html?orderID={{finishItem.ID}}" class="good-link">
+						<div class="img-box">
+							<img src="{{finishItem.good.goodImg}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<h3 class="good-name" ng-bind="finishItem.good.goodName"></h3>
+								<span class="distance"></span>
+							</div>
+							<p class="info">总价：{{finishItem.sumPrice.toFixed(2)}}元 数量：{{finishItem.good.goodCount || 1}}</p>
+						</div>
+					</a>
+					<div class="pay-box">
+						<button class="pay-btn mr70">
+							已完成
+						</button>
 					</div>
-					<p class="info">总价：45元 数量：1</p>
-				</div>
-			</a>
-			<div class="pay-box">
-				<div class="pay-price">
-					还需支付：
-					<span class="sum-price active">45元</span>
-				</div>
-				<button class="pay-btn">
-					评价
-				</button>
-			</div>
-			<input type="checkbox" class="isDelete">
+					<input type="checkbox" class="isDelete" ng-click="selectCkBox(3, $index, finishItem.ID, $event)">
+				</section>
+			</section>
 		</section>
-	</section>
-	<section id="load-more">
-		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)" ng-show="hasMore">查看更多订单</a>
-	</section>
-	<section class="delete-box">
-		<button class="delete-btn">
-			删除（2）
+		<section id="over" class="panel" ng-show="over.length">
+			<h4 class="panel-title over">
+				已过期
+			</h4>
+			<section class="list">
+				<section class="item" ng-repeat="overItem in over">
+					<a href="/orderMsg.html?orderID={{overItem.ID}}" class="good-link">
+						<div class="img-box">
+							<img src="{{overItem.good.goodImg}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<h3 class="good-name" ng-bind="overItem.good.goodName"></h3>
+								<span class="distance"></span>
+							</div>
+							<p class="info">总价：{{overItem.sumPrice.toFixed(2)}}元 数量：{{overItem.good.goodCount || 1}}</p>
+						</div>
+					</a>
+					<div class="pay-box">
+						<button class="pay-btn mr70">
+							已过期
+						</button>
+					</div>
+					<input type="checkbox" class="isDelete" ng-click="selectCkBox(3, $index, overItem.ID, $event)">
+				</section>
+			</section>
+		</section>
+		<section id="load-more">
+			<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)" ng-show="hasMore">查看更多订单</a>
+		</section>
+	</article>
+	<section class="delete-box" ng-show="isDelete">
+		<button class="delete-btn" ng-click="deleteOrder()" ng-class="{true: 'disabled', false: ''}[deleteArr.length == 0]" ng-disabled="{true: 'disabled', false: ''}[deleteArr.length == 0]">
+			删除（{{deleteArr.length}}）
 		</button>
 	</section>
+	<script src="angular/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/order/orderList.js"></script>
 </body>
 </html>

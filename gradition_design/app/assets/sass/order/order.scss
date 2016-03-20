@@ -11,6 +11,9 @@ body {
 .mrt12 {
 	margin-top: 12px;
 }
+.mr70 {
+	margin-left: 70%;
+}
 .msg-box {
 	padding: 0 12px;
 	background-color: #fff;
@@ -289,6 +292,15 @@ span.rh, div.rh {
 
 	padding-bottom: 40px;
 
+	article {
+		transform: translateX(0);
+		transition: 300ms;
+
+		&.editing {
+			transform: translateX(65px);
+		}
+	}
+
 	.edit-order {
 		position: absolute;
 	    display: inline-block;
@@ -298,6 +310,30 @@ span.rh, div.rh {
 	    width: 50px;
 	    font-size: 1.3rem;
 	    color: #fff;
+	}
+
+	.panel:first {
+		margin-top: 10px;
+	}
+
+	.panel-title {
+		display: inline-block;
+		padding: 0 8px;
+		line-height: 28px;
+		font-size: 1.3rem;
+		font-weight: normal;
+		color: #fff;
+		background-color: #58c88d;
+
+		&.unpay {
+			background-color: #D9C526;
+		}
+		&.eval {
+			background-color: #58A3C8;
+		}
+		&.over {
+			background-color: #ccc;
+		}
 	}
 
 	.title {
@@ -311,14 +347,14 @@ span.rh, div.rh {
 	    color: $maClr;
 	}
 
-	.list {
-		transform: translateX(0);
-		transition: 300ms;
+	// .list {
+	// 	transform: translateX(0);
+	// 	transition: 300ms;
 
-		&.editing {
-			transform: translateX(65px);
-		}
-	}
+	// 	&.editing {
+	// 		transform: translateX(65px);
+	// 	}
+	// }
 
 	.item {
 		position: relative;
@@ -474,5 +510,9 @@ span.rh, div.rh {
 		border: 1px solid $maClr;
 		border-radius: 4px;
 		color: #fff;
+		&.disabled {
+			background-color: #ccc;
+			border: 1px solid #ccc;
+		}
 	}
 }

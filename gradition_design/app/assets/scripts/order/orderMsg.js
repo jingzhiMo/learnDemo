@@ -27,7 +27,7 @@ function($scope, $http, $location, url, event){
 		}
 		else {
 			$scope.order = data;
-			$scope.order.good.goodCont = data.good.goodType === 1 ? ('代金券(' + data.good.goodCount + '张,价值' + data.sumPrice + '元') : data.good.goodCont;
+			$scope.order.good.goodCont = data.good.goodType === 1 ? ('代金券 ' + data.count + ' 张,价值' + data.sumPrice.toFixed(2) + '元') : data.good.goodCont;
 			$scope.bookTime = parseDate($scope.order.beginTime);
 			$scope.order.phone = $scope.order.phone.slice(0, 3) + '****' + $scope.order.phone.slice(7);
 			switch($scope.order.status) {

@@ -47,7 +47,7 @@ module.exports = {
 					beginTime: currDate + '',
 					endTime: (currDate + 1000 * 60 * 60 * 24 * 7) + '',
 					singlePrice: data.currPrice,
-					sumPrice: count * data.currPrice
+					sumPrice: (count * data.currPrice).toFixed(2)
 				})
 			.then(function(success) {
 				if ( !success ) {
@@ -73,7 +73,7 @@ module.exports = {
 		});
 	},
 	fetchByUserID: function(req, res) {
-		var userID = req.query.userID;
+		var userID = req.query.userID || req.session.userID;
 		orderGetByUserID(userID, res);
 	}
 };

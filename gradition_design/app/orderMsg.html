@@ -57,11 +57,11 @@
 		</div>
 		<div class="msg-box order">
 			<span class="lf">总价</span>
-			<span class="rh unit" ng-bind="order.sumPrice"></span>
+			<span class="rh unit" ng-bind="order.sumPrice.toFixed(2)"></span>
 		</div>
 	</section>
 	<section class="pay-box">
-		<span class="money unit" ng-bind="order.sumPrice"></span>
+		<span class="money unit" ng-bind="order.sumPrice.toFixed(2)"></span>
 		<button class="pay-btn" ng-class="{true: 'disabled', false: ''}[paySuc]" ng-disabled="isPending" ng-bind="btnMsg" ng-click="pay()"></button>
 	</section>
 

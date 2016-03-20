@@ -22,6 +22,7 @@ module.exports = function(app) {
 	   .get('/purchase', goodRouter.purchase)                         // 商品购买
 	   .post('/orderAdd', parser.json(), orderRouter.add)             // 订单增加
 	   .get('/orderFetchByUserID', orderRouter.fetchByUserID)         // 订单查询
+	   .get('/orderFetch', orderRouter.fetch)    		              // 订单查询
 	   .post('/orderPay', parser.json(), orderRouter.pay)             // 订单付款
 	   .get('/userFetch', accountRouter.fetch)                        // 获取用户信息
 	   .post('/upload/img', uploadRouter.upload);    				  // 上传图片

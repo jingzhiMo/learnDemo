@@ -199,7 +199,7 @@ function getUserMsg(userID) {
 				return;
 			}
 			resolve(data[0]);
-		})
+		});
 	});
 
 	return p;
