@@ -27,6 +27,7 @@ module.exports = function(app) {
 	   .post('/orderPay', parser.json(), orderRouter.pay)             // 订单付款
 	   .post('/orderDelete', parser.json(), orderRouter.remove)       // 订单删除
 	   .post('/evalAdd', parser.json(), evalRouter.add)               // 添加评价
+	   .get('/evalFetch', evalRouter.fetch)                           // 获取评论
 	   .get('/userFetch', accountRouter.fetch)                        // 获取用户信息
 	   .post('/upload/img', uploadRouter.upload);    				  // 上传图片
 };

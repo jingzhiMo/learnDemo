@@ -60,10 +60,24 @@ function($scope, $http, $location, url, event){
 
 
 	/**
+	 *  =distribute
+	 *  @about  根据订单的状态，分派不同的跳转方式
+	 */
+	$scope.distribute = function() {
+		if ( $scope.order.status === 1 ) {
+			pay();
+		}
+		else if ( $scope.order.status === 2 ) {
+			evalOrder();
+		}
+	};
+
+
+	/**
 	 *  =pay order
 	 *  @about  支付订单
 	 */
-	$scope.pay = function() {
+	 function pay() {
 		$http({
 			method: 'POST',
 			url: '/orderPay',
@@ -93,7 +107,16 @@ function($scope, $http, $location, url, event){
 		.error(function() {
 
 		});
-	};
+	}
+
+
+	/**
+	 *  =evaluate order
+	 *  @about  跳转去评论订单
+	 */
+	function evalOrder() {
+		location.href = '/orderEval.html?orderID=' + ID;		
+	}
 
 
 	/**

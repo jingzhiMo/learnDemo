@@ -7,6 +7,7 @@ function($scope, $http, url, event){
 	$scope.good.goodImg = ['assets/image/loading1.gif', 'assets/image/loading2.gif', 'assets/image/loading3.gif'];
 	$scope.isShowPhone = false;
 	$scope.isShowMask = false;
+	$scope.goodPoints = 0;
 
 	/**
 	 *  =show phone
@@ -41,7 +42,10 @@ function($scope, $http, url, event){
 		return;
 	}
 
-	getGood().then(getShopByID);
+	getGood()
+	.then(getShopByID);
+	// 获取评论内容
+	fetchEval(urlReq.ID);
 
 
 	/**
@@ -107,7 +111,6 @@ function($scope, $http, url, event){
 			method: 'GET'
 		})
 		.success(function(data) {
-			console.log(data);
 			for( var i = 0, len = data.length; i < len; i++ ) {
 				if ( $scope.good.ID === data[i].ID ) {
 					data.splice(i, 1);
@@ -121,6 +124,93 @@ function($scope, $http, url, event){
 			console.log('获取商店信息失败');
 		});
 	}
+
+
+	/**
+	 *  =fetch evaluate message
+	 *  @about  获取评论内容
+	 *
+	 *  @param  {string}  goodID  商品的ID
+	 */
+	function fetchEval(goodID) {
+		$http({
+			url: '/evalFetch?goodID=' + goodID + '&async=true',
+			method: 'GET'
+		})
+		.success(function(data) {
+			var maxLen = data.length,
+				points = 0,
+				len = maxLen > 10 ? 10 : maxLen;
+
+			for ( var i = 0; i < len; i++ ) {
+				data[i].cont.timestamp = parseDate(data[i].cont.date);
+				data[i].width = calcScore(data[i].cont.points.sum);
+				points = points + data[i].cont.points.sum;
+			}
+			
+			for( i = len; i < maxLen; i++ ) {
+				points = points + data[i].cont.points.sum;	
+			}
+			$scope.goodPoints = (points / maxLen).toFixed(2);
+			$scope.evalArr = data;
+		})
+		.error(function() {
+			console.log('获取评论内容失败');
+		});
+	}
+
+
+	/**
+	  *  =parse date
+	  *  @about  转化为日期 2016-01-01 10:00
+	  *
+	  *  @param  {string}  date  时间戳字符串
+	 */
+	function parseDate(datestr) {
+		var date  = new Date(parseInt(datestr)),
+			year  = date.getFullYear(),
+			month = date.getMonth() + 1,
+			day   = date.getDate(),
+			hour  = date.getHours(),
+			min   = date.getMinutes();
+
+		month = month > 10 ? month : '0' + month;
+		day = day > 10 ? day : '0' + day;
+		hour = hour > 10 ? hour : '0' + hour;
+		min = min > 10 ? min : '0' + min;
+
+		return  year + '-' + month + '-' + day;
+	}
+
+
+	/**
+	 *  =calculate score
+	 *  @about  评分
+	 *
+	 *  @param  {number}  score 评分的多少
+	 */
+	function calcScore(score) {
+		var width = '0%';
+
+		switch(score) {
+			case 1:
+				width = '14%';
+			break;
+			case 2:
+				width = '34%';
+			break;
+			case 3:
+				width = '54%';
+			break;
+			case 4:
+				width = '74%';
+			break;
+			case 5:
+				width = '100%';
+			break;
+		}
+		return width;
+	};
 
 	// 绑定滑动事件
 	var slideBox = document.querySelectorAll('.slide-cont')[0],

@@ -62,7 +62,7 @@
 	</section>
 	<section class="pay-box">
 		<span class="money unit" ng-bind="order.sumPrice.toFixed(2)"></span>
-		<button class="pay-btn" ng-class="{true: 'disabled', false: ''}[paySuc]" ng-disabled="isPending" ng-bind="btnMsg" ng-click="pay()"></button>
+		<button class="pay-btn" ng-class="{true: 'disabled', false: ''}[paySuc]" ng-disabled="isPending" ng-bind="btnMsg" ng-click="distribute()"></button>
 	</section>
 
 	<script src="angular/angular.js"></script>
