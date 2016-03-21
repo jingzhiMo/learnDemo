@@ -24,14 +24,14 @@
 					<h2 class="shop-name" ng-bind="shop.shopName"></h2>
 					<div class="score">
 						<div class="basic-score">
-							<div class="real-score" style="width: {{(shop.points.sum * 20).toFixed(1)}}%"></div>
+							<div class="real-score" style="width: {{(shopPoints * 20).toFixed(1)}}%"></div>
 						</div>
 						<!-- <span class="price">人均：￥30</span> -->
 					</div>
 					<div class="sp-score">
-						<span class="item">口味：{{shop.points.eat.toFixed(1)}}</span>
-						<span class="item">环境：{{shop.points.envir.toFixed(1)}}</span>
-						<span class="item">服务：{{shop.points.service.toFixed(1)}}</span>
+						<span class="item">口味：{{eatPoints}}</span>
+						<span class="item">环境：{{envirPoints}}</span>
+						<span class="item">服务：{{servicePoints}}</span>
 					</div>
 				</div>
 			</div>
@@ -75,8 +75,8 @@
 				<div class="basic-score">
 					<div class="real-score"></div>
 				</div>
-				<span class="score">4.8</span>
-				<span class="evaluate">1999人评价</span>
+				<span class="score" ng-bind="shopPoints"></span>
+				<span class="evaluate">{{evalArr.length}}人评价</span>
 			</div>
 			<div class="brief-desc">
 				<span class="item">有图(203)</span>
@@ -89,26 +89,20 @@
 				<span class="item">团购划算(22)</span>
 			</div>
 			<div class="eval-list">
-				<div class="eval-item">
+				<div class="eval-item" ng-repeat="evalItem in evalArr">
 					<div class="eval-hd">
-						<span class="user-name">user name</span>
-						<span class="time">2015-12-18</span>
+						<span class="user-name" ng-bind="evalItem.cont.username"></span>
+						<span class="time" ng-bind="evalItem.cont.timestamp"></span>
 						<div class="basic-score">
-							<div class="real-score"></div>
+							<div class="real-score" style="width: {{evalItem.width}};"></div>
 						</div>
 					</div>
 					<div class="eval-bd">
-						<artical class="eval-cont">
-							很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
+						<artical class="eval-cont" ng-bind="evalItem.cont.word">
 						</artical>
-						<!-- <div class="img-list">
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-							<div class="img-box"><img src="assets/img/pisa.jpg" alt=""></div>
-						</div> -->
+						<div class="img-list">
+							<div class="img-box" ng-repeat="imgSrc in evalItem.cont.imgList"><img ng-src="{{imgSrc}}"></div>
+						</div>
 					</div>
 				</div>
 				<div class="eval-item">
@@ -149,7 +143,7 @@
 				</div>
 			</div>
 			<div class="panel-ft">
-				<a href="#" class="view-all">查看全部1459条评价</a>
+				<a href="#" class="view-all">查看全部{{evalArr.length}}条评价</a>
 			</div>
 		</section>
 		

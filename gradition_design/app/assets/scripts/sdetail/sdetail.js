@@ -15,6 +15,20 @@ function($scope, $http, url, event){
 	$scope.viewMore = false;
 	$scope.packup = false;
 
+	var urlReq = url.getParamByUrl(window.location.href);
+
+	if ( !urlReq.ID ) { // 进入页面没有传商品的ID
+		window.location.href = '/';
+		return;
+	}
+
+	fetchShop()
+	.then(fetchGood)
+	.then(fetchChainShop);
+
+	// 获取评论内容
+	fetchEval(urlReq.ID);
+
 	/**
 	 *  =show phone
 	 *  @about  显示手机号码
@@ -83,17 +97,6 @@ function($scope, $http, url, event){
 		}
 		history.back();
 	};
-
-	var urlReq = url.getParamByUrl(window.location.href);
-
-	if ( !urlReq.ID ) { // 进入页面没有传商品的ID
-		window.location.href = '/';
-		return;
-	}
-
-	fetchShop()
-	.then(fetchGood)
-	.then(fetchChainShop);
 
 
 	/**
@@ -173,4 +176,101 @@ function($scope, $http, url, event){
 			console.log('获取连锁店信息出错');
 		});
 	}
+
+
+	/**
+	 *  =fetch evaluate message
+	 *  @about  获取评论内容
+	 *
+	 *  @param  {string}  shopID  商家的ID
+	 */
+	function fetchEval(shopID) {
+		$http({
+			url: '/evalFetch?shopID=' + shopID + '&async=true',
+			method: 'GET'
+		})
+		.success(function(data) {
+			var maxLen = data.length,
+				points = 0,
+				eatPoints = 0,
+				envirPoints = 0,
+				servicePoints = 0,
+				len = maxLen > 10 ? 10 : maxLen;
+
+			for ( var i = 0; i < len; i++ ) {
+				data[i].cont.timestamp = parseDate(data[i].cont.date);
+				data[i].width = calcScore(data[i].cont.points.sum);
+				points = points + data[i].cont.points.sum;
+				eatPoints = eatPoints + data[i].cont.points.eat;
+				envirPoints = envirPoints + data[i].cont.points.envir;
+				servicePoints = servicePoints + data[i].cont.points.service;
+			}
+			
+			for( i = len; i < maxLen; i++ ) {
+				points = points + data[i].cont.points.sum;	
+			}
+			$scope.shopPoints = (points / maxLen).toFixed(2);
+			$scope.eatPoints = (eatPoints / maxLen).toFixed(1);
+			$scope.envirPoints = (envirPoints / maxLen).toFixed(1);
+			$scope.servicePoints = (servicePoints / maxLen).toFixed(1);
+			$scope.evalArr = data;
+			console.log(data);
+		})
+		.error(function() {
+			console.log('获取评论内容失败');
+		});
+	}
+
+
+	/**
+	  *  =parse date
+	  *  @about  转化为日期 2016-01-01 10:00
+	  *
+	  *  @param  {string}  date  时间戳字符串
+	 */
+	function parseDate(datestr) {
+		var date  = new Date(parseInt(datestr)),
+			year  = date.getFullYear(),
+			month = date.getMonth() + 1,
+			day   = date.getDate(),
+			hour  = date.getHours(),
+			min   = date.getMinutes();
+
+		month = month > 10 ? month : '0' + month;
+		day = day > 10 ? day : '0' + day;
+		hour = hour > 10 ? hour : '0' + hour;
+		min = min > 10 ? min : '0' + min;
+
+		return  year + '-' + month + '-' + day;
+	}
+
+
+	/**
+	 *  =calculate score
+	 *  @about  评分
+	 *
+	 *  @param  {number}  score 评分的多少
+	 */
+	function calcScore(score) {
+		var width = '0%';
+
+		switch(score) {
+			case 1:
+				width = '14%';
+			break;
+			case 2:
+				width = '34%';
+			break;
+			case 3:
+				width = '54%';
+			break;
+			case 4:
+				width = '74%';
+			break;
+			case 5:
+				width = '100%';
+			break;
+		}
+		return width;
+	};
 }]);
