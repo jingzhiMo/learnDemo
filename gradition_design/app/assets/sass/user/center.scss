@@ -84,4 +84,24 @@
 			transform: rotate(-45deg);
 		}
 	}
+	.logout-box {
+		margin-top: 10px;
+
+		.logout-btn {
+			@extend %br-box;
+			@extend %tac;
+			display: block;
+			width: 90%;
+			margin: 0 auto;
+			padding: 12px;
+			font-size: 1.4rem;
+			color: $maClr;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			&:active, &:hover {
+				background-color: #f0f0f0;
+			}
+		}
+	}
 }
