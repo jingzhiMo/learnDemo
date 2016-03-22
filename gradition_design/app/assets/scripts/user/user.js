@@ -81,4 +81,22 @@ function($scope, $http, $location, event){
 			console.log('获取该用户的订单信息失败');
 		});
 	}
+
+
+	/**
+	 *  =logout
+	 *  @about  退出登录
+	 */
+	$scope.logout = function() {
+		$http({
+			url: '/logout',
+			method: 'POST'
+		})
+		.success(function() {
+			location.href = '/';
+		})
+		.error(function() {
+
+		});
+	};
 }]);

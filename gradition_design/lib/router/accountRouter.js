@@ -14,6 +14,13 @@ module.exports = {
 			}
 		);
 	},
+	logout: function(req, res) {
+		req.session.phone = undefined;
+		req.session.userID = undefined;
+		req.session.username = undefined;
+		req.session.isOnline = undefined;
+		res.send({c: 0});
+	},
 	register: function(req, res) {
 		checkNewAccount(req.body.phone, function(code) {
 			if ( code < 0 ) {
