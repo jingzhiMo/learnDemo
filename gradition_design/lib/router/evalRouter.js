@@ -36,7 +36,7 @@ module.exports = {
 		});
 	},
 	fetch: function(req, res) {
-		var _val = req.query.ID || req.query.goodID || req.query.shopID,
+		var _val = req.query.ID || req.query.goodID || req.query.shopID || req.query.orderID,
 			param = {},
 			_key;
 
@@ -48,6 +48,9 @@ module.exports = {
 		}
 		else if ( req.query.shopID ) {
 			_key = 'shopID';
+		}
+		else if ( req.query.orderID ) {
+			_key = 'orderID';
 		}
 
 		param[_key] = _val;

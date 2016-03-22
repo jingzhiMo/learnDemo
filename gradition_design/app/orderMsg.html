@@ -60,6 +60,40 @@
 			<span class="rh unit" ng-bind="order.sumPrice.toFixed(2)"></span>
 		</div>
 	</section>
+	<section class="eval-box" ng-show="order.status === 3">
+		<div class="eval-block sum-block">
+			<label class="title">总体评价</label>
+			<div class="basic-score">
+				<div class="real-score" style="width: {{eval.cont.points.sum * 20}};"></div>
+			</div>
+		</div>
+		<div class="eval-block eat-block">
+			<label class="title">口味</label>
+			<div class="basic-score">
+				<div class="real-score" style="width: {{eval.cont.points.eat * 20}};"></div>
+			</div>
+		</div>
+		<div class="eval-block envir-block">
+			<label class="title">环境</label>
+			<div class="basic-score">
+				<div class="real-score" style="width: {{eval.cont.points.envir * 20}};"></div>
+			</div>
+		</div>
+		<div class="eval-block service-block">
+			<label class="title">服务</label>
+			<div class="basic-score">
+				<div class="real-score" style="width: {{eval.cont.points.service * 20}};"></div>
+			</div>
+		</div>
+		<p class="eval-tip">评论内容</p>
+		<div id="evalCont" class="eval-cont">{{eval.cont.word}}</div>
+		<div class="eval-img" ng-show="eval.cont.imgList.length > 0">
+			<p class="eval-tip ft14">上传的图片</p>
+			<div class="eval-img-box">
+				<img ng-repeat="src in eval.cont.imgList" ng-src="{{src}}">
+			</div>
+		</div>
+	</section>
 	<section class="pay-box">
 		<span class="money unit" ng-bind="order.sumPrice.toFixed(2)"></span>
 		<button class="pay-btn" ng-class="{true: 'disabled', false: ''}[paySuc]" ng-disabled="isPending" ng-bind="btnMsg" ng-click="distribute()"></button>

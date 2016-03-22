@@ -52,6 +52,9 @@ function($scope, $http, $location, url, event){
 				$scope.paySuc = true;
 				break;
 			}
+			if ( $scope.order.status === 3 ) {
+				fetchEvalMsg($scope.order.ID);;
+			}
 		}
 	})
 	.error(function() {
@@ -140,4 +143,25 @@ function($scope, $http, $location, url, event){
 
 		return  year + '-' + month + '-' + day + ' ' + hour + ':' + min;
 	}
+
+
+	/**
+	 *  =fetch evaluate message
+	 *  @about  获取订单的信息
+	 *
+	 *  @param  {string}  orderID  订单的ID
+	 */
+	function fetchEvalMsg(orderID) {
+		$http({
+			url: 'evalFetch?orderID=' + orderID + '&async=true',
+			method: 'GET'
+		})
+		.success(function(data) {
+			$scope.eval = data[0];
+			console.log(data);
+		})
+		.error(function() {
+			console.log('获取评论内容失败');
+		});
+	};
 }]);
