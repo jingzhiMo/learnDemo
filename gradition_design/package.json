@@ -4,7 +4,8 @@
   "description": "毕业设计-喵喵团",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "autorun": "node-inspector --web-port=8888 | grunt live"
   },
   "author": "mojingzhi",
   "license": "ISC",

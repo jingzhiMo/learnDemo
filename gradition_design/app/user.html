@@ -13,21 +13,56 @@
 		<h1 class="title">用户中心</h1>
 		<a href="{{homeLink}}" class="home-link"></a>
 	</section>
-	<section class="user-center">
-		<section id="setting-area">
-			<a href="#" class="setting-link" ng-bind="userMsg.username"></a>
+	<article>
+		<section class="user-center">
+			<section class="setting-area">
+				<a href="#" class="setting-link" ng-bind="userMsg.username"></a>
+			</section>
+			<h4 class="title">订单情况</h4>
+			<section class="list-link">
+				<a href="/orderList.html#unpay" class="link">未付款（{{unpay}}）</a>
+				<a href="/orderList.html#eval" class="link paied">已付款（{{paied}}）</a>
+				<a href="/orderList.html#finish" class="link finish">已完成（{{finish}}）</a>
+				<a href="/orderList.html#over" class="link cancel">已过期（{{over}}）</a>
+			</section>
+			<section class="logout-box">
+				<button class="logout-btn" ng-click="logout()">退出登录</button>
+			</section>
 		</section>
-		<h4 class="title">订单情况</h4>
-		<section class="list-link">
-			<a href="/orderList.html#unpay" class="link">未付款（{{unpay}}）</a>
-			<a href="/orderList.html#eval" class="link paied">已付款（{{paied}}）</a>
-			<a href="/orderList.html#finish" class="link finish">已完成（{{finish}}）</a>
-			<a href="/orderList.html#over" class="link cancel">已过期（{{over}}）</a>
+		<section class="modify-msg">
+			<section class="setting-area rh">
+				<a href="#" class="setting-link rh" ng-bind="userMsg.username"></a>
+			</section>
+			<p class="notice" ng-show="isShow" ng-bind="noticTips"></p>
+			<div class="msg-box">
+				<div class="ipt-box phone">
+					<label class="ipt-desc">手机号:</label>
+					<input class="ipt" type="text" ng-model="regPhone" ng-blur="checkPhoneNum(regPhone);" placeholder="填写手机号，其他用户不可见" maxlength="11">
+				</div>
+				<div class="ipt-box phone">
+					<label class="ipt-desc">用户名:</label>
+					<input class="ipt" type="text" ng-model="regPhone" ng-blur="checkPhoneNum(regPhone);" placeholder="填写用户名，字数不超过12个" maxlength="12">
+				</div>
+				<div class=" ipt-box pwd">
+					<label class="ipt-desc">旧密码:</label>
+					<input class="ipt" type="password" ng-model="regPwd" ng-blur="checkPwd(regPwd)" placeholder="6-12位、数字，字母，下划线">
+				</div>
+				<div class=" ipt-box pwd">
+					<label class="ipt-desc">新密码:</label>
+					<input class="ipt" type="password" ng-model="confPwd" ng-blur="confirmPwd(regPwd, confPwd)" placeholder="6-12位、数字，字母，下划线">
+				</div>
+				<div class=" ipt-box pwd">
+					<label class="ipt-desc">确认密码:</label>
+					<input class="ipt" type="password" ng-model="confPwd" ng-blur="confirmPwd(regPwd, confPwd)" placeholder="6-12位、数字，字母，下划线">
+				</div>
+			</div>
+			<div class="submit-box">
+				<button class="submit-btn">
+					保存信息
+				</button>
+			</div>
 		</section>
-		<section class="logout-box">
-			<button class="logout-btn" ng-click="logout()">退出登录</button>
-		</section>
-	</section>
+	</article>
 
 	<script src="assets/scripts/public/ng/angular.js"></script>
 	<script src="assets/scripts/public/page/page.js"></script>

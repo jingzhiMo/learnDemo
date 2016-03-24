@@ -11,6 +11,10 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   text-align: center;
 }
 
+.setting-area .setting-link.rh {
+  text-align: right;
+}
+
 .user-center .link:before {
   vertical-align: middle;
 }
@@ -19,7 +23,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   display: none;
 }
 
-.user-center .logout-box .logout-btn {
+.user-center .logout-box .logout-btn, .modify-msg, .modify-msg .ipt {
   box-sizing: border-box;
 }
 
@@ -88,18 +92,33 @@ html {
 html, body {
   height: 100%;
   height: 100%;
+  padding-bottom: 20px;
   background-color: whitesmoke;
 }
 
-.user-center {
-  background-color: whitesmoke;
+article {
+  width: 200%;
+  overflow: hidden;
+  font-size: 0;
+  transition: 150ms;
 }
-.user-center #setting-area {
+article.left {
+  transform: translateX(-100%);
+}
+
+.setting-area {
   position: relative;
   padding: 0 12px;
   border-bottom: 1px solid #dbdbdb;
 }
-.user-center #setting-area:after {
+.setting-area .setting-link {
+  display: block;
+  padding: 20px 0;
+  color: #222;
+  font-size: 1.5rem;
+  line-height: 20px;
+}
+.setting-area:after {
   position: absolute;
   content: "";
   display: inline-block;
@@ -111,12 +130,16 @@ html, body {
   border-bottom: 1px solid #666;
   transform: rotate(-45deg);
 }
-.user-center .setting-link {
-  display: block;
-  padding: 20px 0;
-  color: #222;
-  font-size: 1.5rem;
-  line-height: 20px;
+.setting-area.rh:after {
+  left: 12px;
+  transform: rotate(135deg);
+}
+
+.user-center {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  background-color: whitesmoke;
 }
 .user-center .title {
   margin: 10px 0 5px 12px;
@@ -186,6 +209,58 @@ html, body {
 }
 .user-center .logout-box .logout-btn:active, .user-center .logout-box .logout-btn:hover {
   background-color: #f0f0f0;
+}
+
+.modify-msg {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  padding: 0 12px;
+}
+.modify-msg .notice {
+  margin-top: 10px;
+  padding-left: 18px;
+  line-height: 24px;
+  font-size: 1.4rem;
+  color: #ff0a0a;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeZJREFUeNq8lk1LAlEUho+DSJEhuGjRF9hGEAolghJjFpG5CgqF2gRt+wUFLoX2Qb+hwCioVQaRJLgSg0CKWhVKJQiCYWhF5wwzMQ2j917NeeGFw3jPebjer2Orh0eBQ5PoFfQiuh/tV7/foOvoC/RJ3/nzLauQjQEkyC7aC3y6R8cRfCQKHEcfouegM2XRawh+Mv4gmQyW0fkuYKDm5j+WxmQWkAak0G7oXlQjZYTqgR50Eu1oV0WamgXH3pliihmiWkmEeszW8BodYlY4yIHkHlLi78obNNaneWabwfWc188wygNTElSYMWYohLOM6oEJ6L0SGlAWOGfdyEsbiIARsE4RqcvzJnw+CeizEOgjoMtCoEsCi0XAqkhC86VkGnOqSsCCSEZxewua5VfFFAuqYFefEpk3Y/AhC3czE0o8POIEcDqEni26Swl2ZdESLtBfmlZfar5FF3st/nQDeIFfars0zptl39kHyetXTLGA4vrLm3qQDE/WV+PTNGatndbn6M/hJrrcg11KNTdaNVFai9Fy673XGlAq1n536UD7XdpAh3F26XZdG0GP/6GvqaBX9bBWXRsNCKjns1NRbsAIawUkUT8ZRMfQjwIgGhtDUNCsJ+XpvDVRp7TMaPVPEZJjFfoRYABVdpdocs7cXQAAAABJRU5ErkJggg==") no-repeat 0 5px;
+  background-size: 14px;
+}
+.modify-msg .msg-box {
+  margin-top: 10px;
+}
+.modify-msg .ipt-box {
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+}
+.modify-msg .ipt-desc {
+  display: inline-block;
+  width: 60px;
+  line-height: 14px;
+  font-size: 1.4rem;
+  color: #222;
+}
+.modify-msg .ipt {
+  display: inline-block;
+  padding-left: 10px;
+  width: calc(100% - 65px);
+  font-size: 1.4rem;
+}
+.modify-msg .submit-box {
+  margin-top: 10px;
+}
+.modify-msg .submit-box .submit-btn {
+  display: block;
+  width: 100%;
+  line-height: 40px;
+  font-size: 1.4rem;
+  font-family: inherit;
+  background-color: #57c4cf;
+  color: #fff;
+  border: 1px solid #57c4cf;
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=center.css.map */
