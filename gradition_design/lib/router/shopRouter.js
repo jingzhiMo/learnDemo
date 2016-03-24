@@ -64,6 +64,7 @@ function addNewShop(shopMsg, res) {
 			shopImg: shopMsg.shopImg,
 			isChain: shopMsg.isChain,
 			chainID: shopMsg.chainShop !== 'new' ? shopMsg.chainShop : 's-' + len,
+			goodRecom: shopMsg.goodRecom,
 			goodList: [],
 			evalID: '',
 			points: {

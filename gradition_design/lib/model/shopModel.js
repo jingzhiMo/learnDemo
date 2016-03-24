@@ -11,6 +11,7 @@ var _Shop = new Schema({
 	isChain: Boolean,
 	chainID: String,
 	evalID: String,
+	goodRecom: String,
 	goodList: [
 		{
 			goodID: String,

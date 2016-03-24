@@ -86,7 +86,8 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 			 		phone: $scope.phone,
 			 		isChain: $scope.isChain,
 			 		chainShop: $scope.chainShop || 'new',
-			 		shopImg: $scope.imgList
+			 		shopImg: $scope.imgList,
+			 		goodRecom: $scope.recom
 			 	}
 			})
 			.success(function(data) {
@@ -259,6 +260,10 @@ app.controller('all', ['$scope', '$location', function($scope, $location){
 		}
 		else if ( !$scope.phone ) {
 			alert('请填写商家的预留电话');
+			return false;
+		}
+		else if ( !$scope.recom ) {
+			alert('请填写商家推荐菜式');
 			return false;
 		}
 		else {
