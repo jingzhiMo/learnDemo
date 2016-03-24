@@ -14,6 +14,7 @@ function($scope, $http, url, event){
 	$scope.isShowFt = true;
 	$scope.viewMore = false;
 	$scope.packup = false;
+	$scope.tag = [];
 
 	var urlReq = url.getParamByUrl(window.location.href);
 
@@ -204,10 +205,36 @@ function($scope, $http, url, event){
 				eatPoints = eatPoints + data[i].cont.points.eat;
 				envirPoints = envirPoints + data[i].cont.points.envir;
 				servicePoints = servicePoints + data[i].cont.points.service;
+
+				if ( data[i].cont.points.eat >= 3 ) {
+					$scope.tag[0] = $scope.tag[0] + 1 || 1;
+				}
+				if ( data[i].cont.points.service >= 3 ) {
+					$scope.tag[1] = $scope.tag[1] + 1 || 1;	
+				}
+				if ( data[i].cont.points.envir >= 3 ) {
+					$scope.tag[2] = $scope.tag[2] + 1 || 1;
+				}
+				if ( data[i].cont.points.sum >= 3 ) {
+					$scope.tag[3] = $scope.tag[3] + 1 || 1;
+				}
 			}
 			
 			for( i = len; i < maxLen; i++ ) {
-				points = points + data[i].cont.points.sum;	
+				points = points + data[i].cont.points.sum;
+
+				if ( data[i].cont.points.eat >= 3 ) {
+					$scope.tag[0] = $scope.tag[0] + 1 || 1;
+				}
+				if ( data[i].cont.points.service >= 3 ) {
+					$scope.tag[1] = $scope.tag[1] + 1 || 1;	
+				}
+				if ( data[i].cont.points.envir >= 3 ) {
+					$scope.tag[2] = $scope.tag[2] + 1 || 1;
+				}
+				if ( data[i].cont.points.sum >= 3 ) {
+					$scope.tag[3] = $scope.tag[3] + 1 || 1;
+				}
 			}
 			$scope.shopPoints = (points / maxLen).toFixed(2);
 			$scope.eatPoints = (eatPoints / maxLen).toFixed(1);

@@ -170,14 +170,14 @@
 			<span class="evaluate">{{evalArr.length}}人评价</span>
 		</div>
 		<div class="brief-desc">
-			<span class="item">有图(203)</span>
-			<span class="item">味道不错(179)</span>
-			<span class="item">服务态度好(96)</span>
-			<span class="item">环境不错(91)</span>
-			<span class="item">味道还行(38)</span>
-			<span class="item">分量足(34)</span>
+			<span class="item" ng-show="tag[0]">味道不错({{tag[0]}})</span>
+			<span class="item" ng-show="tag[1]">服务态度好({{tag[1]}})</span>
+			<span class="item" ng-show="tag[2]">环境不错({{tag[2]}})</span>
+			<span class="item" ng-show="tag[3]">总体很不错({{tag[3]}})</span>
+			<!-- <span class="item">味道还行(38)</span> -->
+			<!-- <span class="item">分量足(34)</span>
 			<span class="item">价格实惠(34)</span>
-			<span class="item">团购划算(22)</span>
+			<span class="item">团购划算(22)</span> -->
 		</div>
 		<div class="eval-list">
 			<div class="eval-item" ng-repeat="evalItem in evalArr">

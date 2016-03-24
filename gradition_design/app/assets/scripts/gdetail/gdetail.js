@@ -8,6 +8,7 @@ function($scope, $http, url, event){
 	$scope.isShowPhone = false;
 	$scope.isShowMask = false;
 	$scope.goodPoints = 0;
+	$scope.tag = [];
 
 	/**
 	 *  =show phone
@@ -146,10 +147,36 @@ function($scope, $http, url, event){
 				data[i].cont.timestamp = parseDate(data[i].cont.date);
 				data[i].width = calcScore(data[i].cont.points.sum);
 				points = points + data[i].cont.points.sum;
+
+				if ( data[i].cont.points.eat >= 3 ) {
+					$scope.tag[0] = $scope.tag[0] + 1 || 1;
+				}
+				if ( data[i].cont.points.service >= 3 ) {
+					$scope.tag[1] = $scope.tag[1] + 1 || 1;	
+				}
+				if ( data[i].cont.points.envir >= 3 ) {
+					$scope.tag[2] = $scope.tag[2] + 1 || 1;
+				}
+				if ( data[i].cont.points.sum >= 3 ) {
+					$scope.tag[3] = $scope.tag[3] + 1 || 1;
+				}
 			}
 			
 			for( i = len; i < maxLen; i++ ) {
-				points = points + data[i].cont.points.sum;	
+				points = points + data[i].cont.points.sum;
+
+				if ( data[i].cont.points.eat >= 3 ) {
+					$scope.tag[0] = $scope.tag[0] + 1 || 1;
+				}
+				if ( data[i].cont.points.service >= 3 ) {
+					$scope.tag[1] = $scope.tag[1] + 1 || 1;	
+				}
+				if ( data[i].cont.points.envir >= 3 ) {
+					$scope.tag[2] = $scope.tag[2] + 1 || 1;
+				}
+				if ( data[i].cont.points.sum >= 3 ) {
+					$scope.tag[3] = $scope.tag[3] + 1 || 1;
+				}
 			}
 			$scope.goodPoints = (points / maxLen).toFixed(2);
 			$scope.evalArr = data;
