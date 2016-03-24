@@ -210,7 +210,7 @@ function($scope, $http, url, event){
 			break;
 		}
 		return width;
-	};
+	}
 
 	// 绑定滑动事件
 	var slideBox = document.querySelectorAll('.slide-cont')[0],

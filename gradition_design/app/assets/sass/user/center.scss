@@ -16,7 +16,7 @@ article {
 	font-size: 0;
 	transition: 150ms;
 	&.left {
-		transform: translateX(-100%);		
+		transform: translateX(-50%);		
 	}
 }
 .setting-area {
@@ -27,9 +27,10 @@ article {
 	.setting-link {
 		display: block;
 		padding: 20px 0;
-		color: #222;
+		height: 20px;
 		font-size: 1.5rem;
 		line-height: 20px;
+		color: #222;
 
 		&.rh {
 			@extend %tar;

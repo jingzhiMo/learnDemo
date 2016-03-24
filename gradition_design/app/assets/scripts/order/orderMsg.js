@@ -53,7 +53,7 @@ function($scope, $http, $location, url, event){
 				break;
 			}
 			if ( $scope.order.status === 3 ) {
-				fetchEvalMsg($scope.order.ID);;
+				fetchEvalMsg($scope.order.ID);
 			}
 		}
 	})
@@ -163,5 +163,5 @@ function($scope, $http, $location, url, event){
 		.error(function() {
 			console.log('获取评论内容失败');
 		});
-	};
+	}
 }]);

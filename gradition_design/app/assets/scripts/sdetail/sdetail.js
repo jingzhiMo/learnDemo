@@ -272,5 +272,5 @@ function($scope, $http, url, event){
 			break;
 		}
 		return width;
-	};
+	}
 }]);

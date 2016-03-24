@@ -103,7 +103,7 @@ article {
   transition: 150ms;
 }
 article.left {
-  transform: translateX(-100%);
+  transform: translateX(-50%);
 }
 
 .setting-area {
@@ -114,9 +114,10 @@ article.left {
 .setting-area .setting-link {
   display: block;
   padding: 20px 0;
-  color: #222;
+  height: 20px;
   font-size: 1.5rem;
   line-height: 20px;
+  color: #222;
 }
 .setting-area:after {
   position: absolute;

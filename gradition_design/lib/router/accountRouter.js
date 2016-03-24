@@ -118,7 +118,8 @@ function checkNewAccount(phone, fun, res) {
 				code = 1;
 				result = {
 					c: 0,
-					ise: 1
+					ise: 1,
+					phone: phone
 				};
 			}
 			else {
