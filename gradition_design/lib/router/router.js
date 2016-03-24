@@ -11,7 +11,7 @@ module.exports = function(app) {
 	app.get('/login', accountRouter.login)             				  // 登录处理
 	   .post('/logout', accountRouter.logout)             			  // 退出
 	   .get('/checkNewAccount', accountRouter.checkNewAccount)        // 检查是否新用户处理
-	   .post('/ModifyAccount', accountRouter.checkNewAccount)         // 修改用户信息
+	   .post('/modifyAccount', parser.json(), accountRouter.modify)   // 修改用户信息
 	   .post('/register', parser.json(), accountRouter.register)      // 注册处理
 	   .post('/shopAdd', parser.json(), shopRouter.add)   			  // 增加商家(json)
 	   .post('/shopModify', parser.json(), shopRouter.modify)         // 修改商家信息

@@ -39,6 +39,7 @@ function($scope, $http, $location, event){
 					return;
 				}
 				$scope.userMsg = data;
+				$scope.userMsg.currPhone = $scope.userMsg.phone;
 				resolve(data.ID);
 			})
 			.error(function() {
@@ -137,37 +138,46 @@ function($scope, $http, $location, event){
 	 *  @about  检查输入的手机号码是否正确
 	 */
 	$scope.checkPhoneNum = function() {
-		if ( /1\d{10}/.test($scope.userMsg.phone) || !$scope.userMsg.phone ) { // 简单判断手机号码
-			$scope.noticTips = '';
-			$scope.isShow = false;
-			submitArr[0] = 1;
+		var p = new Promise(function(resolve) {
+			if ( /1\d{10}/.test($scope.userMsg.phone) || !$scope.userMsg.phone ) { // 简单判断手机号码
+				$scope.noticTips = '';
+				$scope.isShow = false;
+				submitArr[0] = 1;
 
-			// 查询服务器，该手机号是否被注册
-			$http({
-				method: 'GET',
-				url:    '/checkNewAccount?phone=' + $scope.userMsg.phone,
-			})
-			.success(function(data) {
+				// 查询服务器，该手机号是否被注册
+				$http({
+					method: 'GET',
+					url:    '/checkNewAccount?phone=' + $scope.userMsg.phone,
+				})
+				.success(function(data) {
 
-				if ( !data.c && data.ise && data.phone !== $scope.userMsg.phone) { // 该用户已经被注册
-					$scope.noticTips = tipArr[1];
-					$scope.isShow = true;
-					submitArr[0] = 0;
-				}
-				else {
-					$scope.noticTips = '';
-					$scope.isShow = false;
-					submitArr[0] = 1;
-				}
-			})
-			.error(function(data, status) {
-				// TODO
-			});
-		}
-		else {
-			$scope.noticTips = tipArr[0];
-			$scope.isShow = true;
-		}
+					if ( !data.c &&
+					     data.ise &&
+					     parseInt(data.phone) !== $scope.userMsg.currPhone) { // 该用户已经被注册
+						$scope.noticTips = tipArr[1];
+						$scope.isShow = true;
+						submitArr[0] = 0;
+						resolve(false);
+					}
+					else {
+						$scope.noticTips = '';
+						$scope.isShow = false;
+						submitArr[0] = 1;
+						resolve(true);
+					}
+				})
+				.error(function(data, status) {
+					// TODO
+				});
+			}
+			else {
+				$scope.noticTips = tipArr[0];
+				$scope.isShow = true;
+				resolve(false);
+			}
+		});
+
+		return p;
 	};
 
 
@@ -180,9 +190,11 @@ function($scope, $http, $location, event){
 			$scope.noticTips = tipArr[2];
 			$socpe.isShow = true;
 			submitArr[1] = 0;
+			return false;
 		}
 		else {
 			submitArr[1] = 1;
+			return true;
 		}
 	};
 
@@ -196,9 +208,11 @@ function($scope, $http, $location, event){
 			$scope.noticTips = tipArr[3];
 			$scope.isShow = true;
 			submitArr[2] = 0;
+			return false;
 		}
 		else {
 			submitArr[2] = 1;
+			return true;
 		}
 	};
 
@@ -212,16 +226,19 @@ function($scope, $http, $location, event){
 			$scope.noticTips = tipArr[4];
 			$scope.isShow = true;
 			submitArr[3] = 0;
+			return false;
 		}
 		else if ( /[\w\d_]{6,12}/.test($scope.userMsg.newPwd) ){
 			$scope.noticTips = '';
 			$scope.isShow = false;
 			submitArr[3] = 1;
+			return true;
 		}
 		else {
 			$scope.noticTips = tipArr[4];
 			$scope.isShow = true;
 			submitArr[3] = 0;
+			return false;
 		}
 	};
 
@@ -235,16 +252,19 @@ function($scope, $http, $location, event){
 			$scope.noticTips = tipArr[5];
 			$scope.isShow = true;
 			submitArr[4] = 0;
+			return false;
 		}
 		else if ( $scope.userMsg.confPwd === $scope.userMsg.newPwd ) {
 			$scope.noticTips = '';
 			$scope.isShow = false;
 			submitArr[4] = 1;
+			return true;
 		}
 		else {
 			$scope.noticTips = tipArr[5];
 			$scope.isShow = true;
 			submitArr[4] = 0;
+			return false;
 		}
 	};
 
@@ -254,23 +274,51 @@ function($scope, $http, $location, event){
 	 *  @about  修改用户信息
 	 */
 	$scope.submit = function() {
-		$http({
-			url: '/ModifyAccount',
-			method: 'POST',
-			data: {
-				username: $scope.userMsg.username,
-				password: $scope.userMsg.confPwd,
-				phone: $scope.userMsg.phone
-			},
-			headers: {
-				'Content-Type': 'application/json'
+		checkAllMsg().then(function(flag) {
+			if ( flag ) {
+				$http({
+					url: '/modifyAccount',
+					method: 'POST',
+					data: {
+						username: $scope.userMsg.username,
+						password: $scope.userMsg.confPwd,
+						phone: $scope.userMsg.phone
+					},
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.success(function() {
+					alert('修改用户信息成功');
+					location.reload();
+				})
+				.error(function() {
+					alert('修改用户信息失败');
+				});
 			}
-		})
-		.success(function() {
-			console.log('success');
-		})
-		.error(function() {
-			console.log('error');
 		});
 	};
+
+
+	/**
+	 *  =check all input message
+	 *  @about  检查所有输入的信息
+	 */
+	function checkAllMsg() {
+		var p = new Promise(function(resolve) {
+			$scope.checkPhoneNum().then(function(flag) {
+				if ( $scope.checkUsername() &&
+				     $scope.checkNewPwd() &&
+				     $scope.confirmPwd() ) {
+
+					resolve(true);
+				}
+				else {
+					resolve(false);
+				}
+			});
+		});
+
+		return p;
+	}
 }]);

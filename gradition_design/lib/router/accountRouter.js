@@ -59,6 +59,23 @@ module.exports = {
 			}
 			res.send(data);
 		});
+	},
+	modify: function(req, res) {
+		var accountMsg = {
+			ID: req.session.userID,
+			phone: req.body.phone,
+			password: req.body.password,
+			username: req.body.username
+		};
+		modifyMsg(accountMsg).then(function(flag) {
+			if ( !flag ) {
+				res.status(500).send({c: -1});
+				return;
+			}
+			else {
+				res.send({c: 0});
+			}
+		});
 	}
 };
 
@@ -209,6 +226,32 @@ function getUserMsg(userID) {
 				return;
 			}
 			resolve(data[0]);
+		});
+	});
+
+	return p;
+}
+
+
+/**
+ *  =modify account message
+ *  @about  修改用户信息
+ *
+ *  @param  {string}  accountMsg  用户信息
+ */
+function modifyMsg(accountMsg) {
+	var p = new Promise(function(resolve) {
+		AccountModel.update({
+			ID: accountMsg.ID
+		}, {$set: accountMsg},
+		function(err) {
+			if ( err ) {
+				console.log('update account message error');
+				resolve(false);
+			}
+			else {
+				resolve(true);
+			}
 		});
 	});
 
