@@ -369,6 +369,11 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 	$scope.upload.init('.img-modify-box', $scope.good.goodImg, uploadSuc);
 	$scope.uploadFlag = $scope.upload.uploadFlag;
 
+	$scope.class = [];
+	$scope.clsList = ['火锅', '自助餐', '甜点饮品', '蛋糕', '小吃快餐', '中餐', '西餐', '其他美食'];
+	$scope.clsName = [];
+
+
 	var reqLock = true;
 	/**
 	 *  =search good
@@ -383,14 +388,24 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 			method: 'GET'
 		})
 		.success(function(data) {
+			var clsIdx, good;
+
 			$scope.goodList = data;
 			$scope.hasSearch = true;
 			reqLock = true;
 
 			if (data.length === 1) {
 				$scope.good = data[0];
+				good = data[0];
 				$scope.good.name = data[0].goodName + ''; // 特别处理goodName
 				$scope.upload.imgList = $scope.good.goodImg;
+				for( var j = 0 ,jLen = good.goodClass.length; j < jLen; j++ ) {
+					clsIdx = $scope.clsList.indexOf(good.goodClass[j]);
+
+					if ( clsIdx !== -1 ) {
+						$scope.class[clsIdx] = true;
+					}
+				}
 			}
 		})
 		.error(function(err, status) {
@@ -418,7 +433,8 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 	 *  @about  改变选中的商店
 	 */
 	$scope.changeGood = function(idx) {
-		var goodList = $scope.goodList;
+		var goodList = $scope.goodList,
+			good, clsIdx;
 
 		$scope.hasSelectShop = $scope.goodID ? true : false;
 
@@ -427,8 +443,38 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 				$scope.good = goodList[i].good;
 				$scope.good.name = goodList[i].good.goodName + ''; // 特别处理goodName
 				$scope.upload.imgList = $scope.good.goodImg;
+				good = $scope.good;
+
+				for( var j = 0 ,jLen = good.goodClass.length; j < jLen; j++ ) {
+					clsIdx = $scope.clsList.indexOf(good.goodClass[j]);
+
+					if ( clsIdx !== -1 ) {
+						$scope.class[clsIdx] = true;
+					}
+				}
+
 				return;
 			}
+		}
+	};
+
+
+	/**
+	 *  =select class
+	 *  @about  选择商品的类别
+	 *
+	 *  @param  {number}  idx  类别的下标
+	 */
+	$scope.selectClass = function(idx) {
+		var count = 0;
+
+		for( var i = 0, len = 8; i < len; i++ ) {
+			if ( $scope.class[i] === true ) {
+				count++;
+			}
+		}
+		if ( count >= 4 ) {
+			$scope.class[idx] = false;
 		}
 	};
 
@@ -461,6 +507,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 					goodType: $scope.selectedType || 1,
 					goodImg: $scope.good.goodImg,
 					goodCont: parseInt($scope.selectedType) === 2 ? $scope.good.goodCont : '',
+					goodClass: $scope.clsName,
 					tips: {
 						startDate: $scope.good.tips.startDate,
 						endDate: $scope.good.tips.endDate,
@@ -503,6 +550,16 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
  	 *  = check good input
 	 */
 	function checkGoodInput() {
+		var count = 0;
+
+		$scope.clsName = [];
+		for( var i = 0, len = 8; i < len; i++ ) {
+			if ( $scope.class[i] === true ) {
+				count++;
+				$scope.clsName.push($scope.clsList[i]);
+			}
+		}
+
 		if ( !$scope.good.name ) {
 			alert('请填写商品的名称');
 			return false;
@@ -513,6 +570,10 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 		}
 		else if ( !$scope.good.oldPrice || !$scope.good.currPrice ) {
 			alert('请输入商品的价格');
+			return false;
+		}
+		else if ( count === 0 || count >= 4 ) {
+			alert('商品类型选择不正确，至少选择一个，最多三个');
 			return false;
 		}
 		else if ( !$scope.good.tips.startDate || !$scope.good.tips.endDate ) {

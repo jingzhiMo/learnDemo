@@ -93,6 +93,7 @@ function addNewGood(goodMsg, res) {
 					goodName: goodMsg.goodName,
 					goodDesc: goodMsg.goodDesc,
 					goodType: goodMsg.goodType,
+					goodClass: goodMsg.goodClass,
 					goodCont: goodMsg.goodCont,
 					goodCount: 880, // TODO 商品出售数量
 					goodImg: goodMsg.goodImg,

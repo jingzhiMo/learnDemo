@@ -198,6 +198,43 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<p>商品类型，最多选择三个，最少一个</p>
+				<div class="class-box">
+					<div class="class-item">
+						<label for="huoguo">火锅</label>
+						<input type="checkbox" id="huoguo" value="huoguo" ng-model="class[0]" ng-click="selectClass(0)">
+					</div>
+					<div class="class-item">
+						<label for="zizhucan">自助餐</label>
+						<input type="checkbox" id="zizhucan" value="zizhucan" ng-model="class[1]" ng-click="selectClass(1)">
+					</div>
+					<div class="class-item">
+						<label for="tiandian">甜点饮品</label>
+						<input type="checkbox" id="tiandian" value="tiandian" ng-model="class[2]" ng-click="selectClass(2)">
+					</div>
+					<div class="class-item">
+						<label for="cake">蛋糕</label>
+						<input type="checkbox" id="cake" value="cake" ng-model="class[3]" ng-click="selectClass(3)">
+					</div>
+					<div class="class-item">
+						<label for="xiaochi">小吃快餐</label>
+						<input type="checkbox" id="xiaochi" value="xiaochi" ng-model="class[4]" ng-click="selectClass(4)">
+					</div>
+					<div class="class-item">
+						<label for="zhongcan">中餐</label>
+						<input type="checkbox" id="zhongcan" value="zhongcan" ng-model="class[5]" ng-click="selectClass(5)">
+					</div>
+					<div class="class-item">
+						<label for="xican">西餐</label>
+						<input type="checkbox" id="xican" value="xican" ng-model="class[6]" ng-click="selectClass(6)">
+					</div>
+					<div class="class-item">
+						<label for="qita">其他美食</label>
+						<input type="checkbox" id="qita" value="qita" ng-model="class[7]" ng-click="selectClass(7)">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
 				<label>活动开始时间</label>
 				<input type="text" class="form-control" ng-model="good.tips.startDate" placeholder="2016-01-01 格式">
 				<label>活动结束时间</label>
