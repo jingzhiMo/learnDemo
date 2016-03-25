@@ -236,10 +236,10 @@ function($scope, $http, url, event){
 					$scope.tag[3] = $scope.tag[3] + 1 || 1;
 				}
 			}
-			$scope.shopPoints = (points / maxLen).toFixed(2);
-			$scope.eatPoints = (eatPoints / maxLen).toFixed(1);
-			$scope.envirPoints = (envirPoints / maxLen).toFixed(1);
-			$scope.servicePoints = (servicePoints / maxLen).toFixed(1);
+			$scope.shopPoints = ((points || 5) / (maxLen || 1)).toFixed(2);
+			$scope.eatPoints = ((eatPoints || 5) / (maxLen || 1)).toFixed(1);
+			$scope.envirPoints = ((envirPoints || 5) / (maxLen || 1)).toFixed(1);
+			$scope.servicePoints = ((servicePoints || 5) / (maxLen || 1)).toFixed(1);
 			$scope.evalArr = data;
 			console.log(data);
 		})

@@ -178,7 +178,7 @@ function($scope, $http, url, event){
 					$scope.tag[3] = $scope.tag[3] + 1 || 1;
 				}
 			}
-			$scope.goodPoints = (points / maxLen).toFixed(2);
+			$scope.goodPoints = ((points || 5) / (maxLen || 1)).toFixed(2);
 			$scope.evalArr = data;
 		})
 		.error(function() {

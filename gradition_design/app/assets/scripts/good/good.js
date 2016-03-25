@@ -50,6 +50,9 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 	$scope.uploadFlag = true;
 	$scope.imgList = ['', '', ''];
 	$scope.alertMsg = '图片数量还不够';
+	$scope.class = [];
+	$scope.clsList = ['火锅', '自助餐', '甜点饮品', '蛋糕', '小吃快餐', '中餐', '西餐', '其他美食'];
+	$scope.clsName = [];
 
 	// 获取商店列表
 	fetch.fetchShop('/shopFetch', function(data) {
@@ -82,6 +85,7 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 					goodName: $scope.name,
 					goodDesc: $scope.desc,
 					goodType: $scope.type || 1,
+					goodClass: $scope.clsName,
 					goodImg: $scope.imgList,
 					goodCont: parseInt($scope.type) === 2 ? $scope.cont : '',
 					tips: {
@@ -255,6 +259,17 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
  	 *  = check good input
 	 */
 	function checkGoodInput() {
+
+		var count = 0;
+
+		$scope.clsName = [];
+		for( var i = 0, len = 8; i < len; i++ ) {
+			if ( $scope.class[i] === true ) {
+				count++;
+				$scope.clsName.push($scope.clsList[i]);
+			}
+		}
+
 		if ( !$scope.name ) {
 			alert('请填写商品的名称');
 			return false;
@@ -265,6 +280,10 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 		}
 		else if ( !$scope.oldPrice || !$scope.currPrice ) {
 			alert('请输入商品的价格');
+			return false;
+		}
+		else if ( count === 0 || count >= 4 ) {
+			alert('商品类型选择不正确，至少选择一个，最多三个');
 			return false;
 		}
 		else if ( !$scope.shopID || $scope.shopID === 'default' ) {
@@ -292,7 +311,7 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 			return false;
 		}
 		else {
-			for ( var i = 0; i < 3; i++) {
+			for ( i = 0; i < 3; i++) {
 				if ( $scope.imgList[i] === '' ) {
 					alert('请上传三张图片');
 					return false;
@@ -301,6 +320,26 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 		}
 		return true;
 	}
+
+
+	/**
+	 *  =select class
+	 *  @about  选择商品的类别
+	 *
+	 *  @param  {number}  idx  类别的下标
+	 */
+	$scope.selectClass = function(idx) {
+		var count = 0;
+
+		for( var i = 0, len = 8; i < len; i++ ) {
+			if ( $scope.class[i] === true ) {
+				count++;
+			}
+		}
+		if ( count >= 4 ) {
+			$scope.class[idx] = false;
+		}
+	};
 }]);
 
 

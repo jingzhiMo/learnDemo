@@ -46,9 +46,9 @@
 		<a class="evaluate-link" href="http://www.baidu.com">
 			<div class="score-star">
 				<div class="basic-score">
-					<div class="real-score" style="width: {{goodPoints * 20}}%;"></div>
+					<div class="real-score" style="width: {{(goodPoints || 5) * 20}}%;"></div>
 				</div>
-				<span class="score" ng-bind="goodPoints"></span>
+				<span class="score" ng-bind="goodPoints || 5"></span>
 			</div>
 			<span class="evaluate">{{evalArr.length}}人评价</span>
 		</a>
