@@ -5,6 +5,7 @@
 	<title>商品页</title>
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/good/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="assets/css/good/good.css">
 </head>
 <body ng-controller="all">
@@ -104,10 +105,38 @@
 			</select>
 		</div>
 		<div class="form-group">
-			<label>活动开始时间</label>
-			<input type="text" class="form-control" ng-model="startDate" placeholder="2016-01-01 格式">
-			<label>活动结束时间</label>
-			<input type="text" class="form-control" ng-model="endDate" placeholder="2016-01-01 格式">
+			<!-- <label>活动开始时间</label>
+			<input type="text" class="form-control" ng-model="startDate" placeholder="2016-01-01 格式"> -->
+			<!-- <div class="form-group"> -->
+			    <label for="dtp_input2" class="control-label">活动开始日期</label>
+			    <div class="input-group date form_date" data-date="" data-date-format="" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+			        <input class="form-control" type="text" value="" readonly id="startDate">
+			        <span class="input-group-addon">
+			            <span class="glyphicon glyphicon-remove"></span>
+			        </span>
+			        <span class="input-group-addon">
+			            <span class="glyphicon glyphicon-calendar"></span>
+			        </span>
+			    </div>
+			    <input type="text" id="dtp_input2" ng-model="startDate" style="display: none;"/>
+			<!-- </div> -->
+			<!-- <label>活动结束时间</label>
+			<input type="text" class="form-control" ng-model="endDate" placeholder="2016-01-01 格式"> -->
+		</div>
+		<div class="form-group">
+			<label for="dtp_input2" class="control-label">活动结束日期</label>
+			<div class="input-group date form_date2" data-date="" data-date-format="" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+			    <input class="form-control" type="text" readonly  id="endDate">
+			    <span class="input-group-addon">
+			        <span class="glyphicon glyphicon-remove"></span>
+			    </span>
+			    <span class="input-group-addon">
+			        <span class="glyphicon glyphicon-calendar"></span>
+			    </span>
+			</div>
+			<input type="text" id="dtp_input1" ng-model="endDate" style="display: none;"/>
+		</div>
+		<div class="form-group">
 			<label>营业时间</label>
 			<input type="text" class="form-control" ng-model="openTime" placeholder="10:08-21:00 格式">
 			<label>时间段提醒</label>
@@ -315,9 +344,25 @@
 		<p class="success-tips tips err" ng-show="isErr">{{tips}}失败</p>
 		<button class="btn btn-info" ng-click="reload()">返回页面</button>
 	</footer>
+
 	<script src="angular/angular.js"></script>
-	<script src="jquery/dist/jquery.min.js"></script>
+	<script src="jquery/jquery.min.js"></script>
+	<script src="bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="bootstrap/js/dropdown.js"></script>
+	<script src="assets/scripts/good/bootstrap-datetimepicker.js"></script>
+	<script src="assets/scripts/good/bootstrap-datetimepicker.zh-CN.js"></script>
 	<script src="assets/scripts/good/good.js"></script>
+	    <script type="text/javascript">
+	        $('.form_date').add($('.form_date2')).datetimepicker({
+	            language: 'zh-CN',
+	            weekStart: 1,
+	            todayBtn: 1,
+	            autoclose: 1,
+	            todayHighlight: 1,
+	            startView: 2,
+	            minView: 2,
+	            forceParse: 0
+	        });
+	</script>
 </body>
 </html>

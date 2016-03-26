@@ -64,6 +64,10 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 		console.log('fetch shop error; status is' + status);
 	});
 
+	$scope.startDateChange = function() {
+		console.log(arguments);
+	}
+
 
 	$scope.addGood = function() {
 		var rule  = [],
@@ -263,6 +267,8 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 		var count = 0;
 
 		$scope.clsName = [];
+		$scope.startDate = document.querySelector('#startDate').value;
+		$scope.endDate = document.querySelector('#endDate').value;
 		for( var i = 0, len = 8; i < len; i++ ) {
 			if ( $scope.class[i] === true ) {
 				count++;
@@ -436,6 +442,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 		var goodList = $scope.goodList,
 			good, clsIdx;
 
+		$scope.class = [];
 		$scope.hasSelectShop = $scope.goodID ? true : false;
 
 		for( var i = 0, len = goodList.length; i < len; i++ ) {
