@@ -34,7 +34,7 @@
 			 	<div class="sug-block">
 			 		<ul class="sug-list">
 			 			<li class="sug-item" ng-repeat="good in searchResult.good">
-			 				<a href="/search.html?goodName={{good.goodName}}" class="sug-link">
+			 				<a href="/search.html?key={{good.goodName}}&amp;type=goodName" class="sug-link">
 			 					<span>商品：{{good.goodName}}</span>
 			 					<span class="sug-tip">
 			 						约 {{good.goodCount}} 单
@@ -42,7 +42,7 @@
 			 				</a>
 			 			</li>
 			 			<li class="sug-item" ng-repeat="class in searchResult.class">
-			 				<a href="/search.html?goodClass={{class.goodClass}}" class="sug-link">
+			 				<a href="/search.html?key={{class.goodClass}}&amp;type=goodClass" class="sug-link">
 			 					<span>分类：{{class.goodName}}</span>
 			 					<span class="sug-tip">
 			 						约 {{class.goodCount}} 单
@@ -50,10 +50,10 @@
 			 				</a>
 			 			</li>
 			 			<li class="sug-item" ng-repeat="shop in searchResult.shop">
-			 				<a href="/search.html?shopName={{shop.goodClass}}" class="sug-link">
+			 				<a href="/search.html?key={{shop.shopName}}&amp;type=shopName" class="sug-link">
 			 					<span>商家：{{shop.shopName}}</span>
 			 					<span class="sug-tip">
-			 						约 {{shop.goodCount || 0}} 单
+			 						约 {{shop.goodList.length || 0}} 件商品
 			 					</span>
 			 				</a>
 			 			</li>

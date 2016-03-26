@@ -28,6 +28,7 @@ module.exports = {
 		fetchShop(params).then(function(shop) {
 			fetchGoodByID(shop[0].goodList, res);
 		});
+
 	},
 	/**
 	 *  =get shop by other
@@ -204,43 +205,57 @@ function fetchShop(params, res) {
  *  @param  {object} res       响应处理对象
  */
 function fetchGoodByID(goodList, res) {
-	var len = goodList.length,
-		callback = [],
-		result = [],
-		isSent = false;
+	var p = new Promise(function(resolve) {
+		var len = goodList.length,
+			callback = [],
+			result = [],
+			isSent = false;
 
-	if ( len === 0 ) { // 该商店无商品
-		res.send({c: -2});
-		return;
-	}
+		if ( len === 0 ) { // 该商店无商品
+			res.send({c: -2});
+			return;
+		}
 
-	for( var i = 0; i < len; i++ ) {
-		callback[i] = false;
-	}
+		for( var i = 0; i < len; i++ ) {
+			callback[i] = false;
+		}
 
-	for( i = 0; i < len; i++ ) {
-		(function(i) {
-			GoodModel.find({
-				ID: goodList[i].goodID
-			}, function(err, data) {
-				if ( err ) {
-					res.status(500).send({c: -1});
-					return;
-				}
-				else {
-
-					result.push(data[0]);
-					callback[i] = true;
-
-					if ( callback.indexOf(false) === -1 && !isSent ) {
-						isSent = true;
-						res.send(result);
+		for( i = 0; i < len; i++ ) {
+			(function(i) {
+				GoodModel.find({
+					ID: goodList[i].goodID
+				}, function(err, data) {
+					if ( err ) {
+						if ( res ) {
+							res.status(500).send({c: -1});
+						}
+						else {
+							resolve(false);
+						}
 						return;
 					}
-				}
-			});
-		})(i);
-	}
+					else {
+
+						result.push(data[0]);
+						callback[i] = true;
+
+						if ( callback.indexOf(false) === -1 && !isSent ) {
+							isSent = true;
+							if ( res ) {
+								res.send(result);
+							}
+							else {
+								resolve(result);
+							}
+							return;
+						}
+					}
+				});
+			})(i);
+		}
+	});
+
+	return p;
 }
 
 

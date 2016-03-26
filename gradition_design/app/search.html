@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="searchApp">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
@@ -7,30 +7,22 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<link rel="stylesheet" href="assets/css/search/search.css">
 </head>
-<body>
+<body ng-controller="searchCtrl">
 	<header id="hd">
-		<a href="#" class="back-link"></a>
+		<a href="javascript:history.back()" class="back-link"></a>
 		<form action="" class="search-fm">
 			<div class="search-box">
-				<input type="text" class="search-ipt" data-role="search" autocomplete="off" placeholder="搜索商家、分类、地点" maxlength="20">
-				<span class="clear-word">
+				<input type="text" class="search-ipt" data-role="search" autocomplete="off" placeholder="搜索商店、商家、分类" maxlength="20">
+				<!-- <span class="clear-word">
 					<i class="icon"></i>
-				</span>
-				<a href="#" class="home-link"></a>
+				</span> -->
+				<a href="/" class="home-link"></a>
+				<button class="search-sbm btn" ng-click="search()"></button>
 				<button class="close" role="close">
 					关闭
 				</button>
 			</div>
 			<div class="sug-box">
-			 	<div class="history-block">
-			 		<ul class="his-list">
-			 			<li class="his-item"><a href="#" class="his-link">黄记煌</a></li>
-			 			<li class="his-item"><a href="#" class="his-link">贡茶</a></li>
-			 		</ul>
-			 		<div class="btn-box">
-			 			<a class="his-opt" href="#">清除历史记录</a><a class="his-opt" href="#">关闭</a>
-			 		</div>
-			 	</div>
 			 	<div class="sug-block">
 			 		<ul class="sug-list">
 			 			<li class="sug-item">
@@ -57,7 +49,7 @@
 			</div>
 		</form>
 	</header>
-	<section id="filter-box">
+	<!-- <section id="filter-box">
 		<section class="filter-hd">
 			<button class="tab active">美食</button>
 			<button class="tab">全城</button>
@@ -223,19 +215,69 @@
 				</div>
 			</div>
 		</section>
-	</section>
+	</section> -->
 	<section id="goods-list">
-		<section class="good-box">
+		<section class="good-box" ng-repeat="good in searchResult.good">
 			<div class="good-hd">
-				<h3 class="shop-name">尊宝披萨(华景新城店)</h3>
+				<h3 class="shop-name" ng-bind="good.good.goodName"></h3>
 				<div class="shop-info">
-					<span class="score">4.7分</span>
-					<span class="assess">283人评价</span>
-					<span class="store">天河公园</span>
+					<span class="score">{{good.good.points.sum}}分</span>
+					<span class="assess">{{good.good.goodCount}}人评价</span>
+					<span class="store" ng-bind="good.shop.shopPlace"></span>
 				</div>
 			</div>
 			<div class="good-bd">
 				<div class="good-item">
+					<a href="/gdetail.html?ID={{good.good.ID}}" class="good-link">
+						<div class="img-box">
+							<img ng-src="{{good.good.goodImg[0]}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<span class="distance"></span>
+							</div>
+							<p class="desc" ng-bind="good.good.goodDesc"></p>
+							<div class="price-line">
+								<span class="now" ng-bind="good.good.currPrice"></span>
+								<span class="old" ng-bind="good.good.oldPrice"></span>
+								<!-- <span class="discount">立减12元</span> -->
+								<span class="count">已售{{good.good.goodCount}}</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+		<section class="good-box" ng-repeat="data in searchResult.shop">
+			<div class="good-hd">
+				<h3 class="shop-name" ng-bind="data.shop.shopName"></h3>
+				<div class="shop-info">
+					<span class="score">{{data.shop.points.sum}}分</span>
+					<span class="assess">283人评价</span>
+					<span class="store" ng-bind="data.shop.shopPlace"></span>
+				</div>
+			</div>
+			<div class="good-bd">
+				<div class="good-item" ng-repeat="good in data.good">
+					<a href="/gdetail.html?ID={{good.ID}}" class="good-link">
+						<div class="img-box">
+							<img ng-src="{{good.goodImg[0]}}">
+						</div>
+						<div class="info-box">
+							<div class="title-line">
+								<span class="distance"></span>
+							</div>
+							<p class="desc" ng-bind="good.goodDesc"></p>
+							<div class="price-line">
+								<span class="now" ng-bind="good.currPrice"></span>
+								<span class="old" ng-bind="good.oldPrice"></span>
+								<span class="discount">立减10元</span>
+								<span class="count">已售{{good.goodCount}}</span>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!-- <div class="good-item">
 					<a href="#" class="good-link">
 						<div class="img-box">
 							<img src="assets/img/pisa.jpg" alt="点都得">
@@ -253,60 +295,10 @@
 							</div>
 						</div>
 					</a>
-				</div>
-				<div class="good-item">
-					<a href="#" class="good-link">
-						<div class="img-box">
-							<img src="assets/img/pisa.jpg" alt="点都得">
-						</div>
-						<div class="info-box">
-							<div class="title-line">
-								<span class="distance"></span>
-							</div>
-							<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
-							<div class="price-line">
-								<span class="now">88</span>
-								<span class="old">100</span>
-								<span class="discount">立减10元</span>
-								<span class="count">已售3.1万</span>
-							</div>
-						</div>
-					</a>
-				</div>
+				</div> -->
 			</div>
 			<div class="good-ft">
 				<button class="view-more">其他3个团购</button>
-			</div>
-		</section>
-		<section class="good-box">
-			<div class="good-hd">
-				<h3 class="shop-name">麦当劳(五山路第二分店)</h3>
-				<div class="shop-info">
-					<span class="score">4.5分</span>
-					<span class="assess">100人评价</span>
-					<span class="store">岗顶</span>
-				</div>
-			</div>
-			<div class="good-bd">
-				<div class="good-item">
-					<a href="#" class="good-link">
-						<div class="img-box">
-							<img src="assets/img/mdl.jpg" alt="麦当劳">
-						</div>
-						<div class="info-box">
-							<div class="title-line">
-								<span class="distance"></span>
-							</div>
-							<p class="desc">麦趣鸡盒3选1！节假日通用</p>
-							<div class="price-line">
-								<span class="now">69</span>
-								<span class="old">72</span>
-								<span class="discount">立减12元</span>
-								<span class="count">已售2.7万</span>
-							</div>
-						</div>
-					</a>
-				</div>
 			</div>
 		</section>
 		<section class="good-box">
@@ -362,5 +354,11 @@
 		</section>
 		<div class="top"></div>
 	</footer>
+
+	<script src="assets/scripts/public/ng/angular.js"></script>
+	<script src="assets/scripts/public/page/page.js"></script>
+	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/public/util/url.js"></script>
+	<script src="assets/scripts/search/search.js"></script>
 </body>
 </html>
