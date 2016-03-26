@@ -16,9 +16,9 @@
 	<section id="search">
 		<form class="search-fm" action="" data-role="form">
 			<div class="search-box">
-		 		<input type="text" class="search-ipt" placeholder="搜索商家、分类、地点" max-length="10" autocomplete="off">
+		 		<input type="text" class="search-ipt" placeholder="搜索商家、商品、分类" max-length="10" autocomplete="off" ng-model="key">
 		 		<i class="clear"></i>
-		 		<button class="search-sbm btn" type="submit"></button>
+		 		<button class="search-sbm btn" ng-click="search()"></button>
 			</div>
 			<button class="close-sug">关闭</button>
 			<div class="sug-box">
@@ -138,7 +138,7 @@
 			<a href="#" class="more-link">全部团购</a>
 		</h3>
 		<div class="goods-list">
-			<section class="good-item">
+			<!-- <section class="good-item">
 				<a href="#" class="good-link">
 					<div class="img-box">
 						<img src="assets/img/kfc.jpg" alt="点都得">
@@ -158,49 +158,7 @@
 						</div>
 					</div>
 				</a>
-			</section>
-			<section class="good-item">
-				<a href="#" class="good-link">
-					<div class="img-box">
-						<img src="assets/img/kfc.jpg" alt="点都得">
-					</div>
-					<div class="info-box">
-						<div class="title-line">
-							<h3 class="good-name">点都得</h3>
-							<span class="distance"></span>
-							<span class="place">天河</span>
-						</div>
-						<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
-						<div class="price-line">
-							<span class="now">88</span>
-							<span class="old">100</span>
-							<span class="discount">立减10元</span>
-							<span class="count">已售3.1万</span>
-						</div>
-					</div>
-				</a>
-			</section>
-			<section class="good-item">
-				<a href="#" class="good-link">
-					<div class="img-box">
-						<img src="assets/img/kfc.jpg" alt="点都得">
-					</div>
-					<div class="info-box">
-						<div class="title-line">
-							<h3 class="good-name">点都得</h3>
-							<span class="distance"></span>
-							<span class="place">天河</span>
-						</div>
-						<p class="desc">100元代金券！祝贺新店开张，全场通用</p>
-						<div class="price-line">
-							<span class="now">88</span>
-							<span class="old">100</span>
-							<span class="discount">立减10元</span>
-							<span class="count">已售3.1万</span>
-						</div>
-					</div>
-				</a>
-			</section>
+			</section> -->
 			<section class="good-item" ng-repeat="good in goodList">
 				<a href="/gdetail.html?ID={{good.good.ID}}" class="good-link">
 					<div class="img-box">

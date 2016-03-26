@@ -46,6 +46,37 @@ module.exports = {
 
 		return p;
 	},
+	/**
+	 *  =get good by other
+	 *  @about  给其他router 获取商品信息，不是用于处理 http 请求
+	 *
+	 *  @param  {object}  param  商品的部分信息
+	 */
+	getGoodByOther: function(param) {
+		var result = {};
+
+		// 处理搜索信息
+		for( var val in param ) {
+			if ( param.hasOwnProperty(val) ) {
+				result[val] = new RegExp(param[val]); // 模糊搜索需要加上正则表达式
+			}
+		}
+		var p = new Promise(function(resolve) {
+			GoodModel.find(result, function(err, data) {
+				if ( err ) {
+					console.log('get good message error');
+					resolve(false);
+					return;
+				}
+				resolve(data);
+			});
+		});
+
+		return p;
+	},
+	getGoodByClass: function(clsName) {
+
+	},
 	modify: function(req, res) {
 		var params = req.body;
 

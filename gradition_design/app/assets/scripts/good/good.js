@@ -66,7 +66,7 @@ app.controller('add', ['$scope', '$http', 'fetch', function($scope, $http, fetch
 
 	$scope.startDateChange = function() {
 		console.log(arguments);
-	}
+	};
 
 
 	$scope.addGood = function() {
@@ -605,7 +605,7 @@ app.controller('modify', ['$scope', '$http', 'upload', function($scope, $http, u
 		}
 		else {
 			$scope.good.goodImg = $scope.good.goodImg || ['', '', ''];
-			for ( var i = 0; i < 3; i++) {
+			for ( i = 0; i < 3; i++) {
 				if ( $scope.good.goodImg[i] === '' ) {
 					alert('请上传三张图片');
 					return false;

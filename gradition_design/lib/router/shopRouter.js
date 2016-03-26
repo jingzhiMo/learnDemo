@@ -29,6 +29,34 @@ module.exports = {
 			fetchGoodByID(shop[0].goodList, res);
 		});
 	},
+	/**
+	 *  =get shop by other
+	 *  @about  给其他router 获取商家信息，不是用于处理 http 请求
+	 *
+	 *  @param  {object}  param  商家的部分信息
+	 */
+	getShopByOther: function(param) {
+		var result = {};
+
+		// 处理搜索信息
+		for( var val in param ) {
+			if ( param.hasOwnProperty(val) ) {
+				result[val] = new RegExp(param[val]); // 模糊搜索需要加上正则表达式
+			}
+		}
+		var p = new Promise(function(resolve) {
+			ShopModel.find(result, function(err, data) {
+				if ( err ) {
+					console.log('get shop message error');
+					resolve(false);
+					return;
+				}
+				resolve(data);
+			});
+		});
+
+		return p;
+	},
 	modify: function(req, res) {
 		var params = req.body;
 

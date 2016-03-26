@@ -5,7 +5,8 @@ var accountRouter = require('./accountRouter'),
 	goodRouter    = require('./goodRouter'),
 	uploadRouter  = require('./uploadRouter'),
 	orderRouter   = require('./orderRouter'),
-	evalRouter    = require('./evalRouter');
+	evalRouter    = require('./evalRouter'),
+	searchRouter  = require('./searchRouter');
 
 module.exports = function(app) {
 	app.get('/login', accountRouter.login)             				  // 登录处理
@@ -31,5 +32,6 @@ module.exports = function(app) {
 	   .post('/evalAdd', parser.json(), evalRouter.add)               // 添加评价
 	   .get('/evalFetch', evalRouter.fetch)                           // 获取评论
 	   .get('/userFetch', accountRouter.fetch)                        // 获取用户信息
-	   .post('/upload/img', uploadRouter.upload);    				  // 上传图片
+	   .post('/upload/img', uploadRouter.upload)    				  // 上传图片
+	   .get('/search', searchRouter.search);                          // 搜索商家、商品、分类
 };

@@ -81,7 +81,9 @@ module.exports = function(grunt) {
 					src: [
 						'<%= path.assets.scripts %>*/*.js',
 						'<%= path.assets.scripts %>*/*/*.js',
-						'!<%= path.assets.scripts %>public/ng/*.js'
+						'!<%= path.assets.scripts %>public/ng/*.js',
+						'!<%= path.assets.scripts %>good/bootstrap-datetimepicker.js',
+						'!<%= path.assets.scripts %>good/bootstrap-datetimepicker.zh-CN.js'
 					]
 				},
 				options: {

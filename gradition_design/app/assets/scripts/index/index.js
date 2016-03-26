@@ -63,6 +63,24 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		}
 		event.stopProAndPreventDafault(ev);
 	};
+
+
+	/**
+	 *  =search good
+	 *  @about  搜索商品信息
+ 	 */
+ 	$scope.search = function() {
+ 		$http({
+ 			url: '/search?key=' + $scope.key,
+ 			method: 'GET'
+ 		})
+ 		.success(function(data) {
+ 			console.log(data);
+ 		})
+ 		.error(function() {
+ 			console.log('search error');
+ 		});
+ 	};
 }])
 .directive('catalog', ['event', function(event) {
 
