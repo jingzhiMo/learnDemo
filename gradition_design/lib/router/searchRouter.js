@@ -9,7 +9,7 @@ module.exports = {
 		goodRouter.getGoodByOther({goodName: key})
 		.then(function(data) {
 			var p = new Promise(function(resolve) {
-				result.good = data;
+				result.good = data.length > 5 ? data.slice(0, 5) : data;
 				resolve({shopName: req.query.key});
 			});
 			return p;
@@ -17,7 +17,7 @@ module.exports = {
 		.then(shopRouter.getShopByOther)
 		.then(function(data) {
 			var p = new Promise(function(resolve) {
-				result.shop = data;
+				result.shop = data.length > 5 ? data.slice(0, 5) : data;
 				resolve({goodClass: key});
 			});
 
@@ -25,7 +25,7 @@ module.exports = {
 		})
 		.then(goodRouter.getGoodByOther)
 		.then(function(data) {
-			result.class = data;
+			result.class = data.length > 5 ? data.slice(0, 5) : data;
 			res.send(result);
 		});
 	}

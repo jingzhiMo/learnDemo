@@ -5,6 +5,12 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 	$scope.goodList = []; // 物品的列表
 	$scope.allGood = []; // 所有商品的信息
 	$scope.currLen = 0; // 当前商品信息的下标
+	$scope.searchResult = {
+		good: [],  // 搜索名字的结果
+		class: [], // 搜索类名的结果
+		shop: []   // 搜索商店名字的结果
+	};
+	// $scope.isSearchOK = true;
 
 	$scope.hasMore = true;
 
@@ -66,6 +72,23 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 
 
 	/**
+	 *  =search = by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchByKeyboard = function() {
+		// console.log('key');
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			if ( !$scope.key ) {
+				return;
+			}
+			$scope.search();
+		}, 1500);
+	};
+
+
+	/**
 	 *  =search good
 	 *  @about  搜索商品信息
  	 */
@@ -76,10 +99,29 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
  		})
  		.success(function(data) {
  			console.log(data);
+ 			if ( data.good.length || data.shop.length || data.class.length ) {
+ 				$scope.isSearchOK = true;
+ 				$scope.searchResult.good = data.good;
+ 				$scope.searchResult.shop = data.shop;
+ 				$scope.searchResult.class = data.class;
+ 			}
+ 			else {
+ 				$scope.isSearchOK = false;
+ 			}
+ 			
  		})
  		.error(function() {
  			console.log('search error');
  		});
+ 	};
+
+
+ 	/**
+	 *  =close suggest block
+	 *  @about  关闭提示搜索框
+ 	 */
+ 	$scope.closeSug = function() {
+ 		$scope.isSearchOK = false;
  	};
 }])
 .directive('catalog', ['event', function(event) {

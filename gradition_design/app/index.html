@@ -16,12 +16,12 @@
 	<section id="search">
 		<form class="search-fm" action="" data-role="form">
 			<div class="search-box">
-		 		<input type="text" class="search-ipt" placeholder="搜索商家、商品、分类" max-length="10" autocomplete="off" ng-model="key">
+		 		<input type="text" class="search-ipt" placeholder="搜索商家、商品、分类" max-length="10" autocomplete="off" ng-model="key" ng-keydown="searchByKeyboard()">
 		 		<i class="clear"></i>
 		 		<button class="search-sbm btn" ng-click="search()"></button>
 			</div>
 			<button class="close-sug">关闭</button>
-			<div class="sug-box">
+			<div class="sug-box" ng-show="isSearchOK">
 			 	<!-- <div class="history-block">
 			 		<ul class="his-list">
 			 			<li class="his-item"><a href="#" class="his-link">黄记煌</a></li>
@@ -33,25 +33,33 @@
 			 	</div> -->
 			 	<div class="sug-block">
 			 		<ul class="sug-list">
-			 			<li class="sug-item">
-			 				<a href="#" class="sug-link">
-			 					<span>1元团购</span>
+			 			<li class="sug-item" ng-repeat="good in searchResult.good">
+			 				<a href="/search.html?goodName={{good.goodName}}" class="sug-link">
+			 					<span>商品：{{good.goodName}}</span>
 			 					<span class="sug-tip">
-			 						约 88 单
+			 						约 {{good.goodCount}} 单
 			 					</span>
 			 				</a>
 			 			</li>
-			 			<li class="sug-item">
-			 				<a href="#" class="sug-link">
-			 					<span>10人餐</span>
+			 			<li class="sug-item" ng-repeat="class in searchResult.class">
+			 				<a href="/search.html?goodClass={{class.goodClass}}" class="sug-link">
+			 					<span>分类：{{class.goodName}}</span>
 			 					<span class="sug-tip">
-			 						约 100 单
+			 						约 {{class.goodCount}} 单
+			 					</span>
+			 				</a>
+			 			</li>
+			 			<li class="sug-item" ng-repeat="shop in searchResult.shop">
+			 				<a href="/search.html?shopName={{shop.goodClass}}" class="sug-link">
+			 					<span>商家：{{shop.shopName}}</span>
+			 					<span class="sug-tip">
+			 						约 {{shop.goodCount || 0}} 单
 			 					</span>
 			 				</a>
 			 			</li>
 			 		</ul>
 			 		<div class="btn-box">
-			 			<a href="#" class="sug-opt">关闭</a>
+			 			<a href="#" class="sug-opt" ng-click="closeSug()">关闭</a>
 			 		</div>
 			 	</div>
 			</div>
