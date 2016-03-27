@@ -71,6 +71,39 @@ module.exports = {
 		.then(function() {
 			removeShop(shopID, res);
 		});
+	},
+	/**
+	 *  =calculate evaluate score
+	 *  @about  计算评价分数
+	 *
+	 *  @param  {string}  shopID  商家的ID
+	 *  @param  {object}  score   分数的对象
+	 *  @param  {number}  evalLen 评论的数量
+	 */
+	calcEvalScore: function(shopID, score, evalLen) {
+		fetchShop({ ID: shopID})
+		.then(function(shopMsg) {
+			shopMsg = shopMsg[0];
+			var sum = (shopMsg.points.sum + score.sum * (evalLen - 1 )) / evalLen,
+				eat = (shopMsg.points.eat + score.eat * (evalLen - 1 )) / evalLen,
+				service = (shopMsg.points.service + score.service * (evalLen - 1 )) / evalLen,
+				envir = (shopMsg.points.envir + score.envir * (evalLen - 1 )) / evalLen;
+
+			sum = sum.toFixed(2);
+			eat = eat.toFixed(2);
+			service = service.toFixed(2);
+			envir = envir.toFixed(2);
+
+			modifyShop({
+				ID: shopID,
+				points: {
+					eat: eat,
+					envir: envir,
+					service: service,
+					sum: sum
+				}
+			});
+		});
 	}
 };
 
@@ -83,7 +116,8 @@ module.exports = {
  *  @param  {object} res      响应处理对象
  */
 function addNewShop(shopMsg, res) {
-	getShopLen(function(len) {
+	getShopLen()
+	.then(function(len) {
 		len = parseInt((+new Date() / 1000));
 		var shop = new ShopModel({
 			ID: 's-' + len,
@@ -126,22 +160,25 @@ function modifyShop(shopMsg, res) {
 	var query = {
 		ID: shopMsg.ID
 	};
-	var msg = {
-		shopName: shopMsg.name,
-		shopPhone: shopMsg.phone,
-		shopPlace: shopMsg.place,
-		shopImg: shopMsg.shopImg
-	};
-	ShopModel.update(query, {$set: msg}, function(err, data) {
+	// var msg = {
+	// 	shopName: shopMsg.name,
+	// 	shopPhone: shopMsg.phone,
+	// 	shopPlace: shopMsg.place,
+	// 	shopImg: shopMsg.shopImg
+	// };
+	ShopModel.update(query, {$set: shopMsg}, function(err, data) {
 		if ( err ) {
 			console.log('modify shop error: ' + err);
-			res.status(500).send('modify shop error');
+			if ( res ) {
+				res.status(500).send('modify shop error');
+			}
 			return;
 		}
 		else {
-			// console.log(data);
-			console.log('success');
-			res.send({c: 0});
+			console.log('shop update success');
+			if ( res ) {
+				res.send({c: 0});
+			}
 		}
 	});
 }
@@ -150,19 +187,21 @@ function modifyShop(shopMsg, res) {
 /**
  *  =get shop length
  *  @about  获取商店的数量
- *
- *  @param  {function}  fun  获取成功的回调函数
 */
-function getShopLen(fun) {
-	ShopModel.find({}, function(err, data) {
-		if ( err ) {
-			res.status(500).send('mongodb get shop length error');
-			return;
-		}
-		else {
-			fun(data.length);
-		}
+function getShopLen() {
+	var p = new Promise(function(resolve) {
+		ShopModel.find({}, function(err, data) {
+			if ( err ) {
+				res.status(500).send('mongodb get shop length error');
+				return;
+			}
+			else {
+				resolve(data.length);
+			}
+		});
 	});
+
+	return p;
 }
 
 

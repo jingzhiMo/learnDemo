@@ -102,6 +102,29 @@ module.exports = {
 						   '&phone=' + phone.slice(0, 3) + '***' + phone.slice(7);
 
 		res.redirect(redirectUrl);
+	},
+	/**
+	 *  =calculate evaluate score
+	 *  @about  计算评价分数
+	 *
+	 *  @param  {string}  goodID  商品的ID
+	 *  @param  {object}  score   分数的对象
+	 *  @param  {number}  evalLen 评论的数量
+	 */
+	calcEvalScore: function(goodID, score, evalLen) {
+
+		fetchGoodByID(goodID).then(function(goodMsg) {
+			// 计算评价后的总评
+			var newScore = (goodMsg.points.sum + score.sum * (evalLen - 1 )) / evalLen;
+
+			newScore = newScore.toFixed(2);
+			modifyGood({
+				ID: goodID,
+				points: {
+					sum: newScore
+				}
+			});
+		});
 	}
 };
 
