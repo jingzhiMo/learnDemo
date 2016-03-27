@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "autorun": "node-inspector --web-port=8888 | grunt live"
+    "mongo": "mongod --dbpath C://software//testmongo",
+    "autorun": "node-inspector --web-port=8888 | grunt live",
+    "debug": "node --debug server.js"
   },
   "author": "mojingzhi",
   "license": "ISC",

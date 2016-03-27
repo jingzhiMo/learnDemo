@@ -12,7 +12,7 @@
 		<a href="javascript:history.back()" class="back-link"></a>
 		<form action="" class="search-fm">
 			<div class="search-box">
-				<input type="text" class="search-ipt" data-role="search" autocomplete="off" placeholder="搜索商店、商家、分类" maxlength="20">
+				<input type="text" class="search-ipt" data-role="search" autocomplete="off" placeholder="搜索商店、商家、分类" maxlength="20" ng-model="key"  ng-keydown="searchByKeyboard()">
 				<!-- <span class="clear-word">
 					<i class="icon"></i>
 				</span> -->
@@ -22,28 +22,36 @@
 					关闭
 				</button>
 			</div>
-			<div class="sug-box">
-			 	<div class="sug-block">
+			<div class="sug-box" ng-show="isSearchOK">
+			 	<div class="sug-block" ng-show="isSearchOK">
 			 		<ul class="sug-list">
-			 			<li class="sug-item">
-			 				<a href="#" class="sug-link">
-			 					<span>1元团购</span>
+			 			<li class="sug-item" ng-repeat="good in searchTip.good">
+			 				<a href="/search.html?key={{good.goodName}}&amp;type=goodName" class="sug-link">
+			 					<span>商品：{{good.goodName}}</span>
 			 					<span class="sug-tip">
-			 						约 88 单
+			 						约 {{good.goodCount}} 单
 			 					</span>
 			 				</a>
 			 			</li>
-			 			<li class="sug-item">
-			 				<a href="#" class="sug-link">
-			 					<span>10人餐</span>
+			 			<li class="sug-item" ng-repeat="class in searchTip.class">
+			 				<a href="/search.html?key={{class.goodClass}}&amp;type=goodClass" class="sug-link">
+			 					<span>分类：{{class.goodName}}</span>
 			 					<span class="sug-tip">
-			 						约 100 单
+			 						约 {{class.goodCount}} 单
+			 					</span>
+			 				</a>
+			 			</li>
+			 			<li class="sug-item" ng-repeat="shop in searchTip.shop">
+			 				<a href="/search.html?key={{shop.shopName}}&amp;type=shopName" class="sug-link">
+			 					<span>商家：{{shop.shopName}}</span>
+			 					<span class="sug-tip">
+			 						约 {{shop.goodList.length || 0}} 件商品
 			 					</span>
 			 				</a>
 			 			</li>
 			 		</ul>
 			 		<div class="btn-box">
-			 			<a href="#" class="sug-opt">关闭</a>
+			 			<a href="javascript:void(0);" class="sug-opt" ng-click="closeSug()">关闭</a>
 			 		</div>
 			 	</div>
 			</div>
@@ -271,7 +279,7 @@
 							<div class="price-line">
 								<span class="now" ng-bind="good.currPrice"></span>
 								<span class="old" ng-bind="good.oldPrice"></span>
-								<span class="discount">立减10元</span>
+								<!-- <span class="discount">立减10元</span> -->
 								<span class="count">已售{{good.goodCount}}</span>
 							</div>
 						</div>
@@ -301,7 +309,7 @@
 				<button class="view-more">其他3个团购</button>
 			</div>
 		</section>
-		<section class="good-box">
+		<!-- <section class="good-box">
 			<div class="good-hd">
 				<h3 class="shop-name">点都得(汇胜楼店)</h3>
 				<div class="shop-info">
@@ -330,11 +338,11 @@
 					</a>
 				</div>
 			</div>
-		</section>
+		</section> -->
 	</section>
-	<section id="load-more">
+	<!-- <section id="load-more">
 		<button class="load-submit">加载更多</button>
-	</section>
+	</section> -->
 	<footer id="ft">
 		<section class="info-block">
 			<div class="geo-city">

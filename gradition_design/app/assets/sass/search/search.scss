@@ -157,7 +157,6 @@ body {
 		$bgclr: rgb(238, 238, 238);
 
 		@extend %br-box;
-		@extend %hide;
 		position: absolute;
 		top: $h;
 		left: 0;
@@ -170,7 +169,7 @@ body {
 
 		}
 		.sug-block {
-			@extend %hide;
+			// @extend %hide;
 		}
 		
 		// 历史记录 history 和 搜索提示 suggest

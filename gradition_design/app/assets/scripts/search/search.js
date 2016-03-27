@@ -2,11 +2,6 @@ var searchApp = angular.module('searchApp', ['pageMD', 'eventMD', 'urlMD']);
 
 searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', function($scope, $http, event, url) {
 
-	$scope.searchResult = {
-		good: [],
-		shop: []
-	};
-
 	var key    = url.getParamByUrl(location.href).key,
 		type   = url.getParamByUrl(location.href).type,
 		allUrl = {
@@ -15,6 +10,17 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 			'goodClass': '/goodFetch?goodClass=' + key
 		};
 		reqUrl = allUrl[type];
+
+	$scope.searchResult = {
+		good: [],
+		shop: []
+	};
+	$scope.searchTip = {
+		good: [],
+		shop: []
+	};
+	$scope.key = key;
+	$scope.isSearchOK = false;
 
 	$http({
 		url: reqUrl,
@@ -31,6 +37,60 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 	.error(function() {
 		console.log('获取失败');
 	});
+
+
+	/**
+	 *  =search = by keyboard
+	 *  @about  键盘输入的时候，进行搜索
+	 */
+	var timer = null;
+	$scope.searchByKeyboard = function() {
+		// console.log('key');
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			if ( !$scope.key ) {
+				return;
+			}
+			$scope.search();
+		}, 1500);
+	};
+
+
+	/**
+	 *  =search good
+	 *  @about  搜索商品信息
+ 	 */
+ 	$scope.search = function() {
+ 		$http({
+ 			url: '/search?key=' + $scope.key,
+ 			method: 'GET'
+ 		})
+ 		.success(function(data) {
+ 			console.log(data);
+ 			if ( data.good.length || data.shop.length || data.class.length ) {
+ 				$scope.isSearchOK = true;
+ 				$scope.searchTip.good = data.good;
+ 				$scope.searchTip.shop = data.shop;
+ 				$scope.searchTip.class = data.class;
+ 			}
+ 			else {
+ 				$scope.isSearchOK = false;
+ 			}
+ 			
+ 		})
+ 		.error(function() {
+ 			console.log('search error');
+ 		});
+ 	};
+
+
+ 	/**
+	 *  =close suggest box
+	 *  @about  关闭搜索提示框
+ 	 */
+	$scope.closeSug = function() {
+		$scope.isSearchOK = false;
+	};
 
 
 	/**
