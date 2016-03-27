@@ -548,6 +548,9 @@ body {
 }
 
 /* 商品列表 */
+#goods-list {
+  min-height: 500px;
+}
 #goods-list .good-box {
   margin-top: 10px;
   padding: 0 12px;

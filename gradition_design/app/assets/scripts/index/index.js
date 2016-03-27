@@ -1,6 +1,7 @@
-var indexApp = angular.module('indexApp', ['pageMD', 'eventMD']);
+var indexApp = angular.module('indexApp', ['pageMD', 'eventMD', 'adminMD']);
 
-indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $http, event) {
+indexApp.controller('indexCtrl', ['$scope', '$http', 'event', 'checkAdmin',
+function($scope, $http, event, checkAdmin) {
 
 	$scope.goodList = []; // 物品的列表
 	$scope.allGood = []; // 所有商品的信息
@@ -10,10 +11,7 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		class: [], // 搜索类名的结果
 		shop: []   // 搜索商店名字的结果
 	};
-	// $scope.isSearchOK = true;
-
 	$scope.hasMore = true;
-
 
 	/**
 	 *  =good message init

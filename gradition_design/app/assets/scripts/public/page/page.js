@@ -1,4 +1,4 @@
-angular.module('pageMD', [])
+angular.module('pageMD', ['adminMD'])
 	.service('pageHd', function(){
 		
 	})
@@ -33,4 +33,11 @@ angular.module('pageMD', [])
 		$scope.back = function() {
 			history.historyBack();
 		};
+	}])
+	.controller('pageFtCtrl', ['$scope', 'checkAdmin', function($scope, checkAdmin){
+		checkAdmin(function(data) {
+			if ( data.c === 0 ) {
+				$scope.isAdmin = true;
+			}
+		});
 	}]);

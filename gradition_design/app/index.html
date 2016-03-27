@@ -123,7 +123,7 @@
 	<section id="load-more">
 		<a href="#" class="load-more-link" ng-click="loadMore(currLen, $event)" ng-show="hasMore">查看更多团购</a>
 	</section>
-	<footer id="ft">
+	<footer id="ft" ng-controller="pageFtCtrl">
 		<section class="info-block">
 			<div class="geo-city">
 				<span>城市：</span><a href="#" class="city-name info-link">广州</a>
@@ -132,7 +132,7 @@
 				<a href="#" class="info-link" data-role="login">登陆</a>
 				<a href="#" class="info-link" data-role="register">注册</a>
 			</div>
-			<div class="user-info info">
+			<div class="user-info info" ng-show="isAdmin">
 				<a href="/good.html" class="info-link" data-role="ticket">录入商品</a>
 				<a href="/shop.html" class="info-link" data-role="unpaid">录入商家</a>
 			</div>
@@ -145,6 +145,7 @@
 	<script src="assets/scripts/public/ng/angular.js"></script>
 	<script src="assets/scripts/public/page/page.js"></script>
 	<script src="assets/scripts/public/util/event.js"></script>
+	<script src="assets/scripts/public/util/admin.js"></script>
 	<script src="assets/scripts/index/index.js"></script>
 </body>
 </html>

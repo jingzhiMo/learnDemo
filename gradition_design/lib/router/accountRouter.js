@@ -76,6 +76,14 @@ module.exports = {
 				res.send({c: 0});
 			}
 		});
+	},
+	adminTest: function(req, res) {
+		if ( req.session.phone !== 13538805853 ) {
+			res.send({c: -3}); // 不是管理员
+		}
+		else {
+			res.send({c: 0});
+		}
 	}
 };
 

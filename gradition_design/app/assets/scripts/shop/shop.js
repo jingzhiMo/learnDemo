@@ -1,11 +1,15 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['adminMD']);
 
-app.controller('all', ['$scope', '$location', function($scope, $location){
+app.controller('all', ['$scope', '$location', '$http', 'checkAdmin',
+function($scope, $location, $http, checkAdmin){
 	$scope.pageView = 'add'; // modify, delete
 	$scope.showTips = false;
 	$scope.isSuc = false;
 	$scope.isErr = false;
 	$scope.tips = "增加";
+
+	checkAdmin(); // 检查是否是管理员
+	
 
 	$scope.changeView = function(viewName) {
 		$scope.pageView = viewName;

@@ -14,6 +14,7 @@ module.exports = function(app) {
 	   .get('/checkNewAccount', accountRouter.checkNewAccount)        // 检查是否新用户处理
 	   .post('/modifyAccount', parser.json(), accountRouter.modify)   // 修改用户信息
 	   .post('/register', parser.json(), accountRouter.register)      // 注册处理
+	   .post('/adminTest', parser.json(), accountRouter.adminTest)    // 检查是不是管理员
 	   .post('/shopAdd', parser.json(), shopRouter.add)   			  // 增加商家(json)
 	   .post('/shopModify', parser.json(), shopRouter.modify)         // 修改商家信息
 	   .post('/shopDelete', parser.json(), shopRouter.remove)         // 删除商家

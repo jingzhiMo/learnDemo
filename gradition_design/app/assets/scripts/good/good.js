@@ -1,15 +1,17 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['adminMD']);
 
 /**
  *  =all controller
  *  @about 商品页的全局控制器
  */
-app.controller('all', ['$scope', '$http', function($scope, $http){
+app.controller('all', ['$scope', '$http', 'checkAdmin', function($scope, $http, checkAdmin){
 	$scope.pageView = 'add';
 	$scope.showTips = false;
 	$scope.isSuc = false;
 	$scope.isErr = false;
 	$scope.tips = "增加";
+
+	checkAdmin(); // 检查是否是管理员
 
 	$scope.changeView = function(viewName) {
 		$scope.pageView = viewName;
