@@ -35,9 +35,38 @@ angular.module('pageMD', ['adminMD'])
 		};
 	}])
 	.controller('pageFtCtrl', ['$scope', 'checkAdmin', function($scope, checkAdmin){
+		$scope.showTop = false;
+
+		// 检查是不是管理员
 		checkAdmin(function(data) {
 			if ( data.c === 0 ) {
 				$scope.isAdmin = true;
 			}
 		});
+
+
+		/**
+		 *  =go to top
+		 *  @about  返回顶部
+		 */
+		$scope.gotoTop = function() {
+			window.scrollY = 0;
+		};
+
+		
+		// 监听滚动条的滚动，到达一定程度，显示返回顶部的按钮
+		var timer = null,
+			scrollTop = 0;
+		window.addEventListener('scroll', function(ev) {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				scrollTop = window.scrollY;
+				if ( scrollTop > 100 ) {
+					$scope.showTop = true;
+				}
+				else {
+					$scope.showTop = false;	
+				}
+			}, 200);
+		}, false);
 	}]);
