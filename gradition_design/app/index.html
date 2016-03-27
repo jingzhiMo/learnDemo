@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maxmum-scale=1.0, user-scalable=no" />
-	<title>喵喵团 更优质的团购网站</title>
+	<title>美食团</title>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="assets/css/index/index.css">
 </head>
 <body ng-controller="indexCtrl">
 	<header id="hd">
 		<a href="#" id="geo-city">广州<i class="city"></i></a>
-		<h1 id="title">喵喵团</h1>
+		<h1 id="title">美食团</h1>
 		<a href="user.html" id="user-center"><i class="user"></i>我的</a>
 	</header>
 	<section id="search">
@@ -66,84 +66,14 @@
 		</form>
 	</section>
 	<section id="catalog">
-		<!-- <ul class="catg-box">
-			<li class="menu">
-				<a href="##" class="menu-item">
-					<div class="bgimg meishi"></div>
-					<span class="text">美食</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg dianying"></div>
-					<span class="text">电影</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg jiudian"></div>
-					<span class="text">酒店</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg yule"></div>
-					<span class="text">休闲娱乐</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg huoguo"></div>
-					<span class="text">火锅</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg lvyou"></div>
-					<span class="text">旅游</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg daijin"></div>
-					<span class="text">代金券</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg ktv"></div>
-					<span class="text">KTV</span>
-				</a>
-			</li>
-			<li class="menu">
-				<a href="##" class="menu-item">
-					<div class="bgimg saishi"></div>
-					<span class="text">演出赛事</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg xiaochi"></div>
-					<span class="text">小吃快餐</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg dangao"></div>
-					<span class="text">蛋糕</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg fuwu"></div>
-					<span class="text">生活服务</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg zizhu"></div>
-					<span class="text">自助餐</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg liren"></div>
-					<span class="text">丽人</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg wenquan"></div>
-					<span class="text">温泉洗浴</span>
-				</a>
-				<a href="##" class="menu-item">
-					<div class="bgimg gengduo"></div>
-					<span class="text">更多分类</span>
-				</a>
-			</li>
-		</ul> -->
 		<catalog></catalog>
 		<div class="points-box">
-			<i class="point active"></i><i class="point"></i>
+			<i class="point active"></i>
 		</div>
 	</section>
 	<section id="goods">
 		<h3 class="goods-title">猜你喜欢
-			<a href="#" class="more-link">全部团购</a>
+			<a href="/search.html?type=goodAll&amp;key=" class="more-link">全部团购</a>
 		</h3>
 		<div class="goods-list">
 			<!-- <section class="good-item">
@@ -203,8 +133,8 @@
 				<a href="#" class="info-link" data-role="register">注册</a>
 			</div>
 			<div class="user-info info">
-				<a href="#" class="info-link" data-role="ticket">喵喵券</a>
-				<a href="#" class="info-link" data-role="unpaid">待付款</a>
+				<a href="/good.html" class="info-link" data-role="ticket">录入商品</a>
+				<a href="/shop.html" class="info-link" data-role="unpaid">录入商家</a>
 			</div>
 		</section>
 		<section class="link-block">

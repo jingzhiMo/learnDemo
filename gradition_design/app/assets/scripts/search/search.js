@@ -7,14 +7,19 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 		allUrl = {
 			'goodName': '/goodFetch?goodName=' + key,
 			'shopName': '/shopFetch?shopName=' + key,
-			'goodClass': '/goodFetch?goodClass=' + key
+			'goodClass': '/goodFetch?goodClass=' + key,
+			'goodAll': '/shopFetch?ID=s'
 		};
 		reqUrl = allUrl[type];
 
+	// 搜索之后显示内容的数据
 	$scope.searchResult = {
 		good: [],
-		shop: []
+		shop: [], // 能够显示出来的商品，因为每个商家初始化，只能显示三个
+		hideShop: [], // 每个商家，超出三个商品之后，存储的数据，当点击，查看全部的时候，就会调用这里的数据
+		hideFlag: [] // 超出三个商品，隐藏更多的项目
 	};
+	// 搜索之后，现在在搜索框提示的数据
 	$scope.searchTip = {
 		good: [],
 		shop: []
@@ -27,7 +32,7 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 		method: 'GET'
 	})
 	.success(function(data) {
-		if ( type === 'shopName' ) {
+		if ( type === 'shopName' || type === 'goodAll') {
 			fetchGoodById(data);
 		}
 		else {
@@ -85,6 +90,30 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 
 
  	/**
+	 *  =view more good
+	 *  @about  查看更多商品信息
+	 *
+	 *  @param  {number}  index  下标
+ 	 */
+ 	$scope.viewMore = function(index) {
+ 		$scope.searchResult.shop[index].good = $scope.searchResult.shop[index].good.concat($scope.searchResult.hideShop[index]);
+ 		$scope.searchResult.hideFlag[index] = false;
+ 	};
+
+
+ 	/**
+	 *  =close more
+	 *  @about  收起更多商品
+	 *
+	 *  @param  {number}  index  下标
+ 	 */
+ 	$scope.closeMore = function(index) {
+ 		$scope.searchResult.shop[index].good = $scope.searchResult.shop[index].good.slice(0, 3);
+ 		$scope.searchResult.hideFlag[index] = true;
+ 	};
+
+
+ 	/**
 	 *  =close suggest box
 	 *  @about  关闭搜索提示框
  	 */
@@ -106,13 +135,20 @@ searchApp.controller('searchCtrl', ['$scope', '$http', 'event', 'calcUrlParam', 
 					url: '/shopFetchWithGood?ID=' + shopMsg[i].ID
 				})
 				.success(function(data) {
-					var msg = {
-						shop: shopMsg[i],
-						good: data
-					};
-					$scope.searchResult.shop.push(msg);
-					console.log('商店的信息');
-					console.log($scope.searchResult.shop);
+					var shopLen = $scope.searchResult.shop.length;
+
+					if ( data.c !== -2 ) {
+						var msg = {
+							shop: shopMsg[i],
+							good: data
+						};
+						// 只取前三个，初始化显示在页面当中
+						msg.good = data.slice(0, 3);
+						// 把超出三个的，先隐藏起来
+						$scope.searchResult.hideShop[shopLen] = data.length > 3 ? data.slice(3) : [];
+						$scope.searchResult.hideFlag[shopLen] = true;
+						$scope.searchResult.shop.push(msg);
+					}
 				})
 				.error(function() {
 					console.log('获取失败');

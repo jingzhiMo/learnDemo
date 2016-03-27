@@ -305,8 +305,11 @@
 					</a>
 				</div> -->
 			</div>
-			<div class="good-ft">
-				<button class="view-more">其他3个团购</button>
+			<div class="good-ft" ng-show="searchResult.hideShop[$index].length">
+				<button class="view-more" ng-show="searchResult.hideFlag[$index]" ng-click="viewMore($index)">其他{{searchResult.hideShop[$index].length}}个团购</button>
+				<button class="view-more top" ng-show="!searchResult.hideFlag[$index]" ng-click="closeMore($index)">
+					收起
+				</button>
 			</div>
 		</section>
 		<!-- <section class="good-box">
@@ -353,8 +356,8 @@
 				<a href="#" class="info-link" data-role="register">注册</a>
 			</div>
 			<div class="user-info info">
-				<a href="#" class="info-link" data-role="ticket">喵喵券</a>
-				<a href="#" class="info-link" data-role="unpaid">待付款</a>
+				<a href="/good.html" class="info-link" data-role="ticket">录入商品</a>
+				<a href="/shop.html" class="info-link" data-role="unpaid">录入商家</a>
 			</div>
 		</section>
 		<section class="link-block">

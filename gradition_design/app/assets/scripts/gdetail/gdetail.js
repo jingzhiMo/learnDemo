@@ -179,6 +179,7 @@ function($scope, $http, url, event){
 				}
 			}
 			$scope.goodPoints = ((points || 5) / (maxLen || 1)).toFixed(2);
+			console.log($scope.goodPoints);
 			$scope.evalArr = data;
 		})
 		.error(function() {

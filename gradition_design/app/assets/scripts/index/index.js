@@ -134,8 +134,8 @@ indexApp.controller('indexCtrl', ['$scope', '$http', 'event', function($scope, $
 		templateUrl: '/assets/tmpl/catalog.html',
 		link: function(scope, ele, attr) {
 
-			var ul = ele.children()[0];
-			event.move(ul, ul.offsetWidth / 2, 2, document.querySelectorAll('.point'));
+			// var ul = ele.children()[0];
+			// event.move(ul, ul.offsetWidth / 2, 2, document.querySelectorAll('.point'));
 		}
 	};
 }]);

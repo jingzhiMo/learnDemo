@@ -23,7 +23,7 @@ module.exports = {
 	},
 	fetchWithGood: function(req, res) {
 		var params = {
-			ID: req.query.ID
+			ID: new RegExp(req.query.ID)
 		};
 		fetchShop(params).then(function(shop) {
 			fetchGoodByID(shop[0].goodList, res);

@@ -8,7 +8,8 @@ var url = [
 	'/orderFetchByUserID',
 	'/orderModify',
 	'/evalAdd',
-	'/userFetch'
+	'/userFetch',
+	'/adminTest'
 ];
 
 /**

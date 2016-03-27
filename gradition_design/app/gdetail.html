@@ -36,19 +36,19 @@
 			</span>
 		</p> -->
 		<p class="policy">
-			<span class="policy-item consume">未消费，随便退</span>
+			<!-- <span class="policy-item consume">未消费，随便退</span> -->
 			<span class="policy-item count">已售{{good.goodCount}}</span>
-			<span class="policy-item time">剩余7天以上</span>
-			<span class="policy-item book">免预约</span>
+			<!-- <span class="policy-item time">剩余7天以上</span> -->
+			<!-- <span class="policy-item book">免预约</span> -->
 		</p>
 	</section>
 	<section id="score-area">
 		<a class="evaluate-link" href="http://www.baidu.com">
 			<div class="score-star">
 				<div class="basic-score">
-					<div class="real-score" style="width: {{(goodPoints * 20) - 6}}%;"></div>
+					<div class="real-score" style="width: {{(good.points.sum * 20) - 6}}%;"></div>
 				</div>
-				<span class="score" ng-bind="goodPoints || 5"></span>
+				<span class="score" ng-bind="good.points.sum.toFixed(2)"></span>
 			</div>
 			<span class="evaluate">{{evalArr.length}}人评价</span>
 		</a>
@@ -164,9 +164,9 @@
 		<h4 class="panel-hd">用户评价</h4>
 		<div class="score-star">
 			<div class="basic-score">
-				<div class="real-score" style="width: {{(goodPoints * 20) - 6}}%;"></div>
+				<div class="real-score" style="width: {{(good.points.sum * 20) - 6}}%;"></div>
 			</div>
-			<span class="score" ng-bind="goodPoints"></span>
+			<span class="score" ng-bind="good.points.sum.toFixed(2)"></span>
 			<span class="evaluate">{{evalArr.length}}人评价</span>
 		</div>
 		<div class="brief-desc">
@@ -262,7 +262,7 @@
 			<span class="old" ng-bind="good.oldPrice"></span>
 			<span class="original">/ {{good.currPrice}}</span>
 		</div>
-		<a href="/purchase?goodID={{good.ID}}&shopID={{shop.ID}}&price={{good.currPrice}}&name={{good.goodName}}" class="buy-btn" ng-click="purchase()">
+		<a href="/purchase?goodID={{good.ID}}&amp;shopID={{shop.ID}}&amp;price={{good.currPrice}}&amp;name={{good.goodName}}" class="buy-btn" ng-click="purchase()">
 			<span class="tip">活动价</span>
 			<span class="current-price" ng-bind="good.currPrice"></span>
 			<span class="text">立即抢购</span>
@@ -278,8 +278,8 @@
 				<a href="#" class="info-link" data-role="register">注册</a>
 			</div>
 			<div class="user-info info">
-				<a href="#" class="info-link" data-role="ticket">喵喵券</a>
-				<a href="#" class="info-link" data-role="unpaid">待付款</a>
+				<a href="/good.html" class="info-link" data-role="ticket">录入商品</a>
+				<a href="/shop.html" class="info-link" data-role="unpaid">录入商家</a>
 			</div>
 		</section>
 		<section class="link-block">
