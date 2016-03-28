@@ -35,7 +35,7 @@ angular.module('pageMD', ['adminMD'])
 		};
 	}])
 	.controller('pageFtCtrl', ['$scope', 'checkAdmin', function($scope, checkAdmin){
-		$scope.showTop = false;
+		$scope.showTop = true;
 
 		// 检查是不是管理员
 		checkAdmin(function(data) {
@@ -50,7 +50,7 @@ angular.module('pageMD', ['adminMD'])
 		 *  @about  返回顶部
 		 */
 		$scope.gotoTop = function() {
-			window.scrollY = 0;
+			window.scrollTo(0, 0);
 		};
 
 		

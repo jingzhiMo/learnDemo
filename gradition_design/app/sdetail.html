@@ -38,7 +38,7 @@
 			<p class="shop-pos" ng-bind="shop.shopPlace"></p>
 			<div class="contact">
 				<span class="item phone" ng-click="showPhone($event)">电话</span>
-				<span class="item envir">商家环境</span>
+				<!-- <span class="item envir">商家环境</span> -->
 			</div>
 			<a class="view-all" href="chainShop" ng-click="viewAllShop($event)">查看全部{{chainShopList.length || 0}}家分店</a>
 		</section>
@@ -121,7 +121,7 @@
 			</div>
 		</section>
 		
-		<section class="guess-like">
+		<!-- <section class="guess-like">
 			<h4 class="title">猜您喜欢</h4>
 			<div class="key-box">
 				<div class="key-line">
@@ -140,7 +140,7 @@
 					<a href="#" class="key">肯德基</a>
 				</div>
 			</div>
-		</section>
+		</section> -->
 	</article>
 
 	<footer id="ft" ng-controller="pageFtCtrl">
@@ -160,7 +160,7 @@
 		<section class="link-block">
 			<p class="copyright">©miaomiao.com 2015-2016</p>
 		</section>
-		<div class="top"></div>
+		<div class="top" ng-click="gotoTop()"></div>
 	</footer>
 	
 	<!-- 遮层 -->

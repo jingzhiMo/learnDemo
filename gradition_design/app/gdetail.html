@@ -59,8 +59,8 @@
 			<p class="shop-pos" ng-bind="shop.shopPlace"></p>
 		</a>
 		<div class="contact">
-			<span href="#" class="item phone" data-num="{{shop.shopPhone}}" ng-click="showPhone($event)">电话</span>
-			<span href="#" class="item envir">环境</span>
+			<span class="item phone" data-num="{{shop.shopPhone}}" ng-click="showPhone($event)">电话</span>
+			<!-- <span href="#" class="item envir">环境</span> -->
 		</div>
 	</section>
 	<section id="nav-box">
@@ -285,7 +285,7 @@
 		<section class="link-block">
 			<p class="copyright">©miaomiao.com 2015-2016</p>
 		</section>
-		<div class="top"></div>
+		<div class="top" ng-click="gotoTop()"></div>
 	</footer>
 	
 	<div class="bg-mask" ng-show="isShowMask"></div>
