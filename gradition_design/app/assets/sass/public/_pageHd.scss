@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#hd {
+#hd, .hd {
 	@extend %tac;
 	position: relative;
 	height: 40px;

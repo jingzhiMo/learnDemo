@@ -69,9 +69,6 @@ function($scope, $http, url, event){
 	 *  @about  查看所有商店
 	 */
 	$scope.viewAllShop = function(ev) {
-		// var chainList = document.querySelectorAll('.shop-list')[0].children[0],
-		// 	maxY = -(document.querySelectorAll('.shop-item')[0].offsetHeight) * 5; // 最多容下5个分店的信息
-		// $scope.
 		$scope.isShowShop = true;
 		$scope.isShowBd = false;
 		$scope.isShowFt = false;

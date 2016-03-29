@@ -8,266 +8,293 @@
 	<link rel="stylesheet" href="assets/css/gdetail/gdetail.css">
 </head>
 <body ng-controller="gdCtrl">
-	<header id="hd" ng-controller="pageHdCtrl">
+	<header id="detail-hd" ng-controller="pageHdCtrl" ng-hide="isHideBd">
 		<a href="javascript:void(0);" class="back-link" ng-click="back()"></a>
 		<a href="#" ng-href="{{homeLink}}" class="home-link"></a>
 	</header>
-	<section id="slide-img">
-		<div class="slide-cont">
-			<div class="img-box" ng-repeat="imgSrc in good.goodImg"><img ng-src="{{imgSrc}}"></div>
-			<div class="img-box"><img ng-src="{{imgSrc}}"></div>
-			<div class="img-box"><img ng-src="{{imgSrc}}"></div>
-		</div>
-		<div class="slide-index">
-			<i class="index active"></i>
-			<i class="index"></i>
-			<i class="index"></i>
-		</div>
-	</section>
-	<section id="good-desc">
-		<h4 class="shop-name" ng-bind="good.goodName"></h4>
-		<p class="desc" ng-bind="good.goodDesc"></p>
-		<!-- <p class="acty-desc">
-			<span class="acty-item">
-				立减4.5元
-			</span>
-			<span class="acty-item">
-				满115减7
-			</span>
-		</p> -->
-		<p class="policy">
-			<!-- <span class="policy-item consume">未消费，随便退</span> -->
-			<span class="policy-item count">已售{{good.goodCount}}</span>
-			<!-- <span class="policy-item time">剩余7天以上</span> -->
-			<!-- <span class="policy-item book">免预约</span> -->
-		</p>
-	</section>
-	<section id="score-area">
-		<a class="evaluate-link" href="http://www.baidu.com">
+	<article id="bd" ng-hide="isHideBd">
+		<section id="slide-img">
+			<div class="slide-cont">
+				<div class="img-box" ng-repeat="imgSrc in good.goodImg"><img ng-src="{{imgSrc}}"></div>
+				<div class="img-box"><img ng-src="{{imgSrc}}"></div>
+				<div class="img-box"><img ng-src="{{imgSrc}}"></div>
+			</div>
+			<div class="slide-index">
+				<i class="index active"></i>
+				<i class="index"></i>
+				<i class="index"></i>
+			</div>
+		</section>
+		<section id="good-desc">
+			<h4 class="shop-name" ng-bind="good.goodName"></h4>
+			<p class="desc" ng-bind="good.goodDesc"></p>
+			<!-- <p class="acty-desc">
+				<span class="acty-item">
+					立减4.5元
+				</span>
+				<span class="acty-item">
+					满115减7
+				</span>
+			</p> -->
+			<p class="policy">
+				<!-- <span class="policy-item consume">未消费，随便退</span> -->
+				<span class="policy-item count">已售{{good.goodCount}}</span>
+				<!-- <span class="policy-item time">剩余7天以上</span> -->
+				<!-- <span class="policy-item book">免预约</span> -->
+			</p>
+		</section>
+		<section id="score-area">
+			<a class="evaluate-link">
+				<div class="score-star">
+					<div class="basic-score">
+						<div class="real-score" style="width: {{(good.points.sum * 20) - 6}}%;"></div>
+					</div>
+					<span class="score" ng-bind="good.points.sum.toFixed(2)"></span>
+				</div>
+				<span class="evaluate">{{evalArr.length}}人评价</span>
+			</a>
+		</section>
+		<section id="shop-desc">
+			<a href="/sdetail.html?ID={{shop.ID}}" class="shop-link">
+				<h4 class="shop-name" ng-bind="shop.shopName"></h4>
+				<p class="shop-pos" ng-bind="shop.shopPlace"></p>
+			</a>
+			<div class="contact">
+				<span class="item phone" data-num="{{shop.shopPhone}}" ng-click="showPhone($event)">电话</span>
+				<!-- <span href="#" class="item envir">环境</span> -->
+			</div>
+		</section>
+		<section id="nav-box">
+			<div class="nav-list">
+				<a href="#cont" class="nav-item active" data-index="0">内容</a>
+				<a href="#tip" class="nav-item" data-index="1">提示</a>
+				<a href="#eval" class="nav-item" data-index="2">评价</a>
+				<a href="#recom" class="nav-item" data-index="3">推荐</a>
+			</div>
+			<!-- <span class="nav-line"></span> -->
+		</section>
+		<section id="cont" class="panel taocan-panel">
+			<h4 class="panel-hd">套餐内容</h4>
+			 <div class="group-box" ng-show="good.goodType == 1">
+			 	<dl class="group">
+			 		<dd class="item">
+			 			<span class="name">代金券</span>
+			 			<span class="count">1份</span>
+			 			<span class="price" ng-bind="good.currPrice"></span>
+			 		</dd>
+			 	</dl>
+			 	<!-- <dl class="group">
+			 		<dt class="title">小吃1选1</dt>
+			 		<dd class="item">
+			 			<span class="name">串烧鸡脆骨</span>
+			 			<span class="count">1份</span>
+			 			<span class="price">13</span>
+			 		</dd>
+			 	</dl>
+			 	<dl class="group">
+			 		<dt class="title">小食1选1</dt>
+			 		<dd class="item">
+			 			<span class="name">烤鸡翅</span>
+			 			<span class="count">1份</span>
+			 			<span class="price">10</span>
+			 		</dd>
+			 	</dl>
+			 	<dl class="group">
+			 		<dt class="title">饮品3选2</dt>
+			 		<dd class="item">
+			 			<span class="name">可乐</span>
+			 			<span class="count">1份</span>
+			 			<span class="price">7</span>
+			 		</dd>
+			 		<dd class="item">
+			 			<span class="name">雪碧</span>
+			 			<span class="count">1份</span>
+			 			<span class="price">6</span>
+			 		</dd>
+			 		<dd class="item">
+			 			<span class="name">果粒橙</span>
+			 			<span class="count">1份</span>
+			 			<span class="price">7</span>
+			 		</dd>
+			 	</dl> -->
+			 </div>
+			 <div class="group-box" ng-show="good.goodType == 2">
+			 	<div class="cont" ng-bind="good.goodCont">
+			 		
+			 	</div>
+			 </div>
+			 <div class="total">
+			 	小计：
+			 	<span class="current" ng-bind="good.currPrice"></span>
+			 	<span class="old" ng-bind="good.oldPrice"></span>
+			 </div>
+		</section>
+		<section id="tip" class="panel notice-panel">
+			<h4 class="panel-hd">消费提示</h4>
+			<div class="group-box">
+				<dl class="group">
+					<dt class="title">有效期</dt>
+					<dd class="item">{{good.tips.startDate}}至{{good.tips.endDate}}</dd>
+				</dl>
+				<dl class="group">
+					<dt class="title">使用时间</dt>
+					<dd class="item">{{good.tips.useTime.openTime}}</dd>
+					<dd class="item">{{good.tips.useTime.other}}</dd>
+				</dl>
+				<dl class="group">
+					<dt class="title">预约提醒</dt>
+					<dd class="item" ng-repeat="book in good.tips.book">
+						{{book}}
+					</dd>
+				</dl>
+				<dl class="group">
+					<dt class="title">使用规则</dt>
+					<dd class="item" ng-repeat="rule in good.tips.rule">
+						{{rule}}
+					</dd>
+				</dl>
+				<dl class="group">
+					<dt class="title">温馨提示</dt>
+					<dd class="item" ng-repeat="other in good.tips.other">
+						{{other}}
+					</dd>
+				</dl>
+			</div>
+		</section>
+		<section id="eval" class="panel evaluate-panel">
+			<h4 class="panel-hd">用户评价</h4>
 			<div class="score-star">
 				<div class="basic-score">
 					<div class="real-score" style="width: {{(good.points.sum * 20) - 6}}%;"></div>
 				</div>
 				<span class="score" ng-bind="good.points.sum.toFixed(2)"></span>
+				<span class="evaluate">{{evalArr.length}}人评价</span>
 			</div>
-			<span class="evaluate">{{evalArr.length}}人评价</span>
-		</a>
-	</section>
-	<section id="shop-desc">
-		<a href="/sdetail.html?ID={{shop.ID}}" class="shop-link">
-			<h4 class="shop-name" ng-bind="shop.shopName"></h4>
-			<p class="shop-pos" ng-bind="shop.shopPlace"></p>
-		</a>
-		<div class="contact">
-			<span class="item phone" data-num="{{shop.shopPhone}}" ng-click="showPhone($event)">电话</span>
-			<!-- <span href="#" class="item envir">环境</span> -->
-		</div>
-	</section>
-	<section id="nav-box">
-		<div class="nav-list">
-			<a href="#cont" class="nav-item active" data-index="0">内容</a>
-			<a href="#tip" class="nav-item" data-index="1">提示</a>
-			<a href="#eval" class="nav-item" data-index="2">评价</a>
-			<a href="#recom" class="nav-item" data-index="3">推荐</a>
-		</div>
-		<!-- <span class="nav-line"></span> -->
-	</section>
-	<section id="cont" class="panel taocan-panel">
-		<h4 class="panel-hd">套餐内容</h4>
-		 <div class="group-box" ng-show="good.goodType == 1">
-		 	<dl class="group">
-		 		<dd class="item">
-		 			<span class="name">代金券</span>
-		 			<span class="count">1份</span>
-		 			<span class="price" ng-bind="good.currPrice"></span>
-		 		</dd>
-		 	</dl>
-		 	<!-- <dl class="group">
-		 		<dt class="title">小吃1选1</dt>
-		 		<dd class="item">
-		 			<span class="name">串烧鸡脆骨</span>
-		 			<span class="count">1份</span>
-		 			<span class="price">13</span>
-		 		</dd>
-		 	</dl>
-		 	<dl class="group">
-		 		<dt class="title">小食1选1</dt>
-		 		<dd class="item">
-		 			<span class="name">烤鸡翅</span>
-		 			<span class="count">1份</span>
-		 			<span class="price">10</span>
-		 		</dd>
-		 	</dl>
-		 	<dl class="group">
-		 		<dt class="title">饮品3选2</dt>
-		 		<dd class="item">
-		 			<span class="name">可乐</span>
-		 			<span class="count">1份</span>
-		 			<span class="price">7</span>
-		 		</dd>
-		 		<dd class="item">
-		 			<span class="name">雪碧</span>
-		 			<span class="count">1份</span>
-		 			<span class="price">6</span>
-		 		</dd>
-		 		<dd class="item">
-		 			<span class="name">果粒橙</span>
-		 			<span class="count">1份</span>
-		 			<span class="price">7</span>
-		 		</dd>
-		 	</dl> -->
-		 </div>
-		 <div class="group-box" ng-show="good.goodType == 2">
-		 	<div class="cont" ng-bind="good.goodCont">
-		 		
-		 	</div>
-		 </div>
-		 <div class="total">
-		 	小计：
-		 	<span class="current" ng-bind="good.currPrice"></span>
-		 	<span class="old" ng-bind="good.oldPrice"></span>
-		 </div>
-	</section>
-	<section id="tip" class="panel notice-panel">
-		<h4 class="panel-hd">消费提示</h4>
-		<div class="group-box">
-			<dl class="group">
-				<dt class="title">有效期</dt>
-				<dd class="item">{{good.tips.startDate}}至{{good.tips.endDate}}</dd>
-			</dl>
-			<dl class="group">
-				<dt class="title">使用时间</dt>
-				<dd class="item">{{good.tips.useTime.openTime}}</dd>
-				<dd class="item">{{good.tips.useTime.other}}</dd>
-			</dl>
-			<dl class="group">
-				<dt class="title">预约提醒</dt>
-				<dd class="item" ng-repeat="book in good.tips.book">
-					{{book}}
-				</dd>
-			</dl>
-			<dl class="group">
-				<dt class="title">使用规则</dt>
-				<dd class="item" ng-repeat="rule in good.tips.rule">
-					{{rule}}
-				</dd>
-			</dl>
-			<dl class="group">
-				<dt class="title">温馨提示</dt>
-				<dd class="item" ng-repeat="other in good.tips.other">
-					{{other}}
-				</dd>
-			</dl>
-		</div>
-	</section>
-	<section id="eval" class="panel evaluate-panel">
-		<h4 class="panel-hd">用户评价</h4>
-		<div class="score-star">
-			<div class="basic-score">
-				<div class="real-score" style="width: {{(good.points.sum * 20) - 6}}%;"></div>
+			<div class="brief-desc">
+				<span class="item" ng-show="tag[0]">味道不错({{tag[0]}})</span>
+				<span class="item" ng-show="tag[1]">服务态度好({{tag[1]}})</span>
+				<span class="item" ng-show="tag[2]">环境不错({{tag[2]}})</span>
+				<span class="item" ng-show="tag[3]">总体很不错({{tag[3]}})</span>
+				<!-- <span class="item">味道还行(38)</span> -->
+				<!-- <span class="item">分量足(34)</span>
+				<span class="item">价格实惠(34)</span>
+				<span class="item">团购划算(22)</span> -->
 			</div>
-			<span class="score" ng-bind="good.points.sum.toFixed(2)"></span>
-			<span class="evaluate">{{evalArr.length}}人评价</span>
-		</div>
-		<div class="brief-desc">
-			<span class="item" ng-show="tag[0]">味道不错({{tag[0]}})</span>
-			<span class="item" ng-show="tag[1]">服务态度好({{tag[1]}})</span>
-			<span class="item" ng-show="tag[2]">环境不错({{tag[2]}})</span>
-			<span class="item" ng-show="tag[3]">总体很不错({{tag[3]}})</span>
-			<!-- <span class="item">味道还行(38)</span> -->
-			<!-- <span class="item">分量足(34)</span>
-			<span class="item">价格实惠(34)</span>
-			<span class="item">团购划算(22)</span> -->
-		</div>
-		<div class="eval-list">
-			<div class="eval-item" ng-repeat="evalItem in evalArr">
-				<div class="eval-hd">
-					<span class="user-name" ng-bind="evalItem.cont.username"></span>
-					<span class="time" ng-bind="evalItem.cont.timestamp"></span>
-					<div class="basic-score">
-						<div class="real-score" style="width: {{evalItem.width}};"></div>
+			<div class="eval-list">
+				<div class="eval-item" ng-repeat="evalItem in viewEvalArr">
+					<div class="eval-hd">
+						<span class="user-name" ng-bind="evalItem.cont.username"></span>
+						<span class="time" ng-bind="evalItem.cont.timestamp"></span>
+						<div class="basic-score">
+							<div class="real-score" style="width: {{evalItem.width}};"></div>
+						</div>
+					</div>
+					<div class="eval-bd">
+						<artical class="eval-cont" ng-bind="evalItem.cont.word">
+						</artical>
+						<div class="img-list">
+							<div class="img-box" ng-repeat="imgSrc in evalItem.cont.imgList"><img ng-src="{{imgSrc}}"></div>
+						</div>
 					</div>
 				</div>
-				<div class="eval-bd">
-					<artical class="eval-cont" ng-bind="evalItem.cont.word">
-					</artical>
-					<div class="img-list">
-						<div class="img-box" ng-repeat="imgSrc in evalItem.cont.imgList"><img ng-src="{{imgSrc}}"></div>
+				<!-- <div class="eval-item">
+					<div class="eval-hd">
+						<span class="user-name">user name</span>
+						<span class="time">2015-12-18</span>
+						<div class="basic-score">
+							<div class="real-score"></div>
+						</div>
+					</div>
+					<div class="eval-bd">
+						<artical class="eval-cont">
+							很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
+						</artical>
+						<div class="img-list">
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
+						</div>
 					</div>
 				</div>
+				<div class="eval-item">
+					<div class="eval-hd">
+						<span class="user-name">user name</span>
+						<span class="time">2015-12-18</span>
+						<div class="basic-score">
+							<div class="real-score"></div>
+						</div>
+					</div>
+					<div class="eval-bd">
+						<artical class="eval-cont">
+							很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
+						</artical>
+						<div class="img-list">
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+							<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
+						</div>
+					</div>
+				</div> -->
 			</div>
-			<!-- <div class="eval-item">
-				<div class="eval-hd">
-					<span class="user-name">user name</span>
-					<span class="time">2015-12-18</span>
-					<div class="basic-score">
-						<div class="real-score"></div>
-					</div>
-				</div>
-				<div class="eval-bd">
-					<artical class="eval-cont">
-						很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
-					</artical>
-					<div class="img-list">
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/mdl.jpg" alt=""></div>
-					</div>
-				</div>
+			<div class="panel-ft" ng-show="evalArr.length > 10">
+				<a href="#" class="view-all" ng-click="viewAllEval($event)">查看全部{{evalArr.length}}条评价</a>
 			</div>
-			<div class="eval-item">
-				<div class="eval-hd">
-					<span class="user-name">user name</span>
-					<span class="time">2015-12-18</span>
-					<div class="basic-score">
-						<div class="real-score"></div>
-					</div>
-				</div>
-				<div class="eval-bd">
-					<artical class="eval-cont">
-						很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
-					</artical>
-					<div class="img-list">
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-						<div class="img-box"><img src="assets/img/kfc.jpg" alt=""></div>
-					</div>
-				</div>
-			</div> -->
-		</div>
-		<div class="panel-ft" ng-show="evalArr.length">
-			<a href="#" class="view-all">查看全部{{evalArr.length}}条评价</a>
-		</div>
-	</section>
-	<section id="recom" class="panel recom-panel" ng-show="recomGood.length">
-		<h4 class="panel-hd">本商家其他热卖套餐</h4>
-		<div class="recom-list">
-			<a ng-repeat="recom in recomGood" href="/gdetail.html?ID={{recom.ID}}" class="recom-item">
-				<h4 class="recom-title" ng-bind="recom.goodName"></h4>
-				<p class="price">
-					<span class="current" ng-bind="recom.currPrice"></span>
-					<span class="old" ng-bind="recom.oldPrice"></span>
-				</p>
+		</section>
+		<section id="recom" class="panel recom-panel" ng-show="recomGood.length">
+			<h4 class="panel-hd">本商家其他热卖套餐</h4>
+			<div class="recom-list">
+				<a ng-repeat="recom in recomGood" href="/gdetail.html?ID={{recom.ID}}" class="recom-item">
+					<h4 class="recom-title" ng-bind="recom.goodName"></h4>
+					<p class="price">
+						<span class="current" ng-bind="recom.currPrice"></span>
+						<span class="old" ng-bind="recom.oldPrice"></span>
+					</p>
+				</a>
+			</div>
+		</section>
+		<section class="buy-btn-box">
+			<div class="price">
+				<span class="old" ng-bind="good.oldPrice"></span>
+				<span class="original">/ {{good.currPrice}}</span>
+			</div>
+			<a href="/purchase?goodID={{good.ID}}&amp;shopID={{shop.ID}}&amp;price={{good.currPrice}}&amp;name={{good.goodName}}" class="buy-btn" ng-click="purchase()">
+				<span class="tip">活动价</span>
+				<span class="current-price" ng-bind="good.currPrice"></span>
+				<span class="text">立即抢购</span>
 			</a>
+		</section>
+	</article>
+
+	<div class="eval-popup" ng-show="isShowEval">
+		<section class="hd">
+			<a href="#" class="back-link" ng-click="backDetail()"></a>
+			<h1 class="title">全部评论</h1>
+			<a href="/" class="home-link"></a>
+		</section>
+		<div class="eval-item" ng-repeat="evalItem in evalArr">
+			<div class="eval-hd">
+				<span class="user-name" ng-bind="evalItem.cont.username"></span>
+				<span class="time" ng-bind="evalItem.cont.timestamp"></span>
+				<div class="basic-score">
+					<div class="real-score" style="width: {{evalItem.width}};"></div>
+				</div>
+			</div>
+			<div class="eval-bd">
+				<artical class="eval-cont" ng-bind="evalItem.cont.word">
+				</artical>
+				<div class="img-list">
+					<div class="img-box" ng-repeat="imgSrc in evalItem.cont.imgList"><img ng-src="{{imgSrc}}"></div>
+				</div>
+			</div>
 		</div>
-	</section>
-	<section class="buy-btn-box">
-		<div class="price">
-			<span class="old" ng-bind="good.oldPrice"></span>
-			<span class="original">/ {{good.currPrice}}</span>
-		</div>
-		<a href="/purchase?goodID={{good.ID}}&amp;shopID={{shop.ID}}&amp;price={{good.currPrice}}&amp;name={{good.goodName}}" class="buy-btn" ng-click="purchase()">
-			<span class="tip">活动价</span>
-			<span class="current-price" ng-bind="good.currPrice"></span>
-			<span class="text">立即抢购</span>
-		</a>
-	</section>
+	</div>
+
 	<footer id="ft" ng-controller="pageFtCtrl">
 		<section class="info-block">
 			<div class="geo-city">

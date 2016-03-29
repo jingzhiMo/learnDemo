@@ -101,22 +101,8 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="eval-item">
-					<div class="eval-hd">
-						<span class="user-name">user name</span>
-						<span class="time">2015-12-18</span>
-						<div class="basic-score">
-							<div class="real-score"></div>
-						</div>
-					</div>
-					<div class="eval-bd">
-						<artical class="eval-cont">
-							很不错，虽然团购的不能送，不过离我们家很近，所以过去拿的，服务很好，怕我等，提前告诉她验证码，直接先帮我做，我去到就可以提了，而且因为下雨塞车，服务员还提前给我电话问我什么时候到，还有厕所，下次会再去，这次点了海鲜的，分量足，支持
-						</artical>
-					</div>
-				</div> -->
 			</div>
-			<div class="panel-ft">
+			<div class="panel-ft" ng-show="evalArr.length > 10">
 				<a href="#" class="view-all">查看全部{{evalArr.length}}条评价</a>
 			</div>
 		</section>
@@ -142,6 +128,26 @@
 			</div>
 		</section> -->
 	</article>
+
+	<!-- 全部分店 -->
+	<div class="shop-popup" ng-show="isShowShop">
+		<div class="popup-hd">
+			<h3 class="title">全部分店</h3>
+			<p class="shop-count">{{chainShopList.length}}店通用</p>
+		</div>
+		<!-- <a href="#" class="close" ng-click="closeShopPopup($event)"></a> -->
+		<div class="shop-bd shop-list">
+			<div>
+				<div class="shop-item" ng-repeat="chainShop in chainShopList">
+					<a href="/sdetail.html?ID={{chainShop.ID}}" class="shop">
+						<h4 class="shop-name" ng-bind="chainShop.shopName"></h4>
+						<p class="shop-pos" ng-bind="chainShop.shopPlace"></p>
+					</a>
+					<a href="tel:{{chainShop.shopPhone}}" class="shop-phone"></a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<footer id="ft" ng-controller="pageFtCtrl">
 		<section class="info-block">
@@ -172,26 +178,6 @@
 			<h4 class="title">拨打电话</h4>
 			<a href="tel:{{shop.shopPhone}}" class="phone" ng-bind="shop.shopPhone"></a>
 			<button class="cancel" ng-click="hidePhone($event)">取消</button>
-		</div>
-	</div>
-
-	<!-- 全部分店 -->
-	<div class="shop-popup" ng-show="isShowShop">
-		<div class="popup-hd">
-			<h3 class="title">全部分店</h3>
-			<p class="shop-count">{{chainShopList.length}}店通用</p>
-		</div>
-		<!-- <a href="#" class="close" ng-click="closeShopPopup($event)"></a> -->
-		<div class="shop-bd shop-list">
-			<div>
-				<div class="shop-item" ng-repeat="chainShop in chainShopList">
-					<a href="/sdetail.html?ID={{chainShop.ID}}" class="shop">
-						<h4 class="shop-name" ng-bind="chainShop.shopName"></h4>
-						<p class="shop-pos" ng-bind="chainShop.shopPlace"></p>
-					</a>
-					<a href="tel:{{chainShop.shopPhone}}" class="shop-phone"></a>
-				</div>
-			</div>
 		</div>
 	</div>
 

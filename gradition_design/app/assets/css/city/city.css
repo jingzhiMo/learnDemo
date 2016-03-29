@@ -15,7 +15,7 @@ body, p, input, h1, h2, h3, h4, h5, h6, ul, ol, button, dl, dd {
   float: right;
 }
 
-#hd, #hd .title, #hd .back-link, #ft .info-link, #ft .link-block, .recent-city .city, .hot-city .city, .all-city .letter {
+#hd, .hd, #hd .title, .hd .title, #hd .back-link, .hd .back-link, #ft .info-link, #ft .link-block, .recent-city .city, .hot-city .city, .all-city .letter {
   text-align: center;
 }
 
@@ -52,18 +52,18 @@ html {
   font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
 }
 
-#hd {
+#hd, .hd {
   position: relative;
   height: 40px;
   line-height: 40px;
   background-color: #57c4cf;
 }
-#hd .title {
+#hd .title, .hd .title {
   font-size: 1.6rem;
   font-weight: normal;
   color: #fff;
 }
-#hd .back-link {
+#hd .back-link, .hd .back-link {
   position: absolute;
   display: inline-block;
   left: 0;
@@ -71,7 +71,7 @@ html {
   height: 100%;
   width: 50px;
 }
-#hd .back-link:before {
+#hd .back-link:before, .hd .back-link:before {
   display: inline-block;
   content: "";
   width: 10px;
@@ -80,7 +80,7 @@ html {
   border-bottom: 2px solid #fff;
   transform: rotate(45deg);
 }
-#hd .home-link {
+#hd .home-link, .hd .home-link {
   display: inline-block;
   position: absolute;
   right: 0;

@@ -7,6 +7,7 @@ function($scope, $http, url, event){
 	$scope.good.goodImg = ['assets/image/loading1.gif', 'assets/image/loading2.gif', 'assets/image/loading3.gif'];
 	$scope.isShowPhone = false;
 	$scope.isShowMask = false;
+	$scope.isShowEval = false;
 	$scope.goodPoints = 0;
 	$scope.tag = [];
 
@@ -35,6 +36,37 @@ function($scope, $http, url, event){
 	$scope.purchase = function() {
 		localStorage.setItem('goodName', $scope.good.goodName);
 	};
+
+
+	/**
+	 *  =view all evaluate
+	 *  @about  查看全部评价
+	 *
+	 *  @param  {object}  ev  事件处理对象
+	 */
+	$scope.viewAllEval = function(ev) {
+		var bd = document.body,
+			paddingTop = bd.style.paddingTop;
+
+		bd.style.paddingTop = '0px';
+		$scope.isHideBd = true;
+		$scope.isShowEval = true;
+		history.pushState({pdTop: paddingTop}, null, '#allEval');
+		ev.preventDefault();
+	};
+
+
+	/**
+	 *  =back detail
+	 *  @about  返回详情页
+	 */
+	$scope.backDetail = function() {
+		document.body.style.paddingTop = history.state.pdTop;
+		$scope.isHideBd = false;
+		$scope.isShowEval = false;
+		history.back();
+	};
+
 
 	var urlReq = url.getParamByUrl(window.location.href);
 
@@ -181,6 +213,7 @@ function($scope, $http, url, event){
 			$scope.goodPoints = ((points || 5) / (maxLen || 1)).toFixed(2);
 			console.log($scope.goodPoints);
 			$scope.evalArr = data;
+			$scope.viewEvalArr = data.slice(0, 10);
 		})
 		.error(function() {
 			console.log('获取评论内容失败');
