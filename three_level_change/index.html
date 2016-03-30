@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三级联动</title>
+	<style>
+		ul {
+			list-style: none;
+			margin-bottom: 20px;
+		}
+		#switch-img {
+			margin-top: 30px;
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	
+	<select id="first">
+		<option value="0">--请选择--</option>
+		<option value="ha">1</option>
+		<option value="haha">2</option>
+		<option value="hahaha">3</option>
+	</select>	
+	<select id="second">
+		<option value="0">--请选择--</option>
+		
+	</select>	
+	<select id="third">
+		<option value="0">--请选择--</option>
+	</select>
+
+	<table>
+		<tr>
+			<td>
+				<input type="checkbox">
+			</td>
+			<td>
+				1
+			</td>
+		</tr>
+	</table>
+	<button id="create">增加</button>
+	<button id="del">删除</button>
+
+	<div id="switch-img">
+		
+	</div>
+	<p id="timer">20</p>
+	<script src="index.js">
+	</script>
+</body>
+</html>
