@@ -282,5 +282,5 @@ function($scope, $http, url, event){
 	var nav = document.querySelector('#nav-box'),
 		navItem = nav.querySelectorAll('.nav-item');
 
-	event.navScroll(nav, navItem);
+	// event.navScroll(nav, navItem);
 }]);

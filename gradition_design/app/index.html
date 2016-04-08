@@ -106,14 +106,14 @@
 						<div class="title-line">
 							<h3 class="good-name" ng-bind="good.good.goodName"></h3>
 							<span class="distance"></span>
-							<span class="place" ng-bind="good.shop.shopPlace"></span>
+							<span class="place" ng-bind="good.shop.shopPlace.split('-').join('').slice(3)"></span>
 						</div>
 						<p class="desc" ng-bind="good.good.goodDesc"></p>
 						<div class="price-line">
 							<span class="now" ng-bind="good.good.currPrice"></span>
 							<span class="old" ng-bind="good.good.oldPrice"></span>
 							<!-- <span class="discount">立减10元</span> -->
-							<span class="count">已售{{good.good.goodCount || 888}}</span>
+							<span class="count">已售{{good.good.goodCount}}</span>
 						</div>
 					</div>
 				</a>

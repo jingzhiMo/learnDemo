@@ -14,7 +14,7 @@ app.use(express.static('app'))
    .use(express.static('bower_components'))
    .use(session({
    		secret: 'keyboard cat recommand 128 bytes random string',
-   		cookie: { maxAge: 30 * 60 * 1000 } // cookie 时长为30分钟
+   		cookie: { maxAge: 50 * 60 * 1000 } // cookie 时长为30分钟
    }))
    .use(accountFilter);
 

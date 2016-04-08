@@ -149,7 +149,7 @@ function addNewGood(goodMsg, res) {
 					goodType: goodMsg.goodType,
 					goodClass: goodMsg.goodClass,
 					goodCont: goodMsg.goodCont,
-					goodCount: 880, // TODO 商品出售数量
+					goodCount: 0, // TODO 商品出售数量
 					goodImg: goodMsg.goodImg,
 					oldPrice: goodMsg.oldPrice,
 					currPrice: goodMsg.currPrice,

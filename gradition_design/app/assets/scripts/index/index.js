@@ -25,13 +25,13 @@ function($scope, $http, event, checkAdmin) {
 		.success(function(data) {
 
 			$scope.allGood = data;
-			if ( data.length <= 10 ) {
+			if ( data.length <= 8 ) {
 				$scope.goodList = data;
 				$scope.currLen = data.length;
 			}
 			else {
-				$scope.goodList = data.slice(0, 10);
-				$scope.currLen = 10;
+				$scope.goodList = data.slice(0, 8);
+				$scope.currLen = 8;
 			}
 		})
 		.error(function(err) {
