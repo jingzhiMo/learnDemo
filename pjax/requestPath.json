@@ -1,0 +1,5 @@
+{
+    "rank": ["index", "float", "offline", "release"],
+    "app": ["rank", "baseinfo", "version", "download"],
+    "trend": ["hotSearch", "hotSearchDetail"]
+}
