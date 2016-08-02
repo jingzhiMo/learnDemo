@@ -1,0 +1,26 @@
+{
+  "name": "pjax",
+  "description": "node pjax demo",
+  "main": "index.js",
+  "authors": [
+    "mojingzhi"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "pjax",
+    "ajax",
+    "node"
+  ],
+  "homepage": "https://github.com/jingzhiMo/learnDemo",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-pjax": "^1.9.6"
+  }
+}

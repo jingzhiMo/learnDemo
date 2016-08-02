@@ -1,0 +1,27 @@
+{
+  "name": "pjax",
+  "version": "1.0.0",
+  "description": "node pjax demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jingzhiMo/learnDemo.git"
+  },
+  "keywords": [
+    "pjax",
+    "ajax",
+    "node"
+  ],
+  "author": "mojingzhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jingzhiMo/learnDemo/issues"
+  },
+  "homepage": "https://github.com/jingzhiMo/learnDemo#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
