@@ -1,5 +1,63 @@
 {
-    "rank": ["index", "float", "offline", "release"],
-    "app": ["rank", "baseinfo", "version", "download"],
-    "trend": ["hotSearch", "hotSearchDetail"]
+    "path": "/",
+    "view": "index.html",
+    "param": [],
+    "child": {
+        "rank": {
+            "path": "rank",
+            "view": "rank.html",
+            "param": [],
+            "child": {
+                "index": {
+                    "path": "index",
+                    "view": "rank_index.html",
+                    "param": ["device", "country", "genreId", "popId"]
+                },
+                "snapshotList": {
+                    "path": "snapshotList",
+                    "view": "rank_snapshotList.html",
+                    "param": ["device", "date"]
+                }
+            }
+        },
+        "app": {
+            "path": "app",
+            "view": "app.html",
+            "param": [],
+            "child": {
+                "rank": {
+                    "path": "rank",
+                    "view": "app_rank.html",
+                    "param": ["appid", "country"]
+                },
+                "baseinfo": {
+                    "path": "baseinfo",
+                    "view": "app_baseinfo.html",
+                    "param": ["appid", "country"]
+                },
+                "version": {
+                    "path": "version",
+                    "view": "app_version.html",
+                    "param": ["appid", "country"]
+                }
+            }
+        },
+        "trend": {
+            "path": "trend",
+            "view": "trend.html",
+            "param": [],
+            "child": {
+                "hotSearch": {
+                    "path": "hotSearch",
+                    "view": "trend_hotSearch.html",
+                    "param": ["device", "country", "sdate", "edate"]
+                },
+                "hotSearchDetail": {
+                    "path": "hotSearchDetail",
+                    "view": "trend_hotSearchDetail.html",
+                    "param": ["device", "word"]
+                }
+            }
+        }
+    } 
 }
