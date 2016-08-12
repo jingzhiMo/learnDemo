@@ -1,4 +1,9 @@
 module.exports = function(req, res, next) {
-    console.log('11111');
+    if ( req.headers['x-pjax'] === 'true' ) {
+        req.query.pjax = true;
+    }
+    else {
+        req.query.pjax = false;
+    }
     next();
 };
