@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>example 1</title>
+  <style>
+    .first {
+      margin: 0 auto;
+      width: 500px;
+      /*height: 200px;*/
+      border: 1px solid #ccc;
+    }
+    .second {
+      margin: 20px auto;
+      width: 300px;
+      border: 1px solid red;
+      /*height: 150px;*/
+      /*overflow-y: auto;*/
+    }
+    p {
+      height: 120px;
+      background-color: yellow;
+    }
+    .nav {
+      position: sticky;
+      top: 10px;
+      bottom: 10px;
+      /*   z-index: 2; */
+      background-color: red;
+    }
+    .nav2 {
+      position: sticky;
+      top: 10px;
+      background-color: green;
+    }
+    .bottom {
+      height: 1200px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="first">
+    <div class="second">
+      <nav class="nav">nav</nav>
+      <p>123</p>
+    </div>
+    <div class="bottom"></div>
+  </div>
+</body>
+</html>
