@@ -7,6 +7,7 @@
  *     this.left = this.right = null;
  * }
  */
+
 /**
  * @param {TreeNode} root
  * @return {number[][]}
@@ -41,24 +42,26 @@ var levelOrder = function(root) {
     return result
 };
 
-var root = {
-    val: 3,
-    left: {
-        val: 9,
-        left: null,
-        right: null
-    },
-    right: {
-        val: 20,
-        left: {
-            val: 15,
-            left: null,
-            right: null
-        },
-        right: {
-            val: 7,
-            left: null,
-            right: null
+// 递归解法
+var levelOrder = function(root) {
+    if (!root) return []
+
+    let result = []
+
+    let helper = (node, level) => {
+        if (!result[level]) {
+            result[level] = []
+        }
+
+        result[level].push(node.val)
+
+        if (node.left) {
+            helper(node.left, level + 1)
+        }
+
+        if (node.right) {
+            helper(node.right, level + 1)
         }
     }
-}
+    helper(root, 0)
+};
